@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moxxi", "Moxxi\Moxxi.vcxproj", "{8F657685-7764-4C49-91A6-6466CE81C2AC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boids", "..\Boids\Boids\Boids.vcxproj", "{130602FB-2EA8-4C0D-9BD6-0F8EA5FA8677}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boids", "Boids\Boids.vcxproj", "{F2D7DF51-0919-415B-83B2-5633E3C06C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{8F657685-7764-4C49-91A6-6466CE81C2AC}.Debug|x64.Build.0 = Debug|x64
 		{8F657685-7764-4C49-91A6-6466CE81C2AC}.Release|x64.ActiveCfg = Release|x64
 		{8F657685-7764-4C49-91A6-6466CE81C2AC}.Release|x64.Build.0 = Release|x64
-		{130602FB-2EA8-4C0D-9BD6-0F8EA5FA8677}.Debug|x64.ActiveCfg = Debug|x64
-		{130602FB-2EA8-4C0D-9BD6-0F8EA5FA8677}.Debug|x64.Build.0 = Debug|x64
-		{130602FB-2EA8-4C0D-9BD6-0F8EA5FA8677}.Release|x64.ActiveCfg = Release|x64
-		{130602FB-2EA8-4C0D-9BD6-0F8EA5FA8677}.Release|x64.Build.0 = Release|x64
+		{F2D7DF51-0919-415B-83B2-5633E3C06C67}.Debug|x64.ActiveCfg = Debug|x64
+		{F2D7DF51-0919-415B-83B2-5633E3C06C67}.Debug|x64.Build.0 = Debug|x64
+		{F2D7DF51-0919-415B-83B2-5633E3C06C67}.Release|x64.ActiveCfg = Release|x64
+		{F2D7DF51-0919-415B-83B2-5633E3C06C67}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
