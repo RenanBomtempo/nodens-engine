@@ -1,0 +1,6 @@
+[submodule "Moxxi/vendor/spdlog"]
+	path = Moxxi/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Moxxi/vendor/GLFW"]
+	path = Moxxi/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW

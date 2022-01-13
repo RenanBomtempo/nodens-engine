@@ -1,36 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Moxxi">
+      <UniqueIdentifier>{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Moxxi\Events">
+      <UniqueIdentifier>{FE6DC716-EAD0-56BB-9356-8F717F98223E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Moxxi\Core.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Moxxi\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="src\Moxxi.h" />
     <ClInclude Include="src\Moxxi\Application.h">
-      <Filter>Header Files</Filter>
+      <Filter>Moxxi</Filter>
     </ClInclude>
-    <ClInclude Include="src\Moxxi.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Moxxi\Core.h">
+      <Filter>Moxxi</Filter>
     </ClInclude>
     <ClInclude Include="src\Moxxi\EntryPoint.h">
-      <Filter>Header Files</Filter>
+      <Filter>Moxxi</Filter>
     </ClInclude>
+    <ClInclude Include="src\Moxxi\Events\ApplicationEvent.h">
+      <Filter>Moxxi\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Moxxi\Events\Event.h">
+      <Filter>Moxxi\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Moxxi\Events\KeyEvent.h">
+      <Filter>Moxxi\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Moxxi\Events\MouseEvent.h">
+      <Filter>Moxxi\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Moxxi\Log.h">
+      <Filter>Moxxi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mxpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Moxxi\Application.cpp">
+      <Filter>Moxxi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Moxxi\Log.cpp">
+      <Filter>Moxxi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mxpch.cpp" />
   </ItemGroup>
 </Project>
