@@ -1,6 +1,6 @@
 #pragma once
 
-#include <memory>
+#include "mxpch.h"
 
 #include "Core.h"
 #include "spdlog/spdlog.h"

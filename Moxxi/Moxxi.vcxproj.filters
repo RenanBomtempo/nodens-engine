@@ -7,6 +7,12 @@
     <Filter Include="Moxxi\Events">
       <UniqueIdentifier>{FE6DC716-EAD0-56BB-9356-8F717F98223E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Moxxi.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Moxxi\Log.h">
       <Filter>Moxxi</Filter>
     </ClInclude>
+    <ClInclude Include="src\Moxxi\Window.h">
+      <Filter>Moxxi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\mxpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Moxxi\Log.cpp">
       <Filter>Moxxi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\mxpch.cpp" />
   </ItemGroup>

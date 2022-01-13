@@ -29,6 +29,8 @@ namespace Moxxi {
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
+	// #  -> Stringizing operator: Causes the corresponding actual argument to be enclosed in double quotation marks
+	// ## -> Token-pasting operator: Allows tokens used as actual arguments to be concatenated to form other tokens
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 

@@ -10,6 +10,13 @@ workspace "Moxxi"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "Moxxi/vendor/GLFW/include"
+
+-- Include premake5.lua file from GLFW folder
+include "Moxxi/vendor/GLFW"
+
 project "Moxxi"
     location "Moxxi"    
     kind "SharedLib"
@@ -30,7 +37,14 @@ project "Moxxi"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
