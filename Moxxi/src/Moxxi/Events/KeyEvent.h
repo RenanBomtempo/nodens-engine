@@ -37,16 +37,16 @@ namespace Moxxi {
 		int m_RepeatCount;
 	};
 
-	class MOXXI_API KeyReleaseEvent : public KeyEvent
+	class MOXXI_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleaseEvent(int keycode) 
+		KeyReleasedEvent(int keycode) 
 			: KeyEvent(keycode) {}
 
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyReleaseEvent: " << m_KeyCode;
+			ss << "KeyReleasedEvent: " << m_KeyCode;
 			return ss.str();
 		}
 

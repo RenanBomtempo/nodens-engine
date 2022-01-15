@@ -13,6 +13,8 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "Moxxi/vendor/GLFW/include"
+IncludeDir["glm"] = "Moxxi/vendor/glm/glm"
+IncludeDir["spdlog"] = "Moxxi/vendor/spdlog/include"
 
 -- Include premake5.lua file from GLFW folder
 include "Moxxi/vendor/GLFW"
@@ -37,8 +39,9 @@ project "Moxxi"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.spdlog}",
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.glm}"
     }
 
     links
