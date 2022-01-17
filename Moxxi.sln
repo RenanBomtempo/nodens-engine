@@ -5,7 +5,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boids", "Boids\Boids.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "Moxxi\vendor\GLFW\GLFW.vcxproj", "{154B857C-0182-860D-AA6E-6C109684020F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "Moxxi\vendor\imgui\ImGui.vcxproj", "{C0FF640D-2C14-8DBE-F595-301E616989EF}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moxxi", "Moxxi\Moxxi.vcxproj", "{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glad", "Moxxi\vendor\GLAD\glad.vcxproj", "{DD62977C-C999-980D-7286-7E105E9C140F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,12 +30,24 @@ Global
 		{154B857C-0182-860D-AA6E-6C109684020F}.Dist|x64.Build.0 = Dist|x64
 		{154B857C-0182-860D-AA6E-6C109684020F}.Release|x64.ActiveCfg = Release|x64
 		{154B857C-0182-860D-AA6E-6C109684020F}.Release|x64.Build.0 = Release|x64
+		{C0FF640D-2C14-8DBE-F595-301E616989EF}.Debug|x64.ActiveCfg = Debug|x64
+		{C0FF640D-2C14-8DBE-F595-301E616989EF}.Debug|x64.Build.0 = Debug|x64
+		{C0FF640D-2C14-8DBE-F595-301E616989EF}.Dist|x64.ActiveCfg = Dist|x64
+		{C0FF640D-2C14-8DBE-F595-301E616989EF}.Dist|x64.Build.0 = Dist|x64
+		{C0FF640D-2C14-8DBE-F595-301E616989EF}.Release|x64.ActiveCfg = Release|x64
+		{C0FF640D-2C14-8DBE-F595-301E616989EF}.Release|x64.Build.0 = Release|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Debug|x64.ActiveCfg = Debug|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Debug|x64.Build.0 = Debug|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Dist|x64.ActiveCfg = Dist|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Dist|x64.Build.0 = Dist|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Release|x64.ActiveCfg = Release|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Release|x64.Build.0 = Release|x64
+		{DD62977C-C999-980D-7286-7E105E9C140F}.Debug|x64.ActiveCfg = Debug|x64
+		{DD62977C-C999-980D-7286-7E105E9C140F}.Debug|x64.Build.0 = Debug|x64
+		{DD62977C-C999-980D-7286-7E105E9C140F}.Dist|x64.ActiveCfg = Dist|x64
+		{DD62977C-C999-980D-7286-7E105E9C140F}.Dist|x64.Build.0 = Dist|x64
+		{DD62977C-C999-980D-7286-7E105E9C140F}.Release|x64.ActiveCfg = Release|x64
+		{DD62977C-C999-980D-7286-7E105E9C140F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

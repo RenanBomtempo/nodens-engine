@@ -3,14 +3,21 @@
 
 #include "Log.h"
 #include "Events/ApplicationEvent.h"
-#include "GLFW/glfw3.h"
+#include "glad/glad.h"
 
 namespace Moxxi {
 	
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
+	Application* Application::s_Instance = nullptr;
+		// Provides access to Application information
+		// for the rest of the program.
+
 	Application::Application()
 	{
+		MX_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
@@ -19,18 +26,51 @@ namespace Moxxi {
 	{
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+	
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
+	}
+
 	void Application::Run()
 	{
 		while (m_Running)
 		{
 			glClearColor(1, 0, 1, 1);
 			m_Window->OnUpdate();
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+
+			m_Window->OnUpdate();
 		}
 	}
 
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
+	}
+		
 	void Application::OnEvent(Event& e)
 	{
-		MX_CORE_INFO("{0}", e);
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
+
+
+		// Run through LayerStack from last to first
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		{
+			(*--it)->OnEvent(e);
+			if (e.Handled)
+				break;
+		}
 	}
 
 }

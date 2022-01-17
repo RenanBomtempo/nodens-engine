@@ -6,6 +6,10 @@
 #include <ostream>
 
 namespace Moxxi {
+	// Events are currently blocking, meaning when an event occurs it
+	// immediately gets dispatched and must be dealt with right then an there.
+	// For the future, a better strategy might be to buffer events in an event
+	// bus and process them during the "event" part of the update stage.
 
 	enum class EventType
 	{
@@ -36,8 +40,11 @@ namespace Moxxi {
 
 	class MOXXI_API Event
 	{
-		friend class EventDispatcher;
 	public:
+		virtual ~Event() = default;
+
+		bool Handled = false;
+
 		virtual EventType GetEventType() const = 0;	// Pure virtual
 		virtual const char* GetName() const = 0;	// Pure virtual
 		virtual int GetCategoryFlags() const = 0;	// Pure virtual
@@ -47,26 +54,24 @@ namespace Moxxi {
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_Handled = false;
 	};
 
 
 	class EventDispatcher
 	{
-		template<typename T>
-		using EventFn = std::function<bool(T&)>();
-			// This means "Standard function that returns a bool and
-			// whose input is a reference for type T"
 	public:
-		EventDispatcher(Event& event) : m_Event(event) {}
+		EventDispatcher(Event& event) 
+			: m_Event(event) 
+		{
+		}
 		
-		template<typename T>
-		bool Dispatch(EventFn<T> func)
+		// F will be resolved on compile time
+		template<typename T, typename F>
+		bool Dispatch(const F&  func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled |= func(static_cast<T&>(m_Event));
 				return true;
 			}
 			return false;
@@ -74,7 +79,6 @@ namespace Moxxi {
 
 	private:
 		Event& m_Event;
-
 	};
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)

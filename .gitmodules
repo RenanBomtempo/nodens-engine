@@ -7,3 +7,6 @@
 [submodule "Moxxi/vendor/glm"]
 	path = Moxxi/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "Moxxi/vendor/imgui"]
+	path = Moxxi/vendor/imgui
+	url = https://github.com/TheCherno/imgui

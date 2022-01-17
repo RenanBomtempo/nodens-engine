@@ -15,9 +15,13 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Moxxi/vendor/GLFW/include"
 IncludeDir["glm"] = "Moxxi/vendor/glm/glm"
 IncludeDir["spdlog"] = "Moxxi/vendor/spdlog/include"
+IncludeDir["glad"] = "Moxxi/vendor/glad/include"
+IncludeDir["imgui"] = "Moxxi/vendor/imgui"
 
 -- Include premake5.lua file from GLFW folder
 include "Moxxi/vendor/GLFW"
+include "Moxxi/vendor/GLAD"
+include "Moxxi/vendor/imgui"
 
 project "Moxxi"
     location "Moxxi"    
@@ -41,12 +45,18 @@ project "Moxxi"
         "%{prj.name}/src",
         "%{IncludeDir.spdlog}",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glad}",
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.imgui}",
+        "%{IncludeDir.imgui}/backends"
+
     }
 
     links
     {
+        "imgui",
         "GLFW",
+        "GLAD",
         "opengl32.lib"
     }
 
@@ -58,7 +68,8 @@ project "Moxxi"
         defines 
         {
             "MX_PLATFORM_WINDOWS", 
-            "MX_BUILD_DLL"
+            "MX_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
@@ -68,14 +79,17 @@ project "Moxxi"
 
     filter "configurations:Debug"
         defines "MX_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
         
     filter "configurations:Release"
         defines "MX_RELEASE"
+        buildoptions "/MD"
         optimize "On"
     
     filter "configurations:Dist"
         defines "MX_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "Boids"
@@ -94,8 +108,9 @@ project "Boids"
 
     includedirs
     {
-        "Moxxi/vendor/spdlog/include",
-        "Moxxi/src"
+        "Moxxi/src",
+        "%{IncludeDir.spdlog}",
+        "%{IncludeDir.imgui}"
     }
 
     links 
@@ -115,12 +130,15 @@ project "Boids"
 
     filter "configurations:Debug"
         defines "MX_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
         
     filter "configurations:Release"
         defines "MX_RELEASE"
+        buildoptions "/MD"
         optimize "On"
     
     filter "configurations:Dist"
         defines "MX_DIST"
+        buildoptions "/MD"
         optimize "On"
