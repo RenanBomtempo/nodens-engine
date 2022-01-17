@@ -19,3 +19,5 @@
 #endif // MX_ENABLE_ASSERTS
 
 #define BIT(x) (1 << x)	// Shift 1 to the left by x places (ex 1 << 2 = 100)
+
+#define MX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
