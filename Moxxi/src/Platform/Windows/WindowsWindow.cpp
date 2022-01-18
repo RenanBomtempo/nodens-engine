@@ -2,11 +2,11 @@
 #include "WindowsWindow.h"
 
 #include "Moxxi/Log.h"
-#include <Moxxi/Events/ApplicationEvent.h>
-#include <Moxxi/Events/MouseEvent.h>
-#include <Moxxi/Events/KeyEvent.h>
+#include "Moxxi/Events/ApplicationEvent.h"
+#include "Moxxi/Events/MouseEvent.h"
+#include "Moxxi/Events/KeyEvent.h"
 
-#include "glad/glad.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Moxxi {
 	static bool s_GLFWInitialized = false;
@@ -39,6 +39,7 @@ namespace Moxxi {
 
 		MX_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
+
 		if (!s_GLFWInitialized)
 		{
 			// TODO: glfwTerminate on system shutdown
@@ -54,14 +55,10 @@ namespace Moxxi {
 			s_GLFWInitialized = true;
 		}
 
-
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-
-		// Initialize GLAD
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		MX_CORE_ASSERT(status, "Failed to initialize glad!");
-
+		
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 			// This function assigns the WindowData struct to the GLFWwindow object. 
@@ -162,7 +159,7 @@ namespace Moxxi {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

@@ -14,6 +14,13 @@ public:
 			MX_TRACE("Tab is pressed");
 	}
 	
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Janelinha pika");
+		ImGui::Text("Pega a visao");
+		ImGui::End();
+	}
+
 	void OnEvent(Moxxi::Event& event) override
 	{
 		

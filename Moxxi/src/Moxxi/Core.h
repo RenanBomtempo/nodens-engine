@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef MX_PLATFORM_WINDOWS
+#if MX_DYNAMIC_LINK
 	#ifdef MX_BUILD_DLL
 		#define MOXXI_API __declspec(dllexport)
 	#else
 		#define MOXXI_API __declspec(dllimport)
 	#endif // MX_BUILD_DLL
+#else
+	#define MOXXI_API
+#endif // MX_DYNAMIC_LINK
 #else
 	#error Moxxi only supports windows!
 #endif // MX_PLATFORM_WINDOWS

@@ -1,7 +1,10 @@
 #pragma once
 
 #include "Moxxi/Window.h"
-#include "GLFW/glfw3.h"
+#include "Moxxi/Renderer/GraphicsContext.h"
+
+#include <GLFW/glfw3.h>
+
 
 namespace Moxxi {
 	
@@ -25,8 +28,9 @@ namespace Moxxi {
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
-	
+	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
