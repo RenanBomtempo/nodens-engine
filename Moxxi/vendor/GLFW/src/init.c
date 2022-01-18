@@ -2,7 +2,7 @@
 // GLFW 3.3 - www.glfw.org
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
-// Copyright (c) 2006-2016 Camilla Löwy <elmindreda@glfw.org>
+// Copyright (c) 2006-2018 Camilla Löwy <elmindreda@glfw.org>
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -24,9 +24,10 @@
 //    distribution.
 //
 //========================================================================
+// Please use C89 style variable declarations in this file because VS 2010
+//========================================================================
 
 #include "internal.h"
-#include "mappings.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -35,16 +36,15 @@
 #include <assert.h>
 
 
-// The global variables below comprise all mutable global data in GLFW
-//
-// Any other global variable is a bug
+// NOTE: The global variables below comprise all mutable global data in GLFW
+//       Any other mutable global variable is a bug
 
-// Global state shared between compilation units of GLFW
+// This contains all mutable state shared between compilation units of GLFW
 //
 _GLFWlibrary _glfw = { GLFW_FALSE };
 
 // These are outside of _glfw so they can be used before initialization and
-// after termination
+// after termination without special handling when _glfw is cleared to zero
 //
 static _GLFWerror _glfwMainThreadError;
 static GLFWerrorfun _glfwErrorCallback;
@@ -117,6 +117,30 @@ char* _glfw_strdup(const char* source)
     char* result = calloc(length + 1, 1);
     strcpy(result, source);
     return result;
+}
+
+float _glfw_fminf(float a, float b)
+{
+    if (a != a)
+        return b;
+    else if (b != b)
+        return a;
+    else if (a < b)
+        return a;
+    else
+        return b;
+}
+
+float _glfw_fmaxf(float a, float b)
+{
+    if (a != a)
+        return b;
+    else if (b != b)
+        return a;
+    else if (a > b)
+        return a;
+    else
+        return b;
 }
 
 
@@ -219,24 +243,12 @@ GLFWAPI int glfwInit(void)
 
     _glfwPlatformSetTls(&_glfw.errorSlot, &_glfwMainThreadError);
 
+    _glfwInitGamepadMappings();
+
     _glfw.initialized = GLFW_TRUE;
     _glfw.timer.offset = _glfwPlatformGetTimerValue();
 
     glfwDefaultWindowHints();
-
-    {
-        int i;
-
-        for (i = 0;  _glfwDefaultMappings[i];  i++)
-        {
-            if (!glfwUpdateGamepadMappings(_glfwDefaultMappings[i]))
-            {
-                terminate();
-                return GLFW_FALSE;
-            }
-        }
-    }
-
     return GLFW_TRUE;
 }
 

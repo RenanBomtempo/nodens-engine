@@ -2,7 +2,7 @@
 // GLFW 3.3 - www.glfw.org
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
-// Copyright (c) 2006-2016 Camilla Löwy <elmindreda@glfw.org>
+// Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
 //
 // This software is provided 'as-is', without any express or implied
 // warranty. In no event will the authors be held liable for any damages
@@ -24,8 +24,11 @@
 //    distribution.
 //
 //========================================================================
+// Please use C89 style variable declarations in this file because VS 2010
+//========================================================================
 
 #include "internal.h"
+#include "mappings.h"
 
 #include <assert.h>
 #include <float.h>
@@ -83,25 +86,13 @@ static _GLFWmapping* findValidMapping(const _GLFWjoystick* js)
         for (i = 0;  i <= GLFW_GAMEPAD_BUTTON_LAST;  i++)
         {
             if (!isValidElementForJoystick(mapping->buttons + i, js))
-            {
-                _glfwInputError(GLFW_INVALID_VALUE,
-                                "Invalid button in gamepad mapping %s (%s)",
-                                mapping->guid,
-                                mapping->name);
                 return NULL;
-            }
         }
 
         for (i = 0;  i <= GLFW_GAMEPAD_AXIS_LAST;  i++)
         {
             if (!isValidElementForJoystick(mapping->axes + i, js))
-            {
-                _glfwInputError(GLFW_INVALID_VALUE,
-                                "Invalid axis in gamepad mapping %s (%s)",
-                                mapping->guid,
-                                mapping->name);
                 return NULL;
-            }
         }
     }
 
@@ -333,7 +324,7 @@ void _glfwInputMouseClick(_GLFWwindow* window, int button, int action, int mods)
 }
 
 // Notifies shared code of a cursor motion event
-// The position is specified in client-area relative screen coordinates
+// The position is specified in content area relative screen coordinates
 //
 void _glfwInputCursorPos(_GLFWwindow* window, double xpos, double ypos)
 {
@@ -406,6 +397,29 @@ void _glfwInputJoystickHat(_GLFWjoystick* js, int hat, char value)
 //////                       GLFW internal API                      //////
 //////////////////////////////////////////////////////////////////////////
 
+// Adds the built-in set of gamepad mappings
+//
+void _glfwInitGamepadMappings(void)
+{
+    int jid;
+    size_t i;
+    const size_t count = sizeof(_glfwDefaultMappings) / sizeof(char*);
+    _glfw.mappings = calloc(count, sizeof(_GLFWmapping));
+
+    for (i = 0;  i < count;  i++)
+    {
+        if (parseMapping(&_glfw.mappings[_glfw.mappingCount], _glfwDefaultMappings[i]))
+            _glfw.mappingCount++;
+    }
+
+    for (jid = 0;  jid <= GLFW_JOYSTICK_LAST;  jid++)
+    {
+        _GLFWjoystick* js = _glfw.joysticks + jid;
+        if (js->present)
+            js->mapping = findValidMapping(js);
+    }
+}
+
 // Returns an available joystick object with arrays and name allocated
 //
 _GLFWjoystick* _glfwAllocJoystick(const char* name,
@@ -428,15 +442,15 @@ _GLFWjoystick* _glfwAllocJoystick(const char* name,
 
     js = _glfw.joysticks + jid;
     js->present     = GLFW_TRUE;
-    js->name        = _glfw_strdup(name);
     js->axes        = calloc(axisCount, sizeof(float));
-    js->buttons     = calloc(buttonCount + hatCount * 4, 1);
+    js->buttons     = calloc(buttonCount + (size_t) hatCount * 4, 1);
     js->hats        = calloc(hatCount, 1);
     js->axisCount   = axisCount;
     js->buttonCount = buttonCount;
     js->hatCount    = hatCount;
 
-    strcpy(js->guid, guid);
+    strncpy(js->name, name, sizeof(js->name) - 1);
+    strncpy(js->guid, guid, sizeof(js->guid) - 1);
     js->mapping = findValidMapping(js);
 
     return js;
@@ -446,11 +460,20 @@ _GLFWjoystick* _glfwAllocJoystick(const char* name,
 //
 void _glfwFreeJoystick(_GLFWjoystick* js)
 {
-    free(js->name);
     free(js->axes);
     free(js->buttons);
     free(js->hats);
     memset(js, 0, sizeof(_GLFWjoystick));
+}
+
+// Center the cursor in the content area of the specified window
+//
+void _glfwCenterCursorInContentArea(_GLFWwindow* window)
+{
+    int width, height;
+
+    _glfwPlatformGetWindowSize(window, &width, &height);
+    _glfwPlatformSetCursorPos(window, width / 2.0, height / 2.0);
 }
 
 
@@ -475,6 +498,8 @@ GLFWAPI int glfwGetInputMode(GLFWwindow* handle, int mode)
             return window->stickyMouseButtons;
         case GLFW_LOCK_KEY_MODS:
             return window->lockKeyMods;
+        case GLFW_RAW_MOUSE_MOTION:
+            return window->rawMouseMotion;
     }
 
     _glfwInputError(GLFW_INVALID_ENUM, "Invalid input mode 0x%08X", mode);
@@ -551,9 +576,33 @@ GLFWAPI void glfwSetInputMode(GLFWwindow* handle, int mode, int value)
         window->stickyMouseButtons = value;
     }
     else if (mode == GLFW_LOCK_KEY_MODS)
+    {
         window->lockKeyMods = value ? GLFW_TRUE : GLFW_FALSE;
+    }
+    else if (mode == GLFW_RAW_MOUSE_MOTION)
+    {
+        if (!_glfwPlatformRawMouseMotionSupported())
+        {
+            _glfwInputError(GLFW_PLATFORM_ERROR,
+                            "Raw mouse motion is not supported on this system");
+            return;
+        }
+
+        value = value ? GLFW_TRUE : GLFW_FALSE;
+        if (window->rawMouseMotion == value)
+            return;
+
+        window->rawMouseMotion = value;
+        _glfwPlatformSetRawMouseMotion(window, value);
+    }
     else
         _glfwInputError(GLFW_INVALID_ENUM, "Invalid input mode 0x%08X", mode);
+}
+
+GLFWAPI int glfwRawMouseMotionSupported(void)
+{
+    _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_FALSE);
+    return _glfwPlatformRawMouseMotionSupported();
 }
 
 GLFWAPI const char* glfwGetKeyName(int key, int scancode)
@@ -1222,8 +1271,18 @@ GLFWAPI int glfwGetGamepadState(int jid, GLFWgamepadstate* state)
         if (e->type == _GLFW_JOYSTICK_AXIS)
         {
             const float value = js->axes[e->index] * e->axisScale + e->axisOffset;
-            if (value > 0.f)
-                state->buttons[i] = GLFW_PRESS;
+            // HACK: This should be baked into the value transform
+            // TODO: Bake into transform when implementing output modifiers
+            if (e->axisOffset < 0 || (e->axisOffset == 0 && e->axisScale > 0))
+            {
+                if (value >= 0.f)
+                    state->buttons[i] = GLFW_PRESS;
+            }
+            else
+            {
+                if (value <= 0.f)
+                    state->buttons[i] = GLFW_PRESS;
+            }
         }
         else if (e->type == _GLFW_JOYSTICK_HATBIT)
         {
@@ -1242,7 +1301,7 @@ GLFWAPI int glfwGetGamepadState(int jid, GLFWgamepadstate* state)
         if (e->type == _GLFW_JOYSTICK_AXIS)
         {
             const float value = js->axes[e->index] * e->axisScale + e->axisOffset;
-            state->axes[i] = fminf(fmaxf(value, -1.f), 1.f);
+            state->axes[i] = _glfw_fminf(_glfw_fmaxf(value, -1.f), 1.f);
         }
         else if (e->type == _GLFW_JOYSTICK_HATBIT)
         {
@@ -1250,9 +1309,11 @@ GLFWAPI int glfwGetGamepadState(int jid, GLFWgamepadstate* state)
             const unsigned int bit = e->index & 0xf;
             if (js->hats[hat] & bit)
                 state->axes[i] = 1.f;
+            else
+                state->axes[i] = -1.f;
         }
         else if (e->type == _GLFW_JOYSTICK_BUTTON)
-            state->axes[i] = (float) js->buttons[e->index];
+            state->axes[i] = js->buttons[e->index] * 2.f - 1.f;
     }
 
     return GLFW_TRUE;
@@ -1304,4 +1365,3 @@ GLFWAPI uint64_t glfwGetTimerFrequency(void)
     _GLFW_REQUIRE_INIT_OR_RETURN(0);
     return _glfwPlatformGetTimerFrequency();
 }
-

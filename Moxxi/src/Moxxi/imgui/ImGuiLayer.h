@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Moxxi/Layer.h"
 #include "Moxxi/Events/ApplicationEvent.h"
 #include <Moxxi/Events/MouseEvent.h>
@@ -10,24 +12,15 @@ namespace Moxxi {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& event);
-	private:
-		// Mouse
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		bool OnMouseMovedEvent(MouseMovedEvent& e);
-		// Keys
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		//void OnKeyTypedEvent(KeyTypedEvent& e);
-		// Window
-		bool OnWindowResizeEvent(WindowResizeEvent& e);
-	private:
-		float m_Time = 0.0f;
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
 
+		void Begin();
+		void End();
+
+	private:
+		float m_Time = 0.0f; 
+		//
 	};
 }

@@ -15,8 +15,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "Moxxi/vendor/GLFW/include"
-IncludeDir["glm"] = "Moxxi/vendor/glm/glm"
-IncludeDir["spdlog"] = "Moxxi/vendor/spdlog/include"
+IncludeDir["glm"] = "Moxxi/vendor/glm"
 IncludeDir["glad"] = "Moxxi/vendor/glad/include"
 IncludeDir["imgui"] = "Moxxi/vendor/imgui"
 
@@ -43,18 +42,19 @@ project "Moxxi"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs
     {
         "%{prj.name}/src",
-        "%{IncludeDir.spdlog}",
+        "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.glad}",
-        "%{IncludeDir.glm}",
         "%{IncludeDir.imgui}",
-        "%{IncludeDir.imgui}/backends"
+        "%{IncludeDir.glm}"
 
     }
 
@@ -115,9 +115,10 @@ project "Boids"
 
     includedirs
     {
+        "Moxxi/vendor/spdlog/include",
         "Moxxi/src",
-        "%{IncludeDir.spdlog}",
-        "%{IncludeDir.imgui}"
+        "Moxxi/vendor",
+        "%{IncludeDir.glm}"
     }
 
     links 

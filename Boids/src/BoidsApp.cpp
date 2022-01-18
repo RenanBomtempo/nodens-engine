@@ -1,5 +1,7 @@
 #include "Moxxi.h"
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Moxxi::Layer
 {
 public:
@@ -24,7 +26,6 @@ public:
 	Boids() 
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Moxxi::ImGuiLayer());
 	}
 	~Boids() {}
 };

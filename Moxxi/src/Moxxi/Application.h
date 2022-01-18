@@ -1,11 +1,13 @@
 #pragma once
 
 #include "Core.h"
-#include "Events/Event.h"
+
 #include "Window.h"
-#include "Moxxi/Layer.h"
-#include "Moxxi/Events/ApplicationEvent.h"
 #include "Moxxi/LayerStack.h"
+#include "Moxxi/Events/Event.h"
+#include "Moxxi/Events/ApplicationEvent.h"
+
+#include "Moxxi/imgui/ImGuiLayer.h"
 
 namespace Moxxi {
 
@@ -28,6 +30,7 @@ namespace Moxxi {
 		bool OnWindowClose(WindowCloseEvent& e);
 		
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
