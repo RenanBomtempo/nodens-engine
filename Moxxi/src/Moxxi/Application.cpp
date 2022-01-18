@@ -3,12 +3,14 @@
 
 #include "Log.h"
 #include "Events/ApplicationEvent.h"
-#include "glad/glad.h"
+#include "Input.h"
+
+#include <glad/glad.h>
 
 namespace Moxxi {
 	Application* Application::s_Instance = nullptr;
-		// Provides access to Application information
-		// for the rest of the program.
+	// Provides access to Application information
+	// for the rest of the program.
 
 	Application::Application()
 	{
@@ -28,7 +30,7 @@ namespace Moxxi {
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
-	
+
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
@@ -39,12 +41,15 @@ namespace Moxxi {
 	{
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
+			glClearColor(1, 1, .5f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
-			
+
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
-			
+
+			auto [x, y] = Input::GetMousePosition();
+			MX_CORE_TRACE("{0}, {1}", x, y);
+
 			m_Window->OnUpdate();
 		}
 	}
@@ -54,7 +59,7 @@ namespace Moxxi {
 		m_Running = false;
 		return true;
 	}
-		
+
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);

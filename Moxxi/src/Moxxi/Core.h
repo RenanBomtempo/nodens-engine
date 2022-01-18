@@ -10,6 +10,10 @@
 	#error Moxxi only supports windows!
 #endif // MX_PLATFORM_WINDOWS
 
+#ifdef MX_DEBUG
+	#define MX_ENABLE_ASSERTS
+#endif
+
 #ifdef MX_ENABLE_ASSERTS
 	#define MX_ASSERT(x, ...) { if(!(x)) { MX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define MX_CORE_ASSERT(x, ...) { if(!(x)) { MX_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

@@ -1,5 +1,6 @@
 workspace "Moxxi"
     architecture "x64"
+    startproject "Boids"
 
     configurations 
     {
@@ -7,6 +8,7 @@ workspace "Moxxi"
         "Release",
         "Dist"
     }
+    
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -19,14 +21,18 @@ IncludeDir["glad"] = "Moxxi/vendor/glad/include"
 IncludeDir["imgui"] = "Moxxi/vendor/imgui"
 
 -- Include premake5.lua file from GLFW folder
-include "Moxxi/vendor/GLFW"
-include "Moxxi/vendor/GLAD"
-include "Moxxi/vendor/imgui"
+group "Dependencies"
+    include "Moxxi/vendor/GLFW"
+    include "Moxxi/vendor/GLAD"
+    include "Moxxi/vendor/imgui"
+group ""
+
 
 project "Moxxi"
     location "Moxxi"    
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -62,7 +68,6 @@ project "Moxxi"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines 
@@ -74,28 +79,30 @@ project "Moxxi"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Boids")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Boids\"")
         }
 
     filter "configurations:Debug"
         defines "MX_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
         
     filter "configurations:Release"
         defines "MX_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     
     filter "configurations:Dist"
         defines "MX_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
+
 
 project "Boids"
     location "Boids"
     kind "ConsoleApp"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -120,7 +127,6 @@ project "Boids"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines 
@@ -130,15 +136,15 @@ project "Boids"
 
     filter "configurations:Debug"
         defines "MX_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
         
     filter "configurations:Release"
         defines "MX_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     
     filter "configurations:Dist"
         defines "MX_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
