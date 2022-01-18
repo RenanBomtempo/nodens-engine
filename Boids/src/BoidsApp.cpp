@@ -8,12 +8,13 @@ public:
 
 	void OnUpdate() override
 	{
-		MX_INFO("ExampleLayer::Update");
+		if (Moxxi::Input::IsKeyPressed(MX_KEY_TAB))
+			MX_TRACE("Tab is pressed");
 	}
 	
 	void OnEvent(Moxxi::Event& event) override
 	{
-		MX_INFO("{0}", event);
+		
 	}
 };
 

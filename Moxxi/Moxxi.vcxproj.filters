@@ -71,6 +71,8 @@
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Moxxi\KeyCodes.h" />
+    <ClInclude Include="src\Moxxi\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Moxxi\Application.cpp">

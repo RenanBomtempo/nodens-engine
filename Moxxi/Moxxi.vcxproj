@@ -158,9 +158,11 @@
     <ClInclude Include="src\Moxxi\Events\Event.h" />
     <ClInclude Include="src\Moxxi\Events\KeyEvent.h" />
     <ClInclude Include="src\Moxxi\Events\MouseEvent.h" />
+    <ClInclude Include="src\Moxxi\KeyCodes.h" />
     <ClInclude Include="src\Moxxi\Layer.h" />
     <ClInclude Include="src\Moxxi\LayerStack.h" />
     <ClInclude Include="src\Moxxi\Log.h" />
+    <ClInclude Include="src\Moxxi\MouseButtonCodes.h" />
     <ClInclude Include="src\Moxxi\Window.h" />
     <ClInclude Include="src\Moxxi\imgui\ImGuiLayer.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGUIOpenGLRenderer.h" />
