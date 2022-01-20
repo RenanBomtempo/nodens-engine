@@ -18,6 +18,10 @@ namespace Moxxi {
 		// Initialize GLAD
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		MX_CORE_ASSERT(status, "Failed to initialize glad!");
+
+		MX_CORE_INFO("OpenGL Info:");
+		MX_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
+		MX_CORE_INFO("  GPU Used: {0}", glGetString(GL_RENDERER));
 	}
 	void OpenGLContext::SwapBuffers()
 	{

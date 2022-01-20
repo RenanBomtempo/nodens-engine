@@ -6,15 +6,15 @@
 #include "Moxxi/Events/Event.h"
 
 namespace Moxxi {
-	struct WindowProps 
+	struct WindowProps
 	{
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Moxxi Engine",
-					unsigned int width = 1280,
-					unsigned int height = 720)
+			unsigned int width = 1280,
+			unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 
@@ -25,6 +25,7 @@ namespace Moxxi {
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
+			// Type alias. Identical to 'typedef std::function<void(Event&)> EventCallbackFn'
 
 		virtual ~Window() {}
 

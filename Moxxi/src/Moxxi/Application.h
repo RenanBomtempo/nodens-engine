@@ -29,11 +29,16 @@ namespace Moxxi {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		
+		bool m_Running = true;
+		
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
-		bool m_Running = true;
 		LayerStack m_LayerStack;
 
+		unsigned int m_VertexArray;
+		unsigned int m_VertexBuffer;
+		unsigned int m_IndexBuffer;
+	private:
 		static Application* s_Instance;
 	};
 

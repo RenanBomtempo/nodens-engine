@@ -47,10 +47,12 @@ namespace Moxxi {
 			MX_CORE_ASSERT(succes, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 
+			// Set OpenGL version to 3.3
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+			
+			// Use Core Profile
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-			//glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
 			s_GLFWInitialized = true;
 		}
