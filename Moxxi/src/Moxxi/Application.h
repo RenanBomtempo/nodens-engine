@@ -8,6 +8,7 @@
 #include "Moxxi/Events/ApplicationEvent.h"
 
 #include "Moxxi/imgui/ImGuiLayer.h"
+#include <Moxxi/Renderer/Shader.h>
 
 namespace Moxxi {
 
@@ -35,9 +36,8 @@ namespace Moxxi {
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray;
-		unsigned int m_VertexBuffer;
-		unsigned int m_IndexBuffer;
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};

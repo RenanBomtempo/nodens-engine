@@ -518,6 +518,7 @@
     </ClInclude>
     <ClInclude Include="src\Moxxi\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Moxxi\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Moxxi\Application.cpp">
@@ -551,5 +552,6 @@
       <Filter>vendor\glm\glm\detail</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Moxxi\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>
