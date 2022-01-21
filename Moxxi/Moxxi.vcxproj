@@ -140,7 +140,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Moxxi\Renderer\Buffer.h" />
+    <ClInclude Include="src\Moxxi\Renderer\Renderer.h" />
     <ClInclude Include="src\Moxxi\Renderer\Shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Moxxi.h" />
     <ClInclude Include="src\Moxxi\Application.h" />
@@ -303,7 +306,10 @@
     <ClInclude Include="vendor\glm\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Moxxi\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Moxxi\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Moxxi\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Moxxi\Application.cpp" />
     <ClCompile Include="src\Moxxi\Layer.cpp" />
