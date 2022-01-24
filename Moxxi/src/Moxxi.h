@@ -10,6 +10,17 @@
 
 #include "Moxxi/imgui/ImGuiLayer.h"
 
+//------Renderer-------------------
+#include "Moxxi/Renderer/Renderer.h"
+#include "Moxxi/Renderer/RenderCommand.h"
+
+#include "Moxxi/Renderer/Shader.h"
+#include "Moxxi/Renderer/Buffer.h"
+#include "Moxxi/Renderer/VertexArray.h"
+
+#include "Moxxi/Renderer/OrthographicCamera.h"
+//----------------------------------
+
 //------Entry Point-----------------
 #include "Moxxi\EntryPoint.h"
 //----------------------------------
