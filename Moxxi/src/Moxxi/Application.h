@@ -3,14 +3,18 @@
 #include "Core.h"
 
 #include "Window.h"
+
 #include "Moxxi/LayerStack.h"
+
 #include "Moxxi/Events/Event.h"
 #include "Moxxi/Events/ApplicationEvent.h"
 
 #include "Moxxi/imgui/ImGuiLayer.h"
+
 #include "Moxxi/Renderer/Shader.h"
 #include "Moxxi/Renderer/Buffer.h"
 #include "Moxxi/Renderer/VertexArray.h"
+#include "Moxxi/Renderer/OrthographicCamera.h"
 
 namespace Moxxi {
 
@@ -43,6 +47,8 @@ namespace Moxxi {
 
 		std::shared_ptr<VertexArray> m_SquareVA;
 		std::shared_ptr<Shader> m_Shader2;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
