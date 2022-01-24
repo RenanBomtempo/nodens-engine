@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Moxxi/Core.h"
-#include <Moxxi/Events/Event.h>
+#include "Moxxi/Events/Event.h"
+#include "Moxxi/Core/TimeStep.h"
 
 namespace Moxxi {
 
@@ -13,7 +14,7 @@ namespace Moxxi {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(TimeStep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

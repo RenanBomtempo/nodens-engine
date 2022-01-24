@@ -6,11 +6,12 @@
 #include "Input.h"
 #include "Renderer/Renderer.h"
 
+#include <glfw/glfw3.h>
+
 namespace Moxxi {
 	Application* Application::s_Instance = nullptr;
 	// Provides access to Application information
 	// for the rest of the program.
-
 
 	Application::Application()
 	{
@@ -47,8 +48,12 @@ namespace Moxxi {
 	{
 		while (m_Running)
 		{
+			float time = (float)glfwGetTime();
+			TimeStep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			// ImGUI Rendering
 			m_ImGuiLayer->Begin();
@@ -79,5 +84,4 @@ namespace Moxxi {
 				break;
 		}
 	}
-
 }

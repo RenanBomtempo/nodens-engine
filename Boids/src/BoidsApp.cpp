@@ -112,22 +112,24 @@ public:
 		m_Shader2.reset(new Moxxi::Shader(vertexSrc2, fragmentSrc2));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Moxxi::TimeStep ts) override
 	{
+		MX_TRACE("Delta time: {0}s ({1})", ts.GetSeconds(), ts.GetMilliseconds());
+
 		if (Moxxi::Input::IsKeyPressed(MX_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 		else if (Moxxi::Input::IsKeyPressed(MX_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		
 		if (Moxxi::Input::IsKeyPressed(MX_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 		else if (Moxxi::Input::IsKeyPressed(MX_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 		
 		if (Moxxi::Input::IsKeyPressed(MX_KEY_A))
-			m_CameraRotation += m_CameraRotateSpeed;
+			m_CameraRotation += m_CameraRotateSpeed * ts;
 		else if (Moxxi::Input::IsKeyPressed(MX_KEY_D))
-			m_CameraRotation -= m_CameraRotateSpeed;
+			m_CameraRotation -= m_CameraRotateSpeed * ts;
 
 		Moxxi::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1));
 		Moxxi::RenderCommand::Clear();

@@ -10,15 +10,11 @@
 #include "Moxxi/Events/ApplicationEvent.h"
 
 #include "Moxxi/imgui/ImGuiLayer.h"
-
-#include "Moxxi/Renderer/Shader.h"
-#include "Moxxi/Renderer/Buffer.h"
-#include "Moxxi/Renderer/VertexArray.h"
-#include "Moxxi/Renderer/OrthographicCamera.h"
+#include "Moxxi/Core/TimeStep.h"
 
 namespace Moxxi {
 
-	class MOXXI_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -41,6 +37,7 @@ namespace Moxxi {
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0;
 	private:
 		static Application* s_Instance;
 	};

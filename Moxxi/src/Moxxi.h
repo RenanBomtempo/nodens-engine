@@ -4,6 +4,8 @@
 #include "Moxxi/Layer.h"
 #include "Moxxi/Log.h"
 
+#include "Moxxi/Core/TimeStep.h"
+
 #include "Moxxi/Input.h"
 #include "Moxxi/KeyCodes.h"
 #include "Moxxi/MouseButtonCodes.h"
