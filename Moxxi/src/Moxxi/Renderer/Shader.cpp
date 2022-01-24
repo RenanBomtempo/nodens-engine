@@ -116,7 +116,7 @@ namespace Moxxi {
 		glDeleteProgram(m_RendererID);
 	}
 
-	void Shader::Bind() const
+	void Shader::Use() const
 	{
 		glUseProgram(m_RendererID);
 	}

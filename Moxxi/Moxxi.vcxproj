@@ -140,6 +140,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Moxxi\Renderer\Camera.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Moxxi\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Moxxi\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Moxxi\Renderer\Buffer.h" />
     <ClInclude Include="src\Moxxi\Renderer\Renderer.h" />
     <ClInclude Include="src\Moxxi\Renderer\Shader.h" />
@@ -304,8 +309,14 @@
     <ClInclude Include="vendor\glm\glm\gtx\vector_angle.inl" />
     <ClInclude Include="vendor\glm\glm\gtx\vector_query.inl" />
     <ClInclude Include="vendor\glm\glm\gtx\wrap.inl" />
+    <ClInclude Include="src\Moxxi\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Moxxi\Renderer\Camera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Moxxi\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Moxxi\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Moxxi\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Moxxi\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Moxxi\Renderer\Shader.cpp" />
@@ -323,6 +334,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\glm\glm\detail\glm.cpp" />
+    <ClCompile Include="src\Moxxi\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\imgui\ImGui.vcxproj">

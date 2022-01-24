@@ -9,7 +9,7 @@ namespace Moxxi {
 		Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
 		~Shader();
 
-		void Bind() const;
+		void Use() const;
 		void Unbind() const;
 	private:
 		uint32_t m_RendererID;
