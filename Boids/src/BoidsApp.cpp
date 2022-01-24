@@ -81,7 +81,8 @@ public:
 				color = v_Color;
 			}
 		)";
-		m_Shader.reset(new Moxxi::Shader(vertexSrc, fragmentSrc));
+
+		m_Shader.reset(Moxxi::Shader::Create(vertexSrc, fragmentSrc));
 
 		std::string vertexSrc2 = R"(
 			#version 330 core
@@ -109,12 +110,12 @@ public:
 			}
 		)";
 
-		m_Shader2.reset(new Moxxi::Shader(vertexSrc2, fragmentSrc2));
+		m_Shader2.reset(Moxxi::Shader::Create(vertexSrc2, fragmentSrc2));
 	}
 
 	void OnUpdate(Moxxi::TimeStep ts) override
 	{
-		MX_TRACE("Delta time: {0}s ({1})", ts.GetSeconds(), ts.GetMilliseconds());
+		//MX_TRACE("Delta time: {0}s ({1})", ts.GetSeconds(), ts.GetMilliseconds());
 
 		if (Moxxi::Input::IsKeyPressed(MX_KEY_LEFT))
 			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
@@ -166,6 +167,8 @@ private:
 	float m_CameraRotation;
 	float m_CameraMoveSpeed = 0.1f;
 	float m_CameraRotateSpeed = 1.0f;
+
+
 };
 
 class Boids : public Moxxi::Application
