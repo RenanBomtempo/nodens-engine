@@ -16,7 +16,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 1.0f, 0.0f, 0.5f, 1.0f
 		};
 
-		std::shared_ptr<Moxxi::VertexBuffer> vertexBuffer;
+		Moxxi::Ref<Moxxi::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Moxxi::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Moxxi::BufferLayout layout = {
 			{ Moxxi::ShaderDataType::Float3, "a_Position" },
@@ -26,7 +26,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Moxxi::IndexBuffer> indexBuffer;
+		Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 3));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -38,7 +38,7 @@ public:
 			 0.5f,  0.5f, 0.0f,
 			-0.5f,  0.5f, 0.0f
 		};
-		std::shared_ptr<Moxxi::VertexBuffer> squareVB;
+		Moxxi::Ref<Moxxi::VertexBuffer> squareVB;
 		squareVB.reset(Moxxi::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Moxxi::ShaderDataType::Float3, "a_Position" }
@@ -46,7 +46,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Moxxi::IndexBuffer> squareIB;
+		Moxxi::Ref<Moxxi::IndexBuffer> squareIB;
 		squareIB.reset(Moxxi::IndexBuffer::Create(squareIndices, 6));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -148,7 +148,6 @@ public:
 
 	void OnImGuiRender() override
 	{
-
 	}
 
 	void OnEvent(Moxxi::Event& event) override
@@ -156,11 +155,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Moxxi::Shader> m_Shader;
-	std::shared_ptr<Moxxi::VertexArray> m_VertexArray;
+	Moxxi::Ref<Moxxi::Shader> m_Shader;
+	Moxxi::Ref<Moxxi::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Moxxi::VertexArray> m_SquareVA;
-	std::shared_ptr<Moxxi::Shader> m_Shader2;
+	Moxxi::Ref<Moxxi::VertexArray> m_SquareVA;
+	Moxxi::Ref<Moxxi::Shader> m_Shader2;
 
 	Moxxi::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
