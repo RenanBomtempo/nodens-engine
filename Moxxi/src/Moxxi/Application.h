@@ -18,6 +18,7 @@ namespace Moxxi {
 	{
 	public:
 		Application();
+		Application(const WindowProps& props);
 		virtual ~Application();
 
 		void Run();

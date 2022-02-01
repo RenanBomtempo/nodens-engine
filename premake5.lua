@@ -1,6 +1,6 @@
 workspace "Moxxi"
     architecture "x64"
-    startproject "Boids"
+    startproject "ExampleApp"
 
     configurations 
     {
@@ -98,8 +98,8 @@ project "Moxxi"
         optimize "on"
 
 
-project "Boids"
-    location "Boids"
+project "ExampleApp"
+    location "ExampleApp"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"

@@ -170,17 +170,17 @@ private:
 
 };
 
-class Boids : public Moxxi::Application
+class ExampleApp : public Moxxi::Application
 {
 public:
-	Boids()
+	ExampleApp()
 	{
 		PushLayer(new ExampleLayer());
 	}
-	~Boids() {}
+	~ExampleApp() {}
 };
 
 Moxxi::Application* Moxxi::CreateApplication()
 {
-	return new Boids();
+	return new ExampleApp();
 }
