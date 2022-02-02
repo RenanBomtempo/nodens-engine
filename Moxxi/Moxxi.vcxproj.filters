@@ -7,6 +7,9 @@
     <Filter Include="src\Moxxi">
       <UniqueIdentifier>{B1596CB3-1DC4-202A-6602-D2CFD2ABFE7E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Moxxi\ALG">
+      <UniqueIdentifier>{94AE8EE0-006F-0A17-C9A9-539435294FF3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Moxxi\Core">
       <UniqueIdentifier>{A93466F2-9502-5AF8-7E96-CA1E6A03365D}</UniqueIdentifier>
     </Filter>
@@ -53,6 +56,9 @@
   <ItemGroup>
     <ClInclude Include="src\Moxxi.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Moxxi\ALG\ALG.h">
+      <Filter>src\Moxxi\ALG</Filter>
     </ClInclude>
     <ClInclude Include="src\Moxxi\Application.h">
       <Filter>src\Moxxi</Filter>
@@ -569,6 +575,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Moxxi\ALG\ALG.cpp">
+      <Filter>src\Moxxi\ALG</Filter>
+    </ClCompile>
     <ClCompile Include="src\Moxxi\Application.cpp">
       <Filter>src\Moxxi</Filter>
     </ClCompile>

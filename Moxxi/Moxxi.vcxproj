@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Moxxi.h" />
+    <ClInclude Include="src\Moxxi\ALG\ALG.h" />
     <ClInclude Include="src\Moxxi\Application.h" />
     <ClInclude Include="src\Moxxi\Core.h" />
     <ClInclude Include="src\Moxxi\Core\TimeStep.h" />
@@ -314,6 +315,7 @@
     <ClInclude Include="vendor\glm\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Moxxi\ALG\ALG.cpp" />
     <ClCompile Include="src\Moxxi\Application.cpp" />
     <ClCompile Include="src\Moxxi\Layer.cpp" />
     <ClCompile Include="src\Moxxi\LayerStack.cpp" />

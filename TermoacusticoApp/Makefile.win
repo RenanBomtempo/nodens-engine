@@ -1,0 +1,63 @@
+# Project: Termoacustico
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = calor.o graphics.o laplace.o refino.o term.o termconv.o termdifu.o termmat.o termref.o onda.o PerfTimer.o mainWithGraphics.o $(RES)
+LINKOBJ  = calor.o graphics.o laplace.o refino.o term.o termconv.o termdifu.o termmat.o termref.o onda.o PerfTimer.o mainWithGraphics.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" ../../../../../../Dev-Cpp/lib/libopengl32.a ../../../../../../Dev-Cpp/lib/libglu32.a ../../../../../../Dev-Cpp/lib/libglut32.a  -g3 
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = Termoacustico.exe
+CXXFLAGS = $(CXXINCS)   -g3
+CFLAGS = $(INCS)   -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Termoacustico.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Termoacustico.exe" $(LIBS)
+
+calor.o: calor.cpp
+	$(CPP) -c calor.cpp -o calor.o $(CXXFLAGS)
+
+graphics.o: graphics.cpp
+	$(CPP) -c graphics.cpp -o graphics.o $(CXXFLAGS)
+
+laplace.o: laplace.cpp
+	$(CPP) -c laplace.cpp -o laplace.o $(CXXFLAGS)
+
+refino.o: refino.cpp
+	$(CPP) -c refino.cpp -o refino.o $(CXXFLAGS)
+
+term.o: term.cpp
+	$(CPP) -c term.cpp -o term.o $(CXXFLAGS)
+
+termconv.o: termconv.cpp
+	$(CPP) -c termconv.cpp -o termconv.o $(CXXFLAGS)
+
+termdifu.o: termdifu.cpp
+	$(CPP) -c termdifu.cpp -o termdifu.o $(CXXFLAGS)
+
+termmat.o: termmat.cpp
+	$(CPP) -c termmat.cpp -o termmat.o $(CXXFLAGS)
+
+termref.o: termref.cpp
+	$(CPP) -c termref.cpp -o termref.o $(CXXFLAGS)
+
+onda.o: onda.cpp
+	$(CPP) -c onda.cpp -o onda.o $(CXXFLAGS)
+
+PerfTimer.o: PerfTimer.cpp
+	$(CPP) -c PerfTimer.cpp -o PerfTimer.o $(CXXFLAGS)
+
+mainWithGraphics.o: mainWithGraphics.cpp
+	$(CPP) -c mainWithGraphics.cpp -o mainWithGraphics.o $(CXXFLAGS)

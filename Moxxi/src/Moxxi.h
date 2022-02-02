@@ -20,11 +20,7 @@
 #include "Moxxi/Renderer/Buffer.h"
 #include "Moxxi/Renderer/VertexArray.h"
 
-#include "Moxxi/Renderer/PointLight.h"
-#include "Moxxi/Renderer/DirectionalLight.h"
-
 #include "Moxxi/Renderer/OrthographicCamera.h"
-#include "Moxxi/Renderer/PerspectiveCamera.h"
 //----------------------------------
 
 //------Entry Point-----------------

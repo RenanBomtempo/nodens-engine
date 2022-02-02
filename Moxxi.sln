@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glad", "Moxxi\vendor\GLAD\g
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moxxi", "Moxxi\Moxxi.vcxproj", "{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TermoacusticoApp", "TermoacusticoApp\TermoacusticoApp.vcxproj", "{682D38E6-5426-5738-7D58-3CBD69B03644}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -50,6 +52,12 @@ Global
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Dist|x64.Build.0 = Dist|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Release|x64.ActiveCfg = Release|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Release|x64.Build.0 = Release|x64
+		{682D38E6-5426-5738-7D58-3CBD69B03644}.Debug|x64.ActiveCfg = Debug|x64
+		{682D38E6-5426-5738-7D58-3CBD69B03644}.Debug|x64.Build.0 = Debug|x64
+		{682D38E6-5426-5738-7D58-3CBD69B03644}.Dist|x64.ActiveCfg = Dist|x64
+		{682D38E6-5426-5738-7D58-3CBD69B03644}.Dist|x64.Build.0 = Dist|x64
+		{682D38E6-5426-5738-7D58-3CBD69B03644}.Release|x64.ActiveCfg = Release|x64
+		{682D38E6-5426-5738-7D58-3CBD69B03644}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

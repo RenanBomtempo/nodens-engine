@@ -1,3 +1,4 @@
+#define MAIN_APPLICATION_FILE
 #include "Moxxi.h"
 
 #include "imgui/imgui.h"
