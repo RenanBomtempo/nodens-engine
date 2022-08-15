@@ -1,4 +1,4 @@
-workspace "Moxxi"
+workspace "Nodens"
     architecture "x64"
     startproject "ExampleApp"
 
@@ -14,21 +14,21 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder
 IncludeDir = {}
-IncludeDir["GLFW"] = "Moxxi/vendor/GLFW/include"
-IncludeDir["glm"] = "Moxxi/vendor/glm"
-IncludeDir["glad"] = "Moxxi/vendor/glad/include"
-IncludeDir["imgui"] = "Moxxi/vendor/imgui"
+IncludeDir["GLFW"] = "Nodens/vendor/GLFW/include"
+IncludeDir["glm"] = "Nodens/vendor/glm"
+IncludeDir["glad"] = "Nodens/vendor/glad/include"
+IncludeDir["imgui"] = "Nodens/vendor/imgui"
 
 -- Include premake5.lua file from GLFW folder
 group "Dependencies"
-    include "Moxxi/vendor/GLFW"
-    include "Moxxi/vendor/GLAD"
-    include "Moxxi/vendor/imgui"
+    include "Nodens/vendor/GLFW"
+    include "Nodens/vendor/GLAD"
+    include "Nodens/vendor/imgui"
 group ""
 
 
-project "Moxxi"
-    location "Moxxi"    
+project "Nodens"
+    location "Nodens"    
     kind "StaticLib"
     language "C++"
     cppdialect "C++17"
@@ -37,8 +37,8 @@ project "Moxxi"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-    pchheader "mxpch.h"
-    pchsource "Moxxi/src/mxpch.cpp"
+    pchheader "ndpch.h"
+    pchsource "Nodens/src/ndpch.cpp"
 
     files
     {
@@ -77,23 +77,23 @@ project "Moxxi"
 
         defines 
         {
-            "MX_PLATFORM_WINDOWS", 
-            "MX_BUILD_DLL",
+            "ND_PLATFORM_WINDOWS", 
+            "ND_BUILD_DLL",
             "GLFW_INCLUDE_NONE"
         }
 
     filter "configurations:Debug"
-        defines "MX_DEBUG"
+        defines "ND_DEBUG"
         runtime "Debug"
         symbols "on"
         
     filter "configurations:Release"
-        defines "MX_RELEASE"
+        defines "ND_RELEASE"
         runtime "Release"
         optimize "on"
     
     filter "configurations:Dist"
-        defines "MX_DIST"
+        defines "ND_DIST"
         runtime "Release"
         optimize "on"
 
@@ -116,15 +116,15 @@ project "ExampleApp"
 
     includedirs
     {
-        "Moxxi/vendor/spdlog/include",
-        "Moxxi/src",
-        "Moxxi/vendor",
+        "Nodens/vendor/spdlog/include",
+        "Nodens/src",
+        "Nodens/vendor",
         "%{IncludeDir.glm}"
     }
 
     links 
     {
-        "Moxxi"
+        "Nodens"
     }
 
     filter "system:windows"
@@ -132,72 +132,20 @@ project "ExampleApp"
 
         defines 
         {
-            "MX_PLATFORM_WINDOWS",
+            "ND_PLATFORM_WINDOWS",
         }
 
     filter "configurations:Debug"
-        defines "MX_DEBUG"
+        defines "ND_DEBUG"
         runtime "Debug"
         symbols "on"
         
     filter "configurations:Release"
-        defines "MX_RELEASE"
+        defines "ND_RELEASE"
         runtime "Release"
         optimize "on"
     
     filter "configurations:Dist"
-        defines "MX_DIST"
-        runtime "Release"
-        optimize "on"
-
-project "TermoacusticoApp"
-    location "TermoacusticoApp"
-    kind "ConsoleApp"
-    language "C++"
-    cppdialect "C++17"
-    staticruntime "on"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    files
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
-    }
-
-    includedirs
-    {
-        "Moxxi/vendor/spdlog/include",
-        "Moxxi/src",
-        "Moxxi/vendor",
-        "%{IncludeDir.glm}"
-    }
-
-    links 
-    {
-        "Moxxi"
-    }
-
-    filter "system:windows"
-        systemversion "latest"
-
-        defines 
-        {
-            "MX_PLATFORM_WINDOWS",
-        }
-
-    filter "configurations:Debug"
-        defines "MX_DEBUG"
-        runtime "Debug"
-        symbols "on"
-        
-    filter "configurations:Release"
-        defines "MX_RELEASE"
-        runtime "Release"
-        optimize "on"
-    
-    filter "configurations:Dist"
-        defines "MX_DIST"
+        defines "ND_DIST"
         runtime "Release"
         optimize "on"

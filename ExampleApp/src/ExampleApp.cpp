@@ -1,15 +1,15 @@
 #define MAIN_APPLICATION_FILE
-#include "Moxxi.h"
+#include "Nodens.h"
 
 #include "imgui/imgui.h"
 
-class ExampleLayer : public Moxxi::Layer
+class ExampleLayer : public Nodens::Layer
 {
 public:
 	ExampleLayer()
 		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_CameraRotation(0.0f)
 	{
-		m_VertexArray.reset(Moxxi::VertexArray::Create());
+		m_VertexArray.reset(Nodens::VertexArray::Create());
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f,
@@ -17,38 +17,38 @@ public:
 			 0.0f,  0.5f, 0.0f, 1.0f, 0.0f, 0.5f, 1.0f
 		};
 
-		Moxxi::Ref<Moxxi::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Moxxi::VertexBuffer::Create(vertices, sizeof(vertices)));
-		Moxxi::BufferLayout layout = {
-			{ Moxxi::ShaderDataType::Float3, "a_Position" },
-			{ Moxxi::ShaderDataType::Float4, "a_Color" }
+		Nodens::Ref<Nodens::VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(Nodens::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Nodens::BufferLayout layout = {
+			{ Nodens::ShaderDataType::Float3, "a_Position" },
+			{ Nodens::ShaderDataType::Float4, "a_Color" }
 		};
 		vertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 3));
+		Nodens::Ref<Nodens::IndexBuffer> indexBuffer;
+		indexBuffer.reset(Nodens::IndexBuffer::Create(indices, 3));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		// ------
-		m_SquareVA.reset(Moxxi::VertexArray::Create());
+		m_SquareVA.reset(Nodens::VertexArray::Create());
 		float squareVertices[3 * 4] = {
 			-0.5f, -0.5f, 0.0f,
 			 0.5f, -0.5f, 0.0f,
 			 0.5f,  0.5f, 0.0f,
 			-0.5f,  0.5f, 0.0f
 		};
-		Moxxi::Ref<Moxxi::VertexBuffer> squareVB;
-		squareVB.reset(Moxxi::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Nodens::Ref<Nodens::VertexBuffer> squareVB;
+		squareVB.reset(Nodens::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ Moxxi::ShaderDataType::Float3, "a_Position" }
+			{ Nodens::ShaderDataType::Float3, "a_Position" }
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Moxxi::Ref<Moxxi::IndexBuffer> squareIB;
-		squareIB.reset(Moxxi::IndexBuffer::Create(squareIndices, 6));
+		Nodens::Ref<Nodens::IndexBuffer> squareIB;
+		squareIB.reset(Nodens::IndexBuffer::Create(squareIndices, 6));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 
@@ -83,7 +83,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Moxxi::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader.reset(Nodens::Shader::Create(vertexSrc, fragmentSrc));
 
 		std::string vertexSrc2 = R"(
 			#version 330 core
@@ -111,77 +111,75 @@ public:
 			}
 		)";
 
-		m_Shader2.reset(Moxxi::Shader::Create(vertexSrc2, fragmentSrc2));
+		m_Shader2.reset(Nodens::Shader::Create(vertexSrc2, fragmentSrc2));
 	}
 
-	void OnUpdate(Moxxi::TimeStep ts) override
+	void OnUpdate(Nodens::TimeStep ts) override
 	{
-		//MX_TRACE("Delta time: {0}s ({1})", ts.GetSeconds(), ts.GetMilliseconds());
+		//ND_TRACE("Delta time: {0}s ({1})", ts.GetSeconds(), ts.GetMilliseconds());
 
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_LEFT))
+		if (Nodens::Input::IsKeyPressed(ND_KEY_LEFT))
 			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_RIGHT))
+		else if (Nodens::Input::IsKeyPressed(ND_KEY_RIGHT))
 			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_UP))
+		if (Nodens::Input::IsKeyPressed(ND_KEY_UP))
 			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_DOWN))
+		else if (Nodens::Input::IsKeyPressed(ND_KEY_DOWN))
 			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 		
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_A))
+		if (Nodens::Input::IsKeyPressed(ND_KEY_A))
 			m_CameraRotation += m_CameraRotateSpeed * ts;
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_D))
+		else if (Nodens::Input::IsKeyPressed(ND_KEY_D))
 			m_CameraRotation -= m_CameraRotateSpeed * ts;
 
-		Moxxi::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1));
-		Moxxi::RenderCommand::Clear();
+		Nodens::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1));
+		Nodens::RenderCommand::Clear();
 
 		m_Camera.SetPosition(m_CameraPosition);
 		m_Camera.SetRotation(m_CameraRotation);
 
-		Moxxi::Renderer::BeginScene(m_Camera);
+		Nodens::Renderer::BeginScene(m_Camera);
 
-		Moxxi::Renderer::Submit(m_Shader2, m_SquareVA);
-		Moxxi::Renderer::Submit(m_Shader, m_VertexArray);
+		Nodens::Renderer::SubmitIndexed(m_Shader2, m_SquareVA);
+		Nodens::Renderer::SubmitIndexed(m_Shader, m_VertexArray);
 
-		Moxxi::Renderer::EndScene();
+		Nodens::Renderer::EndScene();
 	}
 
 	void OnImGuiRender() override
 	{
 	}
 
-	void OnEvent(Moxxi::Event& event) override
+	void OnEvent(Nodens::Event& event) override
 	{
 	}
 
 private:
-	Moxxi::Ref<Moxxi::Shader> m_Shader;
-	Moxxi::Ref<Moxxi::VertexArray> m_VertexArray;
+	Nodens::Ref<Nodens::Shader> m_Shader;
+	Nodens::Ref<Nodens::VertexArray> m_VertexArray;
 
-	Moxxi::Ref<Moxxi::VertexArray> m_SquareVA;
-	Moxxi::Ref<Moxxi::Shader> m_Shader2;
+	Nodens::Ref<Nodens::VertexArray> m_SquareVA;
+	Nodens::Ref<Nodens::Shader> m_Shader2;
 
-	Moxxi::OrthographicCamera m_Camera;
+	Nodens::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraRotation;
 	float m_CameraMoveSpeed = 0.1f;
 	float m_CameraRotateSpeed = 1.0f;
-
-
 };
 
-class ExampleApp : public Moxxi::Application
+class ExampleApp : public Nodens::Application
 {
 public:
-	ExampleApp()
+	ExampleApp() : Application(Nodens::WindowProps("Example Application", 1920, 1080, false))
 	{
 		PushLayer(new ExampleLayer());
 	}
 	~ExampleApp() {}
 };
 
-Moxxi::Application* Moxxi::CreateApplication()
+Nodens::Application* Nodens::CreateApplication()
 {
 	return new ExampleApp();
 }

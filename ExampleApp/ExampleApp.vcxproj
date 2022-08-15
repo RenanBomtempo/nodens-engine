@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MX_PLATFORM_WINDOWS;MX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Moxxi\vendor\spdlog\include;..\Moxxi\src;..\Moxxi\vendor;..\Moxxi\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ND_PLATFORM_WINDOWS;ND_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Nodens\vendor\spdlog\include;..\Nodens\src;..\Nodens\vendor;..\Nodens\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -94,8 +94,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MX_PLATFORM_WINDOWS;MX_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Moxxi\vendor\spdlog\include;..\Moxxi\src;..\Moxxi\vendor;..\Moxxi\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ND_PLATFORM_WINDOWS;ND_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Nodens\vendor\spdlog\include;..\Nodens\src;..\Nodens\vendor;..\Nodens\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -114,8 +114,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MX_PLATFORM_WINDOWS;MX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Moxxi\vendor\spdlog\include;..\Moxxi\src;..\Moxxi\vendor;..\Moxxi\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ND_PLATFORM_WINDOWS;ND_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Nodens\vendor\spdlog\include;..\Nodens\src;..\Nodens\vendor;..\Nodens\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -134,8 +134,8 @@
     <ClCompile Include="src\ExampleApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Moxxi\Moxxi.vcxproj">
-      <Project>{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}</Project>
+    <ProjectReference Include="..\Nodens\Nodens.vcxproj">
+      <Project>{EC97E2C5-D839-0D9C-C1F4-20F0AD3594EC}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
