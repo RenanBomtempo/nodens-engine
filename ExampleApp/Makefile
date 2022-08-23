@@ -19,7 +19,7 @@ endif
 # #############################################
 
 RESCOMP = windres
-INCLUDES += -I../Moxxi/vendor/spdlog/include -I../Moxxi/src -I../Moxxi/vendor -I../Moxxi/vendor/glm
+INCLUDES += -I../Nodens/vendor/spdlog/include -I../Nodens/src -I../Nodens/vendor -I../Nodens/vendor/glm
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
@@ -38,8 +38,8 @@ OBJDIR = ../bin-int/Debug-windows-x86_64/Boids
 DEFINES += -DMX_PLATFORM_WINDOWS -DMX_DEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17
-LIBS += ../bin/Debug-windows-x86_64/Moxxi/Moxxi.lib
-LDDEPS += ../bin/Debug-windows-x86_64/Moxxi/Moxxi.lib
+LIBS += ../bin/Debug-windows-x86_64/Nodens/Nodens.lib
+LDDEPS += ../bin/Debug-windows-x86_64/Nodens/Nodens.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
@@ -49,8 +49,8 @@ OBJDIR = ../bin-int/Release-windows-x86_64/Boids
 DEFINES += -DMX_PLATFORM_WINDOWS -DMX_RELEASE
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
-LIBS += ../bin/Release-windows-x86_64/Moxxi/Moxxi.lib
-LDDEPS += ../bin/Release-windows-x86_64/Moxxi/Moxxi.lib
+LIBS += ../bin/Release-windows-x86_64/Nodens/Nodens.lib
+LDDEPS += ../bin/Release-windows-x86_64/Nodens/Nodens.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 else ifeq ($(config),dist)
@@ -60,8 +60,8 @@ OBJDIR = ../bin-int/Dist-windows-x86_64/Boids
 DEFINES += -DMX_PLATFORM_WINDOWS -DMX_DIST
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
-LIBS += ../bin/Dist-windows-x86_64/Moxxi/Moxxi.lib
-LDDEPS += ../bin/Dist-windows-x86_64/Moxxi/Moxxi.lib
+LIBS += ../bin/Dist-windows-x86_64/Nodens/Nodens.lib
+LDDEPS += ../bin/Dist-windows-x86_64/Nodens/Nodens.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif
