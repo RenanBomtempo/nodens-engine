@@ -1,0 +1,945 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{01AA22FE-D68A-3CA1-8A88-2C48CC3A8AFD}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/Moxxi/Moxxi/vendor/glm -BD:/Projects/Moxxi/Moxxi/vendor/glm --check-stamp-file D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.22\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Templates\CPackConfig.cmake.in;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeSystem.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\cmake\cmake_uninstall.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/Moxxi/Moxxi/vendor/glm -BD:/Projects/Moxxi/Moxxi/vendor/glm --check-stamp-file D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.22\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Templates\CPackConfig.cmake.in;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeSystem.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\cmake\cmake_uninstall.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/Moxxi/Moxxi/vendor/glm -BD:/Projects/Moxxi/Moxxi/vendor/glm --check-stamp-file D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.22\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Templates\CPackConfig.cmake.in;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeSystem.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\cmake\cmake_uninstall.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Projects/Moxxi/Moxxi/vendor/glm -BD:/Projects/Moxxi/Moxxi/vendor/glm --check-stamp-file D:/Projects/Moxxi/Moxxi/vendor/glm/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.22\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTest.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestTargets.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CTestUseLaunchers.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.22\Modules\DartConfiguration.tcl.in;C:\Program Files\CMake\share\cmake-3.22\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\WriteBasicConfigVersionFile.cmake;C:\Program Files\CMake\share\cmake-3.22\Templates\CPackConfig.cmake.in;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeCXXCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeRCCompiler.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\3.22.1\CMakeSystem.cmake;D:\Projects\Moxxi\Moxxi\vendor\glm\cmake\cmake_uninstall.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Projects\Moxxi\Moxxi\vendor\glm\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\ZERO_CHECK.vcxproj">
+      <Project>{0E5B1F2A-4679-3BC0-BE69-001D6394CF47}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\bug\test-bug_ms_vec_static.vcxproj">
+      <Project>{089174A4-ADDD-3AB1-903B-0362D8F05304}</Project>
+      <Name>test-bug_ms_vec_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_cpp_constexpr.vcxproj">
+      <Project>{6925AB17-29BC-32EF-B7B9-931AC9716044}</Project>
+      <Name>test-core_cpp_constexpr</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_cpp_defaulted_ctor.vcxproj">
+      <Project>{28FA560C-A30B-30B7-8C0E-FB386C8A26C5}</Project>
+      <Name>test-core_cpp_defaulted_ctor</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_aligned_gentypes.vcxproj">
+      <Project>{F85DA3F5-4806-34F6-87E7-570964753460}</Project>
+      <Name>test-core_force_aligned_gentypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_arch_unknown.vcxproj">
+      <Project>{6D43258B-AD52-349E-AC91-44A32574DA3D}</Project>
+      <Name>test-core_force_arch_unknown</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_compiler_unknown.vcxproj">
+      <Project>{71DC74D5-CFDB-3CDB-AB6D-25D5B14BBA57}</Project>
+      <Name>test-core_force_compiler_unknown</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_ctor_init.vcxproj">
+      <Project>{4AF89806-6529-3C35-A12C-5398B43E42A4}</Project>
+      <Name>test-core_force_ctor_init</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_cxx03.vcxproj">
+      <Project>{C887FA84-2666-398A-A404-76789E4E828A}</Project>
+      <Name>test-core_force_cxx03</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_cxx98.vcxproj">
+      <Project>{E770E7D4-0D22-37A0-BAB9-EC30D2EF7AC7}</Project>
+      <Name>test-core_force_cxx98</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_cxx_unknown.vcxproj">
+      <Project>{85639F84-417F-314E-9892-DC3207E088C2}</Project>
+      <Name>test-core_force_cxx_unknown</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_explicit_ctor.vcxproj">
+      <Project>{51923B97-A6B0-3D38-9194-943E26EBA697}</Project>
+      <Name>test-core_force_explicit_ctor</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_inline.vcxproj">
+      <Project>{60BCF8F9-D091-3D4D-90DF-062309BE7D96}</Project>
+      <Name>test-core_force_inline</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_platform_unknown.vcxproj">
+      <Project>{CE3DD432-99B8-311A-A286-A66CD2E97CE6}</Project>
+      <Name>test-core_force_platform_unknown</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_pure.vcxproj">
+      <Project>{82D0C4B2-4515-36E0-8FBE-A964551B684F}</Project>
+      <Name>test-core_force_pure</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_quat_xyzw.vcxproj">
+      <Project>{D6C9EAAB-9865-380E-8DFD-D069DE2470E7}</Project>
+      <Name>test-core_force_quat_xyzw</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_unrestricted_gentype.vcxproj">
+      <Project>{B5148E1B-C175-3B63-834B-934E5ED06C5F}</Project>
+      <Name>test-core_force_unrestricted_gentype</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_force_xyzw_only.vcxproj">
+      <Project>{3918F56E-E6DC-3C66-BE70-F4367756720B}</Project>
+      <Name>test-core_force_xyzw_only</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_common.vcxproj">
+      <Project>{82157FDC-B042-3FEA-A5A2-556BAB42C812}</Project>
+      <Name>test-core_func_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_exponential.vcxproj">
+      <Project>{7F1B9506-FE23-3858-B3C6-F097B51E23FB}</Project>
+      <Name>test-core_func_exponential</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_geometric.vcxproj">
+      <Project>{11A37901-F6BA-356C-AF65-6CD8FCFE36B3}</Project>
+      <Name>test-core_func_geometric</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_integer.vcxproj">
+      <Project>{A367F851-1C2D-31F5-AD4D-60A1E84F7CD0}</Project>
+      <Name>test-core_func_integer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_integer_bit_count.vcxproj">
+      <Project>{A4BDD1F4-667C-3BDF-B301-68BC80FD5D44}</Project>
+      <Name>test-core_func_integer_bit_count</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_integer_find_lsb.vcxproj">
+      <Project>{78167888-0E40-3D35-979D-69B1995B2585}</Project>
+      <Name>test-core_func_integer_find_lsb</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_integer_find_msb.vcxproj">
+      <Project>{FCEB7233-AE4D-3C5A-B7A4-6FD4674F5164}</Project>
+      <Name>test-core_func_integer_find_msb</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_matrix.vcxproj">
+      <Project>{FD7FDC55-D5CC-357E-A8CD-3A7DE2489E76}</Project>
+      <Name>test-core_func_matrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_noise.vcxproj">
+      <Project>{B5A2326C-604A-3BA0-B411-3AEE6E784607}</Project>
+      <Name>test-core_func_noise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_packing.vcxproj">
+      <Project>{153BD082-579D-30EB-8ABD-773F81FDBEC0}</Project>
+      <Name>test-core_func_packing</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_swizzle.vcxproj">
+      <Project>{954CCF20-1A7B-3650-8088-BE9ACF6B9EFA}</Project>
+      <Name>test-core_func_swizzle</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_trigonometric.vcxproj">
+      <Project>{B15F04CD-90D1-37A6-8E6E-75ABB6EA5C89}</Project>
+      <Name>test-core_func_trigonometric</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_func_vector_relational.vcxproj">
+      <Project>{0DFCDF11-38AD-3F67-8C08-B45693FCF803}</Project>
+      <Name>test-core_func_vector_relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_setup_force_cxx98.vcxproj">
+      <Project>{4C6CC38C-EB09-3960-B59B-9D0E247184B8}</Project>
+      <Name>test-core_setup_force_cxx98</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_setup_force_size_t_length.vcxproj">
+      <Project>{EF36F0D0-05D3-3C10-93B8-DEBA3FA16F85}</Project>
+      <Name>test-core_setup_force_size_t_length</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_setup_message.vcxproj">
+      <Project>{BD9FC2ED-7D9E-3924-8214-C0DE2F725C5B}</Project>
+      <Name>test-core_setup_message</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_setup_platform_unknown.vcxproj">
+      <Project>{53CFDB41-0C33-3D1B-9463-84F5373FBB82}</Project>
+      <Name>test-core_setup_platform_unknown</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_setup_precision.vcxproj">
+      <Project>{7FBD292E-6B94-3E9A-9006-2589AF93C20E}</Project>
+      <Name>test-core_setup_precision</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_aligned.vcxproj">
+      <Project>{C4F78EF7-E0A7-3EB6-A6D1-1133D8D0982F}</Project>
+      <Name>test-core_type_aligned</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_cast.vcxproj">
+      <Project>{7813B084-A184-39F2-88EF-15445CC1B571}</Project>
+      <Name>test-core_type_cast</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_ctor.vcxproj">
+      <Project>{704F27F3-048E-3E57-9B5C-0199A6B73D08}</Project>
+      <Name>test-core_type_ctor</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_int.vcxproj">
+      <Project>{78207E00-7237-3248-A618-FFDA9A2FCB54}</Project>
+      <Name>test-core_type_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_length.vcxproj">
+      <Project>{CADE39CE-A57D-373B-9A58-EC79E60AA1FF}</Project>
+      <Name>test-core_type_length</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat2x2.vcxproj">
+      <Project>{D50EF08C-E44D-34D0-9756-4EA0695CCEBE}</Project>
+      <Name>test-core_type_mat2x2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat2x3.vcxproj">
+      <Project>{7961D651-6069-332C-9447-B3D12C3F96A7}</Project>
+      <Name>test-core_type_mat2x3</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat2x4.vcxproj">
+      <Project>{9237EDE6-F3E9-374B-A2E7-372018A02F42}</Project>
+      <Name>test-core_type_mat2x4</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat3x2.vcxproj">
+      <Project>{1AB1407E-4F13-3C86-AEA5-0780F53768ED}</Project>
+      <Name>test-core_type_mat3x2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat3x3.vcxproj">
+      <Project>{3435C83A-4719-35F6-BE30-8417A1B4AB75}</Project>
+      <Name>test-core_type_mat3x3</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat3x4.vcxproj">
+      <Project>{4B0D0B60-6D95-3225-95E2-E2CCE771CFDF}</Project>
+      <Name>test-core_type_mat3x4</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat4x2.vcxproj">
+      <Project>{1822FC76-64FC-31BC-90C5-0222C13AC9A2}</Project>
+      <Name>test-core_type_mat4x2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat4x3.vcxproj">
+      <Project>{C305EF2E-D67C-3C84-8471-A14A5D4B5BFA}</Project>
+      <Name>test-core_type_mat4x3</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_mat4x4.vcxproj">
+      <Project>{CB8B2302-5610-3952-BE1A-1D287B668EAB}</Project>
+      <Name>test-core_type_mat4x4</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_vec1.vcxproj">
+      <Project>{BD7FEB20-FF6B-3E81-BB99-A4C9F7A326BE}</Project>
+      <Name>test-core_type_vec1</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_vec2.vcxproj">
+      <Project>{EEB8E2C5-9CA7-3A0B-B1C8-C0D790963C2E}</Project>
+      <Name>test-core_type_vec2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_vec3.vcxproj">
+      <Project>{19B4A34E-1F53-3848-9CED-01D98C4DC458}</Project>
+      <Name>test-core_type_vec3</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\core\test-core_type_vec4.vcxproj">
+      <Project>{6EB4D292-8D45-3090-8FB4-2C7A99BD3599}</Project>
+      <Name>test-core_type_vec4</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_common.vcxproj">
+      <Project>{B60D26A9-4850-380D-8520-A0C1CA51F4C6}</Project>
+      <Name>test-ext_matrix_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int2x2_sized.vcxproj">
+      <Project>{D6B1463C-209A-3708-9785-2EDD7C396E95}</Project>
+      <Name>test-ext_matrix_int2x2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int2x3_sized.vcxproj">
+      <Project>{ACE30ECF-9284-3367-B212-A7FBF5A2A8A4}</Project>
+      <Name>test-ext_matrix_int2x3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int2x4_sized.vcxproj">
+      <Project>{4E595863-A7F3-341D-9E0F-FC1BCF5372EF}</Project>
+      <Name>test-ext_matrix_int2x4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int3x2_sized.vcxproj">
+      <Project>{9BB4ACFF-3256-394A-8E36-B9D126DBB60C}</Project>
+      <Name>test-ext_matrix_int3x2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int3x3_sized.vcxproj">
+      <Project>{41920AE8-7227-37C2-BF08-61DF55422880}</Project>
+      <Name>test-ext_matrix_int3x3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int3x4_sized.vcxproj">
+      <Project>{80F97426-6E68-34FA-B2D5-12AEDA236828}</Project>
+      <Name>test-ext_matrix_int3x4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int4x2_sized.vcxproj">
+      <Project>{A84B96BD-7541-3530-B05B-0004EA3A9AA9}</Project>
+      <Name>test-ext_matrix_int4x2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int4x3_sized.vcxproj">
+      <Project>{E2AC0D40-4B57-3D8E-8019-4B95257269CD}</Project>
+      <Name>test-ext_matrix_int4x3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_int4x4_sized.vcxproj">
+      <Project>{E1EB0E3E-2D67-34D8-BABD-5C04BAC985A5}</Project>
+      <Name>test-ext_matrix_int4x4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_integer.vcxproj">
+      <Project>{F3DCC08B-0B5A-3974-A378-13D170E85472}</Project>
+      <Name>test-ext_matrix_integer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_relational.vcxproj">
+      <Project>{A1898B9C-19FF-3742-820B-A9D376846CF7}</Project>
+      <Name>test-ext_matrix_relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_transform.vcxproj">
+      <Project>{4877EE5A-C526-3949-94F5-0613FD74C61D}</Project>
+      <Name>test-ext_matrix_transform</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint2x2_sized.vcxproj">
+      <Project>{2D316B5F-2C00-30D2-93CC-C2CB04198C06}</Project>
+      <Name>test-ext_matrix_uint2x2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint2x3_sized.vcxproj">
+      <Project>{E4E18676-5CD1-39AD-A314-69C6ED24F72D}</Project>
+      <Name>test-ext_matrix_uint2x3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint2x4_sized.vcxproj">
+      <Project>{6E867ED4-DAF1-37E1-9B73-E840EE9F7EEF}</Project>
+      <Name>test-ext_matrix_uint2x4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint3x2_sized.vcxproj">
+      <Project>{889D04EE-4B83-32CD-9723-8A574C3C1175}</Project>
+      <Name>test-ext_matrix_uint3x2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint3x3_sized.vcxproj">
+      <Project>{4BA03CD9-46C5-36EA-A5C6-DA0DF1D0355D}</Project>
+      <Name>test-ext_matrix_uint3x3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint3x4_sized.vcxproj">
+      <Project>{CB4ED4C8-444B-3FF5-A804-484BF7D5C75C}</Project>
+      <Name>test-ext_matrix_uint3x4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint4x2_sized.vcxproj">
+      <Project>{BA0F791A-84C3-3364-AEF4-E05A98611FE5}</Project>
+      <Name>test-ext_matrix_uint4x2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint4x3_sized.vcxproj">
+      <Project>{B0E1F8DA-E75C-3FA0-86EC-D42D5821D02C}</Project>
+      <Name>test-ext_matrix_uint4x3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_matrix_uint4x4_sized.vcxproj">
+      <Project>{F339D764-F672-3D42-BB99-D3E152506079}</Project>
+      <Name>test-ext_matrix_uint4x4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_quaternion_common.vcxproj">
+      <Project>{92F4766F-2C06-34C6-9696-1F6BFB5B4837}</Project>
+      <Name>test-ext_quaternion_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_quaternion_exponential.vcxproj">
+      <Project>{6DF6512A-B83D-31B7-BF14-F3565EE309B8}</Project>
+      <Name>test-ext_quaternion_exponential</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_quaternion_geometric.vcxproj">
+      <Project>{C0295231-4D7A-3251-92DA-E11E90EDE261}</Project>
+      <Name>test-ext_quaternion_geometric</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_quaternion_relational.vcxproj">
+      <Project>{2345BE26-3DA8-3627-9212-30EC7586C7DB}</Project>
+      <Name>test-ext_quaternion_relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_quaternion_transform.vcxproj">
+      <Project>{A7763B1B-A386-3787-BC82-FFD6FA1F683B}</Project>
+      <Name>test-ext_quaternion_transform</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_quaternion_trigonometric.vcxproj">
+      <Project>{1DF11C5E-7E3D-35E4-A561-2BBB4003B04F}</Project>
+      <Name>test-ext_quaternion_trigonometric</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_quaternion_type.vcxproj">
+      <Project>{17F27761-506D-3815-A571-F5542A8E981E}</Project>
+      <Name>test-ext_quaternion_type</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_common.vcxproj">
+      <Project>{949B6D8F-BCA0-3FFF-B4C6-7F91B3D29ECF}</Project>
+      <Name>test-ext_scalar_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_constants.vcxproj">
+      <Project>{86E4A74C-A14D-3D88-A7F9-96471A0F7DB2}</Project>
+      <Name>test-ext_scalar_constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_int_sized.vcxproj">
+      <Project>{27899E0E-762A-3E1A-9E7F-C650F21CADA9}</Project>
+      <Name>test-ext_scalar_int_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_integer.vcxproj">
+      <Project>{A057D58C-A7FA-3263-A016-5F92CAFF8133}</Project>
+      <Name>test-ext_scalar_integer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_reciprocal.vcxproj">
+      <Project>{B169F36C-147A-365E-80D7-824AFF0D4835}</Project>
+      <Name>test-ext_scalar_reciprocal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_relational.vcxproj">
+      <Project>{8A8E4354-439F-3614-BDDF-CAAB2F0165C6}</Project>
+      <Name>test-ext_scalar_relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_uint_sized.vcxproj">
+      <Project>{21469D07-26BC-378F-9B8A-1915A3ACC5B9}</Project>
+      <Name>test-ext_scalar_uint_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_scalar_ulp.vcxproj">
+      <Project>{5EAA5ADB-C7C6-36AE-B712-E97B9573EDCA}</Project>
+      <Name>test-ext_scalar_ulp</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vec1.vcxproj">
+      <Project>{AD279A79-F93D-3CE4-8864-09744380A166}</Project>
+      <Name>test-ext_vec1</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_bool1.vcxproj">
+      <Project>{DC940ADA-95F2-3984-9EE9-C051A542F360}</Project>
+      <Name>test-ext_vector_bool1</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_common.vcxproj">
+      <Project>{E0A168AC-CD55-38BD-AB1F-97B5175C8168}</Project>
+      <Name>test-ext_vector_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_iec559.vcxproj">
+      <Project>{E1033984-0129-3B8D-815B-4FB80E4B8FD4}</Project>
+      <Name>test-ext_vector_iec559</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_int1_sized.vcxproj">
+      <Project>{7CA21C1C-6FB5-342B-A382-6D0E6FAADBFC}</Project>
+      <Name>test-ext_vector_int1_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_int2_sized.vcxproj">
+      <Project>{EEA19559-D811-39A7-BBF9-3DBB30EF5077}</Project>
+      <Name>test-ext_vector_int2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_int3_sized.vcxproj">
+      <Project>{0A696DFF-3F9E-3572-8679-C2DD7A0AAE95}</Project>
+      <Name>test-ext_vector_int3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_int4_sized.vcxproj">
+      <Project>{A5751420-28F7-38D5-9BA0-AF62A39AC29A}</Project>
+      <Name>test-ext_vector_int4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_integer.vcxproj">
+      <Project>{E61B22CE-92BD-3B47-A13D-D3CAD0274159}</Project>
+      <Name>test-ext_vector_integer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_integer_sized.vcxproj">
+      <Project>{D7FE65E9-4D20-3973-9F41-035CA3A53172}</Project>
+      <Name>test-ext_vector_integer_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_reciprocal.vcxproj">
+      <Project>{0571ECC1-A634-31E5-B024-9BE7CCE08D94}</Project>
+      <Name>test-ext_vector_reciprocal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_relational.vcxproj">
+      <Project>{870D17A1-7D08-3D25-AC8E-A244E3F1F781}</Project>
+      <Name>test-ext_vector_relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_uint1_sized.vcxproj">
+      <Project>{7AFC79FB-A70F-3E63-9F5F-83D47573021E}</Project>
+      <Name>test-ext_vector_uint1_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_uint2_sized.vcxproj">
+      <Project>{F8C27EF4-9E68-3C87-9750-FD1580853402}</Project>
+      <Name>test-ext_vector_uint2_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_uint3_sized.vcxproj">
+      <Project>{32B90A8A-2D29-392B-97C0-5E6BD009C768}</Project>
+      <Name>test-ext_vector_uint3_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_uint4_sized.vcxproj">
+      <Project>{E7E17CC3-DD93-327E-A074-AD24649262A8}</Project>
+      <Name>test-ext_vector_uint4_sized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\ext\test-ext_vector_ulp.vcxproj">
+      <Project>{A878D51D-313D-35AD-A3A7-0D47BD16EF75}</Project>
+      <Name>test-ext_vector_ulp</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_bitfield.vcxproj">
+      <Project>{BD26F11C-5852-323B-B6FF-7A65954F0699}</Project>
+      <Name>test-gtc_bitfield</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_color_space.vcxproj">
+      <Project>{51EDDBCA-A8DD-31A7-A2DD-1C68CE17FE05}</Project>
+      <Name>test-gtc_color_space</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_constants.vcxproj">
+      <Project>{69917769-8884-3D85-8E7B-63F7B4961906}</Project>
+      <Name>test-gtc_constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_epsilon.vcxproj">
+      <Project>{EEC3B8AA-C313-3FC0-A9DC-DDC4950E4758}</Project>
+      <Name>test-gtc_epsilon</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_integer.vcxproj">
+      <Project>{609BE4AE-5564-3826-A8F3-3FF3F97FB815}</Project>
+      <Name>test-gtc_integer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_matrix_access.vcxproj">
+      <Project>{67B084C3-38DF-3D8D-AFAF-8A0B72AAA28B}</Project>
+      <Name>test-gtc_matrix_access</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_matrix_integer.vcxproj">
+      <Project>{292F38F3-3294-35F8-9A07-5C8E5962F462}</Project>
+      <Name>test-gtc_matrix_integer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_matrix_inverse.vcxproj">
+      <Project>{405AC69F-614E-3013-A757-6CB80504EE21}</Project>
+      <Name>test-gtc_matrix_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_matrix_transform.vcxproj">
+      <Project>{1C31EDF8-6481-36CF-A680-FD4EC0AD69A7}</Project>
+      <Name>test-gtc_matrix_transform</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_noise.vcxproj">
+      <Project>{EB46D4B3-C36E-3407-8585-8DBD6B1CC2E1}</Project>
+      <Name>test-gtc_noise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_packing.vcxproj">
+      <Project>{B7DBF7B7-BF22-3C37-9E15-D8FF66F79DAF}</Project>
+      <Name>test-gtc_packing</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_quaternion.vcxproj">
+      <Project>{2FACF353-215F-30D7-AA25-122A0C475A88}</Project>
+      <Name>test-gtc_quaternion</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_random.vcxproj">
+      <Project>{1BFC9823-E65D-3491-A6FD-B2A828B47017}</Project>
+      <Name>test-gtc_random</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_reciprocal.vcxproj">
+      <Project>{D88DDE66-C67B-3AB8-B6FC-7372CC507EB9}</Project>
+      <Name>test-gtc_reciprocal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_round.vcxproj">
+      <Project>{BB381644-9B74-3C75-A94B-3E93FA6479B9}</Project>
+      <Name>test-gtc_round</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_type_aligned.vcxproj">
+      <Project>{A1CAC8A1-2218-3154-B6D6-920DC36E03E4}</Project>
+      <Name>test-gtc_type_aligned</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_type_precision.vcxproj">
+      <Project>{896A0CC1-D03A-3C8F-B4F9-955A43194631}</Project>
+      <Name>test-gtc_type_precision</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_type_ptr.vcxproj">
+      <Project>{67A189FD-0147-3D08-A04A-E3C71CD83FBB}</Project>
+      <Name>test-gtc_type_ptr</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_ulp.vcxproj">
+      <Project>{FD11C470-C4AD-303A-B0FA-9C7B95AEB741}</Project>
+      <Name>test-gtc_ulp</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtc\test-gtc_vec1.vcxproj">
+      <Project>{3873E0EA-379C-3992-9038-DB6B0032102B}</Project>
+      <Name>test-gtc_vec1</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx.vcxproj">
+      <Project>{69836F59-38E3-3FCA-A1FF-A50C5BCAB0F0}</Project>
+      <Name>test-gtx</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_associated_min_max.vcxproj">
+      <Project>{145228F3-CBC1-3FA3-B1A7-26950F135C94}</Project>
+      <Name>test-gtx_associated_min_max</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_closest_point.vcxproj">
+      <Project>{5E8166A7-4648-39FB-BBE8-11DB27C110C3}</Project>
+      <Name>test-gtx_closest_point</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_color_encoding.vcxproj">
+      <Project>{21FED70A-C011-375A-90D0-A881F777329B}</Project>
+      <Name>test-gtx_color_encoding</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_color_space.vcxproj">
+      <Project>{DF14D6B9-AA14-3542-B0CB-3BAF62B7BDE2}</Project>
+      <Name>test-gtx_color_space</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_color_space_YCoCg.vcxproj">
+      <Project>{7488D390-129C-3FB6-8417-D772C8675FAA}</Project>
+      <Name>test-gtx_color_space_YCoCg</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_common.vcxproj">
+      <Project>{0FA5C9B2-D0D2-30C0-9919-2839A936CA6F}</Project>
+      <Name>test-gtx_common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_compatibility.vcxproj">
+      <Project>{998E60B4-4584-3CE2-ACAC-84DB7979E4C6}</Project>
+      <Name>test-gtx_compatibility</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_component_wise.vcxproj">
+      <Project>{18EEDD88-37BB-3362-8D65-8201DD9F1CCF}</Project>
+      <Name>test-gtx_component_wise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_dual_quaternion.vcxproj">
+      <Project>{F85F5987-1BDD-34CD-910D-09B80D213136}</Project>
+      <Name>test-gtx_dual_quaternion</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_easing.vcxproj">
+      <Project>{E917525D-9488-3A62-8FFE-F3FC70E4EC7B}</Project>
+      <Name>test-gtx_easing</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_euler_angle.vcxproj">
+      <Project>{15951419-5B85-3FC4-8881-E8E61E1E88A3}</Project>
+      <Name>test-gtx_euler_angle</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_extend.vcxproj">
+      <Project>{44BD01C1-26CD-33B8-9EF5-E9B68C985B2B}</Project>
+      <Name>test-gtx_extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_extended_min_max.vcxproj">
+      <Project>{355327C6-18A3-3F28-8CF3-A963DF09A711}</Project>
+      <Name>test-gtx_extended_min_max</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_exterior_product.vcxproj">
+      <Project>{5E3CE20F-E10F-364B-9CEE-8E1D2E06B198}</Project>
+      <Name>test-gtx_exterior_product</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_fast_exponential.vcxproj">
+      <Project>{24CCBCEB-BB3A-3E9F-B1F9-07DC0334EE03}</Project>
+      <Name>test-gtx_fast_exponential</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_fast_square_root.vcxproj">
+      <Project>{FDB4EC11-48DD-306E-B281-91937C4AD910}</Project>
+      <Name>test-gtx_fast_square_root</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_fast_trigonometry.vcxproj">
+      <Project>{2E42C398-5ADB-36D9-BA88-483C595A5105}</Project>
+      <Name>test-gtx_fast_trigonometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_functions.vcxproj">
+      <Project>{97E12FC5-684B-3036-AF37-3B79C22D2ACF}</Project>
+      <Name>test-gtx_functions</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_gradient_paint.vcxproj">
+      <Project>{5A7D3128-4452-3C47-92D4-37DEBE8F0D75}</Project>
+      <Name>test-gtx_gradient_paint</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_handed_coordinate_space.vcxproj">
+      <Project>{9A2F5489-C335-3D7D-A7A1-1F0B68A342C5}</Project>
+      <Name>test-gtx_handed_coordinate_space</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_integer.vcxproj">
+      <Project>{FC6910F3-34B2-3606-83D5-A531EA4582A6}</Project>
+      <Name>test-gtx_integer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_intersect.vcxproj">
+      <Project>{790204C7-DCC9-3505-AEB4-B01C0CA985AF}</Project>
+      <Name>test-gtx_intersect</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_io.vcxproj">
+      <Project>{0FEFCF1A-92FE-34E3-9B51-81058F0DC3DA}</Project>
+      <Name>test-gtx_io</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_load.vcxproj">
+      <Project>{A08D5AAB-AE44-3F04-848F-439248857CDC}</Project>
+      <Name>test-gtx_load</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_log_base.vcxproj">
+      <Project>{6BE5E923-7479-3AFC-8CE6-3216DC6B5232}</Project>
+      <Name>test-gtx_log_base</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_cross_product.vcxproj">
+      <Project>{127C6258-F5EB-302C-BCEA-6F3CFDC6BC15}</Project>
+      <Name>test-gtx_matrix_cross_product</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_decompose.vcxproj">
+      <Project>{E804B34E-30DC-39FE-8953-C112AFF957A0}</Project>
+      <Name>test-gtx_matrix_decompose</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_factorisation.vcxproj">
+      <Project>{E5FAA500-5EA3-3517-98CB-078ED065B5CF}</Project>
+      <Name>test-gtx_matrix_factorisation</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_interpolation.vcxproj">
+      <Project>{0D59FEF3-3411-3D41-8EB1-12F1D5EB8CF6}</Project>
+      <Name>test-gtx_matrix_interpolation</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_major_storage.vcxproj">
+      <Project>{8B4BECB0-738F-358D-8378-E9F80ED4FAB4}</Project>
+      <Name>test-gtx_matrix_major_storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_operation.vcxproj">
+      <Project>{2465ED58-71F4-32B9-AC55-8958823639E2}</Project>
+      <Name>test-gtx_matrix_operation</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_query.vcxproj">
+      <Project>{B7E8618D-F342-328C-BE54-8CE465D35E7C}</Project>
+      <Name>test-gtx_matrix_query</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_matrix_transform_2d.vcxproj">
+      <Project>{D9CA52B9-E3D2-395F-B4C5-752F2A006A43}</Project>
+      <Name>test-gtx_matrix_transform_2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_norm.vcxproj">
+      <Project>{58BA5872-293B-3751-A9A3-67EF50D887A3}</Project>
+      <Name>test-gtx_norm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_normal.vcxproj">
+      <Project>{92937564-0B08-3AC9-8730-E9E378FBD795}</Project>
+      <Name>test-gtx_normal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_normalize_dot.vcxproj">
+      <Project>{34F0A367-68F1-3A03-AEC8-7B211C53F67B}</Project>
+      <Name>test-gtx_normalize_dot</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_number_precision.vcxproj">
+      <Project>{CE2DA6B8-A61C-3814-A548-F4B79FF25DC1}</Project>
+      <Name>test-gtx_number_precision</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_optimum_pow.vcxproj">
+      <Project>{3B8EDCC7-D34D-3531-AD86-D05F8481744A}</Project>
+      <Name>test-gtx_optimum_pow</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_orthonormalize.vcxproj">
+      <Project>{B403D561-4B77-3D9C-8B66-003BB0492F91}</Project>
+      <Name>test-gtx_orthonormalize</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_pca.vcxproj">
+      <Project>{9B2BD110-1883-350B-A473-507F4704FD07}</Project>
+      <Name>test-gtx_pca</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_perpendicular.vcxproj">
+      <Project>{66BCE156-C69A-3CD4-B4DD-521FACE1DDF5}</Project>
+      <Name>test-gtx_perpendicular</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_polar_coordinates.vcxproj">
+      <Project>{70EF4482-2722-3C21-A807-21E57D7E18B8}</Project>
+      <Name>test-gtx_polar_coordinates</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_projection.vcxproj">
+      <Project>{C5E0C475-1228-320D-BC66-33BBE33CDD70}</Project>
+      <Name>test-gtx_projection</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_quaternion.vcxproj">
+      <Project>{C97825C2-BCB1-3353-ADAD-539B24C64676}</Project>
+      <Name>test-gtx_quaternion</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_range.vcxproj">
+      <Project>{47FEA47A-0206-30DA-B8E8-2A1C986A9853}</Project>
+      <Name>test-gtx_range</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_rotate_normalized_axis.vcxproj">
+      <Project>{233C73D3-5022-3A83-B3EC-85BAD5FC80C2}</Project>
+      <Name>test-gtx_rotate_normalized_axis</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_rotate_vector.vcxproj">
+      <Project>{3D5B9AAC-88B4-324C-8CBD-2C12A7A24FB9}</Project>
+      <Name>test-gtx_rotate_vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_scalar_multiplication.vcxproj">
+      <Project>{272FBBE6-F16D-3E48-B71A-D7C973F522EB}</Project>
+      <Name>test-gtx_scalar_multiplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_scalar_relational.vcxproj">
+      <Project>{316A2FE3-5625-3E7B-8F30-CF0E4395E3BF}</Project>
+      <Name>test-gtx_scalar_relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_spline.vcxproj">
+      <Project>{B8CBC6DF-B238-3092-AEB4-12C7C2CD48A7}</Project>
+      <Name>test-gtx_spline</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_string_cast.vcxproj">
+      <Project>{D68AF551-9E2D-38CB-93E8-2836F3FDB5E8}</Project>
+      <Name>test-gtx_string_cast</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_texture.vcxproj">
+      <Project>{A59278C2-A1BB-3992-A3F9-8C4781410A81}</Project>
+      <Name>test-gtx_texture</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_type_aligned.vcxproj">
+      <Project>{DECF48FF-BCEA-30D6-8070-571ABD30E1C4}</Project>
+      <Name>test-gtx_type_aligned</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_type_trait.vcxproj">
+      <Project>{D1B4025C-40BE-3B90-A572-516C6F45B97D}</Project>
+      <Name>test-gtx_type_trait</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_vec_swizzle.vcxproj">
+      <Project>{2018E80B-2D57-3CF6-A0C8-9F5704C83436}</Project>
+      <Name>test-gtx_vec_swizzle</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_vector_angle.vcxproj">
+      <Project>{82CE7905-BE09-3396-B5C5-67D4570C5F87}</Project>
+      <Name>test-gtx_vector_angle</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_vector_query.vcxproj">
+      <Project>{79B9898A-39D2-3099-8266-B3A615B3C194}</Project>
+      <Name>test-gtx_vector_query</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\gtx\test-gtx_wrap.vcxproj">
+      <Project>{F022F0F4-66FF-34D0-B2D8-D00756A24D5F}</Project>
+      <Name>test-gtx_wrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\perf\test-perf_matrix_div.vcxproj">
+      <Project>{93330F1B-F33A-3412-8D86-0441B68FDA15}</Project>
+      <Name>test-perf_matrix_div</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\perf\test-perf_matrix_inverse.vcxproj">
+      <Project>{17D18876-38C2-30EF-99CA-EAB96B8555DE}</Project>
+      <Name>test-perf_matrix_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\perf\test-perf_matrix_mul.vcxproj">
+      <Project>{647DE46D-5201-3019-AAC8-6898AABDFED8}</Project>
+      <Name>test-perf_matrix_mul</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\perf\test-perf_matrix_mul_vector.vcxproj">
+      <Project>{440BBF95-3533-3912-9B53-3ACC5868E20F}</Project>
+      <Name>test-perf_matrix_mul_vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\perf\test-perf_matrix_transpose.vcxproj">
+      <Project>{6066B86A-C3F0-3807-B426-F49733E2E6FC}</Project>
+      <Name>test-perf_matrix_transpose</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Projects\Moxxi\Moxxi\vendor\glm\test\perf\test-perf_vector_mul_matrix.vcxproj">
+      <Project>{E32489FF-D9B0-3AAA-AA27-DF8A349AB9CC}</Project>
+      <Name>test-perf_vector_mul_matrix</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
