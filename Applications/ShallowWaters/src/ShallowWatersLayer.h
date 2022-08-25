@@ -11,7 +11,6 @@ public:
 	void InitCamera();
 	void InitFlatShader();
 	void InitDomainMesh();
-	void InitShallowWatersMesh();
 
 	void ProcessInputs(Moxxi::TimeStep ts);
 
@@ -31,10 +30,10 @@ private:
 	Moxxi::Ref<Moxxi::VertexArray> m_TowerVA;
 
 	Moxxi::OrthographicCamera m_Camera;
-	float m_CameraFOV = 50;
 	glm::vec3 m_CameraPosition;
 	glm::vec3 m_CameraRotation;
 	glm::vec3 m_CameraDistance;
+	float m_CameraFOV = 50;
 
 	Moxxi::DirectionalLight m_Light;
 	glm::vec3 m_LightDirection;
@@ -42,9 +41,4 @@ private:
 	glm::vec3 m_LightColor;
 	
 	glm::vec4 m_ClearColor;
-
-	float m_CameraMoveSpeed = 1.0f;
-	float m_CameraSensitivity = 0.1f;
-	bool m_FirstMouse = true;
-	bool m_FollowBoid = true;
 };

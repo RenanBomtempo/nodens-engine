@@ -5,8 +5,8 @@
 ShallowWatersLayer::ShallowWatersLayer()
 	: Layer("ShallowWatersLayer"),
 		m_CameraPosition(0.0f, 8.0f, 0.0f),
-		m_CameraMode(CameraMode::Free),
 		m_CameraRotation(-25.0f, -90.f, 0.0f),
+		m_Camera(-50, 50, -50, 50),
 		m_Light(),
 		m_LightDirection(0, -1, 0),
 		m_LightOrientation(0, 180, 0),
@@ -16,8 +16,6 @@ ShallowWatersLayer::ShallowWatersLayer()
 	InitCamera();
 	InitFlatShader();
 	InitDomainMesh();
-	InitTowerMesh();
-	InitShallowWatersMesh();
 } // ShallowWatersLayer::ShallowWatersLayer
 
 void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
@@ -28,18 +26,8 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 	ProcessInputs(ts);
 
 	// Update scene
-	Moxxi::PerspectiveCamera& activeCamera = m_Camera[(int)m_CameraMode];
-	if (m_CameraMode == CameraMode::Free)
-		activeCamera.SetPosition(m_CameraPosition);
-
-	activeCamera.SetRotation(m_CameraRotation);
-	activeCamera.SetFOV(m_CameraFOV);
+	m_Camera.SetPosition(m_CameraPosition);
 	
-	if (m_FollowBoid)
-		activeCamera.LookAt(m_ShallowWaters.m_TargetBoid.m_Position);
-	else
-		activeCamera.LookAt(m_ShallowWaters.m_AveragePosition);
-
 	m_LightDirection = glm::vec4(0.0f, -1.0f, 0.0f, 1.0f)
 		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.x), glm::vec3(1, 0, 0))
 		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.y), glm::vec3(0, 1, 0))
@@ -52,15 +40,9 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 	// Render
 	Moxxi::RenderCommand::SetClearColor(m_ClearColor);
 	Moxxi::RenderCommand::Clear();
-	Moxxi::Renderer::BeginScene(activeCamera, m_Light);
+	Moxxi::Renderer::BeginScene(m_Camera, m_Light);
 	Moxxi::RenderCommand::SetFrontFaceOrientation(Moxxi::RendererProps::FrontFaceOrientation::Clockwise);
 	Moxxi::Renderer::SubmitArray(m_FlatShader, m_DomainVA, glm::mat4(1.0f), glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
-	Moxxi::Renderer::SubmitArray(m_FlatShader, m_TowerVA, glm::translate(glm::mat4(1.0f), glm::vec3(0,3,0)), glm::vec4(0.7f, 0.2f, 0.2f, 1.0f));
-	Moxxi::RenderCommand::SetFrontFaceOrientation(Moxxi::RendererProps::FrontFaceOrientation::CounterClockwise);
-	for (auto& boid : m_ShallowWaters.m_Flock)
-		Moxxi::Renderer::SubmitArray(m_FlatShader, m_BoidVA, boid.GetModelMatrix(), glm::vec4(0.2f, 0.8f, 0.2f, 1.0f));
-	Moxxi::Renderer::SubmitArray(m_FlatShader, m_BoidVA, m_ShallowWaters.GetTargetBoid().GetModelMatrix(), glm::vec4(0.2f, 0.2f, 0.9f, 1.0f));
-	//Moxxi::Renderer::SubmitArray(m_FlatShader, m_BoidVA, glm::translate(glm::mat4(1.0f), m_ShallowWaters.m_ControllerPosition), glm::vec4(0.8f, 0.2f, 0.9f, 1.0f));
 	Moxxi::Renderer::EndScene();
 } // ShallowWatersLayer::OnUpdate
 
@@ -88,32 +70,10 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	ImGui::Begin("Performance", NULL, window_flags);
 	ImGui::Text("Frametime: %.3fms", ts.GetMilliseconds());
 	ImGui::Text("FPS: %.3f", 1.0f / ts);
-	ImGui::Text("No ShallowWaters: %d", m_ShallowWaters.m_Flock.size());
-	ImGui::End();
-
-	// ShallowWaters ---------------------------------------------------------------
-	ImGui::Begin("ShallowWaters parameters", NULL, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::PushItemWidth(120);
-	ImGui::Text("Behaviour");
-	ImGui::SliderFloat("Separation Factor", &m_ShallowWaters.m_SeparationFactor, 0, 0.5f);
-	ImGui::SliderFloat("Alignement Factor", &m_ShallowWaters.m_AlignementFactor, 0, 0.5f);
-	ImGui::SliderFloat("Cohesion Factor",   &m_ShallowWaters.m_CohesionFactor,   0, 0.5f);
-	ImGui::SliderFloat("Follow Factor",   &m_ShallowWaters.m_FollowFactor,   0, 0.5f);
-	ImGui::Text("Speed");
-	ImGui::SliderFloat("Max Speed", &m_ShallowWaters.m_SpeedMultiplier, 1, 5);
-	ImGui::SliderFloat("Min Speed", &m_ShallowWaters.m_MinSpeed, 1, m_ShallowWaters.m_SpeedMultiplier);
-	ImGui::Text("Awareness");
-	ImGui::SliderFloat("Search Radius", &m_ShallowWaters.m_SearchRadius, 1, 8);
-	ImGui::SliderFloat("FOV", &m_ShallowWaters.m_FOV, 0, 180);
 	ImGui::End();
 
 	// Camera Transform ----------------------------------------------------
 	ImGui::Begin("Camera", NULL, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::Text("Follow");
-	if (ImGui::Button("Follow Flock"))
-		m_FollowBoid = false;
-	if (ImGui::Button("Follow Boid"))
-		m_FollowBoid = true;
 	ImGui::SliderFloat("FOV", &m_CameraFOV, 1, 150);
 	ImGui::Text("Position");
 	ImGui::InputFloat("X", &m_CameraPosition.x, -10, 10);
@@ -148,7 +108,7 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 
 void ShallowWatersLayer::InitCamera()
 {
-	m_Camera.SetPosition({0, 8, 0});
+	m_Camera.SetPosition({0, 0, 0});
 }
 
 void ShallowWatersLayer::InitFlatShader()
@@ -213,13 +173,13 @@ void ShallowWatersLayer::InitDomainMesh()
 
 	// VBO
 	float vertices[] = {
-		-DOMAIN_SIZE, 0, -DOMAIN_SIZE, 0, 1, 0,
-		 DOMAIN_SIZE, 0, -DOMAIN_SIZE, 0, 1, 0,
-		-DOMAIN_SIZE, 0,  DOMAIN_SIZE, 0, 1, 0,
+		-1, 0, -1, 0, 1, 0,
+		 1, 0, -1, 0, 1, 0,
+		-1, 0,  1, 0, 1, 0,
 		 
-		 DOMAIN_SIZE, 0, -DOMAIN_SIZE, 0, 1, 0,
-		 DOMAIN_SIZE, 0,  DOMAIN_SIZE, 0, 1, 0,
-		-DOMAIN_SIZE, 0,  DOMAIN_SIZE, 0, 1, 0
+		 1, 0, -1, 0, 1, 0,
+		 1, 0,  1, 0, 1, 0,
+		-1, 0,  1, 0, 1, 0
 	};
 	Moxxi::Ref<Moxxi::VertexBuffer> vertexBuffer;
 	vertexBuffer.reset(Moxxi::VertexBuffer::Create(vertices, sizeof(vertices)));
@@ -239,179 +199,9 @@ void ShallowWatersLayer::InitDomainMesh()
 	m_DomainVA->SetIndexBuffer(indexBuffer);*/
 } // ShallowWatersLayer::InitDomainMesh
 
-void ShallowWatersLayer::InitShallowWatersMesh()
-{
-	// VAOs
-	m_BoidVA.reset(Moxxi::VertexArray::Create());
-
-	// VBO
-	/*float vertices[] = {
-		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-
-		 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		 0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-
-		-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-		-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-		-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-		-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-		-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-		-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-
-		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-
-		 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-		 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-
-		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
-	};*/
-
-	float vertices[] = {
-		 0.000000f, -0.469336f,  1.00000f, 0.840173f, -0.485084f,-0.242492f,
-		 0.000000f,  0.000000f, -1.00000f, 0.840173f, -0.485084f,-0.242492f,
-		 0.866025f,  0.234668f,  1.00000f, 0.840173f, -0.485084f,-0.242492f,
-
-		 0.000000f, -0.469336f,  1.000000f, 0.000000f, 0.000000f, 1.000000f,
-		 0.866025f,  0.234668f,  1.000000f, 0.000000f, 0.000000f, 1.000000f,
-		-0.866025f,  0.234668f,  1.000000f, 0.000000f, 0.000000f, 1.000000f,
-
-		 0.866025f,  0.234668f,  1.000000f, 0.000000f, 0.970148f, -0.242512f,
-		 0.000000f,  0.000000f, -1.000000f, 0.000000f, 0.970148f, -0.242512f,
-		-0.866025f,  0.234668f,  1.000000f, 0.000000f, 0.970148f, -0.242512f,
-
-		-0.866025f,  0.234668f,  1.000000f, -0.840173f, -0.485084f, -0.242492f,
-		 0.000000f,  0.000000f, -1.00000f, -0.840173f, -0.485084f, -0.242492f,
-		 0.000000f, -0.469336f,  1.000000f, -0.840173f, -0.485084f, -0.242492f
-
-		// 0.000000f, -0.469336f, 1.000000f, | 0.840173f, -0.485084f,-0.242492f,
-		// 0.000000f, 0.000000f, -1.00000f, | 0.000000f, 0.000000f, 1.000000f,
-		// 0.866025f, 0.234668f, 1.000000f,  | 0.000000f, 0.970148f, -0.242512f,
-		// -0.866025f, 0.234668f, 1.000000f, | -0.840173f, -0.485084f, -0.242492f,
-
-	};
-	Moxxi::Ref<Moxxi::VertexBuffer> vertexBuffer;
-	vertexBuffer.reset(Moxxi::VertexBuffer::Create(vertices, sizeof(vertices)));
-	Moxxi::BufferLayout layout = {
-		{ Moxxi::ShaderDataType::Float3, "aPosition" },
-		{ Moxxi::ShaderDataType::Float3, "aNormal"   }
-	};
-	vertexBuffer->SetLayout(layout);
-	m_BoidVA->AddVertexBuffer(vertexBuffer);
-
-} // ShallowWatersLayer::InitShallowWatersMesh
-
 void ShallowWatersLayer::ProcessInputs(Moxxi::TimeStep ts)
 {
-	static float boost = 3;
-	static uint32_t boostKey = MX_KEY_LEFT_SHIFT;
-	Moxxi::PerspectiveCamera& activeCamera = m_Camera[(int)m_CameraMode];
 
-	if (Moxxi::Input::IsKeyPressed(MX_KEY_KP_ADD))
-		m_ShallowWaters.m_Flock.push_back(Boid(m_ShallowWaters.m_Flock.size()));
-	else if (Moxxi::Input::IsKeyPressed(MX_KEY_KP_SUBTRACT) && m_ShallowWaters.m_Flock.size() >= 1)
-		m_ShallowWaters.m_Flock.pop_back();
-
-	if (Moxxi::Input::IsKeyPressed(MX_KEY_KP_0))
-		m_CameraMode = CameraMode::Free;
-	else if (Moxxi::Input::IsKeyPressed(MX_KEY_KP_1))
-		m_CameraMode = CameraMode::Tower;
-	else if (Moxxi::Input::IsKeyPressed(MX_KEY_KP_2))
-		m_CameraMode = CameraMode::FollowFlockBack;
-	else if (Moxxi::Input::IsKeyPressed(MX_KEY_KP_3))
-		m_CameraMode = CameraMode::FollowFlockSide;
-
-	if (m_CameraMode == CameraMode::Free)
-	{
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_W))
-			m_CameraPosition += m_CameraMoveSpeed * ts * activeCamera.GetFront()
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_S))
-			m_CameraPosition -= m_CameraMoveSpeed * ts * activeCamera.GetFront()
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_A))
-			m_CameraPosition -= m_CameraMoveSpeed * ts * activeCamera.GetRight()
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_D))
-			m_CameraPosition += m_CameraMoveSpeed * ts * activeCamera.GetRight()
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_LEFT_CONTROL))
-			m_CameraPosition -= m_CameraMoveSpeed * ts * activeCamera.GetUp()
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_SPACE))
-			m_CameraPosition += m_CameraMoveSpeed * ts * activeCamera.GetUp()
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_LEFT))
-			m_CameraRotation.y -= m_CameraSensitivity * ts * 150
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_RIGHT))
-			m_CameraRotation.y += m_CameraSensitivity * ts * 150
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_UP))
-			m_CameraRotation.x += m_CameraSensitivity * ts * 150
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_DOWN))
-			m_CameraRotation.x -= m_CameraSensitivity * ts * 150
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (m_CameraRotation.x > 89.f)
-			m_CameraRotation.x = 89.f;
-		if (m_CameraRotation.x < -89.f)
-			m_CameraRotation.x = -89.f;
-	}
-	else {
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_W))
-			m_ShallowWaters.m_ControllerPosition += m_CameraSensitivity * ts * activeCamera.GetFront() * 10.f
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_S))
-			m_ShallowWaters.m_ControllerPosition -= m_CameraSensitivity * ts * activeCamera.GetFront() * 10.f
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_A))
-			m_ShallowWaters.m_ControllerPosition -= m_CameraSensitivity * ts * activeCamera.GetRight() * 10.f
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_D))
-			m_ShallowWaters.m_ControllerPosition += m_CameraSensitivity * ts * activeCamera.GetRight() * 10.f
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (Moxxi::Input::IsKeyPressed(MX_KEY_LEFT_CONTROL))
-			m_ShallowWaters.m_ControllerPosition -= m_CameraSensitivity * ts * activeCamera.GetUp() * 10.f
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-		else if (Moxxi::Input::IsKeyPressed(MX_KEY_SPACE))
-			m_ShallowWaters.m_ControllerPosition += m_CameraSensitivity * ts * activeCamera.GetUp() * 10.f
-			* (Moxxi::Input::IsKeyPressed(boostKey) ? boost : 1.0f);
-
-		if (m_CameraRotation.x > 89.f)
-			m_CameraRotation.x = 89.f;
-		if (m_CameraRotation.x < -89.f)
-			m_CameraRotation.x = -89.f;
-	}
 } // ShallowWatersLayer::ProcessInputs
 
 void ShallowWatersLayer::OnEvent(Moxxi::Event& event)
@@ -422,9 +212,5 @@ void ShallowWatersLayer::OnEvent(Moxxi::Event& event)
 
 bool ShallowWatersLayer::OnWindowResizeEvent(Moxxi::WindowResizeEvent& event)
 {
-	m_Camera[(int)CameraMode::Free].SetResolution(event.GetWidth(), event.GetHeight());
-	m_Camera[(int)CameraMode::Tower].SetResolution(event.GetWidth(), event.GetHeight());
-	m_Camera[(int)CameraMode::FollowFlockBack].SetResolution(event.GetWidth(), event.GetHeight());
-	m_Camera[(int)CameraMode::FollowFlockSide].SetResolution(event.GetWidth(), event.GetHeight());
 	return true;
 } // ShallowWatersLayer::OnMouseMovedEvent
