@@ -27,16 +27,14 @@ namespace alg {
 		return std::bitset<2 * MAX_REFINEMENT_LEVEL>(m_MHCIndex).to_string();
 	}
 
-	CellNode& CellNode::Next()
+	CellNode* CellNode::Next()
 	{
-		ALG_CORE_ASSERT(m_MHCNext != nullptr, "Trying to dereference a null pointer.");
-		return *m_MHCNext;
+		return m_MHCNext;
 	}
 
-	CellNode& CellNode::Previous()
+	CellNode* CellNode::Previous()
 	{
-		ALG_CORE_ASSERT(m_MHCPrevious != nullptr, "Trying to dereference a null pointer.");
-		return *m_MHCPrevious;
+		return m_MHCPrevious;
 	}
 
 	void CellNode::Disconnect(Node* other)

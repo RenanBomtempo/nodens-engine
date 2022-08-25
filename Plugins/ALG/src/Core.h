@@ -13,4 +13,4 @@
 	#define ALG_CORE_ASSERT(x, ...)
 #endif // ALG_ENABLE_ASSERTS
 
-#define MAX_REFINEMENT_LEVEL 8
+#define MAX_REFINEMENT_LEVEL 7

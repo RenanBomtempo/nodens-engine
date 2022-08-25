@@ -10,10 +10,13 @@ ShallowWatersLayer::ShallowWatersLayer()
 	m_LightDirection(0, -1, 0),
 	m_LightOrientation(0, 180, 0),
 	m_LightColor(1.0f, 1.0f, 1.0f),
-	m_ClearColor(0.0, 0.0, 0.0, 1)
+	m_ClearColor(0.0, 0.0, 0.0, 1),
+	m_Aux(1)
 {
 	InitFlatShader();
 	InitSquareMesh();
+
+	m_ShallowWaters.m_Grid.Print();
 } // ShallowWatersLayer::ShallowWatersLayer
 
 void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
@@ -40,11 +43,24 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 	Moxxi::RenderCommand::SetClearColor(m_ClearColor);
 	Moxxi::RenderCommand::Clear();
 	Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
+	Moxxi::RenderCommand::SetLineWdith(m_Aux);
 
 	Moxxi::Renderer::BeginScene(m_Camera, m_Light);
 
-	Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareVA, glm::mat4(1.0f));
+	Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareVA, glm::mat4(1), glm::vec4(1));
 
+	auto cell = m_ShallowWaters.m_Grid.FirstCell();
+	while (cell != nullptr)
+	{
+		glm::vec3 pos = { (cell->Center().x - .5) * 2, (cell->Center().y - .5) * 2, 0 };
+
+		glm::mat4 transform(1);
+		transform = glm::translate(transform, pos);
+		transform = glm::scale(transform, glm::vec3(cell->SideLength()));
+
+		Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareVA, transform, { pos+glm::vec3(.5), 1});
+		cell = cell->Next();
+	}
 	Moxxi::Renderer::EndScene();
 } // ShallowWatersLayer::OnUpdate
 
@@ -73,6 +89,22 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	ImGui::Text("Frametime: %.3fms", ts.GetMilliseconds());
 	ImGui::Text("FPS: %.3f", 1.0f / ts);
 	ImGui::End();
+
+	ImGui::Begin("Options", NULL, ImGuiWindowFlags_AlwaysAutoResize);
+	ImGui::PushItemWidth(120);
+	ImGui::Text("Cell count: %u", m_ShallowWaters.m_Grid.CellCount());
+	ImGui::SliderFloat("Line width", &m_Aux, 0, 10);
+	if (ImGui::Button("Refine"))
+	{
+		auto cell = m_ShallowWaters.m_Grid.FirstCell();
+		while (cell != nullptr)
+		{
+			auto next = cell->Next();
+			m_ShallowWaters.m_Grid.RefineCell(cell);
+			cell = next;
+		}
+	}
+	ImGui::End();
 } // ShallowWatersLayer::OnImGuiRender
 
 void ShallowWatersLayer::InitFlatShader()
@@ -100,13 +132,14 @@ void ShallowWatersLayer::InitFlatShader()
 			#version 330 core
 			
 			out vec4 FragColor;
-
+			
+			uniform vec4 uObjectColor;
 			in vec3 FragPos;
 			in vec3 Normal;
 
 			void main()
 			{
-				FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+				FragColor = uObjectColor;
 			}
 		)";
 
@@ -115,7 +148,7 @@ void ShallowWatersLayer::InitFlatShader()
 
 void ShallowWatersLayer::InitSquareMesh()
 {
-	// VAOs
+	// VAO
 	m_SquareVA.reset(Moxxi::VertexArray::Create());
 
 	// VBO

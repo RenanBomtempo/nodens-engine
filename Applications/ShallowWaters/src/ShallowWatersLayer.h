@@ -22,6 +22,7 @@ private:
 	ShallowWaters m_ShallowWaters;
 
 	float m_ElapsedTime = 0;
+	float m_Aux = 1;
 
 	Moxxi::Ref<Moxxi::Shader> m_FlatShader;
 	Moxxi::Ref<Moxxi::VertexArray> m_SquareVA;

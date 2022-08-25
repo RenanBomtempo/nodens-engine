@@ -26,6 +26,11 @@ namespace Moxxi {
 		}
 	}
 
+	void OpenGLRendererAPI::SetLineWidth(const float width)
+	{
+		glLineWidth(width);
+	}
+
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
 	{
 		glClearColor(color.r, color.g, color.b, color.a);

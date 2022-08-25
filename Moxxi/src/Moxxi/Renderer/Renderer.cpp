@@ -29,8 +29,8 @@ namespace Moxxi {
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("uViewProjection", m_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("uModelMatrix", transform);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("uNormalMatrix", glm::transpose(glm::inverse(transform)));
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat4("uLightColor", color);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("uObjectColor", m_SceneData->LightColor);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat4("uObjectColor", color);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("uLightColor", m_SceneData->LightColor);
 		if (m_SceneData->LightType == Light::Type::Directional)
 			std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformFloat3("uLightDirection", m_SceneData->LightDirection);
 		else if (m_SceneData->LightType == Light::Type::Point)

@@ -442,10 +442,14 @@ namespace alg {
 	{
 		ALG_CORE_ASSERT(m_NumberOfCells > 0, "Grid has not been initialized!");
 		ALG_CORE_ASSERT(old_cell != nullptr, "RefineCell: 'old_cell' is nullptr.");
-		ALG_CORE_ASSERT(old_cell->m_RefLevel < MAX_REFINEMENT_LEVEL, "Can't refine cell {0}. It has reached maximum refinement level.", old_cell);
 	
 		ALG_CORE_INFO("Refining cell {0}", std::bitset<2 * MAX_REFINEMENT_LEVEL>(old_cell->m_MHCIndex));
 
+		if (old_cell->m_RefLevel == MAX_REFINEMENT_LEVEL)
+		{
+			std::cout << "Can't refine cell " << old_cell->m_MHCIndex << " . It has reached the maximum refinement level.";
+			return nullptr;
+		}
 		// =====================================================================
 		// Connect Neighbors
 
@@ -511,7 +515,7 @@ namespace alg {
 		// =====================================================================
 		// Update MHC Ordering
 		UpdateMHC(old_cell, new_bunch);
-		CellNode* first_cell_in_new_bunch = old_cell->m_MHCPrevious->m_MHCNext;
+		//CellNode* first_cell_in_new_bunch = old_cell->m_MHCPrevious->m_MHCNext;
 
 		// =====================================================================
 		// Process Data Payload
@@ -528,7 +532,7 @@ namespace alg {
 		old_cell->m_West = nullptr;
 		delete old_cell;
 
-		return first_cell_in_new_bunch;
+		return nullptr;
 	}
 
 }
