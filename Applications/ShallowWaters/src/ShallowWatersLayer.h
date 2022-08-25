@@ -8,9 +8,8 @@ public:
 public:
 	ShallowWatersLayer();
 
-	void InitCamera();
 	void InitFlatShader();
-	void InitDomainMesh();
+	void InitSquareMesh();
 
 	void ProcessInputs(Moxxi::TimeStep ts);
 
@@ -25,14 +24,10 @@ private:
 	float m_ElapsedTime = 0;
 
 	Moxxi::Ref<Moxxi::Shader> m_FlatShader;
-	Moxxi::Ref<Moxxi::VertexArray> m_BoidVA;
-	Moxxi::Ref<Moxxi::VertexArray> m_DomainVA;
-	Moxxi::Ref<Moxxi::VertexArray> m_TowerVA;
+	Moxxi::Ref<Moxxi::VertexArray> m_SquareVA;
 
 	Moxxi::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	glm::vec3 m_CameraRotation;
-	glm::vec3 m_CameraDistance;
 	float m_CameraFOV = 50;
 
 	Moxxi::DirectionalLight m_Light;

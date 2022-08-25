@@ -38,12 +38,12 @@ namespace Moxxi {
 
 	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
 	{
-		glDrawElements(GL_TRIANGLES, vertexArray->GeIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+		glDrawElements(GL_LINE_STRIP, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 	}
 	
 	void OpenGLRendererAPI::DrawArrays(const Ref<VertexArray>& vertexArray)
 	{	
-		glDrawArrays(GL_TRIANGLES, 0, vertexArray->GetVertexBuffers()[0]->GetVertexCount());
+		glDrawArrays(GL_LINE_STRIP, 0, vertexArray->GetVertexBuffers()[0]->GetVertexCount());
 	}
 
 }

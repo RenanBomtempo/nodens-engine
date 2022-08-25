@@ -17,5 +17,5 @@ public:
 
 Moxxi::Application* Moxxi::CreateApplication()
 {
-	return new ShallowWatersApp(Moxxi::WindowProps("ShallowWaters", 1920, 1080, false));
+	return new ShallowWatersApp(Moxxi::WindowProps("ShallowWaters", 720, 720, false));
 }	

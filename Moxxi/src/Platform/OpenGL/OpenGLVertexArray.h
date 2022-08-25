@@ -15,7 +15,7 @@ namespace Moxxi {
 		virtual void SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer) override;
 		
 		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const override { return m_VertexBuffers; }
-		virtual const Ref<IndexBuffer>& GeIndexBuffer() const override { return m_IndexBuffer; }
+		virtual const Ref<IndexBuffer>& GetIndexBuffer() const override { return m_IndexBuffer; }
 	private:
 		uint32_t m_RendererID;
 		std::vector<Ref<VertexBuffer>> m_VertexBuffers;

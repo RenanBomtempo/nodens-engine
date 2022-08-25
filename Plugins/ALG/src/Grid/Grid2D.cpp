@@ -16,7 +16,7 @@ namespace alg {
 		m_MHCFirstCell(nullptr),
 		m_MHCLastCell(nullptr)
 	{
-		Log::Init();
+		alg::Log::Init();
 	}
 
 	/**

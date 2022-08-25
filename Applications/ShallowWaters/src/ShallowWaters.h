@@ -14,6 +14,6 @@ public:
 
 	void OnUpdate(Moxxi::TimeStep ts);
 private:
-
+	alg::Grid2D m_Grid;
 };
 

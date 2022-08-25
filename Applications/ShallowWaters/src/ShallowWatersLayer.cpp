@@ -4,18 +4,16 @@
 
 ShallowWatersLayer::ShallowWatersLayer()
 	: Layer("ShallowWatersLayer"),
-		m_CameraPosition(0.0f, 8.0f, 0.0f),
-		m_CameraRotation(-25.0f, -90.f, 0.0f),
-		m_Camera(-50, 50, -50, 50),
-		m_Light(),
-		m_LightDirection(0, -1, 0),
-		m_LightOrientation(0, 180, 0),
-		m_LightColor(1.0f, 1.0f, 1.0f),
-		m_ClearColor(0.5, 0.5, 0.5, 1)
+	m_CameraPosition(0.0f, 0.0f, 0.0f),
+	m_Camera(-2, 2, -2, 2),
+	m_Light(),
+	m_LightDirection(0, -1, 0),
+	m_LightOrientation(0, 180, 0),
+	m_LightColor(1.0f, 1.0f, 1.0f),
+	m_ClearColor(0.0, 0.0, 0.0, 1)
 {
-	InitCamera();
 	InitFlatShader();
-	InitDomainMesh();
+	InitSquareMesh();
 } // ShallowWatersLayer::ShallowWatersLayer
 
 void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
@@ -27,22 +25,26 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 
 	// Update scene
 	m_Camera.SetPosition(m_CameraPosition);
-	
+
 	m_LightDirection = glm::vec4(0.0f, -1.0f, 0.0f, 1.0f)
 		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.x), glm::vec3(1, 0, 0))
 		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.y), glm::vec3(0, 1, 0))
 		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.z), glm::vec3(0, 0, 1));
 	m_Light.SetDirection(m_LightDirection);
 	m_Light.SetColor(m_LightColor);
-	
+
+	// Update simulation
 	m_ShallowWaters.OnUpdate(ts);
 
 	// Render
 	Moxxi::RenderCommand::SetClearColor(m_ClearColor);
 	Moxxi::RenderCommand::Clear();
+	Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
+
 	Moxxi::Renderer::BeginScene(m_Camera, m_Light);
-	Moxxi::RenderCommand::SetFrontFaceOrientation(Moxxi::RendererProps::FrontFaceOrientation::Clockwise);
-	Moxxi::Renderer::SubmitArray(m_FlatShader, m_DomainVA, glm::mat4(1.0f), glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
+
+	Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareVA, glm::mat4(1.0f));
+
 	Moxxi::Renderer::EndScene();
 } // ShallowWatersLayer::OnUpdate
 
@@ -71,45 +73,7 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	ImGui::Text("Frametime: %.3fms", ts.GetMilliseconds());
 	ImGui::Text("FPS: %.3f", 1.0f / ts);
 	ImGui::End();
-
-	// Camera Transform ----------------------------------------------------
-	ImGui::Begin("Camera", NULL, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::SliderFloat("FOV", &m_CameraFOV, 1, 150);
-	ImGui::Text("Position");
-	ImGui::InputFloat("X", &m_CameraPosition.x, -10, 10);
-	ImGui::InputFloat("Y", &m_CameraPosition.y, -10, 10);
-	ImGui::InputFloat("Z", &m_CameraPosition.z, -10, 10);
-	ImGui::Text("Orientation");
-	ImGui::SliderFloat("Pitch", &m_CameraRotation.x, -90, 90);
-	ImGui::SliderFloat("Yaw", &m_CameraRotation.y, -180, 180);
-	if (ImGui::Button("Reset"))
-	{
-		m_CameraPosition.x = 0;
-		m_CameraPosition.y = 0;
-		m_CameraPosition.z = 5;
-
-		m_CameraRotation.x = 0;
-		m_CameraRotation.y = -90;
-		m_CameraRotation.z = 0;
-	}
-	ImGui::End();
-	
-	// Light ----------------------------------------------------------
-	ImGui::Begin("Lighting", NULL, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::Text("Direction");
-	ImGui::SliderFloat("X", &m_LightOrientation.x, 0, 360);
-	ImGui::SliderFloat("Y", &m_LightOrientation.y, 0, 360);
-	ImGui::SliderFloat("Z", &m_LightOrientation.z, 0, 360);
-	ImGui::ColorPicker3("Light color", &m_LightColor.r);
-	ImGui::ColorPicker4("Clear Color", &m_ClearColor.r);
-	ImGui::End();
-
 } // ShallowWatersLayer::OnImGuiRender
-
-void ShallowWatersLayer::InitCamera()
-{
-	m_Camera.SetPosition({0, 0, 0});
-}
 
 void ShallowWatersLayer::InitFlatShader()
 {
@@ -122,14 +86,12 @@ void ShallowWatersLayer::InitFlatShader()
 			out vec3 FragPos;
 			out vec3 Normal;
 
-			uniform mat4 uNormalMatrix;
 			uniform mat4 uModelMatrix;
 			uniform mat4 uViewProjection;
 
 			void main ()
 			{
 				FragPos = vec3(uModelMatrix * vec4(aPosition, 1.0));
-				Normal = vec3(uNormalMatrix * vec4(aNormal, 0.0));
 
 				gl_Position = uViewProjection * vec4(FragPos, 1.0);
 			}
@@ -142,61 +104,43 @@ void ShallowWatersLayer::InitFlatShader()
 			in vec3 FragPos;
 			in vec3 Normal;
 
-			uniform vec4 uObjectColor;
-			uniform vec3 uLightDirection;
-			uniform vec3 uLightColor;
-
 			void main()
 			{
-				// ambient
-				float ambientStrength = 0.5;
-				vec3 ambient = ambientStrength * uLightColor;
-  	
-				// diffuse 
-				vec3 norm = normalize(Normal);
-				vec3 lightDir = normalize(uLightDirection);
-				float diff = max(dot(norm, uLightDirection), 0.0);
-				vec3 diffuse = diff * uLightColor;
-            
-				FragColor = vec4(ambient + diffuse, 1.0) * uObjectColor;
-				//FragColor = vec4(norm, 1.0);
+				FragColor = vec4(1.0, 1.0, 1.0, 1.0);
 			}
 		)";
 
 	m_FlatShader.reset(Moxxi::Shader::Create(vertexSrc, fragmentSrc));
 }
 
-void ShallowWatersLayer::InitDomainMesh()
+void ShallowWatersLayer::InitSquareMesh()
 {
 	// VAOs
-	m_DomainVA.reset(Moxxi::VertexArray::Create());
+	m_SquareVA.reset(Moxxi::VertexArray::Create());
 
 	// VBO
 	float vertices[] = {
-		-1, 0, -1, 0, 1, 0,
-		 1, 0, -1, 0, 1, 0,
-		-1, 0,  1, 0, 1, 0,
-		 
-		 1, 0, -1, 0, 1, 0,
-		 1, 0,  1, 0, 1, 0,
-		-1, 0,  1, 0, 1, 0
+		-1.0f, -1.0f, 0.0f,
+		 1.0f, -1.0f, 0.0f,
+		 1.0f,  1.0f, 0.0f,
+		-1.0f,  1.0f, 0.0f
 	};
+
 	Moxxi::Ref<Moxxi::VertexBuffer> vertexBuffer;
 	vertexBuffer.reset(Moxxi::VertexBuffer::Create(vertices, sizeof(vertices)));
 	Moxxi::BufferLayout layout = {
-		{ Moxxi::ShaderDataType::Float3, "aPosition" },
-		{ Moxxi::ShaderDataType::Float3, "aNormal" }
+		{ Moxxi::ShaderDataType::Float3, "aPosition" }
 	};
 	vertexBuffer->SetLayout(layout);
-	m_DomainVA->AddVertexBuffer(vertexBuffer);
+	m_SquareVA->AddVertexBuffer(vertexBuffer);
 
 	// EBO
-	/*uint32_t indices[3*2] = {
-		0, 1, 2, 1, 3, 2
+	uint32_t indices[5] = {
+		0, 1, 2, 3, 0
 	};
 	Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
-	indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 3*2));
-	m_DomainVA->SetIndexBuffer(indexBuffer);*/
+	indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 5));
+	m_SquareVA->SetIndexBuffer(indexBuffer);
 } // ShallowWatersLayer::InitDomainMesh
 
 void ShallowWatersLayer::ProcessInputs(Moxxi::TimeStep ts)
@@ -212,5 +156,9 @@ void ShallowWatersLayer::OnEvent(Moxxi::Event& event)
 
 bool ShallowWatersLayer::OnWindowResizeEvent(Moxxi::WindowResizeEvent& event)
 {
+	float newHeight = event.GetHeight();
+	float newWidth = event.GetWidth();
+
+	m_Camera.SetSides(-newWidth / 360, newWidth / 360, -newHeight / 360, newHeight / 360);
 	return true;
 } // ShallowWatersLayer::OnMouseMovedEvent
