@@ -1,7 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boids", "Boids\Boids.vcxproj", "{76FBE70C-E20F-10BE-AB91-B31D17650CEF}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{539DD9A6-3F81-9AFC-A8E1-944F94E4847E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShallowWaters", "Applications\ShallowWaters\ShallowWaters.vcxproj", "{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boids", "Applications\Boids\Boids.vcxproj", "{76FBE70C-E20F-10BE-AB91-B31D17650CEF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{53E47842-3FC8-3998-A828-34EB942B241A}"
 EndProject
@@ -13,6 +19,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glad", "Moxxi\vendor\GLAD\g
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moxxi", "Moxxi\Moxxi.vcxproj", "{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{6EEF9964-DAAF-159B-A3EA-5E180F6A5A77}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALG", "Plugins\ALG\ALG.vcxproj", "{79D1870B-E5DA-877C-6E56-9E7CDA5E937C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{0E7F7CC8-FA77-9B1A-23AA-809F0F027B26}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALG Reference", "References\ALG-Reference\ALG Reference.vcxproj", "{2879CFBF-9439-4BF6-5D74-9473C9F38FD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -20,6 +34,12 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A}.Debug|x64.ActiveCfg = Debug|x64
+		{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A}.Debug|x64.Build.0 = Debug|x64
+		{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A}.Dist|x64.ActiveCfg = Dist|x64
+		{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A}.Dist|x64.Build.0 = Dist|x64
+		{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A}.Release|x64.ActiveCfg = Release|x64
+		{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A}.Release|x64.Build.0 = Release|x64
 		{76FBE70C-E20F-10BE-AB91-B31D17650CEF}.Debug|x64.ActiveCfg = Debug|x64
 		{76FBE70C-E20F-10BE-AB91-B31D17650CEF}.Debug|x64.Build.0 = Debug|x64
 		{76FBE70C-E20F-10BE-AB91-B31D17650CEF}.Dist|x64.ActiveCfg = Dist|x64
@@ -50,13 +70,32 @@ Global
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Dist|x64.Build.0 = Dist|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Release|x64.ActiveCfg = Release|x64
 		{5A4BAF0D-C65F-D7BE-8FE1-7A1EFBB4D3EF}.Release|x64.Build.0 = Release|x64
+		{79D1870B-E5DA-877C-6E56-9E7CDA5E937C}.Debug|x64.ActiveCfg = Debug|x64
+		{79D1870B-E5DA-877C-6E56-9E7CDA5E937C}.Debug|x64.Build.0 = Debug|x64
+		{79D1870B-E5DA-877C-6E56-9E7CDA5E937C}.Dist|x64.ActiveCfg = Dist|x64
+		{79D1870B-E5DA-877C-6E56-9E7CDA5E937C}.Dist|x64.Build.0 = Dist|x64
+		{79D1870B-E5DA-877C-6E56-9E7CDA5E937C}.Release|x64.ActiveCfg = Release|x64
+		{79D1870B-E5DA-877C-6E56-9E7CDA5E937C}.Release|x64.Build.0 = Release|x64
+		{2879CFBF-9439-4BF6-5D74-9473C9F38FD2}.Debug|x64.ActiveCfg = Debug|x64
+		{2879CFBF-9439-4BF6-5D74-9473C9F38FD2}.Debug|x64.Build.0 = Debug|x64
+		{2879CFBF-9439-4BF6-5D74-9473C9F38FD2}.Dist|x64.ActiveCfg = Dist|x64
+		{2879CFBF-9439-4BF6-5D74-9473C9F38FD2}.Dist|x64.Build.0 = Dist|x64
+		{2879CFBF-9439-4BF6-5D74-9473C9F38FD2}.Release|x64.ActiveCfg = Release|x64
+		{2879CFBF-9439-4BF6-5D74-9473C9F38FD2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{F5E8A977-61A9-25AE-2AE4-6E2B96636A8A} = {539DD9A6-3F81-9AFC-A8E1-944F94E4847E}
+		{76FBE70C-E20F-10BE-AB91-B31D17650CEF} = {539DD9A6-3F81-9AFC-A8E1-944F94E4847E}
 		{154B857C-0182-860D-AA6E-6C109684020F} = {53E47842-3FC8-3998-A828-34EB942B241A}
 		{C0FF640D-2C14-8DBE-F595-301E616989EF} = {53E47842-3FC8-3998-A828-34EB942B241A}
 		{DD62977C-C999-980D-7286-7E105E9C140F} = {53E47842-3FC8-3998-A828-34EB942B241A}
+		{79D1870B-E5DA-877C-6E56-9E7CDA5E937C} = {6EEF9964-DAAF-159B-A3EA-5E180F6A5A77}
+		{2879CFBF-9439-4BF6-5D74-9473C9F38FD2} = {0E7F7CC8-FA77-9B1A-23AA-809F0F027B26}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BA56936-C67E-428A-93BB-E15F05CE102C}
 	EndGlobalSection
 EndGlobal

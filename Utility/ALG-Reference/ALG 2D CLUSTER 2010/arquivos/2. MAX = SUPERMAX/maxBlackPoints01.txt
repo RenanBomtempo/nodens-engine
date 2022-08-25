@@ -1,0 +1,1173 @@
+MAX = 0.005000, SUPERMAX = 0.005000
+
+Maior intensidade encontrada dentre todas as 1000 iteracoes = 7.715302
+Nao houve formacao de grupos nos dados originais.
+
+Iteracao i   Numero maximo de pontos	  Estatistica scan
+		pretos dentro de SG
+0:    Nao houve formacao de grupos.
+1: 			1, 			1.904708
+2: 			1, 			1.269144
+3: 			2, 			3.825278
+4: 			2, 			3.070961
+5: 			1, 			1.269144
+6: 			2, 			3.825278
+7: 			2, 			3.825278
+8: 			2, 			3.070961
+9: 			2, 			3.825278
+10: 			2, 			3.825278
+11: 			3, 			5.762031
+12: 			2, 			3.825278
+13: 			1, 			1.269144
+14: 			2, 			2.552269
+15:    Nao houve formacao de grupos.
+16: 			2, 			3.825278
+17:    Nao houve formacao de grupos.
+18: 			2, 			3.825278
+19: 			2, 			2.552269
+20:    Nao houve formacao de grupos.
+21: 			2, 			3.070961
+22: 			2, 			3.070961
+23: 			3, 			4.954626
+24:    Nao houve formacao de grupos.
+25:    Nao houve formacao de grupos.
+26:    Nao houve formacao de grupos.
+27: 			2, 			3.070961
+28: 			1, 			1.269144
+29:    Nao houve formacao de grupos.
+30: 			1, 			1.904708
+31: 			2, 			3.070961
+32: 			2, 			2.552269
+33: 			2, 			3.825278
+34:    Nao houve formacao de grupos.
+35:    Nao houve formacao de grupos.
+36: 			2, 			3.825278
+37:    Nao houve formacao de grupos.
+38:    Nao houve formacao de grupos.
+39: 			1, 			1.269144
+40: 			2, 			1.854858
+41: 			2, 			3.825278
+42: 			2, 			3.070961
+43:    Nao houve formacao de grupos.
+44: 			3, 			4.954626
+45: 			2, 			2.552269
+46: 			1, 			0.921322
+47: 			1, 			1.269144
+48: 			1, 			1.904708
+49: 			2, 			3.070961
+50:    Nao houve formacao de grupos.
+51: 			2, 			3.825278
+52: 			1, 			1.904708
+53: 			1, 			1.269144
+54: 			2, 			3.070961
+55: 			2, 			3.825278
+56: 			2, 			3.070961
+57: 			2, 			3.825278
+58:    Nao houve formacao de grupos.
+59:    Nao houve formacao de grupos.
+60: 			1, 			1.904708
+61:    Nao houve formacao de grupos.
+62: 			2, 			2.552269
+63: 			2, 			3.070961
+64: 			1, 			1.269144
+65: 			1, 			1.269144
+66: 			1, 			0.691342
+67: 			2, 			3.825278
+68:    Nao houve formacao de grupos.
+69: 			1, 			1.904708
+70:    Nao houve formacao de grupos.
+71: 			2, 			3.825278
+72: 			2, 			3.825278
+73: 			2, 			3.825278
+74: 			2, 			3.070961
+75:    Nao houve formacao de grupos.
+76: 			1, 			1.269144
+77:    Nao houve formacao de grupos.
+78: 			2, 			3.825278
+79: 			2, 			3.825278
+80:    Nao houve formacao de grupos.
+81: 			1, 			1.904708
+82: 			2, 			2.552269
+83:    Nao houve formacao de grupos.
+84: 			2, 			3.070961
+85: 			2, 			1.393248
+86:    Nao houve formacao de grupos.
+87: 			1, 			1.904708
+88:    Nao houve formacao de grupos.
+89:    Nao houve formacao de grupos.
+90: 			2, 			3.070961
+91: 			2, 			3.825278
+92: 			2, 			3.825278
+93:    Nao houve formacao de grupos.
+94: 			2, 			3.825278
+95: 			2, 			3.825278
+96: 			2, 			3.070961
+97: 			1, 			0.691342
+98: 			2, 			3.825278
+99:    Nao houve formacao de grupos.
+100:    Nao houve formacao de grupos.
+101: 			2, 			1.603404
+102: 			2, 			3.825278
+103: 			2, 			3.070961
+104:    Nao houve formacao de grupos.
+105:    Nao houve formacao de grupos.
+106:    Nao houve formacao de grupos.
+107:    Nao houve formacao de grupos.
+108: 			2, 			2.552269
+109:    Nao houve formacao de grupos.
+110: 			2, 			2.162712
+111: 			1, 			1.269144
+112: 			2, 			3.825278
+113: 			2, 			2.552269
+114: 			2, 			3.825278
+115: 			2, 			3.070961
+116: 			1, 			1.904708
+117: 			2, 			3.070961
+118: 			2, 			3.825278
+119:    Nao houve formacao de grupos.
+120:    Nao houve formacao de grupos.
+121:    Nao houve formacao de grupos.
+122:    Nao houve formacao de grupos.
+123: 			1, 			0.921322
+124:    Nao houve formacao de grupos.
+125:    Nao houve formacao de grupos.
+126: 			2, 			3.825278
+127: 			1, 			0.921322
+128: 			2, 			3.825278
+129: 			1, 			1.904708
+130:    Nao houve formacao de grupos.
+131: 			2, 			3.825278
+132: 			3, 			4.954626
+133: 			2, 			3.825278
+134: 			1, 			1.269144
+135: 			1, 			1.269144
+136:    Nao houve formacao de grupos.
+137: 			1, 			1.904708
+138: 			1, 			1.904708
+139: 			2, 			3.070961
+140: 			3, 			4.954626
+141: 			1, 			0.921322
+142: 			1, 			1.904708
+143: 			2, 			3.825278
+144:    Nao houve formacao de grupos.
+145: 			1, 			1.904708
+146: 			3, 			4.340895
+147: 			1, 			0.921322
+148:    Nao houve formacao de grupos.
+149: 			1, 			0.921322
+150: 			1, 			1.269144
+151: 			1, 			0.691342
+152: 			1, 			1.904708
+153: 			2, 			3.825278
+154:    Nao houve formacao de grupos.
+155: 			2, 			3.825278
+156: 			2, 			3.825278
+157:    Nao houve formacao de grupos.
+158: 			2, 			3.825278
+159: 			2, 			1.854858
+160: 			2, 			2.162712
+161: 			1, 			1.904708
+162: 			2, 			2.552269
+163: 			1, 			1.904708
+164:    Nao houve formacao de grupos.
+165: 			2, 			3.825278
+166: 			2, 			3.825278
+167:    Nao houve formacao de grupos.
+168: 			2, 			2.162712
+169: 			1, 			0.691342
+170:    Nao houve formacao de grupos.
+171: 			2, 			3.070961
+172:    Nao houve formacao de grupos.
+173: 			2, 			3.825278
+174:    Nao houve formacao de grupos.
+175: 			2, 			3.825278
+176: 			2, 			3.825278
+177:    Nao houve formacao de grupos.
+178:    Nao houve formacao de grupos.
+179: 			2, 			1.603404
+180:    Nao houve formacao de grupos.
+181: 			1, 			1.904708
+182:    Nao houve formacao de grupos.
+183: 			2, 			3.070961
+184: 			2, 			3.825278
+185: 			2, 			2.162712
+186:    Nao houve formacao de grupos.
+187: 			2, 			3.825278
+188: 			2, 			3.070961
+189:    Nao houve formacao de grupos.
+190:    Nao houve formacao de grupos.
+191:    Nao houve formacao de grupos.
+192:    Nao houve formacao de grupos.
+193: 			2, 			3.825278
+194: 			1, 			0.305191
+195: 			2, 			2.552269
+196: 			2, 			2.162712
+197: 			2, 			3.070961
+198:    Nao houve formacao de grupos.
+199:    Nao houve formacao de grupos.
+200:    Nao houve formacao de grupos.
+201:    Nao houve formacao de grupos.
+202:    Nao houve formacao de grupos.
+203: 			2, 			3.825278
+204: 			2, 			3.070961
+205:    Nao houve formacao de grupos.
+206: 			1, 			0.691342
+207: 			2, 			3.825278
+208: 			2, 			3.825278
+209: 			2, 			2.162712
+210: 			2, 			2.162712
+211:    Nao houve formacao de grupos.
+212:    Nao houve formacao de grupos.
+213:    Nao houve formacao de grupos.
+214: 			1, 			1.269144
+215: 			1, 			1.904708
+216: 			2, 			1.393248
+217: 			1, 			1.904708
+218:    Nao houve formacao de grupos.
+219: 			2, 			3.825278
+220: 			2, 			2.552269
+221: 			2, 			3.825278
+222:    Nao houve formacao de grupos.
+223: 			2, 			3.825278
+224: 			2, 			3.825278
+225: 			1, 			1.904708
+226:    Nao houve formacao de grupos.
+227:    Nao houve formacao de grupos.
+228:    Nao houve formacao de grupos.
+229: 			2, 			3.825278
+230:    Nao houve formacao de grupos.
+231: 			1, 			0.691342
+232: 			2, 			3.825278
+233:    Nao houve formacao de grupos.
+234:    Nao houve formacao de grupos.
+235: 			2, 			1.393248
+236:    Nao houve formacao de grupos.
+237: 			2, 			3.825278
+238: 			2, 			2.552269
+239: 			2, 			1.854858
+240:    Nao houve formacao de grupos.
+241: 			2, 			1.603404
+242: 			2, 			1.393248
+243: 			2, 			3.070961
+244: 			2, 			3.825278
+245: 			2, 			2.162712
+246: 			2, 			3.825278
+247: 			2, 			3.070961
+248: 			2, 			2.162712
+249: 			2, 			3.825278
+250:    Nao houve formacao de grupos.
+251: 			2, 			3.825278
+252: 			1, 			0.921322
+253: 			2, 			3.825278
+254:    Nao houve formacao de grupos.
+255: 			1, 			0.921322
+256: 			2, 			2.162712
+257: 			2, 			3.825278
+258: 			2, 			3.070961
+259: 			2, 			3.825278
+260: 			1, 			0.921322
+261: 			2, 			3.825278
+262: 			1, 			1.269144
+263:    Nao houve formacao de grupos.
+264: 			2, 			3.825278
+265:    Nao houve formacao de grupos.
+266: 			2, 			3.070961
+267: 			2, 			3.825278
+268: 			2, 			1.393248
+269: 			2, 			3.070961
+270: 			2, 			3.825278
+271: 			2, 			3.825278
+272: 			1, 			1.269144
+273: 			2, 			2.552269
+274: 			2, 			3.825278
+275: 			2, 			2.162712
+276: 			2, 			2.552269
+277: 			2, 			3.825278
+278: 			2, 			1.854858
+279:    Nao houve formacao de grupos.
+280:    Nao houve formacao de grupos.
+281: 			2, 			2.162712
+282:    Nao houve formacao de grupos.
+283: 			1, 			1.269144
+284: 			2, 			3.825278
+285: 			1, 			1.269144
+286:    Nao houve formacao de grupos.
+287:    Nao houve formacao de grupos.
+288: 			2, 			3.825278
+289: 			1, 			1.269144
+290: 			1, 			1.269144
+291: 			1, 			1.269144
+292: 			2, 			3.825278
+293:    Nao houve formacao de grupos.
+294: 			2, 			3.070961
+295: 			2, 			0.927413
+296: 			2, 			3.825278
+297: 			1, 			1.904708
+298: 			2, 			3.825278
+299:    Nao houve formacao de grupos.
+300: 			1, 			1.904708
+301:    Nao houve formacao de grupos.
+302: 			2, 			2.552269
+303: 			2, 			3.825278
+304: 			3, 			5.762031
+305:    Nao houve formacao de grupos.
+306: 			2, 			3.825278
+307: 			2, 			2.552269
+308:    Nao houve formacao de grupos.
+309: 			1, 			1.904708
+310: 			2, 			3.825278
+311: 			2, 			1.854858
+312: 			2, 			3.825278
+313: 			2, 			3.825278
+314:    Nao houve formacao de grupos.
+315:    Nao houve formacao de grupos.
+316: 			2, 			3.825278
+317:    Nao houve formacao de grupos.
+318: 			3, 			5.762031
+319: 			2, 			3.825278
+320: 			2, 			3.825278
+321: 			2, 			2.552269
+322: 			2, 			2.162712
+323: 			2, 			3.825278
+324:    Nao houve formacao de grupos.
+325: 			1, 			1.904708
+326: 			2, 			3.825278
+327: 			1, 			1.904708
+328: 			1, 			1.904708
+329: 			1, 			1.904708
+330:    Nao houve formacao de grupos.
+331: 			2, 			3.825278
+332:    Nao houve formacao de grupos.
+333: 			2, 			3.070961
+334: 			1, 			0.691342
+335: 			2, 			2.552269
+336: 			2, 			3.070961
+337:    Nao houve formacao de grupos.
+338:    Nao houve formacao de grupos.
+339:    Nao houve formacao de grupos.
+340:    Nao houve formacao de grupos.
+341: 			2, 			3.825278
+342: 			2, 			3.825278
+343: 			2, 			3.825278
+344:    Nao houve formacao de grupos.
+345: 			2, 			3.825278
+346: 			1, 			1.904708
+347: 			4, 			7.715302
+348: 			1, 			1.269144
+349: 			3, 			3.849686
+350: 			2, 			3.825278
+351:    Nao houve formacao de grupos.
+352: 			2, 			3.070961
+353:    Nao houve formacao de grupos.
+354: 			2, 			1.603404
+355:    Nao houve formacao de grupos.
+356: 			2, 			3.825278
+357:    Nao houve formacao de grupos.
+358: 			3, 			5.762031
+359: 			2, 			3.825278
+360: 			2, 			3.825278
+361: 			2, 			3.070961
+362: 			2, 			3.825278
+363: 			2, 			3.070961
+364:    Nao houve formacao de grupos.
+365: 			2, 			3.070961
+366: 			2, 			3.825278
+367: 			1, 			1.904708
+368: 			2, 			1.393248
+369:    Nao houve formacao de grupos.
+370:    Nao houve formacao de grupos.
+371:    Nao houve formacao de grupos.
+372: 			3, 			5.762031
+373: 			2, 			3.825278
+374:    Nao houve formacao de grupos.
+375: 			2, 			1.393248
+376:    Nao houve formacao de grupos.
+377: 			2, 			3.070961
+378:    Nao houve formacao de grupos.
+379: 			1, 			0.921322
+380: 			2, 			3.825278
+381: 			1, 			0.691342
+382: 			1, 			1.269144
+383: 			2, 			3.825278
+384:    Nao houve formacao de grupos.
+385: 			2, 			3.070961
+386: 			2, 			3.825278
+387:    Nao houve formacao de grupos.
+388: 			2, 			2.552269
+389: 			2, 			3.825278
+390:    Nao houve formacao de grupos.
+391:    Nao houve formacao de grupos.
+392: 			2, 			3.070961
+393: 			1, 			1.269144
+394: 			2, 			3.825278
+395: 			2, 			3.825278
+396: 			2, 			3.825278
+397: 			3, 			4.954626
+398: 			2, 			1.854858
+399: 			2, 			3.825278
+400: 			2, 			3.825278
+401: 			2, 			2.552269
+402:    Nao houve formacao de grupos.
+403:    Nao houve formacao de grupos.
+404: 			2, 			2.552269
+405:    Nao houve formacao de grupos.
+406:    Nao houve formacao de grupos.
+407: 			2, 			2.552269
+408: 			1, 			1.904708
+409: 			1, 			0.691342
+410: 			2, 			1.854858
+411: 			2, 			3.070961
+412: 			1, 			1.269144
+413: 			2, 			2.552269
+414: 			1, 			1.904708
+415: 			2, 			3.070961
+416: 			2, 			2.162712
+417: 			2, 			2.162712
+418: 			2, 			3.070961
+419:    Nao houve formacao de grupos.
+420: 			1, 			1.904708
+421:    Nao houve formacao de grupos.
+422: 			2, 			2.552269
+423: 			1, 			1.269144
+424: 			2, 			3.070961
+425: 			2, 			2.552269
+426: 			2, 			3.825278
+427: 			2, 			3.070961
+428: 			2, 			3.825278
+429:    Nao houve formacao de grupos.
+430:    Nao houve formacao de grupos.
+431: 			1, 			1.904708
+432:    Nao houve formacao de grupos.
+433: 			2, 			2.552269
+434: 			2, 			3.825278
+435:    Nao houve formacao de grupos.
+436: 			2, 			3.070961
+437: 			2, 			3.070961
+438: 			2, 			3.070961
+439:    Nao houve formacao de grupos.
+440:    Nao houve formacao de grupos.
+441: 			1, 			1.269144
+442: 			2, 			2.162712
+443: 			2, 			2.162712
+444: 			2, 			3.825278
+445:    Nao houve formacao de grupos.
+446: 			2, 			3.070961
+447: 			2, 			3.825278
+448: 			2, 			3.070961
+449:    Nao houve formacao de grupos.
+450:    Nao houve formacao de grupos.
+451:    Nao houve formacao de grupos.
+452: 			1, 			1.904708
+453: 			2, 			3.825278
+454: 			1, 			1.904708
+455:    Nao houve formacao de grupos.
+456: 			2, 			3.070961
+457: 			2, 			3.825278
+458: 			1, 			0.921322
+459:    Nao houve formacao de grupos.
+460:    Nao houve formacao de grupos.
+461: 			2, 			2.162712
+462: 			2, 			3.825278
+463: 			1, 			1.269144
+464:    Nao houve formacao de grupos.
+465: 			1, 			1.269144
+466: 			2, 			2.552269
+467: 			2, 			3.825278
+468:    Nao houve formacao de grupos.
+469: 			2, 			2.162712
+470:    Nao houve formacao de grupos.
+471: 			2, 			3.070961
+472:    Nao houve formacao de grupos.
+473: 			2, 			0.927413
+474: 			2, 			3.825278
+475: 			2, 			3.825278
+476: 			2, 			3.825278
+477: 			1, 			0.921322
+478:    Nao houve formacao de grupos.
+479:    Nao houve formacao de grupos.
+480: 			2, 			2.552269
+481:    Nao houve formacao de grupos.
+482: 			2, 			3.825278
+483: 			1, 			1.904708
+484: 			2, 			3.825278
+485: 			2, 			3.070961
+486: 			2, 			2.552269
+487: 			2, 			3.825278
+488:    Nao houve formacao de grupos.
+489:    Nao houve formacao de grupos.
+490: 			2, 			3.070961
+491:    Nao houve formacao de grupos.
+492: 			2, 			1.854858
+493: 			2, 			2.552269
+494: 			2, 			3.825278
+495:    Nao houve formacao de grupos.
+496: 			2, 			3.825278
+497: 			1, 			0.691342
+498:    Nao houve formacao de grupos.
+499: 			2, 			1.854858
+500: 			2, 			2.552269
+501: 			1, 			1.904708
+502:    Nao houve formacao de grupos.
+503: 			1, 			1.269144
+504: 			2, 			3.825278
+505:    Nao houve formacao de grupos.
+506: 			1, 			0.691342
+507: 			1, 			1.904708
+508: 			2, 			3.825278
+509: 			2, 			3.070961
+510: 			1, 			1.904708
+511: 			2, 			3.825278
+512:    Nao houve formacao de grupos.
+513:    Nao houve formacao de grupos.
+514: 			2, 			3.825278
+515: 			1, 			1.269144
+516: 			2, 			3.825278
+517: 			2, 			3.070961
+518: 			2, 			3.825278
+519:    Nao houve formacao de grupos.
+520: 			2, 			3.825278
+521:    Nao houve formacao de grupos.
+522: 			1, 			1.269144
+523: 			3, 			5.762031
+524:    Nao houve formacao de grupos.
+525: 			2, 			3.825278
+526: 			1, 			0.921322
+527:    Nao houve formacao de grupos.
+528: 			1, 			1.269144
+529: 			1, 			1.904708
+530: 			2, 			3.070961
+531:    Nao houve formacao de grupos.
+532: 			2, 			3.070961
+533: 			2, 			3.070961
+534: 			2, 			3.825278
+535: 			2, 			1.603404
+536:    Nao houve formacao de grupos.
+537:    Nao houve formacao de grupos.
+538: 			3, 			4.340895
+539: 			1, 			1.904708
+540: 			2, 			3.825278
+541: 			2, 			3.070961
+542: 			1, 			1.904708
+543:    Nao houve formacao de grupos.
+544: 			2, 			2.552269
+545: 			2, 			3.825278
+546: 			2, 			3.825278
+547: 			2, 			3.825278
+548: 			2, 			3.825278
+549: 			2, 			3.070961
+550: 			2, 			2.552269
+551: 			2, 			3.825278
+552:    Nao houve formacao de grupos.
+553: 			1, 			1.904708
+554: 			2, 			3.825278
+555:    Nao houve formacao de grupos.
+556: 			2, 			2.552269
+557: 			2, 			3.825278
+558: 			2, 			3.070961
+559:    Nao houve formacao de grupos.
+560: 			2, 			3.070961
+561:    Nao houve formacao de grupos.
+562: 			2, 			3.825278
+563:    Nao houve formacao de grupos.
+564: 			2, 			3.825278
+565:    Nao houve formacao de grupos.
+566: 			2, 			3.825278
+567: 			2, 			3.070961
+568: 			2, 			2.552269
+569: 			1, 			1.269144
+570: 			2, 			3.070961
+571: 			1, 			0.691342
+572: 			2, 			3.825278
+573: 			1, 			0.921322
+574:    Nao houve formacao de grupos.
+575:    Nao houve formacao de grupos.
+576:    Nao houve formacao de grupos.
+577: 			1, 			1.269144
+578: 			2, 			3.825278
+579: 			2, 			3.070961
+580: 			2, 			3.070961
+581: 			2, 			2.552269
+582: 			2, 			3.070961
+583: 			1, 			1.904708
+584:    Nao houve formacao de grupos.
+585: 			2, 			3.825278
+586: 			3, 			4.340895
+587:    Nao houve formacao de grupos.
+588:    Nao houve formacao de grupos.
+589: 			2, 			3.825278
+590:    Nao houve formacao de grupos.
+591: 			2, 			3.825278
+592: 			2, 			2.162712
+593: 			2, 			3.825278
+594: 			2, 			3.825278
+595: 			2, 			3.070961
+596: 			2, 			3.070961
+597:    Nao houve formacao de grupos.
+598: 			2, 			3.070961
+599:    Nao houve formacao de grupos.
+600: 			2, 			3.825278
+601: 			2, 			3.825278
+602: 			1, 			1.904708
+603: 			2, 			3.825278
+604: 			2, 			2.552269
+605: 			2, 			3.825278
+606: 			2, 			3.825278
+607:    Nao houve formacao de grupos.
+608:    Nao houve formacao de grupos.
+609:    Nao houve formacao de grupos.
+610: 			1, 			1.904708
+611: 			2, 			1.393248
+612: 			1, 			0.691342
+613:    Nao houve formacao de grupos.
+614:    Nao houve formacao de grupos.
+615: 			2, 			3.825278
+616:    Nao houve formacao de grupos.
+617: 			2, 			3.825278
+618: 			2, 			3.825278
+619:    Nao houve formacao de grupos.
+620:    Nao houve formacao de grupos.
+621:    Nao houve formacao de grupos.
+622:    Nao houve formacao de grupos.
+623: 			2, 			3.825278
+624: 			2, 			3.825278
+625:    Nao houve formacao de grupos.
+626: 			2, 			2.162712
+627:    Nao houve formacao de grupos.
+628: 			2, 			3.070961
+629: 			2, 			2.552269
+630: 			1, 			1.904708
+631: 			2, 			3.825278
+632: 			2, 			2.162712
+633: 			2, 			3.825278
+634: 			2, 			3.825278
+635: 			2, 			1.393248
+636: 			2, 			3.825278
+637: 			2, 			1.854858
+638:    Nao houve formacao de grupos.
+639: 			2, 			3.825278
+640: 			2, 			3.070961
+641:    Nao houve formacao de grupos.
+642: 			2, 			3.825278
+643: 			2, 			3.070961
+644: 			2, 			3.825278
+645: 			2, 			1.854858
+646:    Nao houve formacao de grupos.
+647: 			1, 			1.904708
+648: 			2, 			3.825278
+649: 			2, 			2.552269
+650: 			1, 			1.904708
+651:    Nao houve formacao de grupos.
+652: 			2, 			3.070961
+653: 			1, 			0.921322
+654: 			2, 			2.552269
+655: 			1, 			0.691342
+656: 			1, 			1.904708
+657: 			1, 			1.904708
+658:    Nao houve formacao de grupos.
+659: 			2, 			3.825278
+660:    Nao houve formacao de grupos.
+661: 			2, 			3.825278
+662: 			2, 			3.825278
+663: 			1, 			1.269144
+664: 			2, 			3.825278
+665:    Nao houve formacao de grupos.
+666: 			2, 			3.825278
+667: 			1, 			1.904708
+668: 			1, 			1.269144
+669:    Nao houve formacao de grupos.
+670: 			2, 			1.854858
+671: 			2, 			3.070961
+672: 			3, 			4.954626
+673: 			2, 			3.825278
+674: 			1, 			1.904708
+675: 			2, 			3.825278
+676: 			2, 			3.070961
+677: 			2, 			2.162712
+678: 			2, 			3.825278
+679: 			1, 			0.921322
+680:    Nao houve formacao de grupos.
+681: 			1, 			0.691342
+682: 			2, 			3.825278
+683: 			1, 			1.269144
+684: 			2, 			3.070961
+685:    Nao houve formacao de grupos.
+686: 			1, 			1.904708
+687: 			2, 			3.825278
+688: 			1, 			1.269144
+689: 			2, 			3.825278
+690:    Nao houve formacao de grupos.
+691: 			1, 			1.904708
+692:    Nao houve formacao de grupos.
+693: 			2, 			1.603404
+694: 			2, 			2.552269
+695: 			1, 			1.904708
+696: 			1, 			1.904708
+697: 			2, 			3.070961
+698: 			1, 			1.269144
+699: 			2, 			2.162712
+700: 			2, 			3.825278
+701: 			1, 			1.904708
+702: 			2, 			3.825278
+703: 			3, 			5.762031
+704:    Nao houve formacao de grupos.
+705: 			1, 			0.691342
+706:    Nao houve formacao de grupos.
+707: 			1, 			1.904708
+708: 			2, 			3.825278
+709: 			2, 			3.825278
+710: 			2, 			3.825278
+711: 			2, 			0.927413
+712: 			3, 			4.340895
+713: 			2, 			3.825278
+714: 			2, 			3.825278
+715: 			1, 			1.904708
+716: 			2, 			3.070961
+717: 			2, 			3.070961
+718:    Nao houve formacao de grupos.
+719: 			2, 			3.825278
+720: 			2, 			3.825278
+721: 			2, 			3.825278
+722: 			2, 			3.825278
+723:    Nao houve formacao de grupos.
+724: 			2, 			3.825278
+725: 			2, 			3.825278
+726:    Nao houve formacao de grupos.
+727:    Nao houve formacao de grupos.
+728:    Nao houve formacao de grupos.
+729:    Nao houve formacao de grupos.
+730:    Nao houve formacao de grupos.
+731: 			2, 			3.070961
+732: 			2, 			2.552269
+733: 			2, 			2.552269
+734: 			2, 			3.070961
+735: 			2, 			3.070961
+736: 			2, 			3.825278
+737: 			2, 			2.552269
+738: 			2, 			3.070961
+739:    Nao houve formacao de grupos.
+740:    Nao houve formacao de grupos.
+741: 			2, 			3.825278
+742: 			2, 			3.825278
+743: 			2, 			3.070961
+744:    Nao houve formacao de grupos.
+745: 			1, 			1.904708
+746:    Nao houve formacao de grupos.
+747: 			2, 			3.825278
+748: 			1, 			1.269144
+749: 			2, 			3.825278
+750: 			1, 			1.904708
+751: 			2, 			3.825278
+752: 			2, 			3.825278
+753: 			2, 			3.825278
+754: 			1, 			1.904708
+755: 			1, 			0.691342
+756:    Nao houve formacao de grupos.
+757: 			2, 			3.825278
+758:    Nao houve formacao de grupos.
+759: 			2, 			3.070961
+760: 			2, 			2.552269
+761: 			2, 			2.162712
+762:    Nao houve formacao de grupos.
+763: 			1, 			1.904708
+764: 			2, 			3.825278
+765:    Nao houve formacao de grupos.
+766: 			2, 			3.070961
+767: 			2, 			2.552269
+768:    Nao houve formacao de grupos.
+769: 			1, 			1.904708
+770: 			2, 			1.854858
+771: 			2, 			2.552269
+772: 			2, 			3.825278
+773: 			2, 			2.552269
+774:    Nao houve formacao de grupos.
+775:    Nao houve formacao de grupos.
+776: 			1, 			1.904708
+777: 			1, 			1.904708
+778: 			1, 			1.904708
+779: 			2, 			1.854858
+780: 			1, 			1.904708
+781: 			3, 			4.340895
+782: 			2, 			3.825278
+783:    Nao houve formacao de grupos.
+784: 			2, 			2.552269
+785:    Nao houve formacao de grupos.
+786: 			2, 			3.825278
+787: 			1, 			1.269144
+788: 			2, 			3.825278
+789: 			2, 			3.070961
+790:    Nao houve formacao de grupos.
+791:    Nao houve formacao de grupos.
+792: 			2, 			2.552269
+793: 			2, 			3.825278
+794: 			2, 			0.616696
+795:    Nao houve formacao de grupos.
+796:    Nao houve formacao de grupos.
+797: 			2, 			3.825278
+798: 			1, 			0.691342
+799: 			1, 			1.904708
+800: 			2, 			3.825278
+801: 			2, 			3.070961
+802:    Nao houve formacao de grupos.
+803:    Nao houve formacao de grupos.
+804: 			2, 			3.825278
+805: 			1, 			0.691342
+806:    Nao houve formacao de grupos.
+807:    Nao houve formacao de grupos.
+808: 			1, 			1.904708
+809: 			2, 			3.070961
+810:    Nao houve formacao de grupos.
+811: 			1, 			0.921322
+812:    Nao houve formacao de grupos.
+813: 			2, 			3.825278
+814: 			2, 			3.825278
+815: 			2, 			3.070961
+816:    Nao houve formacao de grupos.
+817: 			1, 			0.921322
+818: 			2, 			2.552269
+819:    Nao houve formacao de grupos.
+820: 			2, 			3.825278
+821:    Nao houve formacao de grupos.
+822: 			2, 			3.825278
+823:    Nao houve formacao de grupos.
+824: 			2, 			3.070961
+825: 			2, 			3.070961
+826: 			2, 			1.603404
+827: 			1, 			1.904708
+828:    Nao houve formacao de grupos.
+829: 			1, 			1.269144
+830: 			2, 			3.070961
+831: 			2, 			2.552269
+832:    Nao houve formacao de grupos.
+833:    Nao houve formacao de grupos.
+834: 			1, 			0.921322
+835:    Nao houve formacao de grupos.
+836: 			2, 			3.070961
+837: 			2, 			3.825278
+838: 			2, 			3.070961
+839: 			1, 			0.921322
+840: 			2, 			2.552269
+841: 			2, 			3.070961
+842: 			1, 			1.904708
+843: 			2, 			3.825278
+844:    Nao houve formacao de grupos.
+845: 			2, 			3.070961
+846: 			2, 			1.393248
+847: 			2, 			3.825278
+848: 			1, 			0.401460
+849: 			2, 			1.854858
+850: 			2, 			2.552269
+851: 			2, 			3.070961
+852:    Nao houve formacao de grupos.
+853: 			2, 			3.825278
+854: 			2, 			3.070961
+855:    Nao houve formacao de grupos.
+856: 			2, 			3.825278
+857: 			2, 			3.825278
+858: 			3, 			4.954626
+859: 			1, 			1.904708
+860: 			2, 			3.825278
+861:    Nao houve formacao de grupos.
+862:    Nao houve formacao de grupos.
+863: 			2, 			2.552269
+864: 			2, 			3.825278
+865: 			3, 			5.762031
+866: 			2, 			3.825278
+867: 			2, 			3.825278
+868: 			2, 			3.825278
+869:    Nao houve formacao de grupos.
+870: 			2, 			3.825278
+871: 			2, 			3.825278
+872: 			2, 			3.825278
+873: 			1, 			1.269144
+874: 			2, 			3.825278
+875: 			2, 			3.070961
+876: 			2, 			3.070961
+877:    Nao houve formacao de grupos.
+878:    Nao houve formacao de grupos.
+879: 			2, 			3.070961
+880: 			2, 			3.070961
+881: 			2, 			3.825278
+882:    Nao houve formacao de grupos.
+883:    Nao houve formacao de grupos.
+884: 			2, 			3.825278
+885:    Nao houve formacao de grupos.
+886: 			2, 			2.162712
+887: 			2, 			3.825278
+888: 			1, 			1.904708
+889:    Nao houve formacao de grupos.
+890: 			2, 			3.825278
+891:    Nao houve formacao de grupos.
+892: 			2, 			3.825278
+893: 			2, 			3.825278
+894: 			2, 			3.825278
+895: 			2, 			3.825278
+896:    Nao houve formacao de grupos.
+897: 			2, 			3.825278
+898: 			1, 			1.269144
+899: 			2, 			2.552269
+900:    Nao houve formacao de grupos.
+901: 			2, 			3.825278
+902:    Nao houve formacao de grupos.
+903:    Nao houve formacao de grupos.
+904: 			2, 			3.825278
+905:    Nao houve formacao de grupos.
+906: 			2, 			3.825278
+907: 			2, 			3.070961
+908: 			2, 			3.825278
+909: 			2, 			3.825278
+910: 			2, 			3.825278
+911: 			2, 			2.162712
+912: 			2, 			3.825278
+913: 			2, 			2.162712
+914:    Nao houve formacao de grupos.
+915: 			2, 			3.825278
+916: 			2, 			3.070961
+917: 			2, 			3.825278
+918: 			2, 			3.825278
+919: 			1, 			0.525961
+920:    Nao houve formacao de grupos.
+921: 			2, 			1.603404
+922: 			2, 			3.825278
+923: 			2, 			3.825278
+924:    Nao houve formacao de grupos.
+925: 			2, 			3.825278
+926: 			2, 			3.825278
+927: 			2, 			3.825278
+928: 			2, 			3.070961
+929:    Nao houve formacao de grupos.
+930: 			2, 			3.070961
+931: 			2, 			3.070961
+932:    Nao houve formacao de grupos.
+933: 			2, 			3.070961
+934:    Nao houve formacao de grupos.
+935: 			1, 			1.904708
+936:    Nao houve formacao de grupos.
+937:    Nao houve formacao de grupos.
+938: 			2, 			1.603404
+939: 			2, 			3.825278
+940: 			1, 			0.921322
+941: 			2, 			3.825278
+942: 			1, 			1.904708
+943:    Nao houve formacao de grupos.
+944: 			2, 			3.070961
+945:    Nao houve formacao de grupos.
+946:    Nao houve formacao de grupos.
+947: 			2, 			3.825278
+948:    Nao houve formacao de grupos.
+949: 			1, 			1.904708
+950: 			2, 			3.825278
+951: 			1, 			1.269144
+952: 			3, 			4.954626
+953:    Nao houve formacao de grupos.
+954: 			1, 			1.269144
+955: 			2, 			3.825278
+956: 			1, 			0.229600
+957:    Nao houve formacao de grupos.
+958: 			2, 			3.825278
+959: 			2, 			3.070961
+960: 			1, 			1.269144
+961:    Nao houve formacao de grupos.
+962:    Nao houve formacao de grupos.
+963: 			1, 			1.904708
+964:    Nao houve formacao de grupos.
+965: 			2, 			3.825278
+966:    Nao houve formacao de grupos.
+967: 			1, 			0.691342
+968: 			2, 			2.552269
+969: 			2, 			2.552269
+970: 			2, 			3.825278
+971:    Nao houve formacao de grupos.
+972: 			2, 			3.825278
+973: 			1, 			1.269144
+974: 			1, 			0.921322
+975: 			2, 			3.070961
+976: 			2, 			2.162712
+977: 			2, 			3.070961
+978:    Nao houve formacao de grupos.
+979: 			2, 			3.070961
+980:    Nao houve formacao de grupos.
+981: 			1, 			1.904708
+982: 			2, 			3.070961
+983: 			3, 			3.849686
+984: 			2, 			1.603404
+985:    Nao houve formacao de grupos.
+986: 			2, 			2.552269
+987: 			2, 			3.825278
+988: 			2, 			1.854858
+989: 			2, 			3.070961
+990: 			2, 			2.552269
+991: 			2, 			3.825278
+992: 			2, 			3.825278
+993: 			2, 			2.552269
+994:    Nao houve formacao de grupos.
+995:    Nao houve formacao de grupos.
+996: 			2, 			3.070961
+997: 			2, 			1.854858
+998: 			1, 			1.904708
+999: 			2, 			3.825278
+
+
+Dados para histograma de maximo de pontos pretos:
+Numero maximo de pontos pretos		Frequencia de ocorrencia
+	1  					178
+	2  					515
+	3  					23
+	4  					1
+
+
+Dados para histograma de estatistica scan:
+Estatistica Scan dos SGs com máximo de pontos pretos		Frequencia de ocorrencia
+	Entre 0.000000 e 0.050000 					0
+	Entre 0.050000 e 0.100000 					0
+	Entre 0.100000 e 0.150000 					0
+	Entre 0.150000 e 0.200000 					0
+	Entre 0.200000 e 0.250000 					1
+	Entre 0.250000 e 0.300000 					0
+	Entre 0.300000 e 0.350000 					1
+	Entre 0.350000 e 0.400000 					0
+	Entre 0.400000 e 0.450000 					1
+	Entre 0.450000 e 0.500000 					0
+	Entre 0.500000 e 0.550000 					1
+	Entre 0.550000 e 0.600000 					0
+	Entre 0.600000 e 0.650000 					1
+	Entre 0.650000 e 0.700000 					20
+	Entre 0.700000 e 0.750000 					0
+	Entre 0.750000 e 0.800000 					0
+	Entre 0.800000 e 0.850000 					0
+	Entre 0.850000 e 0.900000 					0
+	Entre 0.900000 e 0.950000 					25
+	Entre 0.950000 e 1.000000 					0
+	Entre 1.000000 e 1.050000 					0
+	Entre 1.050000 e 1.100000 					0
+	Entre 1.100000 e 1.150000 					0
+	Entre 1.150000 e 1.200000 					0
+	Entre 1.200000 e 1.250000 					0
+	Entre 1.250000 e 1.300000 					50
+	Entre 1.300000 e 1.350000 					0
+	Entre 1.350000 e 1.400000 					10
+	Entre 1.400000 e 1.450000 					0
+	Entre 1.450000 e 1.500000 					0
+	Entre 1.500000 e 1.550000 					0
+	Entre 1.550000 e 1.600000 					0
+	Entre 1.600000 e 1.650000 					10
+	Entre 1.650000 e 1.700000 					0
+	Entre 1.700000 e 1.750000 					0
+	Entre 1.750000 e 1.800000 					0
+	Entre 1.800000 e 1.850000 					0
+	Entre 1.850000 e 1.900000 					17
+	Entre 1.900000 e 1.950000 					82
+	Entre 1.950000 e 2.000000 					0
+	Entre 2.000000 e 2.050000 					0
+	Entre 2.050000 e 2.100000 					0
+	Entre 2.100000 e 2.150000 					0
+	Entre 2.150000 e 2.200000 					29
+	Entre 2.200000 e 2.250000 					0
+	Entre 2.250000 e 2.300000 					0
+	Entre 2.300000 e 2.350000 					0
+	Entre 2.350000 e 2.400000 					0
+	Entre 2.400000 e 2.450000 					0
+	Entre 2.450000 e 2.500000 					0
+	Entre 2.500000 e 2.550000 					0
+	Entre 2.550000 e 2.600000 					61
+	Entre 2.600000 e 2.650000 					0
+	Entre 2.650000 e 2.700000 					0
+	Entre 2.700000 e 2.750000 					0
+	Entre 2.750000 e 2.800000 					0
+	Entre 2.800000 e 2.850000 					0
+	Entre 2.850000 e 2.900000 					0
+	Entre 2.900000 e 2.950000 					0
+	Entre 2.950000 e 3.000000 					0
+	Entre 3.000000 e 3.050000 					0
+	Entre 3.050000 e 3.100000 					118
+	Entre 3.100000 e 3.150000 					0
+	Entre 3.150000 e 3.200000 					0
+	Entre 3.200000 e 3.250000 					0
+	Entre 3.250000 e 3.300000 					0
+	Entre 3.300000 e 3.350000 					0
+	Entre 3.350000 e 3.400000 					0
+	Entre 3.400000 e 3.450000 					0
+	Entre 3.450000 e 3.500000 					0
+	Entre 3.500000 e 3.550000 					0
+	Entre 3.550000 e 3.600000 					0
+	Entre 3.600000 e 3.650000 					0
+	Entre 3.650000 e 3.700000 					0
+	Entre 3.700000 e 3.750000 					0
+	Entre 3.750000 e 3.800000 					0
+	Entre 3.800000 e 3.850000 					268
+	Entre 3.850000 e 3.900000 					0
+	Entre 3.900000 e 3.950000 					0
+	Entre 3.950000 e 4.000000 					0
+	Entre 4.000000 e 4.050000 					0
+	Entre 4.050000 e 4.100000 					0
+	Entre 4.100000 e 4.150000 					0
+	Entre 4.150000 e 4.200000 					0
+	Entre 4.200000 e 4.250000 					0
+	Entre 4.250000 e 4.300000 					0
+	Entre 4.300000 e 4.350000 					5
+	Entre 4.350000 e 4.400000 					0
+	Entre 4.400000 e 4.450000 					0
+	Entre 4.450000 e 4.500000 					0
+	Entre 4.500000 e 4.550000 					0
+	Entre 4.550000 e 4.600000 					0
+	Entre 4.600000 e 4.650000 					0
+	Entre 4.650000 e 4.700000 					0
+	Entre 4.700000 e 4.750000 					0
+	Entre 4.750000 e 4.800000 					0
+	Entre 4.800000 e 4.850000 					0
+	Entre 4.850000 e 4.900000 					0
+	Entre 4.900000 e 4.950000 					0
+	Entre 4.950000 e 5.000000 					8
+	Entre 5.000000 e 5.050000 					0
+	Entre 5.050000 e 5.100000 					0
+	Entre 5.100000 e 5.150000 					0
+	Entre 5.150000 e 5.200000 					0
+	Entre 5.200000 e 5.250000 					0
+	Entre 5.250000 e 5.300000 					0
+	Entre 5.300000 e 5.350000 					0
+	Entre 5.350000 e 5.400000 					0
+	Entre 5.400000 e 5.450000 					0
+	Entre 5.450000 e 5.500000 					0
+	Entre 5.500000 e 5.550000 					0
+	Entre 5.550000 e 5.600000 					0
+	Entre 5.600000 e 5.650000 					0
+	Entre 5.650000 e 5.700000 					0
+	Entre 5.700000 e 5.750000 					0
+	Entre 5.750000 e 5.800000 					8
+	Entre 5.800000 e 5.850000 					0
+	Entre 5.850000 e 5.900000 					0
+	Entre 5.900000 e 5.950000 					0
+	Entre 5.950000 e 6.000000 					0
+	Entre 6.000000 e 6.050000 					0
+	Entre 6.050000 e 6.100000 					0
+	Entre 6.100000 e 6.150000 					0
+	Entre 6.150000 e 6.200000 					0
+	Entre 6.200000 e 6.250000 					0
+	Entre 6.250000 e 6.300000 					0
+	Entre 6.300000 e 6.350000 					0
+	Entre 6.350000 e 6.400000 					0
+	Entre 6.400000 e 6.450000 					0
+	Entre 6.450000 e 6.500000 					0
+	Entre 6.500000 e 6.550000 					0
+	Entre 6.550000 e 6.600000 					0
+	Entre 6.600000 e 6.650000 					0
+	Entre 6.650000 e 6.700000 					0
+	Entre 6.700000 e 6.750000 					0
+	Entre 6.750000 e 6.800000 					0
+	Entre 6.800000 e 6.850000 					0
+	Entre 6.850000 e 6.900000 					0
+	Entre 6.900000 e 6.950000 					0
+	Entre 6.950000 e 7.000000 					0
+	Entre 7.000000 e 7.050000 					0
+	Entre 7.050000 e 7.100000 					0
+	Entre 7.100000 e 7.150000 					0
+	Entre 7.150000 e 7.200000 					0
+	Entre 7.200000 e 7.250000 					0
+	Entre 7.250000 e 7.300000 					0
+	Entre 7.300000 e 7.350000 					0
+	Entre 7.350000 e 7.400000 					0
+	Entre 7.400000 e 7.450000 					0
+	Entre 7.450000 e 7.500000 					0
+	Entre 7.500000 e 7.550000 					0
+	Entre 7.550000 e 7.600000 					0
+	Entre 7.600000 e 7.650000 					0
+	Entre 7.650000 e 7.715302 					1

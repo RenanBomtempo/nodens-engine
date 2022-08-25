@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Grid">
+      <UniqueIdentifier>{4BF1857C-3728-870D-E014-6D10CC2A030F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Grid\MHC">
+      <UniqueIdentifier>{B2B57E45-9E82-D950-C79B-C7F8B3C70EDF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Grid\Nodes">
+      <UniqueIdentifier>{53FF2AA0-3FB7-6CED-A8BE-4549949507DE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{AFF4887C-9B2B-8A0D-4418-7010302E060F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ALG.h" />
+    <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\Grid\Grid2D.h">
+      <Filter>Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Grid\MHC\MHC.h">
+      <Filter>Grid\MHC</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Grid\Nodes\BoundaryNode.h">
+      <Filter>Grid\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Grid\Nodes\CellBunch.h">
+      <Filter>Grid\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Grid\Nodes\CellNode.h">
+      <Filter>Grid\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Grid\Nodes\Node.h">
+      <Filter>Grid\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Grid\Nodes\NodeData.h">
+      <Filter>Grid\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Grid\Nodes\TransitionNode.h">
+      <Filter>Grid\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\Math\Vector2D.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\algpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Grid\Grid2D.cpp">
+      <Filter>Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Grid2DCoarsening.cpp">
+      <Filter>Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Grid2DRefinement.cpp">
+      <Filter>Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\MHC\MHC.cpp">
+      <Filter>Grid\MHC</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Nodes\BoundaryNode.cpp">
+      <Filter>Grid\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Nodes\CellBunch.cpp">
+      <Filter>Grid\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Nodes\CellNode.cpp">
+      <Filter>Grid\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Nodes\Node.cpp">
+      <Filter>Grid\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Nodes\NodeData.cpp">
+      <Filter>Grid\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Grid\Nodes\TransitionNode.cpp">
+      <Filter>Grid\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\Math\Vector2D.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\algpch.cpp" />
+  </ItemGroup>
+</Project>

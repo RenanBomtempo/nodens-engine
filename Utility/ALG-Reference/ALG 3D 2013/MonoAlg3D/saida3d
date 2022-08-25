@@ -1,0 +1,23 @@
+System parameters: 
+Time discretization: 0.010000
+Initial V: -83.853000
+Initial Space Discretization: 50.000000 um
+Initial Refinement Level: 6
+Maximum Space Discretization: 200.000000 um
+Minimum Refinement Level: 4
+Minimum Space Discretization: 50.000000 um
+Maximum Refinement Level: 6
+Width = 3200.000000 um, height = 3200.000000 um 
+Volumes X = 64, Volumes Y = 64, Volumes Z = 64 
+Initial N. of Elements = 262144
+time step = 0.010000
+Simulation Final Time = 10.000000
+Print Rate = 10
+Stimulus start = 0.000000
+Stimulus duration = 2.000000
+Stimulus value = -83.853000
+Maximum CG iterations = 262144
+Refinement Bound = 0.100000
+Derefinement Bound = 0.200000
+Using adaptativity
+The solution will not be saved

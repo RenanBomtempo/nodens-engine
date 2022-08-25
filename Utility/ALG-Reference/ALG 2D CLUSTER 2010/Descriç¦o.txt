@@ -1,0 +1,7 @@
+Não possui deslocamentos de pontos.
+
+Possui todas as estatísticas.
+
+Para cada uma das 10 combinações de (MAX, SUPERMAX), faz 999 iterações com os pontos pretos selecionados aleatoriamente dentre o total, e 1 com os pontos originais.
+
+O valor da razão entre MAX e SUPERMAX deve ser alterado manualmente. Devem ser usadas razões de 1, 2 e 4 vezes. Os arquivos-texto resultantes estão sendo colocados na pasta "arquivos", e devem ser copiados depois na pasta com a razão MAX/SUPERMAX correspondente.

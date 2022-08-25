@@ -1,0 +1,84 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Burgarelli}{Burgarelli}{}]{Burgarelli1998}
+{\sc Burgarelli, D.}
+\newblock Modelagem x computacional e simula{\c{c}}{\~a}o num{\'e}rica
+  adaptativa de equa{\c{c}}{\~o}es diferenciais parciais evolutivas aplicadas a
+  um problema termoac{\'u}stico.
+
+\bibitem[\protect\citeauthoryear{Burgarelli, Kischinhevsky, and
+  Biezuner}{Burgarelli et~al\mbox{.}}{2006}]{Burgarellietal2006}
+{\sc Burgarelli, D.}, {\sc Kischinhevsky, M.}, {\sc and} {\sc Biezuner, R.~J.}
+  2006.
+\newblock A new adaptive mesh refinement strategy for numerically solving
+  evolutionary pde's.
+\newblock {\em J. Comput. Appl. Math.\/}~{\em 196}, 115--131.
+
+\bibitem[\protect\citeauthoryear{{C. Luo} and {Yoram Rudy}}{{C. Luo} and {Yoram
+  Rudy}}{1991}]{Luo1991}
+{\sc {C. Luo}} {\sc and} {\sc {Yoram Rudy}}. 1991.
+\newblock A model of the ventricular cardiac action potential. depolarization,
+  repolarization, and their interaction.
+\newblock {\em Circ Res\/}~{\em 68,\/}~6, 1501--26.
+
+\bibitem[\protect\citeauthoryear{Coudiere, Pierre, and Turpault}{Coudiere
+  et~al\mbox{.}}{2009}]{coudiere20092d}
+{\sc Coudiere, y.}, {\sc Pierre, C.}, {\sc and} {\sc Turpault, R.} 2009.
+\newblock {A 2d/3d finite volume method used to solve the bidomain equations of
+  electrocardiology}.
+\newblock In {\em proceedings of Algoritmy}. 1--10.
+
+\bibitem[\protect\citeauthoryear{Gamezo, Khokhlov, and Oran}{Gamezo
+  et~al\mbox{.}}{2005}]{Gamezoetal2005a}
+{\sc Gamezo, V.}, {\sc Khokhlov, A.}, {\sc and} {\sc Oran, E.} 2005.
+\newblock Three-dimensional delayed-detonation model of type ia supernovae.
+\newblock {\em The Astrophysical Journal\/}~{\em 623}, 337.
+
+\bibitem[\protect\citeauthoryear{Harrild and Henriquez}{Harrild and
+  Henriquez}{1997}]{harrild1997finite}
+{\sc Harrild, D.} {\sc and} {\sc Henriquez, C.} 1997.
+\newblock {A finite volume model of cardiac propagation}.
+\newblock {\em Annals of biomedical engineering\/}~{\em 25,\/}~2, 315--334.
+
+\bibitem[\protect\citeauthoryear{{J. Sundnes}, {G. T. Lines}, {X. Cai}, {B. F.
+  Nielsen}, {K. A. Mardal}, and {A. Tveito}}{{J. Sundnes}
+  et~al\mbox{.}}{2006}]{Sundnes2006Book}
+{\sc {J. Sundnes}}, {\sc {G. T. Lines}}, {\sc {X. Cai}}, {\sc {B. F. Nielsen}},
+  {\sc {K. A. Mardal}}, {\sc and} {\sc {A. Tveito}}. 2006.
+\newblock {\em Computing the {E}lectrical {A}ctivity in the {H}eart}.
+\newblock Springer.
+
+\bibitem[\protect\citeauthoryear{Ji, Lien, and Yee}{Ji
+  et~al\mbox{.}}{2008}]{Jietal2008}
+{\sc Ji, H.}, {\sc Lien, F.}, {\sc and} {\sc Yee, E.} 2008.
+\newblock A robust and efficient hybrid cut-cell/ghost-cell method with
+  adaptive mesh refinement for moving boundaries on irregular domains.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering\/}~{\em
+  198,\/}~3-4, 432--448.
+
+\bibitem[\protect\citeauthoryear{Penner, Andronova, Oehmke, Brown, Stout,
+  Jablonowski, Leer, Powell, and Herzog}{Penner
+  et~al\mbox{.}}{2007}]{Penneretal2007}
+{\sc Penner, J.}, {\sc Andronova, N.}, {\sc Oehmke, R.}, {\sc Brown, J.}, {\sc
+  Stout, Q.}, {\sc Jablonowski, C.}, {\sc Leer, B.}, {\sc Powell, K.}, {\sc
+  and} {\sc Herzog, M.} 2007.
+\newblock Three dimensional adaptive mesh refinement on a spherical shell for
+  atmospheric models with lagrangian coordinates.
+\newblock In {\em Journal of Physics: Conference Series}. Vol.~78. IOP
+  Publishing, 012072.
+
+\bibitem[\protect\citeauthoryear{{R. W. Santos}, {G. Plank}, {S. Bauer}, and
+  {E. J. Vigmond}}{{R. W. Santos} et~al\mbox{.}}{2004}]{Weber2004}
+{\sc {R. W. Santos}}, {\sc {G. Plank}}, {\sc {S. Bauer}}, {\sc and} {\sc {E. J.
+  Vigmond}}. 2004.
+\newblock Parallel multigrid preconditioner for the cardiac bidomain model.
+\newblock {\em IEEE Trans Biomed Eng\/}~{\em 51,\/}~11, 1960--1968.
+
+\bibitem[\protect\citeauthoryear{Tavakoli}{Tavakoli}{2008}]{tavakoli2006}
+{\sc Tavakoli, R.} 2008.
+\newblock Cartgen: Robust, efficient and easy to implement
+  uniform/octree/embedded boundary cartesian grid generator.
+\newblock {\em International Journal for Numerical Methods in Fluids\/}~{\em
+  57,\/}~12, 1753--1770.
+
+\end{thebibliography}

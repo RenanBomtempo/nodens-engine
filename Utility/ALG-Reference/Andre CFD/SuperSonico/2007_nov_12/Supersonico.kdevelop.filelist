@@ -1,0 +1,22 @@
+# KDevelop Custom Project File List
+Cell.cpp
+Cell.h
+constants.h
+derivadas.cpp
+Element.cpp
+Element.h
+erros.h
+fronteira.cpp
+functions.h
+graphics.cpp
+Grid.cpp
+Grid.h
+interpolacao.cpp
+main.cpp
+refinement.cpp
+render.cpp
+solve.cpp
+pressao.cpp
+matriz.cpp
+energia.cpp
+momento.cpp

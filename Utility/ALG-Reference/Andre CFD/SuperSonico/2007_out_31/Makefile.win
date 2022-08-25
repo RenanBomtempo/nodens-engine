@@ -1,0 +1,72 @@
+# Project: ESSPPALG
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = solve.o Cell.o derivadas.o Element.o fronteira.o graphics.o Grid.o interpolacao.o main.o refinement.o render.o energia.o matriz.o momento.o pressao.o $(RES)
+LINKOBJ  = solve.o Cell.o derivadas.o Element.o fronteira.o graphics.o Grid.o interpolacao.o main.o refinement.o render.o energia.o matriz.o momento.o pressao.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -L"Z:/STALTZ/Supersonicowin/Pre-built.2" -L"Z:/STALTZ/Supersonicowin/pthreads.2" -lglut32 -lglu32 -lopengl32  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = simple.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before simple.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "simple.exe" $(LIBS)
+
+solve.o: solve.cpp
+	$(CPP) -c solve.cpp -o solve.o $(CXXFLAGS)
+
+Cell.o: Cell.cpp
+	$(CPP) -c Cell.cpp -o Cell.o $(CXXFLAGS)
+
+derivadas.o: derivadas.cpp
+	$(CPP) -c derivadas.cpp -o derivadas.o $(CXXFLAGS)
+
+Element.o: Element.cpp
+	$(CPP) -c Element.cpp -o Element.o $(CXXFLAGS)
+
+fronteira.o: fronteira.cpp
+	$(CPP) -c fronteira.cpp -o fronteira.o $(CXXFLAGS)
+
+graphics.o: graphics.cpp
+	$(CPP) -c graphics.cpp -o graphics.o $(CXXFLAGS)
+
+Grid.o: Grid.cpp
+	$(CPP) -c Grid.cpp -o Grid.o $(CXXFLAGS)
+
+interpolacao.o: interpolacao.cpp
+	$(CPP) -c interpolacao.cpp -o interpolacao.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+refinement.o: refinement.cpp
+	$(CPP) -c refinement.cpp -o refinement.o $(CXXFLAGS)
+
+render.o: render.cpp
+	$(CPP) -c render.cpp -o render.o $(CXXFLAGS)
+
+energia.o: energia.cpp
+	$(CPP) -c energia.cpp -o energia.o $(CXXFLAGS)
+
+matriz.o: matriz.cpp
+	$(CPP) -c matriz.cpp -o matriz.o $(CXXFLAGS)
+
+momento.o: momento.cpp
+	$(CPP) -c momento.cpp -o momento.o $(CXXFLAGS)
+
+pressao.o: pressao.cpp
+	$(CPP) -c pressao.cpp -o pressao.o $(CXXFLAGS)

@@ -1,0 +1,9 @@
+Bungartz HJ, Mehl M, Neckel T, Weinzierl T (2010) The pde framework peano applied to fluid dynamics:
+an efficient implementation of a parallel multiscale fluid dynamics solver on octree-like adaptive cartesian
+grids. Computational Mechanics 46(1):103--114.
+
+Aftosmis MJ, Berger MJ, Melton JE (1998) Robust and efficient cartesian mesh generation for component based
+geometry. AIAA journal 36(6):952--960.
+
+Khokhlov AM (1998) Fully threaded tree algorithms for adaptive renement uid dynamics simulations.
+Journal of Computational Physics 143(2):519--543.

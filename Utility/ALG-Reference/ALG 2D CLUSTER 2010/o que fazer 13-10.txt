@@ -1,0 +1,26 @@
+Para os graficos de maximo de pontos pretos e estatistica scan:
+(2 tipos de graficos, 3 graficos para cada tipo)
+
+Fazer 3 gráficos para cada, que têm a discretização seguinte:
+intervalos: v(t) = 1.4*v(t-1)
+
+-----------------------------------------------------------------------
+1.
+ir de 0.005 até 0.100 (SUPERMAX)
+ir de 0.010 até 0.200 (MAX = 2*SUPERMAX)
+-----------------------------------------------------------------------
+2.
+ir de 0.005 até 0.100 (SUPERMAX)
+ir de 0.005 até 0.100 (MAX = SUPERMAX)
+-----------------------------------------------------------------------
+3.
+ir de 0.005 até 0.100 (SUPERMAX)
+ir de 0.020 até 0.400 (MAX = 4*SUPERMAX)
+-----------------------------------------------------------------------
+
+Não precisa mais fazer o quantil.
+
+
+Fazer histograma (30 vezes, um para cada combinação de valores MAX,SUPERMAX, só para o tipo media de maximo de pontos pretos):
+roda mil vezes o algoritmo. Para cada vez, pega o maior numero de pontos pretos dentro dos SGs. No final, os valores do eixo x são todas as opções que apareceram, e para cada valor em x o eixo y contem o numero de vezes que esse valor apareceu.
+Ter pelo menos os arquivos-texto com as info's, se der, fazer os histogramas (com barras).

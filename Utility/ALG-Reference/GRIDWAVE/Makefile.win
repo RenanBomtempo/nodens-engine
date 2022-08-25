@@ -1,0 +1,54 @@
+# Project: GridWave
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = Cell.o characteristicsMethod.o derefinement.o flux.o graphics.o Grid.o initialCondition.o mainWithGraphics.o refinement.o $(RES)
+LINKOBJ  = Cell.o characteristicsMethod.o derefinement.o flux.o graphics.o Grid.o initialCondition.o mainWithGraphics.o refinement.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" ../../../../../../Dev-Cpp/lib/libopengl32.a ../../../../../../Dev-Cpp/lib/libglu32.a ../../../../../../Dev-Cpp/lib/libglut32.a  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = GridWave.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before GridWave.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "GridWave.exe" $(LIBS)
+
+Cell.o: Cell.cpp
+	$(CPP) -c Cell.cpp -o Cell.o $(CXXFLAGS)
+
+characteristicsMethod.o: characteristicsMethod.cpp
+	$(CPP) -c characteristicsMethod.cpp -o characteristicsMethod.o $(CXXFLAGS)
+
+derefinement.o: derefinement.cpp
+	$(CPP) -c derefinement.cpp -o derefinement.o $(CXXFLAGS)
+
+flux.o: flux.cpp
+	$(CPP) -c flux.cpp -o flux.o $(CXXFLAGS)
+
+graphics.o: graphics.cpp
+	$(CPP) -c graphics.cpp -o graphics.o $(CXXFLAGS)
+
+Grid.o: Grid.cpp
+	$(CPP) -c Grid.cpp -o Grid.o $(CXXFLAGS)
+
+initialCondition.o: initialCondition.cpp
+	$(CPP) -c initialCondition.cpp -o initialCondition.o $(CXXFLAGS)
+
+mainWithGraphics.o: mainWithGraphics.cpp
+	$(CPP) -c mainWithGraphics.cpp -o mainWithGraphics.o $(CXXFLAGS)
+
+refinement.o: refinement.cpp
+	$(CPP) -c refinement.cpp -o refinement.o $(CXXFLAGS)

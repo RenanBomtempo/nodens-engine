@@ -1,0 +1,17 @@
+Imagem 'resultados1p.jpg', configuracao inicial:
+
+Refinamento inicial da malha: 4
+Refinamento maximo permitido: 4
+Refinamento minimo permitido ao desrefinar: 4
+Erro maximo nas iteracoes de picard: 10^-1
+Incremento de tempo: 10^-11
+
+Imagens 'resultados2t.jpg', 'resultados3d.jpg', 'resultados4v.jpg', configuracao inicial:
+
+Refinamento inicial da malha: 5
+Refinamento maximo permitido: 5
+Refinamento minimo permitido ao desrefinar: 5
+Erro maximo nas iteracoes de picard: 10^-1
+Incremento de tempo: 10^-11
+
+A imagem 'resultados4v.jpg' mostra o campo vetorial da velocidade, mas só em um trecho da malha, perto da ponta da placa.

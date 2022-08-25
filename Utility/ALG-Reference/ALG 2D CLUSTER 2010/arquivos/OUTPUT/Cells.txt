@@ -1,0 +1,1065 @@
+Cell = 0  nBlack = 0  nWhite = 0  Cell(x,y) = (0.875, 0.875)
+level = 2  SuperGroup = 0  Group = 0
+
+Cell = 1  nBlack = 0  nWhite = 100  Cell(x,y) = (0.875, 0.625)
+level = 2  SuperGroup = 0  Group = 0
+
+Cell = 2  nBlack = 0  nWhite = 112  Cell(x,y) = (0.6875, 0.6875)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 3  nBlack = 0  nWhite = 67  Cell(x,y) = (0.6875, 0.5625)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 4  nBlack = 0  nWhite = 2  Cell(x,y) = (0.617188, 0.617188)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 5  nBlack = 0  nWhite = 0  Cell(x,y) = (0.617188, 0.601563)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 6  nBlack = 0  nWhite = 7  Cell(x,y) = (0.601563, 0.601563)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 7  nBlack = 1  nWhite = 4  Cell(x,y) = (0.601563, 0.617188)  blackPoint(x,y) = (0.608583, 0.621586)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 8  nBlack = 0  nWhite = 0  Cell(x,y) = (0.578125, 0.609375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 9  nBlack = 0  nWhite = 0  Cell(x,y) = (0.578125, 0.578125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 10  nBlack = 0  nWhite = 1  Cell(x,y) = (0.609375, 0.578125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 11  nBlack = 0  nWhite = 0  Cell(x,y) = (0.609375, 0.546875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 12  nBlack = 0  nWhite = 0  Cell(x,y) = (0.617188, 0.523438)
+level = 6  SuperGroup = 1  Group = 1
+
+Cell = 13  nBlack = 1  nWhite = 10  Cell(x,y) = (0.617188, 0.507813)  blackPoint(x,y) = (0.618986, 0.508453)
+level = 6  SuperGroup = 1  Group = 1
+
+Cell = 14  nBlack = 0  nWhite = 0  Cell(x,y) = (0.601563, 0.507813)
+level = 6  SuperGroup = 1  Group = 1
+
+Cell = 15  nBlack = 0  nWhite = 6  Cell(x,y) = (0.601563, 0.523438)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 16  nBlack = 0  nWhite = 10  Cell(x,y) = (0.578125, 0.515625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 17  nBlack = 0  nWhite = 9  Cell(x,y) = (0.578125, 0.546875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 18  nBlack = 0  nWhite = 4  Cell(x,y) = (0.546875, 0.546875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 19  nBlack = 1  nWhite = 11  Cell(x,y) = (0.546875, 0.515625)  blackPoint(x,y) = (0.547464, 0.516255)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 20  nBlack = 0  nWhite = 2  Cell(x,y) = (0.515625, 0.515625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 21  nBlack = 0  nWhite = 0  Cell(x,y) = (0.507813, 0.539063)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 22  nBlack = 0  nWhite = 0  Cell(x,y) = (0.523438, 0.539063)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 23  nBlack = 0  nWhite = 2  Cell(x,y) = (0.523438, 0.554688)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 24  nBlack = 1  nWhite = 7  Cell(x,y) = (0.507813, 0.554688)  blackPoint(x,y) = (0.50065, 0.560468)
+level = 6  SuperGroup = 2  Group = 2
+
+Cell = 25  nBlack = 0  nWhite = 14  Cell(x,y) = (0.515625, 0.578125)
+level = 5  SuperGroup = 2  Group = 2
+
+Cell = 26  nBlack = 0  nWhite = 6  Cell(x,y) = (0.546875, 0.578125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 27  nBlack = 0  nWhite = 0  Cell(x,y) = (0.546875, 0.609375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 28  nBlack = 0  nWhite = 0  Cell(x,y) = (0.523438, 0.617188)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 29  nBlack = 0  nWhite = 0  Cell(x,y) = (0.523438, 0.601563)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 30  nBlack = 0  nWhite = 1  Cell(x,y) = (0.507813, 0.601563)
+level = 6  SuperGroup = 2  Group = 3
+
+Cell = 31  nBlack = 1  nWhite = 1  Cell(x,y) = (0.507813, 0.617188)  blackPoint(x,y) = (0.50065, 0.609883)
+level = 6  SuperGroup = 2  Group = 3
+
+Cell = 32  nBlack = 0  nWhite = 3  Cell(x,y) = (0.507813, 0.632813)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 33  nBlack = 0  nWhite = 0  Cell(x,y) = (0.523438, 0.632813)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 34  nBlack = 0  nWhite = 0  Cell(x,y) = (0.523438, 0.648438)
+level = 6  SuperGroup = 3  Group = 4
+
+Cell = 35  nBlack = 1  nWhite = 2  Cell(x,y) = (0.507813, 0.648438)  blackPoint(x,y) = (0.504551, 0.648895)
+level = 6  SuperGroup = 3  Group = 4
+
+Cell = 36  nBlack = 0  nWhite = 15  Cell(x,y) = (0.515625, 0.671875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 37  nBlack = 0  nWhite = 17  Cell(x,y) = (0.546875, 0.671875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 38  nBlack = 0  nWhite = 6  Cell(x,y) = (0.546875, 0.640625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 39  nBlack = 1  nWhite = 17  Cell(x,y) = (0.578125, 0.640625)  blackPoint(x,y) = (0.577373, 0.644993)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 40  nBlack = 0  nWhite = 0  Cell(x,y) = (0.609375, 0.640625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 41  nBlack = 0  nWhite = 11  Cell(x,y) = (0.609375, 0.671875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 42  nBlack = 0  nWhite = 16  Cell(x,y) = (0.578125, 0.671875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 43  nBlack = 0  nWhite = 1  Cell(x,y) = (0.578125, 0.703125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 44  nBlack = 0  nWhite = 0  Cell(x,y) = (0.601563, 0.695313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 45  nBlack = 0  nWhite = 16  Cell(x,y) = (0.617188, 0.695313)
+level = 6  SuperGroup = 4  Group = 5
+
+Cell = 46  nBlack = 1  nWhite = 2  Cell(x,y) = (0.617188, 0.710938)  blackPoint(x,y) = (0.620286, 0.703511)
+level = 6  SuperGroup = 4  Group = 5
+
+Cell = 47  nBlack = 0  nWhite = 0  Cell(x,y) = (0.601563, 0.710938)
+level = 6  SuperGroup = 4  Group = 5
+
+Cell = 48  nBlack = 0  nWhite = 18  Cell(x,y) = (0.609375, 0.734375)
+level = 5  SuperGroup = 4  Group = 6
+
+Cell = 49  nBlack = 1  nWhite = 9  Cell(x,y) = (0.585938, 0.742188)  blackPoint(x,y) = (0.590377, 0.745124)
+level = 6  SuperGroup = 4  Group = 6
+
+Cell = 50  nBlack = 0  nWhite = 1  Cell(x,y) = (0.585938, 0.726563)
+level = 6  SuperGroup = 4  Group = 6
+
+Cell = 51  nBlack = 0  nWhite = 9  Cell(x,y) = (0.570313, 0.726563)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 52  nBlack = 0  nWhite = 0  Cell(x,y) = (0.570313, 0.742188)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 53  nBlack = 0  nWhite = 4  Cell(x,y) = (0.546875, 0.734375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 54  nBlack = 0  nWhite = 9  Cell(x,y) = (0.546875, 0.703125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 55  nBlack = 0  nWhite = 7  Cell(x,y) = (0.515625, 0.703125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 56  nBlack = 0  nWhite = 0  Cell(x,y) = (0.507813, 0.726563)
+level = 6  SuperGroup = 5  Group = 7
+
+Cell = 57  nBlack = 1  nWhite = 10  Cell(x,y) = (0.523438, 0.726563)  blackPoint(x,y) = (0.520156, 0.73212)
+level = 6  SuperGroup = 5  Group = 7
+
+Cell = 58  nBlack = 1  nWhite = 7  Cell(x,y) = (0.523438, 0.742188)  blackPoint(x,y) = (0.521456, 0.741222)
+level = 6  SuperGroup = 5  Group = 7
+
+Cell = 59  nBlack = 0  nWhite = 0  Cell(x,y) = (0.507813, 0.742188)
+level = 6  SuperGroup = 5  Group = 7
+
+Cell = 60  nBlack = 0  nWhite = 19  Cell(x,y) = (0.515625, 0.765625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 61  nBlack = 1  nWhite = 34  Cell(x,y) = (0.546875, 0.765625)  blackPoint(x,y) = (0.547464, 0.764629)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 62  nBlack = 0  nWhite = 19  Cell(x,y) = (0.546875, 0.796875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 63  nBlack = 0  nWhite = 11  Cell(x,y) = (0.515625, 0.796875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 64  nBlack = 0  nWhite = 8  Cell(x,y) = (0.515625, 0.828125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 65  nBlack = 0  nWhite = 6  Cell(x,y) = (0.515625, 0.859375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 66  nBlack = 0  nWhite = 9  Cell(x,y) = (0.546875, 0.859375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 67  nBlack = 0  nWhite = 0  Cell(x,y) = (0.554688, 0.835938)
+level = 6  SuperGroup = 6  Group = 8
+
+Cell = 68  nBlack = 1  nWhite = 8  Cell(x,y) = (0.539063, 0.835938)  blackPoint(x,y) = (0.542263, 0.837451)
+level = 6  SuperGroup = 6  Group = 8
+
+Cell = 69  nBlack = 1  nWhite = 8  Cell(x,y) = (0.539063, 0.820313)  blackPoint(x,y) = (0.539662, 0.824447)
+level = 6  SuperGroup = 6  Group = 8
+
+Cell = 70  nBlack = 0  nWhite = 0  Cell(x,y) = (0.554688, 0.820313)
+level = 6  SuperGroup = 6  Group = 8
+
+Cell = 71  nBlack = 0  nWhite = 10  Cell(x,y) = (0.59375, 0.84375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 72  nBlack = 0  nWhite = 0  Cell(x,y) = (0.609375, 0.796875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 73  nBlack = 1  nWhite = 11  Cell(x,y) = (0.578125, 0.796875)  blackPoint(x,y) = (0.579974, 0.797139)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 74  nBlack = 0  nWhite = 31  Cell(x,y) = (0.578125, 0.765625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 75  nBlack = 0  nWhite = 0  Cell(x,y) = (0.609375, 0.765625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 76  nBlack = 0  nWhite = 10  Cell(x,y) = (0.6875, 0.8125)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 77  nBlack = 0  nWhite = 0  Cell(x,y) = (0.6875, 0.9375)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 78  nBlack = 0  nWhite = 0  Cell(x,y) = (0.59375, 0.96875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 79  nBlack = 0  nWhite = 0  Cell(x,y) = (0.59375, 0.90625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 80  nBlack = 0  nWhite = 0  Cell(x,y) = (0.554688, 0.929688)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 81  nBlack = 0  nWhite = 0  Cell(x,y) = (0.539063, 0.929688)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 82  nBlack = 1  nWhite = 1  Cell(x,y) = (0.539063, 0.914063)  blackPoint(x,y) = (0.546164, 0.908973)
+level = 6  SuperGroup = 7  Group = 9
+
+Cell = 83  nBlack = 0  nWhite = 0  Cell(x,y) = (0.554688, 0.914063)
+level = 6  SuperGroup = 7  Group = 9
+
+Cell = 84  nBlack = 0  nWhite = 0  Cell(x,y) = (0.546875, 0.890625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 85  nBlack = 0  nWhite = 19  Cell(x,y) = (0.515625, 0.890625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 86  nBlack = 0  nWhite = 4  Cell(x,y) = (0.515625, 0.921875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 87  nBlack = 0  nWhite = 1  Cell(x,y) = (0.53125, 0.96875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 88  nBlack = 0  nWhite = 202  Cell(x,y) = (0.375, 0.875)
+level = 2  SuperGroup = 0  Group = 0
+
+Cell = 89  nBlack = 0  nWhite = 0  Cell(x,y) = (0.125, 0.875)
+level = 2  SuperGroup = 0  Group = 0
+
+Cell = 90  nBlack = 0  nWhite = 38  Cell(x,y) = (0.125, 0.625)
+level = 2  SuperGroup = 0  Group = 0
+
+Cell = 91  nBlack = 0  nWhite = 10  Cell(x,y) = (0.28125, 0.53125)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 92  nBlack = 0  nWhite = 8  Cell(x,y) = (0.320313, 0.507813)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 93  nBlack = 0  nWhite = 7  Cell(x,y) = (0.320313, 0.523438)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 94  nBlack = 1  nWhite = 2  Cell(x,y) = (0.335938, 0.523438)  blackPoint(x,y) = (0.343303, 0.520156)
+level = 6  SuperGroup = 8  Group = 10
+
+Cell = 95  nBlack = 0  nWhite = 4  Cell(x,y) = (0.335938, 0.507813)
+level = 6  SuperGroup = 8  Group = 10
+
+Cell = 96  nBlack = 0  nWhite = 18  Cell(x,y) = (0.359375, 0.515625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 97  nBlack = 0  nWhite = 6  Cell(x,y) = (0.359375, 0.546875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 98  nBlack = 1  nWhite = 5  Cell(x,y) = (0.335938, 0.554688)  blackPoint(x,y) = (0.336801, 0.560468)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 99  nBlack = 0  nWhite = 2  Cell(x,y) = (0.335938, 0.539063)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 100  nBlack = 0  nWhite = 7  Cell(x,y) = (0.320313, 0.539063)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 101  nBlack = 0  nWhite = 0  Cell(x,y) = (0.320313, 0.554688)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 102  nBlack = 0  nWhite = 13  Cell(x,y) = (0.34375, 0.59375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 103  nBlack = 0  nWhite = 1  Cell(x,y) = (0.28125, 0.59375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 104  nBlack = 0  nWhite = 1  Cell(x,y) = (0.28125, 0.65625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 105  nBlack = 0  nWhite = 3  Cell(x,y) = (0.28125, 0.71875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 106  nBlack = 1  nWhite = 21  Cell(x,y) = (0.34375, 0.71875)  blackPoint(x,y) = (0.331599, 0.726918)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 107  nBlack = 0  nWhite = 0  Cell(x,y) = (0.34375, 0.65625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 108  nBlack = 0  nWhite = 25  Cell(x,y) = (0.40625, 0.65625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 109  nBlack = 0  nWhite = 28  Cell(x,y) = (0.40625, 0.71875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 110  nBlack = 0  nWhite = 15  Cell(x,y) = (0.453125, 0.703125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 111  nBlack = 0  nWhite = 13  Cell(x,y) = (0.453125, 0.734375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 112  nBlack = 0  nWhite = 0  Cell(x,y) = (0.476563, 0.726563)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 113  nBlack = 0  nWhite = 0  Cell(x,y) = (0.476563, 0.742188)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 114  nBlack = 0  nWhite = 10  Cell(x,y) = (0.492188, 0.742188)
+level = 6  SuperGroup = 5  Group = 11
+
+Cell = 115  nBlack = 1  nWhite = 6  Cell(x,y) = (0.492188, 0.726563)  blackPoint(x,y) = (0.495449, 0.725618)
+level = 6  SuperGroup = 5  Group = 11
+
+Cell = 116  nBlack = 0  nWhite = 12  Cell(x,y) = (0.484375, 0.703125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 117  nBlack = 0  nWhite = 22  Cell(x,y) = (0.46875, 0.65625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 118  nBlack = 0  nWhite = 15  Cell(x,y) = (0.484375, 0.609375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 119  nBlack = 0  nWhite = 8  Cell(x,y) = (0.492188, 0.585938)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 120  nBlack = 0  nWhite = 0  Cell(x,y) = (0.492188, 0.570313)
+level = 6  SuperGroup = 2  Group = 12
+
+Cell = 121  nBlack = 1  nWhite = 3  Cell(x,y) = (0.476563, 0.570313)  blackPoint(x,y) = (0.477243, 0.56567)
+level = 6  SuperGroup = 2  Group = 12
+
+Cell = 122  nBlack = 0  nWhite = 5  Cell(x,y) = (0.476563, 0.585938)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 123  nBlack = 0  nWhite = 4  Cell(x,y) = (0.453125, 0.578125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 124  nBlack = 0  nWhite = 7  Cell(x,y) = (0.453125, 0.609375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 125  nBlack = 0  nWhite = 20  Cell(x,y) = (0.40625, 0.59375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 126  nBlack = 0  nWhite = 35  Cell(x,y) = (0.40625, 0.53125)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 127  nBlack = 0  nWhite = 3  Cell(x,y) = (0.453125, 0.515625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 128  nBlack = 0  nWhite = 2  Cell(x,y) = (0.453125, 0.546875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 129  nBlack = 0  nWhite = 0  Cell(x,y) = (0.476563, 0.539063)
+level = 6  SuperGroup = 2  Group = 13
+
+Cell = 130  nBlack = 1  nWhite = 5  Cell(x,y) = (0.476563, 0.554688)  blackPoint(x,y) = (0.474642, 0.551365)
+level = 6  SuperGroup = 2  Group = 13
+
+Cell = 131  nBlack = 0  nWhite = 3  Cell(x,y) = (0.492188, 0.554688)
+level = 6  SuperGroup = 2  Group = 13
+
+Cell = 132  nBlack = 0  nWhite = 7  Cell(x,y) = (0.492188, 0.539063)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 133  nBlack = 0  nWhite = 10  Cell(x,y) = (0.484375, 0.515625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 134  nBlack = 0  nWhite = 44  Cell(x,y) = (0.46875, 0.46875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 135  nBlack = 0  nWhite = 36  Cell(x,y) = (0.40625, 0.46875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 136  nBlack = 0  nWhite = 0  Cell(x,y) = (0.421875, 0.421875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 137  nBlack = 0  nWhite = 0  Cell(x,y) = (0.390625, 0.421875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 138  nBlack = 1  nWhite = 16  Cell(x,y) = (0.390625, 0.390625)  blackPoint(x,y) = (0.392718, 0.384915)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 139  nBlack = 0  nWhite = 36  Cell(x,y) = (0.421875, 0.390625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 140  nBlack = 0  nWhite = 27  Cell(x,y) = (0.46875, 0.40625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 141  nBlack = 0  nWhite = 96  Cell(x,y) = (0.4375, 0.3125)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 142  nBlack = 0  nWhite = 19  Cell(x,y) = (0.359375, 0.359375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 143  nBlack = 0  nWhite = 0  Cell(x,y) = (0.335938, 0.367188)
+level = 6  SuperGroup = 9  Group = 14
+
+Cell = 144  nBlack = 1  nWhite = 3  Cell(x,y) = (0.324219, 0.371094)  blackPoint(x,y) = (0.323797, 0.370611)
+level = 7  SuperGroup = 9  Group = 14
+
+Cell = 145  nBlack = 0  nWhite = 0  Cell(x,y) = (0.316406, 0.371094)
+level = 7  SuperGroup = 9  Group = 14
+
+Cell = 146  nBlack = 0  nWhite = 0  Cell(x,y) = (0.316406, 0.363281)
+level = 7  SuperGroup = 9  Group = 15
+
+Cell = 147  nBlack = 1  nWhite = 2  Cell(x,y) = (0.324219, 0.363281)  blackPoint(x,y) = (0.322497, 0.362809)
+level = 7  SuperGroup = 9  Group = 15
+
+Cell = 148  nBlack = 0  nWhite = 6  Cell(x,y) = (0.320313, 0.351563)
+level = 6  SuperGroup = 9  Group = 15
+
+Cell = 149  nBlack = 0  nWhite = 0  Cell(x,y) = (0.335938, 0.351563)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 150  nBlack = 0  nWhite = 22  Cell(x,y) = (0.328125, 0.328125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 151  nBlack = 0  nWhite = 10  Cell(x,y) = (0.359375, 0.328125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 152  nBlack = 0  nWhite = 8  Cell(x,y) = (0.34375, 0.28125)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 153  nBlack = 0  nWhite = 5  Cell(x,y) = (0.296875, 0.296875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 154  nBlack = 0  nWhite = 1  Cell(x,y) = (0.296875, 0.265625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 155  nBlack = 0  nWhite = 4  Cell(x,y) = (0.265625, 0.265625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 156  nBlack = 1  nWhite = 9  Cell(x,y) = (0.265625, 0.296875)  blackPoint(x,y) = (0.26528, 0.30039)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 157  nBlack = 0  nWhite = 24  Cell(x,y) = (0.28125, 0.34375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 158  nBlack = 0  nWhite = 5  Cell(x,y) = (0.28125, 0.40625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 159  nBlack = 0  nWhite = 12  Cell(x,y) = (0.328125, 0.390625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 160  nBlack = 0  nWhite = 0  Cell(x,y) = (0.351563, 0.382813)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 161  nBlack = 1  nWhite = 6  Cell(x,y) = (0.367188, 0.382813)  blackPoint(x,y) = (0.371912, 0.384915)
+level = 6  SuperGroup = 10  Group = 16
+
+Cell = 162  nBlack = 0  nWhite = 6  Cell(x,y) = (0.367188, 0.398438)
+level = 6  SuperGroup = 10  Group = 16
+
+Cell = 163  nBlack = 0  nWhite = 0  Cell(x,y) = (0.351563, 0.398438)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 164  nBlack = 0  nWhite = 0  Cell(x,y) = (0.351563, 0.414063)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 165  nBlack = 0  nWhite = 0  Cell(x,y) = (0.367188, 0.414063)
+level = 6  SuperGroup = 10  Group = 17
+
+Cell = 166  nBlack = 1  nWhite = 3  Cell(x,y) = (0.367188, 0.429688)  blackPoint(x,y) = (0.36541, 0.43173)
+level = 6  SuperGroup = 10  Group = 17
+
+Cell = 167  nBlack = 0  nWhite = 0  Cell(x,y) = (0.351563, 0.429688)
+level = 6  SuperGroup = 10  Group = 17
+
+Cell = 168  nBlack = 0  nWhite = 2  Cell(x,y) = (0.328125, 0.421875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 169  nBlack = 0  nWhite = 40  Cell(x,y) = (0.34375, 0.46875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 170  nBlack = 0  nWhite = 0  Cell(x,y) = (0.28125, 0.46875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 171  nBlack = 0  nWhite = 9  Cell(x,y) = (0.21875, 0.46875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 172  nBlack = 0  nWhite = 0  Cell(x,y) = (0.21875, 0.40625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 173  nBlack = 0  nWhite = 0  Cell(x,y) = (0.171875, 0.421875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 174  nBlack = 0  nWhite = 0  Cell(x,y) = (0.171875, 0.390625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 175  nBlack = 0  nWhite = 2  Cell(x,y) = (0.148438, 0.398438)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 176  nBlack = 0  nWhite = 1  Cell(x,y) = (0.148438, 0.382813)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 177  nBlack = 1  nWhite = 7  Cell(x,y) = (0.132813, 0.382813)  blackPoint(x,y) = (0.127438, 0.388817)
+level = 6  SuperGroup = 11  Group = 18
+
+Cell = 178  nBlack = 0  nWhite = 3  Cell(x,y) = (0.132813, 0.398438)
+level = 6  SuperGroup = 11  Group = 18
+
+Cell = 179  nBlack = 0  nWhite = 30  Cell(x,y) = (0.140625, 0.421875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 180  nBlack = 0  nWhite = 3  Cell(x,y) = (0.132813, 0.445313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 181  nBlack = 0  nWhite = 3  Cell(x,y) = (0.132813, 0.460938)
+level = 6  SuperGroup = 12  Group = 19
+
+Cell = 182  nBlack = 1  nWhite = 4  Cell(x,y) = (0.148438, 0.460938)  blackPoint(x,y) = (0.144343, 0.46554)
+level = 6  SuperGroup = 12  Group = 19
+
+Cell = 183  nBlack = 0  nWhite = 3  Cell(x,y) = (0.148438, 0.445313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 184  nBlack = 0  nWhite = 3  Cell(x,y) = (0.171875, 0.453125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 185  nBlack = 0  nWhite = 7  Cell(x,y) = (0.171875, 0.484375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 186  nBlack = 0  nWhite = 0  Cell(x,y) = (0.148438, 0.492188)
+level = 6  SuperGroup = 12  Group = 20
+
+Cell = 187  nBlack = 1  nWhite = 6  Cell(x,y) = (0.148438, 0.476563)  blackPoint(x,y) = (0.149545, 0.478544)
+level = 6  SuperGroup = 12  Group = 20
+
+Cell = 188  nBlack = 0  nWhite = 0  Cell(x,y) = (0.132813, 0.476563)
+level = 6  SuperGroup = 12  Group = 20
+
+Cell = 189  nBlack = 0  nWhite = 0  Cell(x,y) = (0.132813, 0.492188)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 190  nBlack = 0  nWhite = 1  Cell(x,y) = (0.109375, 0.484375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 191  nBlack = 0  nWhite = 14  Cell(x,y) = (0.117188, 0.460938)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 192  nBlack = 0  nWhite = 0  Cell(x,y) = (0.117188, 0.445313)
+level = 6  SuperGroup = 13  Group = 21
+
+Cell = 193  nBlack = 1  nWhite = 15  Cell(x,y) = (0.101563, 0.445313)  blackPoint(x,y) = (0.107932, 0.451235)
+level = 6  SuperGroup = 13  Group = 21
+
+Cell = 194  nBlack = 1  nWhite = 11  Cell(x,y) = (0.101563, 0.460938)  blackPoint(x,y) = (0.10013, 0.456437)
+level = 6  SuperGroup = 13  Group = 21
+
+Cell = 195  nBlack = 0  nWhite = 9  Cell(x,y) = (0.078125, 0.453125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 196  nBlack = 0  nWhite = 0  Cell(x,y) = (0.078125, 0.484375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 197  nBlack = 0  nWhite = 0  Cell(x,y) = (0.03125, 0.46875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 198  nBlack = 0  nWhite = 15  Cell(x,y) = (0.03125, 0.40625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 199  nBlack = 0  nWhite = 63  Cell(x,y) = (0.09375, 0.40625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 200  nBlack = 0  nWhite = 55  Cell(x,y) = (0.0625, 0.3125)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 201  nBlack = 0  nWhite = 121  Cell(x,y) = (0.1875, 0.3125)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 202  nBlack = 0  nWhite = 196  Cell(x,y) = (0.125, 0.125)
+level = 2  SuperGroup = 0  Group = 0
+
+Cell = 203  nBlack = 0  nWhite = 224  Cell(x,y) = (0.3125, 0.0625)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 204  nBlack = 0  nWhite = 13  Cell(x,y) = (0.265625, 0.140625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 205  nBlack = 0  nWhite = 2  Cell(x,y) = (0.289063, 0.132813)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 206  nBlack = 0  nWhite = 0  Cell(x,y) = (0.300781, 0.128906)
+level = 7  SuperGroup = 14  Group = 22
+
+Cell = 207  nBlack = 1  nWhite = 2  Cell(x,y) = (0.308594, 0.128906)  blackPoint(x,y) = (0.310793, 0.13264)
+level = 7  SuperGroup = 14  Group = 22
+
+Cell = 208  nBlack = 1  nWhite = 3  Cell(x,y) = (0.308594, 0.136719)  blackPoint(x,y) = (0.308192, 0.135241)
+level = 7  SuperGroup = 14  Group = 22
+
+Cell = 209  nBlack = 0  nWhite = 0  Cell(x,y) = (0.300781, 0.136719)
+level = 7  SuperGroup = 14  Group = 22
+
+Cell = 210  nBlack = 0  nWhite = 1  Cell(x,y) = (0.304688, 0.148438)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 211  nBlack = 0  nWhite = 0  Cell(x,y) = (0.289063, 0.148438)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 212  nBlack = 0  nWhite = 2  Cell(x,y) = (0.296875, 0.171875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 213  nBlack = 0  nWhite = 2  Cell(x,y) = (0.265625, 0.171875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 214  nBlack = 0  nWhite = 8  Cell(x,y) = (0.28125, 0.21875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 215  nBlack = 0  nWhite = 2  Cell(x,y) = (0.34375, 0.21875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 216  nBlack = 0  nWhite = 50  Cell(x,y) = (0.34375, 0.15625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 217  nBlack = 0  nWhite = 50  Cell(x,y) = (0.40625, 0.15625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 218  nBlack = 0  nWhite = 0  Cell(x,y) = (0.382813, 0.195313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 219  nBlack = 0  nWhite = 0  Cell(x,y) = (0.398438, 0.195313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 220  nBlack = 0  nWhite = 4  Cell(x,y) = (0.398438, 0.210938)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 221  nBlack = 1  nWhite = 9  Cell(x,y) = (0.382813, 0.210938)  blackPoint(x,y) = (0.378414, 0.210663)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 222  nBlack = 0  nWhite = 5  Cell(x,y) = (0.390625, 0.234375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 223  nBlack = 0  nWhite = 0  Cell(x,y) = (0.421875, 0.234375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 224  nBlack = 0  nWhite = 4  Cell(x,y) = (0.421875, 0.203125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 225  nBlack = 0  nWhite = 15  Cell(x,y) = (0.46875, 0.21875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 226  nBlack = 1  nWhite = 58  Cell(x,y) = (0.46875, 0.15625)  blackPoint(x,y) = (0.473342, 0.163849)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 227  nBlack = 0  nWhite = 21  Cell(x,y) = (0.484375, 0.109375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 228  nBlack = 0  nWhite = 7  Cell(x,y) = (0.492188, 0.0859375)
+level = 6  SuperGroup = 15  Group = 23
+
+Cell = 229  nBlack = 1  nWhite = 13  Cell(x,y) = (0.492188, 0.0703125)  blackPoint(x,y) = (0.492848, 0.076723)
+level = 6  SuperGroup = 15  Group = 23
+
+Cell = 230  nBlack = 0  nWhite = 6  Cell(x,y) = (0.476563, 0.0703125)
+level = 6  SuperGroup = 15  Group = 23
+
+Cell = 231  nBlack = 0  nWhite = 12  Cell(x,y) = (0.476563, 0.0859375)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 232  nBlack = 0  nWhite = 0  Cell(x,y) = (0.460938, 0.0859375)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 233  nBlack = 0  nWhite = 0  Cell(x,y) = (0.460938, 0.0703125)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 234  nBlack = 0  nWhite = 5  Cell(x,y) = (0.449219, 0.0742188)
+level = 7  SuperGroup = 0  Group = 0
+
+Cell = 235  nBlack = 0  nWhite = 3  Cell(x,y) = (0.449219, 0.0664063)
+level = 7  SuperGroup = 0  Group = 0
+
+Cell = 236  nBlack = 0  nWhite = 0  Cell(x,y) = (0.443359, 0.0683594)
+level = 8  SuperGroup = 0  Group = 0
+
+Cell = 237  nBlack = 0  nWhite = 0  Cell(x,y) = (0.443359, 0.0644531)
+level = 8  SuperGroup = 0  Group = 0
+
+Cell = 238  nBlack = 0  nWhite = 1  Cell(x,y) = (0.439453, 0.0644531)
+level = 8  SuperGroup = 0  Group = 0
+
+Cell = 239  nBlack = 0  nWhite = 0  Cell(x,y) = (0.438477, 0.0673828)
+level = 9  SuperGroup = 0  Group = 0
+
+Cell = 240  nBlack = 0  nWhite = 0  Cell(x,y) = (0.44043, 0.0673828)
+level = 9  SuperGroup = 16  Group = 24
+
+Cell = 241  nBlack = 1  nWhite = 1  Cell(x,y) = (0.44043, 0.0693359)  blackPoint(x,y) = (0.439532, 0.0689207)
+level = 9  SuperGroup = 16  Group = 24
+
+Cell = 242  nBlack = 1  nWhite = 1  Cell(x,y) = (0.438477, 0.0693359)  blackPoint(x,y) = (0.438231, 0.0689207)
+level = 9  SuperGroup = 16  Group = 24
+
+Cell = 243  nBlack = 0  nWhite = 3  Cell(x,y) = (0.441406, 0.0742188)
+level = 7  SuperGroup = 16  Group = 24
+
+Cell = 244  nBlack = 0  nWhite = 3  Cell(x,y) = (0.445313, 0.0859375)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 245  nBlack = 0  nWhite = 18  Cell(x,y) = (0.453125, 0.109375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 246  nBlack = 1  nWhite = 59  Cell(x,y) = (0.40625, 0.09375)  blackPoint(x,y) = (0.394018, 0.0884265)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 247  nBlack = 0  nWhite = 19  Cell(x,y) = (0.421875, 0.046875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 248  nBlack = 0  nWhite = 14  Cell(x,y) = (0.390625, 0.046875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 249  nBlack = 0  nWhite = 5  Cell(x,y) = (0.398438, 0.0234375)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 250  nBlack = 0  nWhite = 3  Cell(x,y) = (0.382813, 0.0234375)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 251  nBlack = 0  nWhite = 6  Cell(x,y) = (0.382813, 0.0078125)
+level = 6  SuperGroup = 17  Group = 25
+
+Cell = 252  nBlack = 1  nWhite = 4  Cell(x,y) = (0.398438, 0.0078125)  blackPoint(x,y) = (0.394018, 0)
+level = 6  SuperGroup = 17  Group = 25
+
+Cell = 253  nBlack = 0  nWhite = 18  Cell(x,y) = (0.421875, 0.015625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 254  nBlack = 0  nWhite = 3  Cell(x,y) = (0.445313, 0.0078125)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 255  nBlack = 0  nWhite = 5  Cell(x,y) = (0.460938, 0.0078125)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 256  nBlack = 0  nWhite = 2  Cell(x,y) = (0.460938, 0.0234375)
+level = 6  SuperGroup = 18  Group = 26
+
+Cell = 257  nBlack = 1  nWhite = 3  Cell(x,y) = (0.445313, 0.0234375)  blackPoint(x,y) = (0.447334, 0.0221066)
+level = 6  SuperGroup = 18  Group = 26
+
+Cell = 258  nBlack = 0  nWhite = 3  Cell(x,y) = (0.445313, 0.0390625)
+level = 6  SuperGroup = 18  Group = 26
+
+Cell = 259  nBlack = 1  nWhite = 14  Cell(x,y) = (0.445313, 0.0546875)  blackPoint(x,y) = (0.438231, 0.0520156)
+level = 6  SuperGroup = 18  Group = 26
+
+Cell = 260  nBlack = 0  nWhite = 2  Cell(x,y) = (0.460938, 0.0546875)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 261  nBlack = 0  nWhite = 0  Cell(x,y) = (0.460938, 0.0390625)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 262  nBlack = 0  nWhite = 8  Cell(x,y) = (0.476563, 0.0390625)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 263  nBlack = 0  nWhite = 7  Cell(x,y) = (0.476563, 0.0546875)
+level = 6  SuperGroup = 15  Group = 27
+
+Cell = 264  nBlack = 1  nWhite = 6  Cell(x,y) = (0.492188, 0.0546875)  blackPoint(x,y) = (0.490247, 0.0572172)
+level = 6  SuperGroup = 15  Group = 27
+
+Cell = 265  nBlack = 0  nWhite = 20  Cell(x,y) = (0.492188, 0.0390625)
+level = 6  SuperGroup = 15  Group = 27
+
+Cell = 266  nBlack = 0  nWhite = 18  Cell(x,y) = (0.484375, 0.015625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 267  nBlack = 0  nWhite = 2  Cell(x,y) = (0.515625, 0.015625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 268  nBlack = 0  nWhite = 0  Cell(x,y) = (0.546875, 0.015625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 269  nBlack = 0  nWhite = 0  Cell(x,y) = (0.546875, 0.046875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 270  nBlack = 0  nWhite = 0  Cell(x,y) = (0.523438, 0.0546875)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 271  nBlack = 0  nWhite = 0  Cell(x,y) = (0.523438, 0.0390625)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 272  nBlack = 0  nWhite = 2  Cell(x,y) = (0.507813, 0.0390625)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 273  nBlack = 0  nWhite = 0  Cell(x,y) = (0.503906, 0.0507813)
+level = 7  SuperGroup = 0  Group = 0
+
+Cell = 274  nBlack = 0  nWhite = 1  Cell(x,y) = (0.511719, 0.0507813)
+level = 7  SuperGroup = 0  Group = 0
+
+Cell = 275  nBlack = 0  nWhite = 0  Cell(x,y) = (0.509766, 0.0566406)
+level = 8  SuperGroup = 0  Group = 0
+
+Cell = 276  nBlack = 0  nWhite = 0  Cell(x,y) = (0.512695, 0.0556641)
+level = 9  SuperGroup = 0  Group = 0
+
+Cell = 277  nBlack = 0  nWhite = 0  Cell(x,y) = (0.514648, 0.0556641)
+level = 9  SuperGroup = 0  Group = 0
+
+Cell = 278  nBlack = 0  nWhite = 0  Cell(x,y) = (0.51416, 0.0571289)
+level = 10  SuperGroup = 19  Group = 28
+
+Cell = 279  nBlack = 1  nWhite = 1  Cell(x,y) = (0.515137, 0.0571289)  blackPoint(x,y) = (0.514954, 0.0572172)
+level = 10  SuperGroup = 19  Group = 28
+
+Cell = 280  nBlack = 1  nWhite = 1  Cell(x,y) = (0.515137, 0.0581055)  blackPoint(x,y) = (0.514954, 0.0585176)
+level = 10  SuperGroup = 19  Group = 28
+
+Cell = 281  nBlack = 0  nWhite = 0  Cell(x,y) = (0.51416, 0.0581055)
+level = 10  SuperGroup = 19  Group = 28
+
+Cell = 282  nBlack = 0  nWhite = 2  Cell(x,y) = (0.512695, 0.0576172)
+level = 9  SuperGroup = 0  Group = 0
+
+Cell = 283  nBlack = 0  nWhite = 0  Cell(x,y) = (0.513672, 0.0605469)
+level = 8  SuperGroup = 0  Group = 0
+
+Cell = 284  nBlack = 0  nWhite = 0  Cell(x,y) = (0.509766, 0.0605469)
+level = 8  SuperGroup = 0  Group = 0
+
+Cell = 285  nBlack = 0  nWhite = 0  Cell(x,y) = (0.503906, 0.0585938)
+level = 7  SuperGroup = 0  Group = 0
+
+Cell = 286  nBlack = 0  nWhite = 6  Cell(x,y) = (0.507813, 0.0703125)
+level = 6  SuperGroup = 15  Group = 29
+
+Cell = 287  nBlack = 1  nWhite = 4  Cell(x,y) = (0.523438, 0.0703125)  blackPoint(x,y) = (0.520156, 0.0715215)
+level = 6  SuperGroup = 15  Group = 29
+
+Cell = 288  nBlack = 0  nWhite = 6  Cell(x,y) = (0.523438, 0.0859375)
+level = 6  SuperGroup = 15  Group = 29
+
+Cell = 289  nBlack = 0  nWhite = 7  Cell(x,y) = (0.507813, 0.0859375)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 290  nBlack = 0  nWhite = 9  Cell(x,y) = (0.515625, 0.109375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 291  nBlack = 0  nWhite = 0  Cell(x,y) = (0.546875, 0.109375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 292  nBlack = 0  nWhite = 0  Cell(x,y) = (0.546875, 0.078125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 293  nBlack = 0  nWhite = 0  Cell(x,y) = (0.59375, 0.09375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 294  nBlack = 0  nWhite = 0  Cell(x,y) = (0.59375, 0.03125)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 295  nBlack = 0  nWhite = 0  Cell(x,y) = (0.6875, 0.0625)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 296  nBlack = 0  nWhite = 0  Cell(x,y) = (0.6875, 0.1875)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 297  nBlack = 0  nWhite = 47  Cell(x,y) = (0.5625, 0.1875)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 298  nBlack = 0  nWhite = 15  Cell(x,y) = (0.5625, 0.3125)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 299  nBlack = 0  nWhite = 0  Cell(x,y) = (0.507813, 0.382813)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 300  nBlack = 0  nWhite = 0  Cell(x,y) = (0.507813, 0.398438)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 301  nBlack = 1  nWhite = 4  Cell(x,y) = (0.523438, 0.398438)  blackPoint(x,y) = (0.530559, 0.395319)
+level = 6  SuperGroup = 20  Group = 30
+
+Cell = 302  nBlack = 0  nWhite = 3  Cell(x,y) = (0.523438, 0.382813)
+level = 6  SuperGroup = 20  Group = 30
+
+Cell = 303  nBlack = 0  nWhite = 6  Cell(x,y) = (0.546875, 0.390625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 304  nBlack = 0  nWhite = 8  Cell(x,y) = (0.546875, 0.421875)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 305  nBlack = 0  nWhite = 4  Cell(x,y) = (0.523438, 0.429688)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 306  nBlack = 0  nWhite = 1  Cell(x,y) = (0.523438, 0.414063)
+level = 6  SuperGroup = 20  Group = 31
+
+Cell = 307  nBlack = 1  nWhite = 9  Cell(x,y) = (0.507813, 0.414063)  blackPoint(x,y) = (0.507152, 0.409623)
+level = 6  SuperGroup = 20  Group = 31
+
+Cell = 308  nBlack = 0  nWhite = 3  Cell(x,y) = (0.507813, 0.429688)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 309  nBlack = 0  nWhite = 8  Cell(x,y) = (0.515625, 0.453125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 310  nBlack = 0  nWhite = 4  Cell(x,y) = (0.515625, 0.484375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 311  nBlack = 0  nWhite = 0  Cell(x,y) = (0.539063, 0.476563)
+level = 6  SuperGroup = 21  Group = 32
+
+Cell = 312  nBlack = 1  nWhite = 1  Cell(x,y) = (0.535156, 0.488281)  blackPoint(x,y) = (0.538362, 0.490247)
+level = 7  SuperGroup = 21  Group = 32
+
+Cell = 313  nBlack = 0  nWhite = 0  Cell(x,y) = (0.535156, 0.496094)
+level = 7  SuperGroup = 21  Group = 32
+
+Cell = 314  nBlack = 0  nWhite = 0  Cell(x,y) = (0.542969, 0.496094)
+level = 7  SuperGroup = 21  Group = 33
+
+Cell = 315  nBlack = 1  nWhite = 1  Cell(x,y) = (0.542969, 0.488281)  blackPoint(x,y) = (0.539662, 0.490247)
+level = 7  SuperGroup = 21  Group = 33
+
+Cell = 316  nBlack = 0  nWhite = 2  Cell(x,y) = (0.554688, 0.492188)
+level = 6  SuperGroup = 21  Group = 33
+
+Cell = 317  nBlack = 0  nWhite = 0  Cell(x,y) = (0.554688, 0.476563)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 318  nBlack = 0  nWhite = 8  Cell(x,y) = (0.546875, 0.453125)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 319  nBlack = 0  nWhite = 21  Cell(x,y) = (0.59375, 0.46875)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 320  nBlack = 0  nWhite = 35  Cell(x,y) = (0.59375, 0.40625)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 321  nBlack = 0  nWhite = 182  Cell(x,y) = (0.6875, 0.4375)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 322  nBlack = 0  nWhite = 18  Cell(x,y) = (0.734375, 0.359375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 323  nBlack = 0  nWhite = 3  Cell(x,y) = (0.746094, 0.339844)
+level = 7  SuperGroup = 22  Group = 34
+
+Cell = 324  nBlack = 1  nWhite = 3  Cell(x,y) = (0.738281, 0.339844)  blackPoint(x,y) = (0.741222, 0.338101)
+level = 7  SuperGroup = 22  Group = 34
+
+Cell = 325  nBlack = 1  nWhite = 7  Cell(x,y) = (0.738281, 0.332031)  blackPoint(x,y) = (0.741222, 0.328999)
+level = 7  SuperGroup = 22  Group = 34
+
+Cell = 326  nBlack = 0  nWhite = 0  Cell(x,y) = (0.746094, 0.332031)
+level = 7  SuperGroup = 22  Group = 34
+
+Cell = 327  nBlack = 0  nWhite = 5  Cell(x,y) = (0.742188, 0.320313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 328  nBlack = 0  nWhite = 5  Cell(x,y) = (0.726563, 0.320313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 329  nBlack = 0  nWhite = 4  Cell(x,y) = (0.726563, 0.335938)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 330  nBlack = 1  nWhite = 2  Cell(x,y) = (0.710938, 0.335938)  blackPoint(x,y) = (0.706112, 0.336801)
+level = 6  SuperGroup = 23  Group = 35
+
+Cell = 331  nBlack = 0  nWhite = 7  Cell(x,y) = (0.710938, 0.320313)
+level = 6  SuperGroup = 23  Group = 35
+
+Cell = 332  nBlack = 0  nWhite = 4  Cell(x,y) = (0.695313, 0.320313)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 333  nBlack = 0  nWhite = 1  Cell(x,y) = (0.695313, 0.335938)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 334  nBlack = 0  nWhite = 25  Cell(x,y) = (0.703125, 0.359375)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 335  nBlack = 0  nWhite = 28  Cell(x,y) = (0.65625, 0.34375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 336  nBlack = 0  nWhite = 0  Cell(x,y) = (0.65625, 0.28125)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 337  nBlack = 0  nWhite = 26  Cell(x,y) = (0.71875, 0.28125)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 338  nBlack = 0  nWhite = 23  Cell(x,y) = (0.765625, 0.265625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 339  nBlack = 0  nWhite = 20  Cell(x,y) = (0.765625, 0.296875)
+level = 5  SuperGroup = 24  Group = 36
+
+Cell = 340  nBlack = 1  nWhite = 1  Cell(x,y) = (0.785156, 0.285156)  blackPoint(x,y) = (0.782835, 0.287386)
+level = 7  SuperGroup = 24  Group = 36
+
+Cell = 341  nBlack = 0  nWhite = 0  Cell(x,y) = (0.792969, 0.285156)
+level = 7  SuperGroup = 24  Group = 36
+
+Cell = 342  nBlack = 0  nWhite = 0  Cell(x,y) = (0.792969, 0.292969)
+level = 7  SuperGroup = 24  Group = 37
+
+Cell = 343  nBlack = 1  nWhite = 2  Cell(x,y) = (0.785156, 0.292969)  blackPoint(x,y) = (0.784135, 0.293888)
+level = 7  SuperGroup = 24  Group = 37
+
+Cell = 344  nBlack = 0  nWhite = 13  Cell(x,y) = (0.789063, 0.304688)
+level = 6  SuperGroup = 24  Group = 37
+
+Cell = 345  nBlack = 0  nWhite = 0  Cell(x,y) = (0.804688, 0.304688)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 346  nBlack = 0  nWhite = 0  Cell(x,y) = (0.804688, 0.289063)
+level = 6  SuperGroup = 0  Group = 0
+
+Cell = 347  nBlack = 0  nWhite = 0  Cell(x,y) = (0.796875, 0.265625)
+level = 5  SuperGroup = 0  Group = 0
+
+Cell = 348  nBlack = 0  nWhite = 0  Cell(x,y) = (0.84375, 0.28125)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 349  nBlack = 0  nWhite = 0  Cell(x,y) = (0.84375, 0.34375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 350  nBlack = 0  nWhite = 46  Cell(x,y) = (0.78125, 0.34375)
+level = 4  SuperGroup = 0  Group = 0
+
+Cell = 351  nBlack = 0  nWhite = 179  Cell(x,y) = (0.8125, 0.4375)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 352  nBlack = 0  nWhite = 0  Cell(x,y) = (0.9375, 0.4375)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 353  nBlack = 0  nWhite = 0  Cell(x,y) = (0.9375, 0.3125)
+level = 3  SuperGroup = 0  Group = 0
+
+Cell = 354  nBlack = 0  nWhite = 0  Cell(x,y) = (0.875, 0.125)
+level = 2  SuperGroup = 0  Group = 0
+

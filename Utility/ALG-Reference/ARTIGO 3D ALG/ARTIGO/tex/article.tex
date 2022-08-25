@@ -1,0 +1,128 @@
+%ACM DOCUMENT
+\documentclass[acmtoms]{acmtrans2m}
+
+\usepackage[utf8]{inputenc}
+%PACKAGES FOR MATH SYMBOLS
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%PACKAGE FOR PICTURES
+\usepackage{graphicx}
+
+%PACKAGES FOR ALGORITHMS
+\usepackage{algorithmicx}
+\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algc}
+\newcommand{\New}{\textbf{new}}
+
+\acmVolume{1}
+\acmNumber{1}
+\acmYear{12}
+\acmMonth{July}
+
+% New commands
+\newcommand{\DP}[2]{\displaystyle\frac{\partial #1}{\partial #2}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\bi}[1]{\boldsymbol{\mathit{#1}}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\bv}[1]{\mathbf{#1}}
+\renewcommand{\b}[1]{\boldsymbol{\mathit{#1}}}
+
+%HEADER
+\markboth{M. Costa et al.}{Design and Implementation of the Three-Dimensional Autonomous Leaves Graph}
+
+%TITLE
+\title{ Design and Implementation of the Three-Dimensional Autonomous Leaves Graph Data Structure}
+
+%AUTHORS
+% \author
+% {
+%     MAYCON DA COSTA$^{\textrm{\,a}}$, DENISE BURGARELLI$^{\textrm{\,b}}$,
+%     RODNEY JOSU\'E BIEZUNER$^{\textrm{\,b}}$ RAFAEL SACHETTO OLIVEIRA \and WAGNER MEIRA
+%     JR.$^{\textrm{\,a}}$, Universidade Federal de Minas Gerais\\
+%     RODRIGO WEBER DOS SANTOS, Universidade Federal de Juiz de Fora
+%
+% }
+ \author
+ {
+     MAYCON DA COSTA, DENISE BURGARELLI,
+     RODNEY JOSU\'E BIEZUNER, RAFAEL SACHETTO OLIVEIRA and WAGNER MEIRA
+     JR., Universidade Federal de Minas Gerais \\
+     RODRIGO WEBER DOS SANTOS, Universidade Federal de Juiz de Fora
+ }
+%CATEGORY
+\category{E.1}{Data Structures}{Graphs and networks}
+
+%TERMS OF THE ARTICLE
+\terms{Algorithms, Design}
+
+%KEYWORDS
+\keywords{adaptive mesh refinement, ALG data structure, three-dimensional domains, space filling curve}
+
+%DOCUMENT
+\begin{document}
+
+        \begin{bottomstuff}
+        This work was partially funded by CNPq, Capes, Fapemig and InWeb.\\
+        Rafael Sachetto Oliveira is also affiliated with Universidade Federal de
+        São João del Rei.\\
+        Authors' addresses: D. Burgarelli and R. J. Biezuner,
+        Departamento de Matem\'atica, ICEx, Universidade Federal de Minas  Gerais, Av. Ant\^onio Carlos 6627, Pampulha,
+        CEP 30161-970, Belo Horizonte, MG, Brazil. emails: burgarelli@ufmg.br, rodney@mat.ufmg.br.
+        R.S. Oliveira, Departamento de Ciência da Computação,
+        Universidade Federal de São João del-Rei, CTAN,
+        Prédio dos Cursos de Ciência da Computação e Zootecnia, 3 andar, Av. Visconde do Rio Preto,
+        s/n, Colônia do Bengo, São João del-Rei, MG, Brazil, CEP 36301-360. email:
+        sachetto@ufsj.edu.br. W. Meira Jr. and M. Costa, Departamento de Ci\^encia da Computa\c c\~ao, ICEx,
+        Universidade Federal de Minas Gerais, Av. Ant\^onio Carlos 6627,
+        Pampulha, CEP 31270-010, Belo Horizonte, MG, Brazil. emails:
+        mayconufmg@gmail.com , meira@dcc.ufmg.br. Rodrigo Weber dos Santos,
+        Universidade Federal de Juiz de Fora, Instituto de Ciências Exatas - Prédio
+        MMC - Campus Universitário, Juiz de Fora, MG, Brazil, CEP: 36036-330.
+        email: rodrigo.weber@ufjf.edu.br.
+        \end{bottomstuff}
+
+%     %AUTHOR'S ADDRESSES
+%     \begin{bottomstuff}
+%     Author's addresses: \newline
+%     $^{\rm a}$ Departamento de Ci\^encia da Computa\c c\~ao, ICEx,
+%     Universidade Federal de Minas Gerais, Av. Ant\^onio Carlos 6627,
+%     Pampulha, CEP 31270-010, Belo Horizonte, MG, Brazil. E-mails: \linebreak mayconufmg@gmail.com (M. Costa),
+%     meira@dcc.ufmg.br (W. Meira Jr.)
+%     \newline
+%
+%     $^{\rm b}$ Departamento de Matem\'atica, ICEx, Universidade
+%     Federal de Minas  Gerais, Av. Ant\^onio Carlos 6627, Pampulha,
+%     CP 702, CEP 30161-970, Belo Horizonte, MG, Brazil. E-mails: burgarelli@ufmg.br (D. Burgarelli),
+%     rodney@mat.ufmg.br (R. J. Biezuner). \newline
+%     \end{bottomstuff}
+
+    %ABSTRACT
+    \begin{abstract}
+    Autonomous Leaves Graph (ALG), a dynamic space-time data
+    structure designed to minimize the computational effort of refinement and
+    derefinement operations and to allow flexibility in the levels of refinement
+    of adjacent regions in space adaptive meshes, was introduced in
+    \cite{Burgarelli1998} and implemented for two-dimensional domains. Its
+    storage requirements and computational cost compare competitively with other
+    mesh refinement schemes based on hierarchical trees. Here an algorithm for
+    implementing this scheme for time-evolving three-dimensional spatial domains
+    (ALG-3D) is given in full detail.
+    \end{abstract}
+
+    \maketitle
+
+    %SECTIONS
+    \input{introduction}
+    \input{dataStructure}
+    \input{refinement}
+    \input{derefinement}
+    \include{hilbertCurve}
+    \include{application}
+    %\input{bibliography}
+    \bibliographystyle{acmtrans}
+    \bibliography{bibliography}
+
+\end{document}

@@ -1,0 +1,14 @@
+----------------------------------------------------------------------
+
+O programa ESSPPALG versão 23/11/06 convergiu até 0.000042340 s, com a seguinte configuração:
+
+Refinamento 3
+Erro picard 10^-13
+Posicao 0%
+deltaT 10^-11
+
+----------------------------------------------------------------------
+
+Sem os termos qX e qY, as temperaturas ficam muito altas.
+
+----------------------------------------------------------------------

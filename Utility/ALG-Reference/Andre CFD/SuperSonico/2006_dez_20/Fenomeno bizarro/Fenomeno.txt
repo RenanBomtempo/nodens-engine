@@ -1,0 +1,28 @@
+1. Abra os 3 programas com a seguinte configuração:
+	Refinamento inicial: 3
+	Erro de picard: 10^-1
+	Delta tempo: 10^-11
+
+
+2. Visualize o gráfico de temperatura.
+
+3. Visualize o resultado numérico "Carnaval"
+
+4. Mande a simulação iniciar. Neste momento uma célula de refinamento 4 será refinada em outras 4 menores.
+
+Resultado:
+No programa "semImprimir":
+	- Nenhuma variável das células é impressa no console;
+	- Por volta de t=6e-11, a simulação começa a divergir.
+
+No programa "impressoPrintf":
+	- É impresso por printf no console a temperatura das células;
+	- Por volta de t=2e-11, a simulação começa a divergir.
+
+No programa "impressoCout":
+	- É impresso por cout no console a temperatura das células;
+	- A simulação é estável (testado até 7e-9).
+
+Conclusão:
+
+Todos os três programas têm códigos fontes idênticos exceto por um linha, na qual é impresso ou não a temperatura de váriaveis, seja por 'printf()' ou 'cout'. O motivo da estabilidade depender desse fato é desconhecido.

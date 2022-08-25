@@ -1,0 +1,30 @@
+	\section{Introduction}
+
+The computational geometric representation of time-evolving spatial data, as in Evolutionary Partial Differential Equations (PDEs), Geographic Information Systems (GIS) and dynamic image processing require efficient data structures to handle the ever changing adjacency relations between cells, the primary units of data. The goal is to minimize the number of operations of memory manipulation necessary to update the neighborhood structure. The level of cell refinement must be high enough to capture all the essential details but not unnecessarily refined, thus storing redundant information which may be excessively expensive to process. This can be achieved through adaptive mesh refining techniques, locally increasing the level of refinement when the data is more heterogeneous. As the data change with time, the system must be also capable of derefining, i.e. grouping again cells where the scenario appears more uniform.
+
+In \cite{Burgarelli1998} the Autonomous Leaves Graph (ALG), an efficient graph-based data structure was introduced
+in order to handle the communication of cells in discretized domains to numerically solve evolutionary
+PDE's (see \cite{Burgarellietal2006}). The new data structure was favorably compared to commonly used tree-based
+data structures (quad-trees). The corresponding processing time spent in the communication between
+neighbor cells is independent of the number of cells present in the discretization (i.e.,
+$O(1)$ for each cell).
+Although in \cite{Burgarellietal2006} ALG was applied only to the numerical
+solution of evolutionary PDE's
+in two-dimensional domains, neither of these restrictions apply to the data structure itself.
+ALG can be used in any type of problem where a geometrical domain with any number
+of dimensions is discretized.
+In the three dimensions of space, the presence of complex geometries with irregular boundaries introduces a whole new set of interesting phenomena which cannot be fully understood in a two dimensional spatial setting; thus there is a remarkable gain of insight when treating physical problems where all three spatial dimensions are considered, e. g. in computational fluid dynamics and computational geometry,( see
+ \cite{Gamezoetal2005a}, \cite{Jietal2008}, \cite{Penneretal2007} and
+\cite{tavakoli2006}).
+
+In this paper, we implement ALG in time-evolving three-dimensional spatial domains. We call this version ALG-3D.
+The algorithm is presented in all its details for the unit
+cube discretized through cubic cells. This domain was chosen in order to simplify
+the presentation, and since it is a domain of choice in many applications.
+The advantages of the previous ALG-2D structure over the simple two-dimensional quadtree structure are maintained when we move to the ALG-3D structure, namely its reduced time for communication between neighbor cells and the flexibility for refining and derefining dynamically the mesh structure, in comparison with simple three-dimensional octree structures (see \cite{Afthomis}, \cite{Khokhlov}). For recent work on octrees and other tree-based strategies, specially on attempts to improve the efficiency of the underlying data structure, see \cite{Bangerth2010}, and the references therein.
+
+ The adaptation of the algorithm to regions of different shapes, or of different discretizations
+(like tetrahedra), although not straightforward, should be easier once the algorithm
+presented in this paper is fully understood.
+
+The paper is arranged as follows. The data structure is discussed in Section 2. The refinement and derefinement techniques are presented in Sections 3 and 4 respectively. A node ordering algorithm based on a modified Hilbert curve is shown in Section 5. Finally, in Section 6 we present an application in cardiac electrophysiology.

@@ -1,0 +1,75 @@
+# Project: ESSPPALG
+# Compiler: Default GCC compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ 6.10.1 on 12/11/07 23:36
+
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = windres.exe
+OBJ       = Default\ Profile/solve.o Default\ Profile/Cell.o Default\ Profile/derivadas.o Default\ Profile/Element.o Default\ Profile/fronteira.o Default\ Profile/graphics.o Default\ Profile/Grid.o Default\ Profile/interpolacao.o Default\ Profile/main.o Default\ Profile/refinement.o Default\ Profile/render.o Default\ Profile/energia.o Default\ Profile/matriz.o Default\ Profile/momento.o Default\ Profile/pressao.o
+LINKOBJ   = "Default Profile/solve.o" "Default Profile/Cell.o" "Default Profile/derivadas.o" "Default Profile/Element.o" "Default Profile/fronteira.o" "Default Profile/graphics.o" "Default Profile/Grid.o" "Default Profile/interpolacao.o" "Default Profile/main.o" "Default Profile/refinement.o" "Default Profile/render.o" "Default Profile/energia.o" "Default Profile/matriz.o" "Default Profile/momento.o" "Default Profile/pressao.o"
+LIBS      = -L"C:/Desenvolvimento/wxDev-Cpp/Lib" -L"Z:/STALTZ/Supersonicowin/Pre-built.2" -L"Z:/STALTZ/Supersonicowin/pthreads.2" -lglut32 -lglu32 -lopengl32  
+INCS      = -I"C:/Desenvolvimento/wxDev-Cpp/Include"
+CXXINCS   = -I"C:/Desenvolvimento/wxDev-Cpp/lib/gcc/mingw32/3.4.2/include" -I"C:/Desenvolvimento/wxDev-Cpp/include/c++/3.4.2/backward" -I"C:/Desenvolvimento/wxDev-Cpp/include/c++/3.4.2/mingw32" -I"C:/Desenvolvimento/wxDev-Cpp/include/c++/3.4.2" -I"C:/Desenvolvimento/wxDev-Cpp/include" -I"C:/Desenvolvimento/wxDev-Cpp/" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/msw" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/generic" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/fl" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/gizmos" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/html" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/mmedia" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/net" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/ogl" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/plot" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/protocol" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/stc" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/svg" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/xml" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx/xrc" -I"C:/Desenvolvimento/wxDev-Cpp/include/common/wx" -I"C:/Desenvolvimento/wxDev-Cpp/include/common"
+RCINCS    = --include-dir "C:/DESENV~1/WXDEV-~1/include/common"
+BIN       = Default\ Profile/simple.exe
+DEFINES   = 
+CXXFLAGS  = $(CXXINCS) $(DEFINES) -O3  
+CFLAGS    = $(INCS) $(DEFINES)  
+GPROF     = gprof.exe
+RM        = rm -f
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "Default Profile\simple.exe" $(LIBS)
+
+Default\ Profile/solve.o: $(GLOBALDEPS) solve.cpp
+	$(CPP) -c solve.cpp -o "Default Profile/solve.o" $(CXXFLAGS)
+
+Default\ Profile/Cell.o: $(GLOBALDEPS) Cell.cpp
+	$(CPP) -c Cell.cpp -o "Default Profile/Cell.o" $(CXXFLAGS)
+
+Default\ Profile/derivadas.o: $(GLOBALDEPS) derivadas.cpp
+	$(CPP) -c derivadas.cpp -o "Default Profile/derivadas.o" $(CXXFLAGS)
+
+Default\ Profile/Element.o: $(GLOBALDEPS) Element.cpp
+	$(CPP) -c Element.cpp -o "Default Profile/Element.o" $(CXXFLAGS)
+
+Default\ Profile/fronteira.o: $(GLOBALDEPS) fronteira.cpp
+	$(CPP) -c fronteira.cpp -o "Default Profile/fronteira.o" $(CXXFLAGS)
+
+Default\ Profile/graphics.o: $(GLOBALDEPS) graphics.cpp
+	$(CPP) -c graphics.cpp -o "Default Profile/graphics.o" $(CXXFLAGS)
+
+Default\ Profile/Grid.o: $(GLOBALDEPS) Grid.cpp
+	$(CPP) -c Grid.cpp -o "Default Profile/Grid.o" $(CXXFLAGS)
+
+Default\ Profile/interpolacao.o: $(GLOBALDEPS) interpolacao.cpp
+	$(CPP) -c interpolacao.cpp -o "Default Profile/interpolacao.o" $(CXXFLAGS)
+
+Default\ Profile/main.o: $(GLOBALDEPS) main.cpp
+	$(CPP) -c main.cpp -o "Default Profile/main.o" $(CXXFLAGS)
+
+Default\ Profile/refinement.o: $(GLOBALDEPS) refinement.cpp
+	$(CPP) -c refinement.cpp -o "Default Profile/refinement.o" $(CXXFLAGS)
+
+Default\ Profile/render.o: $(GLOBALDEPS) render.cpp
+	$(CPP) -c render.cpp -o "Default Profile/render.o" $(CXXFLAGS)
+
+Default\ Profile/energia.o: $(GLOBALDEPS) energia.cpp
+	$(CPP) -c energia.cpp -o "Default Profile/energia.o" $(CXXFLAGS)
+
+Default\ Profile/matriz.o: $(GLOBALDEPS) matriz.cpp
+	$(CPP) -c matriz.cpp -o "Default Profile/matriz.o" $(CXXFLAGS)
+
+Default\ Profile/momento.o: $(GLOBALDEPS) momento.cpp
+	$(CPP) -c momento.cpp -o "Default Profile/momento.o" $(CXXFLAGS)
+
+Default\ Profile/pressao.o: $(GLOBALDEPS) pressao.cpp
+	$(CPP) -c pressao.cpp -o "Default Profile/pressao.o" $(CXXFLAGS)

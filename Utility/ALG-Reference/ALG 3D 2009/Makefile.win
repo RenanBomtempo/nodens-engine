@@ -1,0 +1,98 @@
+# Project: ALG-3D
+# Makefile created by Dev-C++ 4.9.9.0
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = ALG-3D_private.res
+OBJ  = Obj/exceptions.o Obj/invalidParameterValue.o Obj/nullPointer.o Obj/grid.o Obj/grid_derefinement.o Obj/grid_domain.o Obj/grid_draw.o Obj/grid_flux.o Obj/grid_refinement.o Obj/cell.o Obj/cell_derefinement.o Obj/cell_draw.o Obj/cell_flux.o Obj/cell_refinement.o Obj/graphics.o Obj/camera.o Obj/display.o Obj/keyboard.o Obj/mouse.o Obj/main.o Obj/demo.o Obj/controller.o Obj/gl2ps.o $(RES)
+LINKOBJ  = Obj/exceptions.o Obj/invalidParameterValue.o Obj/nullPointer.o Obj/grid.o Obj/grid_derefinement.o Obj/grid_domain.o Obj/grid_draw.o Obj/grid_flux.o Obj/grid_refinement.o Obj/cell.o Obj/cell_derefinement.o Obj/cell_draw.o Obj/cell_flux.o Obj/cell_refinement.o Obj/graphics.o Obj/camera.o Obj/display.o Obj/keyboard.o Obj/mouse.o Obj/main.o Obj/demo.o Obj/controller.o Obj/gl2ps.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -lopengl32 -lglu32 -lglut32  -g3 
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/include/c++/3.3.1"  -I"C:/Dev-Cpp/include/c++/3.3.1/mingw32"  -I"C:/Dev-Cpp/include/c++/3.3.1/backward"  -I"C:/Dev-Cpp/lib/gcc-lib/mingw32/3.3.1/include"  -I"C:/Dev-Cpp/include" 
+BIN  = Bin/ALG-3D.exe
+CXXFLAGS = $(CXXINCS) -O3   -g3
+CFLAGS = $(INCS)   -g3
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Bin/ALG-3D.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Bin\ALG-3D.exe" $(LIBS)
+
+Obj/exceptions.o: ALG/Exceptions/exceptions.cpp
+	$(CPP) -c ALG/Exceptions/exceptions.cpp -o Obj/exceptions.o $(CXXFLAGS)
+
+Obj/invalidParameterValue.o: ALG/Exceptions/invalidParameterValue.cpp
+	$(CPP) -c ALG/Exceptions/invalidParameterValue.cpp -o Obj/invalidParameterValue.o $(CXXFLAGS)
+
+Obj/nullPointer.o: ALG/Exceptions/nullPointer.cpp
+	$(CPP) -c ALG/Exceptions/nullPointer.cpp -o Obj/nullPointer.o $(CXXFLAGS)
+
+Obj/grid.o: ALG/Grid/grid.cpp
+	$(CPP) -c ALG/Grid/grid.cpp -o Obj/grid.o $(CXXFLAGS)
+
+Obj/grid_derefinement.o: ALG/Grid/grid_derefinement.cpp
+	$(CPP) -c ALG/Grid/grid_derefinement.cpp -o Obj/grid_derefinement.o $(CXXFLAGS)
+
+Obj/grid_domain.o: ALG/Grid/grid_domain.cpp
+	$(CPP) -c ALG/Grid/grid_domain.cpp -o Obj/grid_domain.o $(CXXFLAGS)
+
+Obj/grid_draw.o: ALG/Grid/grid_draw.cpp
+	$(CPP) -c ALG/Grid/grid_draw.cpp -o Obj/grid_draw.o $(CXXFLAGS)
+
+Obj/grid_flux.o: ALG/Grid/grid_flux.cpp
+	$(CPP) -c ALG/Grid/grid_flux.cpp -o Obj/grid_flux.o $(CXXFLAGS)
+
+Obj/grid_refinement.o: ALG/Grid/grid_refinement.cpp
+	$(CPP) -c ALG/Grid/grid_refinement.cpp -o Obj/grid_refinement.o $(CXXFLAGS)
+
+Obj/cell.o: ALG/Grid/Cell/cell.cpp
+	$(CPP) -c ALG/Grid/Cell/cell.cpp -o Obj/cell.o $(CXXFLAGS)
+
+Obj/cell_derefinement.o: ALG/Grid/Cell/cell_derefinement.cpp
+	$(CPP) -c ALG/Grid/Cell/cell_derefinement.cpp -o Obj/cell_derefinement.o $(CXXFLAGS)
+
+Obj/cell_draw.o: ALG/Grid/Cell/cell_draw.cpp
+	$(CPP) -c ALG/Grid/Cell/cell_draw.cpp -o Obj/cell_draw.o $(CXXFLAGS)
+
+Obj/cell_flux.o: ALG/Grid/Cell/cell_flux.cpp
+	$(CPP) -c ALG/Grid/Cell/cell_flux.cpp -o Obj/cell_flux.o $(CXXFLAGS)
+
+Obj/cell_refinement.o: ALG/Grid/Cell/cell_refinement.cpp
+	$(CPP) -c ALG/Grid/Cell/cell_refinement.cpp -o Obj/cell_refinement.o $(CXXFLAGS)
+
+Obj/graphics.o: System/graphics.cpp
+	$(CPP) -c System/graphics.cpp -o Obj/graphics.o $(CXXFLAGS)
+
+Obj/camera.o: Interface/Display/camera.cpp
+	$(CPP) -c Interface/Display/camera.cpp -o Obj/camera.o $(CXXFLAGS)
+
+Obj/display.o: Interface/Display/display.cpp
+	$(CPP) -c Interface/Display/display.cpp -o Obj/display.o $(CXXFLAGS)
+
+Obj/keyboard.o: Interface/Keyboard/keyboard.cpp
+	$(CPP) -c Interface/Keyboard/keyboard.cpp -o Obj/keyboard.o $(CXXFLAGS)
+
+Obj/mouse.o: Interface/Mouse/mouse.cpp
+	$(CPP) -c Interface/Mouse/mouse.cpp -o Obj/mouse.o $(CXXFLAGS)
+
+Obj/main.o: Interface/main.cpp
+	$(CPP) -c Interface/main.cpp -o Obj/main.o $(CXXFLAGS)
+
+Obj/demo.o: Interface/Demo/demo.cpp
+	$(CPP) -c Interface/Demo/demo.cpp -o Obj/demo.o $(CXXFLAGS)
+
+Obj/controller.o: Interface/controller.cpp
+	$(CPP) -c Interface/controller.cpp -o Obj/controller.o $(CXXFLAGS)
+
+Obj/gl2ps.o: System/gl2ps.c
+	$(CPP) -c System/gl2ps.c -o Obj/gl2ps.o $(CXXFLAGS)
+
+ALG-3D_private.res: ALG-3D_private.rc 
+	$(WINDRES) -i ALG-3D_private.rc -I rc -o ALG-3D_private.res -O coff 
