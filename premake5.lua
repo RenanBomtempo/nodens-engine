@@ -106,8 +106,8 @@ group "Applications"
         cppdialect "C++17"
         staticruntime "on"
 
-        targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
-        objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
+        targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+        objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
         files
         {
@@ -159,8 +159,8 @@ group "Applications"
         cppdialect "C++17"
         staticruntime "on"
 
-        targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
-        objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
+        targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+        objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
         files
         {
@@ -217,8 +217,8 @@ group "Plugins"
         cppdialect "C++17"
         staticruntime "on"
 
-        targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
-        objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
+        targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+        objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
         pchheader "algpch.h"
         pchsource "Plugins/ALG/src/algpch.cpp"

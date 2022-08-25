@@ -41,14 +41,19 @@ namespace Moxxi {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
+	void OpenGLRendererAPI::DrawIndexedLines(const Ref<VertexArray>& vertexArray)
 	{
 		glDrawElements(GL_LINE_STRIP, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+	}
+
+	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
+	{
+		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 	}
 	
 	void OpenGLRendererAPI::DrawArrays(const Ref<VertexArray>& vertexArray)
 	{	
-		glDrawArrays(GL_LINE_STRIP, 0, vertexArray->GetVertexBuffers()[0]->GetVertexCount());
+		glDrawArrays(GL_TRIANGLES, 0, vertexArray->GetVertexBuffers()[0]->GetVertexCount());
 	}
 
 }

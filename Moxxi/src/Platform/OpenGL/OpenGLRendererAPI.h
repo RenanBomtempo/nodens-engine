@@ -11,6 +11,7 @@ namespace Moxxi {
 		virtual void Clear() override;
 
 		virtual void SetLineWidth(const float width) override;
+		virtual void DrawIndexedLines(const Ref<VertexArray>& vertexArray) override;
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) override;
 		virtual void DrawArrays(const Ref<VertexArray>& vertexArray) override;
 	};

@@ -44,7 +44,7 @@ endif
 
 PROJECTS := GLFW glad ImGui Moxxi Boids ShallowWaters ALG ALG\ Reference
 
-.PHONY: all clean help $(PROJECTS) Applications Dependencies Plugins References
+.PHONY: all clean help $(PROJECTS) Applications Dependencies Plugins Utility
 
 all: $(PROJECTS)
 
@@ -54,7 +54,7 @@ Dependencies: GLFW ImGui glad
 
 Plugins: ALG
 
-References: ALG Reference
+Utility: ALG Reference
 
 GLFW:
 ifneq (,$(GLFW_config))
@@ -86,7 +86,7 @@ ifneq (,$(Boids_config))
 	@${MAKE} --no-print-directory -C Applications/Boids -f Makefile config=$(Boids_config)
 endif
 
-ShallowWaters: ALG Moxxi
+ShallowWaters: Moxxi ALG
 ifneq (,$(ShallowWaters_config))
 	@echo "==== Building ShallowWaters ($(ShallowWaters_config)) ===="
 	@${MAKE} --no-print-directory -C Applications/ShallowWaters -f Makefile config=$(ShallowWaters_config)
@@ -101,7 +101,7 @@ endif
 ALG\ Reference:
 ifneq (,$(ALG_Reference_config))
 	@echo "==== Building ALG Reference ($(ALG_Reference_config)) ===="
-	@${MAKE} --no-print-directory -C References/ALG-Reference -f Makefile config=$(ALG_Reference_config)
+	@${MAKE} --no-print-directory -C Utility/ALG-Reference -f Makefile config=$(ALG_Reference_config)
 endif
 
 clean:
@@ -112,7 +112,7 @@ clean:
 	@${MAKE} --no-print-directory -C Applications/Boids -f Makefile clean
 	@${MAKE} --no-print-directory -C Applications/ShallowWaters -f Makefile clean
 	@${MAKE} --no-print-directory -C Plugins/ALG -f Makefile clean
-	@${MAKE} --no-print-directory -C References/ALG-Reference -f Makefile clean
+	@${MAKE} --no-print-directory -C Utility/ALG-Reference -f Makefile clean
 
 help:
 	@echo "Usage: make [config=name] [target]"

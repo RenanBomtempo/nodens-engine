@@ -9,7 +9,8 @@ public:
 	ShallowWatersLayer();
 
 	void InitFlatShader();
-	void InitSquareMesh();
+	void InitSquareWireframeMesh();
+	void InitSquareFillMesh();
 
 	void ProcessInputs(Moxxi::TimeStep ts);
 
@@ -21,11 +22,14 @@ public:
 private:
 	ShallowWaters m_ShallowWaters;
 
+	bool m_Wireframe;
+
 	float m_ElapsedTime = 0;
 	float m_Aux = 1;
 
 	Moxxi::Ref<Moxxi::Shader> m_FlatShader;
-	Moxxi::Ref<Moxxi::VertexArray> m_SquareVA;
+	Moxxi::Ref<Moxxi::VertexArray> m_SquareFillVA;
+	Moxxi::Ref<Moxxi::VertexArray> m_SquareWireframeVA;
 
 	Moxxi::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

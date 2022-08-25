@@ -14,7 +14,8 @@ ShallowWatersLayer::ShallowWatersLayer()
 	m_Aux(1)
 {
 	InitFlatShader();
-	InitSquareMesh();
+	InitSquareWireframeMesh();
+	InitSquareFillMesh();
 
 	m_ShallowWaters.m_Grid.Print();
 } // ShallowWatersLayer::ShallowWatersLayer
@@ -42,13 +43,14 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 	// Render
 	Moxxi::RenderCommand::SetClearColor(m_ClearColor);
 	Moxxi::RenderCommand::Clear();
-	Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
 	Moxxi::RenderCommand::SetLineWdith(m_Aux);
+	if (m_Wireframe)
+		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
+	else
+		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Fill);
+
 
 	Moxxi::Renderer::BeginScene(m_Camera, m_Light);
-
-	Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareVA, glm::mat4(1), glm::vec4(1));
-
 	auto cell = m_ShallowWaters.m_Grid.FirstCell();
 	while (cell != nullptr)
 	{
@@ -57,8 +59,10 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 		glm::mat4 transform(1);
 		transform = glm::translate(transform, pos);
 		transform = glm::scale(transform, glm::vec3(cell->SideLength()));
-
-		Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareVA, transform, { pos+glm::vec3(.5), 1});
+		if (m_Wireframe)
+			Moxxi::Renderer::SubmitIndexedLines(m_FlatShader, m_SquareWireframeVA, transform, { pos+glm::vec3(.5), 1});
+		else
+			Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareFillVA, transform, { pos+glm::vec3(.5), 1});
 		cell = cell->Next();
 	}
 	Moxxi::Renderer::EndScene();
@@ -104,6 +108,7 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 			cell = next;
 		}
 	}
+	ImGui::Checkbox("Wireframe", &m_Wireframe);
 	ImGui::End();
 } // ShallowWatersLayer::OnImGuiRender
 
@@ -146,10 +151,10 @@ void ShallowWatersLayer::InitFlatShader()
 	m_FlatShader.reset(Moxxi::Shader::Create(vertexSrc, fragmentSrc));
 }
 
-void ShallowWatersLayer::InitSquareMesh()
+void ShallowWatersLayer::InitSquareWireframeMesh()
 {
 	// VAO
-	m_SquareVA.reset(Moxxi::VertexArray::Create());
+	m_SquareWireframeVA.reset(Moxxi::VertexArray::Create());
 
 	// VBO
 	float vertices[] = {
@@ -165,7 +170,7 @@ void ShallowWatersLayer::InitSquareMesh()
 		{ Moxxi::ShaderDataType::Float3, "aPosition" }
 	};
 	vertexBuffer->SetLayout(layout);
-	m_SquareVA->AddVertexBuffer(vertexBuffer);
+	m_SquareWireframeVA->AddVertexBuffer(vertexBuffer);
 
 	// EBO
 	uint32_t indices[5] = {
@@ -173,7 +178,37 @@ void ShallowWatersLayer::InitSquareMesh()
 	};
 	Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 5));
-	m_SquareVA->SetIndexBuffer(indexBuffer);
+	m_SquareWireframeVA->SetIndexBuffer(indexBuffer);
+} // ShallowWatersLayer::InitDomainMesh
+
+void ShallowWatersLayer::InitSquareFillMesh()
+{
+	// VAO
+	m_SquareFillVA.reset(Moxxi::VertexArray::Create());
+
+	// VBO
+	float vertices[] = {
+		-1.0f, -1.0f, 0.0f,
+		 1.0f, -1.0f, 0.0f,
+		 1.0f,  1.0f, 0.0f,
+		-1.0f,  1.0f, 0.0f
+	};
+
+	Moxxi::Ref<Moxxi::VertexBuffer> vertexBuffer;
+	vertexBuffer.reset(Moxxi::VertexBuffer::Create(vertices, sizeof(vertices)));
+	Moxxi::BufferLayout layout = {
+		{ Moxxi::ShaderDataType::Float3, "aPosition" }
+	};
+	vertexBuffer->SetLayout(layout);
+	m_SquareFillVA->AddVertexBuffer(vertexBuffer);
+
+	// EBO
+	uint32_t indices[6] = {
+		0, 1, 2, 2, 3, 0 
+	};
+	Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
+	indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 6));
+	m_SquareFillVA->SetIndexBuffer(indexBuffer);
 } // ShallowWatersLayer::InitDomainMesh
 
 void ShallowWatersLayer::ProcessInputs(Moxxi::TimeStep ts)

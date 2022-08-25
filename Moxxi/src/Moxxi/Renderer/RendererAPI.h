@@ -29,6 +29,7 @@ namespace Moxxi {
 		virtual void SetLineWidth(const float width) = 0;
 		virtual void Clear() = 0;
 
+		virtual void DrawIndexedLines(const Ref<VertexArray>& vertexArray) = 0;
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;
 		virtual void DrawArrays(const Ref<VertexArray>& vertexArray) = 0;
 	

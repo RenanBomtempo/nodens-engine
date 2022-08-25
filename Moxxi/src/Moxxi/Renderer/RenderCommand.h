@@ -29,6 +29,10 @@ namespace Moxxi {
 			s_RendererAPI->SetLineWidth(width);
 		}
 
+		static void DrawIndexedLines(const Ref<VertexArray>& vertexArray)
+		{
+			s_RendererAPI->DrawIndexedLines(vertexArray);
+		}
 		static void DrawIndexed(const Ref<VertexArray>& vertexArray)
 		{
 			s_RendererAPI->DrawIndexed(vertexArray);
