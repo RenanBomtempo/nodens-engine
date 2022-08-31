@@ -2,7 +2,7 @@
 #include "CellBunch.h"
 
 namespace alg {
-	CellBunch::CellBunch(Vector2D center, uint32_t refinement_level)
+	void CellBunch::Init(Vector2D center, uint32_t refinement_level)
 	{
 		NE = new CellNode();
 		NW = new CellNode();
@@ -49,5 +49,7 @@ namespace alg {
 		SE->m_Center = Vector2D(
 			center.x + center_offset,
 			center.y - center_offset);
+
+		
 	}
 }

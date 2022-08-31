@@ -28,7 +28,8 @@ namespace alg {
 		// Connect Neighbors
 
 		uint8_t new_refinement_level = old_cell->m_RefLevel + 1;
-		CellBunch new_bunch(old_cell->m_Center, new_refinement_level);
+		CellBunch new_bunch;
+		new_bunch.Init(old_cell->m_Center, new_refinement_level);
 
 		//______________________________________________________________________
 		// Connect North
@@ -322,21 +323,11 @@ namespace alg {
 	{
 		ALG_CORE_ASSERT(old_cell != nullptr, "BuildMHC: 'old_cell' is nullptr.");
 
-		// Calculate MHC orientation
-		uint32_t n1 = old_cell->m_MHCIndex;
-		uint32_t level = old_cell->m_RefLevel + 1;
-		uint32_t i = 0;
-		for (uint32_t k = 1; k < level; k++)
-		{
-			i = MHC::s_Table[i][n1 % 4];
-			n1 = n1 / 4;
-		}
+		uint32_t mhc_index_offset = 2 * (old_cell->m_RefLevel - 1);
 
-		uint32_t mhc_index_offset = 2 * (level - 1);
-
-		switch (MHC::Unit(i))
+		switch (MHC::CalculateMHCProfile(old_cell->m_MHCIndex, old_cell->m_RefLevel))
 		{
-		case MHC::Unit::C:
+		case MHC::Profile::C:
 			//   .____.     .____.
 			//	 | NW | <== | NE |
 			//   |____|	    |____|
@@ -382,7 +373,7 @@ namespace alg {
 				new_bunch.SE->m_MHCNext = old_cell->m_MHCNext;
 			}
 			break;
-		case MHC::Unit::U:
+		case MHC::Profile::U:
 			//   .____.     .____.
 			//	 | NW |     | NE |
 			//   |____|	    |____|
@@ -421,7 +412,7 @@ namespace alg {
 			new_bunch.NW->m_MHCNext = old_cell->m_MHCNext;
 			old_cell->m_MHCNext->m_MHCPrevious = new_bunch.NW;
 			break;
-		case MHC::Unit::D:
+		case MHC::Profile::D:
 			//   .____.     .____.
 			//	 | NW | <== | NE |
 			//   |____|	    |____|
@@ -453,7 +444,7 @@ namespace alg {
 			new_bunch.NW->m_MHCNext = old_cell->m_MHCNext;
 			old_cell->m_MHCNext->m_MHCPrevious = new_bunch.NW;
 			break;
-		case MHC::Unit::N:
+		case MHC::Profile::N:
 			//   .____.     .____.
 			//	 | NW | ==> | NE |
 			//   |____|	    |____|
