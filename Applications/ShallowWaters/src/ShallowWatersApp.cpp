@@ -1,7 +1,6 @@
 #define MAIN_APPLICATION_FILE
 #include "Moxxi.h"
 #include "ShallowWatersLayer.h"
-#include "ShallowWaters.h"
 
 // -----------------------------------------------------------------------------
 class ShallowWatersApp : public Moxxi::Application

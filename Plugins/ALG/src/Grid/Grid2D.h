@@ -5,7 +5,6 @@
 #include "Nodes/BoundaryNode.h"
 #include "Nodes/CellBunch.h"
 
-
 namespace alg {
 	/**
 		Unit square grid with origin located at the lower left corner.
@@ -25,7 +24,7 @@ namespace alg {
 		// TODO: void SetBoundaryNodeData();
 
 		CellNode* const RefineCell(CellNode* old_cell);
-		// TODO: CellNode* const CoarsenBunch(CellNode* first_cell);
+		CellNode* const CoarsenBunch(CellNode* cell);
 
 		CellNode* FirstCell() const { return m_MHCFirstCell; }
 		CellNode* LastCell() const { return m_MHCLastCell; }
@@ -36,6 +35,7 @@ namespace alg {
 	private:
 		void UpdateMHC(CellNode* old_cell, CellBunch& new_bunch);
 
+		// TODO: Move these functions to the implementation file only 
 		void ConnectCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction);
 		void ConnectCase2(CellNode* old_cell_ptr, CellBunch& new_bunch, TransitionNode* transition, Direction direction);
 		void ConnectCase21(CellBunch& new_bunch, TransitionNode* transition, Direction direction);

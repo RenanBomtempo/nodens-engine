@@ -24,7 +24,10 @@ namespace alg {
 
 	std::string CellNode::GetMHCIndexAsBinaryString()
 	{
-		return std::bitset<2 * MAX_REFINEMENT_LEVEL>(m_MHCIndex).to_string();
+		std::string str = std::bitset<2 * MAX_REFINEMENT_LEVEL>(m_MHCIndex).to_string();
+		for (int i = 0; i < MAX_REFINEMENT_LEVEL-1; i++)
+			str.insert(3*i+2, 1, '|');
+		return str;
 	}
 
 	CellNode* CellNode::Next()

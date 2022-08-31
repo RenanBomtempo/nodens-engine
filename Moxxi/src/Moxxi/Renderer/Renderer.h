@@ -9,6 +9,7 @@ namespace Moxxi {
 	class Renderer
 	{
 	public:
+		static void BeginScene(Camera& camera);
 		static void BeginScene(Camera& camera, Light& light);
 		static void EndScene();
 

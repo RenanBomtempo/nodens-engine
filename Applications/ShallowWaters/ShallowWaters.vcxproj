@@ -131,11 +131,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\ShallowWaters.h" />
     <ClInclude Include="src\ShallowWatersLayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ShallowWaters.cpp" />
     <ClCompile Include="src\ShallowWatersApp.cpp" />
     <ClCompile Include="src\ShallowWatersLayer.cpp" />
   </ItemGroup>

@@ -1,6 +1,10 @@
 #pragma once
+
 #include "Moxxi.h"
-#include "ShallowWaters.h"
+#include "ALG.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/vector_angle.hpp>
 
 class ShallowWatersLayer : public Moxxi::Layer
 {
@@ -8,19 +12,20 @@ public:
 public:
 	ShallowWatersLayer();
 
+	void OnImGuiRender(Moxxi::TimeStep ts) override;
+	void OnUpdate(Moxxi::TimeStep ts) override;
+	void OnEvent(Moxxi::Event& event) override;
+
 	void InitFlatShader();
 	void InitSquareWireframeMesh();
 	void InitSquareFillMesh();
 
 	void ProcessInputs(Moxxi::TimeStep ts);
-
-	void OnUpdate(Moxxi::TimeStep ts) override;
-	void OnImGuiRender(Moxxi::TimeStep ts) override;
-	void OnEvent(Moxxi::Event& event) override;
+	void DrawGrid();
 
 	bool OnWindowResizeEvent(Moxxi::WindowResizeEvent& event);
 private:
-	ShallowWaters m_ShallowWaters;
+	alg::Grid2D m_Grid;
 
 	bool m_Wireframe;
 
@@ -33,12 +38,6 @@ private:
 
 	Moxxi::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	float m_CameraFOV = 50;
 
-	Moxxi::DirectionalLight m_Light;
-	glm::vec3 m_LightDirection;
-	glm::vec3 m_LightOrientation;
-	glm::vec3 m_LightColor;
-	
 	glm::vec4 m_ClearColor;
 };

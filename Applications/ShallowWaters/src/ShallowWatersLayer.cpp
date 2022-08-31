@@ -6,41 +6,32 @@ ShallowWatersLayer::ShallowWatersLayer()
 	: Layer("ShallowWatersLayer"),
 	m_CameraPosition(0.0f, 0.0f, 0.0f),
 	m_Camera(-2, 2, -2, 2),
-	m_Light(),
-	m_LightDirection(0, -1, 0),
-	m_LightOrientation(0, 180, 0),
-	m_LightColor(1.0f, 1.0f, 1.0f),
 	m_ClearColor(0.0, 0.0, 0.0, 1),
 	m_Aux(1)
 {
+	m_Grid.Initialize();
+
 	InitFlatShader();
 	InitSquareWireframeMesh();
 	InitSquareFillMesh();
-
-	m_ShallowWaters.m_Grid.Print();
 } // ShallowWatersLayer::ShallowWatersLayer
+
 
 void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 {
 	m_ElapsedTime += ts;
-	//MX_TRACE("m_ElapsedTime: {0}s", m_ElapsedTime);
 
 	ProcessInputs(ts);
 
+	DrawGrid();
+} // ShallowWatersLayer::OnUpdate
+
+void ShallowWatersLayer::DrawGrid()
+{
 	// Update scene
 	m_Camera.SetPosition(m_CameraPosition);
 
-	m_LightDirection = glm::vec4(0.0f, -1.0f, 0.0f, 1.0f)
-		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.x), glm::vec3(1, 0, 0))
-		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.y), glm::vec3(0, 1, 0))
-		* glm::rotate(glm::mat4(1.0f), glm::radians(m_LightOrientation.z), glm::vec3(0, 0, 1));
-	m_Light.SetDirection(m_LightDirection);
-	m_Light.SetColor(m_LightColor);
-
-	// Update simulation
-	m_ShallowWaters.OnUpdate(ts);
-
-	// Render
+	// Prepare scene
 	Moxxi::RenderCommand::SetClearColor(m_ClearColor);
 	Moxxi::RenderCommand::Clear();
 	Moxxi::RenderCommand::SetLineWdith(m_Aux);
@@ -50,27 +41,38 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Fill);
 
 
-	Moxxi::Renderer::BeginScene(m_Camera, m_Light);
-	auto cell = m_ShallowWaters.m_Grid.FirstCell();
+	// Render Scene
+	Moxxi::Renderer::BeginScene(m_Camera);
+	auto cell = m_Grid.FirstCell();
 	while (cell != nullptr)
 	{
-		glm::vec3 pos = { (cell->Center().x - .5) * 2, (cell->Center().y - .5) * 2, 0 };
+		glm::vec3 cellPosition = {
+			(cell->Center().x - .5) * 2,
+			(cell->Center().y - .5) * 2,
+			0
+		};
 
-		glm::mat4 transform(1);
-		transform = glm::translate(transform, pos);
-		transform = glm::scale(transform, glm::vec3(cell->SideLength()));
+		glm::mat4 cellTransform(1);
+		cellTransform = glm::translate(cellTransform, cellPosition);
+		cellTransform = glm::scale(cellTransform, glm::vec3(cell->SideLength()));
+
 		if (m_Wireframe)
-			Moxxi::Renderer::SubmitIndexedLines(m_FlatShader, m_SquareWireframeVA, transform, { pos+glm::vec3(.5), 1});
+			// Render wireframe square
+			Moxxi::Renderer::SubmitIndexedLines(
+				m_FlatShader, m_SquareWireframeVA, cellTransform);
 		else
-			Moxxi::Renderer::SubmitIndexed(m_FlatShader, m_SquareFillVA, transform, { pos+glm::vec3(.5), 1});
+			// Render filled square
+			Moxxi::Renderer::SubmitIndexed(
+				m_FlatShader, m_SquareFillVA, cellTransform);
+
 		cell = cell->Next();
 	}
 	Moxxi::Renderer::EndScene();
-} // ShallowWatersLayer::OnUpdate
+} // ShallowWatersLayer::DrawGrid
 
 void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 {
-	// Perfomance ----------------------------------------------------------
+	// Perfomance window--------------------------------------------------------
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav;
 	static int corner = 0;
 	if (corner != -1)
@@ -94,17 +96,20 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	ImGui::Text("FPS: %.3f", 1.0f / ts);
 	ImGui::End();
 
+	// Options menu ------------------------------------------------------------
 	ImGui::Begin("Options", NULL, ImGuiWindowFlags_AlwaysAutoResize);
 	ImGui::PushItemWidth(120);
-	ImGui::Text("Cell count: %u", m_ShallowWaters.m_Grid.CellCount());
+	ImGui::Text("Cell count: %u", m_Grid.CellCount());
 	ImGui::SliderFloat("Line width", &m_Aux, 0, 10);
 	if (ImGui::Button("Refine"))
 	{
-		auto cell = m_ShallowWaters.m_Grid.FirstCell();
+		auto cell = m_Grid.FirstCell();
 		while (cell != nullptr)
 		{
 			auto next = cell->Next();
-			m_ShallowWaters.m_Grid.RefineCell(cell);
+			int x = (cell->Index() >> (1 << (cell->RefinementLevel()-1)));
+			if (x % 4 == 0)
+				m_Grid.RefineCell(cell);
 			cell = next;
 		}
 	}
@@ -204,7 +209,7 @@ void ShallowWatersLayer::InitSquareFillMesh()
 
 	// EBO
 	uint32_t indices[6] = {
-		0, 1, 2, 2, 3, 0 
+		0, 1, 2, 2, 3, 0
 	};
 	Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 6));

@@ -4,6 +4,114 @@
 #include "MHC/MHC.h"
 
 namespace alg {
+	/**
+	* /brief Refine a cell and returns a reference to the first cell from
+	* the newly created cell bunch.
+	*
+	* /param old_cell: The cell that must be refined.
+	*
+	* /returns A reference to the first cell in the new bunch.
+	*/
+	CellNode* const Grid2D::RefineCell(CellNode* old_cell)
+	{
+		ALG_CORE_ASSERT(m_NumberOfCells > 0, "Grid has not been initialized!");
+		ALG_CORE_ASSERT(old_cell != nullptr, "RefineCell: 'old_cell' is nullptr.");
+
+		ALG_CORE_INFO("Refining cell {0}", old_cell->GetMHCIndexAsBinaryString());
+
+		if (old_cell->m_RefLevel == MAX_REFINEMENT_LEVEL)
+		{
+			std::cout << "Can't refine cell " << old_cell->m_MHCIndex << " . It has reached the maximum refinement level.";
+			return nullptr;
+		}
+		// =====================================================================
+		// Connect Neighbors
+
+		uint8_t new_refinement_level = old_cell->m_RefLevel + 1;
+		CellBunch new_bunch(old_cell->m_Center, new_refinement_level);
+
+		//______________________________________________________________________
+		// Connect North
+		switch (old_cell->m_North->GetType())
+		{
+		case NodeType::Cell:
+			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_North), Direction::North);
+			break;
+		case NodeType::Transition:
+			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_North), Direction::North);
+			break;
+		default:
+			ALG_ASSERT(false, "Invalid Cell Type");
+			break;
+		}
+
+		//______________________________________________________________________
+		// Connect South
+		switch (old_cell->m_South->GetType())
+		{
+		case NodeType::Cell:
+			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_South), Direction::South);
+			break;
+		case NodeType::Transition:
+			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_South), Direction::South);
+			break;
+		default:
+			ALG_ASSERT(false, "Invalid Cell Type");
+			break;
+		}
+
+		//______________________________________________________________________
+		// Connect West
+		switch (old_cell->m_West->GetType())
+		{
+		case NodeType::Cell:
+			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_West), Direction::West);
+			break;
+		case NodeType::Transition:
+			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_West), Direction::West);
+			break;
+		default:
+			ALG_ASSERT(false, "Invalid Cell Type");
+			break;
+		}
+
+		//______________________________________________________________________
+		// Connect East
+		switch (old_cell->m_East->GetType())
+		{
+		case NodeType::Cell:
+			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_East), Direction::East);
+			break;
+		case NodeType::Transition:
+			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_East), Direction::East);
+			break;
+		default:
+			ALG_ASSERT(false, "Invalid Cell Type");
+			break;
+		}
+
+		// =====================================================================
+		// Update MHC Ordering
+		UpdateMHC(old_cell, new_bunch);
+		//CellNode* first_cell_in_new_bunch = old_cell->m_MHCPrevious->m_MHCNext;
+
+		// =====================================================================
+		// Process Data Payload
+		// 
+		// Call the user defined function responsible for processing the 
+		// datapayload inside the newly created cells. 
+
+		this->m_NumberOfCells += 3;
+
+		// Isolate cell before deleting it
+		old_cell->m_North = nullptr;
+		old_cell->m_East = nullptr;
+		old_cell->m_South = nullptr;
+		old_cell->m_West = nullptr;
+		delete old_cell;
+
+		return nullptr;
+	}
 
 	void Grid2D::ConnectCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction)
 	{
@@ -430,109 +538,5 @@ namespace alg {
 		}
 	}
 
-	/**
-	* Refine a cell and returns a reference to the first cell from 
-	* the newly created cell bunch.
-	* 
-	* @param old_cell: The cell that must be refined.
-	* 
-	* @returns A reference to the first cell in the new bunch.
-	*/
-	CellNode* const Grid2D::RefineCell(CellNode* old_cell)
-	{
-		ALG_CORE_ASSERT(m_NumberOfCells > 0, "Grid has not been initialized!");
-		ALG_CORE_ASSERT(old_cell != nullptr, "RefineCell: 'old_cell' is nullptr.");
-	
-		ALG_CORE_INFO("Refining cell {0}", std::bitset<2 * MAX_REFINEMENT_LEVEL>(old_cell->m_MHCIndex));
-
-		if (old_cell->m_RefLevel == MAX_REFINEMENT_LEVEL)
-		{
-			std::cout << "Can't refine cell " << old_cell->m_MHCIndex << " . It has reached the maximum refinement level.";
-			return nullptr;
-		}
-		// =====================================================================
-		// Connect Neighbors
-
-		uint8_t new_refinement_level = old_cell->m_RefLevel + 1;
-		CellBunch new_bunch(old_cell->m_Center, new_refinement_level);
-
-		//______________________________________________________________________
-		// Connect North
-		switch (old_cell->m_North->GetType())
-		{
-		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_North), Direction::North);
-			break;
-		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_North), Direction::North);
-			break;
-		default:
-			break;
-		}
-
-		//______________________________________________________________________
-		// Connect South
-		switch (old_cell->m_South->GetType())
-		{
-		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_South), Direction::South);
-			break;
-		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_South), Direction::South);
-			break;
-		default:
-			break;
-		}
-
-		//______________________________________________________________________
-		// Connect West
-		switch (old_cell->m_West->GetType())
-		{
-		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_West), Direction::West);
-			break;
-		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_West), Direction::West);
-			break;
-		default:
-			break;
-		}
-
-		//______________________________________________________________________
-		// Connect East
-		switch (old_cell->m_East->GetType())
-		{
-		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_East), Direction::East);
-			break;
-		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_East), Direction::East);
-			break;
-		default:
-			break;
-		}
-
-		// =====================================================================
-		// Update MHC Ordering
-		UpdateMHC(old_cell, new_bunch);
-		//CellNode* first_cell_in_new_bunch = old_cell->m_MHCPrevious->m_MHCNext;
-
-		// =====================================================================
-		// Process Data Payload
-		// 
-		// Call the user defined function responsible for processing the 
-		// datapayload inside the newly created cells. 
-
-		this->m_NumberOfCells += 3;
-		
-		// Isolate cell before deleting it
-		old_cell->m_North = nullptr;
-		old_cell->m_East = nullptr;
-		old_cell->m_South = nullptr;
-		old_cell->m_West = nullptr;
-		delete old_cell;
-
-		return nullptr;
-	}
 
 }

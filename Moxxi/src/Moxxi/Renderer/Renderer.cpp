@@ -7,10 +7,16 @@ namespace Moxxi {
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
+	void Renderer::BeginScene(Camera& camera)
+	{
+		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+	}
+
 	void Renderer::BeginScene(Camera& camera, Light& light)
 	{
-		m_SceneData->LightType = light.GetType();
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+
+		m_SceneData->LightType = light.GetType();
 		m_SceneData->LightColor = light.GetColor();
 		if (light.GetType() == Light::Type::Directional)
 			m_SceneData->LightDirection = light.GetDirection();
