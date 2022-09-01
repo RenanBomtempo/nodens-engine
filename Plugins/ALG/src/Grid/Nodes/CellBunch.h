@@ -11,7 +11,7 @@ namespace alg {
 	*/
 	class CellBunch {
 	public:
-		void Init(Vector2D center, uint32_t refinement_level);
+		CellBunch(Vector2D center, uint32_t refinement_level);
 
 	public:
 		CellNode *NE;
