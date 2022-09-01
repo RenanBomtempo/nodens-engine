@@ -103,15 +103,7 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	ImGui::SliderFloat("Line width", &m_Aux, 0, 10);
 	if (ImGui::Button("Refine"))
 	{
-		auto cell = m_Grid.FirstCell();
-		while (cell != nullptr)
-		{
-			auto next = cell->Next();
-			int x = (cell->Index() >> (1 << (cell->RefinementLevel()-1)));
-			if (x % 4 == 0)
-				m_Grid.RefineCell(cell);
-			cell = next;
-		}
+		m_Grid.RefineGrid();
 	}
 	ImGui::Checkbox("Wireframe", &m_Wireframe);
 	ImGui::End();

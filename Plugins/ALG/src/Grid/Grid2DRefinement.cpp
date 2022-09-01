@@ -5,10 +5,31 @@
 
 namespace alg {
 	/**
+	* /brief Refines the entire grid.
+	*
+	* /returns A reference to the first cell in the new bunch.
+	*/
+	void Grid2D::RefineGrid()
+	{
+		if (m_NumberOfCells == (0b1 << (2 * MAX_REFINEMENT_LEVEL))) {
+			ALG_CORE_ERROR("Grid is already fully refined!");
+			return;
+		}
+
+		auto cell = m_MHCFirstCell;
+		while (cell != nullptr)
+		{
+			auto next = cell->Next();
+			RefineCell(cell);
+			cell = next;
+		}
+	}
+
+	/**
 	* /brief Refine a cell and returns a reference to the first cell from
 	* the newly created cell bunch.
 	*
-	* /param old_cell: The cell that must be refined.
+	* /param old_cell: The cell to be refined.
 	*
 	* /returns A reference to the first cell in the new bunch.
 	*/
@@ -19,11 +40,11 @@ namespace alg {
 
 		ALG_CORE_INFO("Refining cell {0}", old_cell->GetMHCIndexAsBinaryString());
 
-		if (old_cell->m_RefLevel == MAX_REFINEMENT_LEVEL)
-		{
-			std::cout << "Can't refine cell " << old_cell->m_MHCIndex << " . It has reached the maximum refinement level.";
+		if (old_cell->m_RefLevel == MAX_REFINEMENT_LEVEL) {
+			ALG_CORE_ERROR("Can't refine cell {0}. It has reached the maximum refinement level.", old_cell->m_MHCIndex);
 			return nullptr;
 		}
+
 		// =====================================================================
 		// Connect Neighbors
 
@@ -334,7 +355,10 @@ namespace alg {
 
 		uint32_t mhc_index_offset = 2 * (level - 1);
 
-		switch (MHC::Profile(i))
+		auto a = MHC::CalculateBunchProfile(old_cell->m_MHCIndex, old_cell->m_RefLevel + 1);
+		auto b = MHC::Profile(i);
+
+		switch (MHC::CalculateBunchProfile(old_cell->m_MHCIndex, old_cell->m_RefLevel + 1))
 		{
 		case MHC::Profile::C:
 			//   .____.     .____.

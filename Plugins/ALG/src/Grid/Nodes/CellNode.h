@@ -29,7 +29,7 @@ namespace alg {
 		uint8_t RefinementLevel() { return m_RefLevel; }
 
 		// MHC Ordering
-		uint32_t Index() { return m_MHCIndex; }
+		uint32_t MHCIndex() { return m_MHCIndex; }
 		bool HasNext() { return m_MHCNext != nullptr; }
 		bool HasPrevious() { return m_MHCPrevious != nullptr; }
 		CellNode* Next();

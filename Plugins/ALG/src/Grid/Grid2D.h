@@ -23,6 +23,7 @@ namespace alg {
 		// TODO: void SetTransitionNodeData();
 		// TODO: void SetBoundaryNodeData();
 
+		void RefineGrid();
 		CellNode* const RefineCell(CellNode* old_cell);
 		CellNode* const CoarsenBunch(CellNode* cell);
 
