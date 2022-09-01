@@ -2,7 +2,7 @@
 namespace alg {
 	class MHC {
 	public:
-		enum class Unit {
+		enum class Profile {
 			C, U, D, N
 		};
 

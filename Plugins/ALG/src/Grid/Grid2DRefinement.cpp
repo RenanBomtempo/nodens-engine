@@ -334,9 +334,9 @@ namespace alg {
 
 		uint32_t mhc_index_offset = 2 * (level - 1);
 
-		switch (MHC::Unit(i))
+		switch (MHC::Profile(i))
 		{
-		case MHC::Unit::C:
+		case MHC::Profile::C:
 			//   .____.     .____.
 			//	 | NW | <== | NE |
 			//   |____|	    |____|
@@ -382,7 +382,7 @@ namespace alg {
 				new_bunch.SE->m_MHCNext = old_cell->m_MHCNext;
 			}
 			break;
-		case MHC::Unit::U:
+		case MHC::Profile::U:
 			//   .____.     .____.
 			//	 | NW |     | NE |
 			//   |____|	    |____|
@@ -421,7 +421,7 @@ namespace alg {
 			new_bunch.NW->m_MHCNext = old_cell->m_MHCNext;
 			old_cell->m_MHCNext->m_MHCPrevious = new_bunch.NW;
 			break;
-		case MHC::Unit::D:
+		case MHC::Profile::D:
 			//   .____.     .____.
 			//	 | NW | <== | NE |
 			//   |____|	    |____|
@@ -453,7 +453,7 @@ namespace alg {
 			new_bunch.NW->m_MHCNext = old_cell->m_MHCNext;
 			old_cell->m_MHCNext->m_MHCPrevious = new_bunch.NW;
 			break;
-		case MHC::Unit::N:
+		case MHC::Profile::N:
 			//   .____.     .____.
 			//	 | NW | ==> | NE |
 			//   |____|	    |____|
