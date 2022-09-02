@@ -9,10 +9,10 @@ namespace alg {
 		SW = new CellNode();
 		SE = new CellNode();
 
-		NE->m_RefLevel = refinement_level;
-		NW->m_RefLevel = refinement_level;
-		SW->m_RefLevel = refinement_level;
-		SE->m_RefLevel = refinement_level;
+		NE->m_RefinementLevel = refinement_level;
+		NW->m_RefinementLevel = refinement_level;
+		SW->m_RefinementLevel = refinement_level;
+		SE->m_RefinementLevel = refinement_level;
 
 		// Calculate the offset between the bunch center and the center of the 
 		// new cells.

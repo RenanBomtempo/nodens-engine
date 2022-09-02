@@ -24,8 +24,9 @@ namespace alg {
 		// TODO: void SetBoundaryNodeData();
 
 		void RefineGrid();
-		CellNode* const RefineCell(CellNode* old_cell);
-		CellNode* const CoarsenBunch(CellNode* cell);
+		void CoarsenGrid();
+		CellNode* RefineCell(CellNode* old_cell);
+		CellNode* CoarsenBunch(CellNode* cell);
 
 		CellNode* FirstCell() const { return m_MHCFirstCell; }
 		CellNode* LastCell() const { return m_MHCLastCell; }
@@ -42,7 +43,6 @@ namespace alg {
 		void ConnectCase21(CellBunch& new_bunch, TransitionNode* transition, Direction direction);
 		void ConnectCase22(CellBunch& new_bunch, TransitionNode* new_transition, Direction direction);
 
-		CellNode* FindFirstCellInBunch(CellNode* cell);
 
 		// Modified Hilbert's Curve Ordering
 		CellNode* m_MHCFirstCell;

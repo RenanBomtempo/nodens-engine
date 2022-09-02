@@ -110,21 +110,21 @@ namespace alg {
 		//   |____|	    |____|
 
 		m_MHCFirstCell = initial_cells.NE;
-		initial_cells.NE->m_MHCIndex = 0b00;
-		initial_cells.NE->m_MHCPrevious = nullptr;
-		initial_cells.NE->m_MHCNext = initial_cells.NW;
+		initial_cells.NE->m_GlobalIndex = 0b00;
+		initial_cells.NE->m_Previous = nullptr;
+		initial_cells.NE->m_Next = initial_cells.NW;
 
-		initial_cells.NW->m_MHCIndex = 0b01;
-		initial_cells.NW->m_MHCPrevious = initial_cells.NE;
-		initial_cells.NW->m_MHCNext = initial_cells.SW;
+		initial_cells.NW->m_GlobalIndex = 0b01;
+		initial_cells.NW->m_Previous = initial_cells.NE;
+		initial_cells.NW->m_Next = initial_cells.SW;
 
-		initial_cells.SW->m_MHCIndex = 0b10;
-		initial_cells.SW->m_MHCPrevious = initial_cells.NW;
-		initial_cells.SW->m_MHCNext = initial_cells.SE;
+		initial_cells.SW->m_GlobalIndex = 0b10;
+		initial_cells.SW->m_Previous = initial_cells.NW;
+		initial_cells.SW->m_Next = initial_cells.SE;
 
-		initial_cells.SE->m_MHCIndex = 0b11;
-		initial_cells.SE->m_MHCPrevious = initial_cells.SW;
-		initial_cells.SE->m_MHCNext = nullptr;
+		initial_cells.SE->m_GlobalIndex = 0b11;
+		initial_cells.SE->m_Previous = initial_cells.SW;
+		initial_cells.SE->m_Next = nullptr;
 		m_MHCLastCell = initial_cells.SE;
 
 		m_NumberOfCells = 4;
@@ -148,9 +148,9 @@ namespace alg {
 		delete m_WestBoundary;
 
 		CellNode* curr = m_MHCFirstCell;
-		CellNode* next = curr->m_MHCNext;
+		CellNode* next = curr->m_Next;
 		while (curr != nullptr) {
-			next = curr->m_MHCNext;
+			next = curr->m_Next;
 			delete curr;
 			curr = next;
 		}
@@ -166,7 +166,7 @@ namespace alg {
 
 		while (curr != nullptr) {
 			curr->Print();
-			curr = curr->m_MHCNext;
+			curr = curr->m_Next;
 		}
 	}
 }

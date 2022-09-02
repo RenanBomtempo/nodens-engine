@@ -28,6 +28,7 @@ private:
 	alg::Grid2D m_Grid;
 
 	bool m_Wireframe;
+	bool m_Fill;
 
 	float m_ElapsedTime = 0;
 	float m_Aux = 1;

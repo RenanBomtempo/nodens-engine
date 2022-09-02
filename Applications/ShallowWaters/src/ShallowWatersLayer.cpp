@@ -35,11 +35,6 @@ void ShallowWatersLayer::DrawGrid()
 	Moxxi::RenderCommand::SetClearColor(m_ClearColor);
 	Moxxi::RenderCommand::Clear();
 	Moxxi::RenderCommand::SetLineWdith(m_Aux);
-	if (m_Wireframe)
-		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
-	else
-		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Fill);
-
 
 	// Render Scene
 	Moxxi::Renderer::BeginScene(m_Camera);
@@ -56,14 +51,19 @@ void ShallowWatersLayer::DrawGrid()
 		cellTransform = glm::translate(cellTransform, cellPosition);
 		cellTransform = glm::scale(cellTransform, glm::vec3(cell->SideLength()));
 
-		if (m_Wireframe)
+		if (m_Wireframe) {
+			Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
 			// Render wireframe square
 			Moxxi::Renderer::SubmitIndexedLines(
 				m_FlatShader, m_SquareWireframeVA, cellTransform);
-		else
+		}
+
+		if (m_Fill) {
+			Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Fill);
 			// Render filled square
 			Moxxi::Renderer::SubmitIndexed(
-				m_FlatShader, m_SquareFillVA, cellTransform);
+				m_FlatShader, m_SquareFillVA, cellTransform, {cellPosition, 1});
+		}
 
 		cell = cell->Next();
 	}
@@ -99,13 +99,17 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	// Options menu ------------------------------------------------------------
 	ImGui::Begin("Options", NULL, ImGuiWindowFlags_AlwaysAutoResize);
 	ImGui::PushItemWidth(120);
+
 	ImGui::Text("Cell count: %u", m_Grid.CellCount());
 	ImGui::SliderFloat("Line width", &m_Aux, 0, 10);
-	if (ImGui::Button("Refine"))
-	{
-		m_Grid.RefineGrid();
-	}
 	ImGui::Checkbox("Wireframe", &m_Wireframe);
+	ImGui::Checkbox("Fill", &m_Fill);
+
+	if (ImGui::Button("Refine"))
+		m_Grid.RefineGrid();
+	if (ImGui::Button("Coarsen"))
+		m_Grid.CoarsenBunch(m_Grid.FirstCell()->Next());
+	
 	ImGui::End();
 } // ShallowWatersLayer::OnImGuiRender
 

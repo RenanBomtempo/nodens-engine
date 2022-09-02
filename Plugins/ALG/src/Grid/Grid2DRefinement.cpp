@@ -33,22 +33,22 @@ namespace alg {
 	*
 	* /returns A reference to the first cell in the new bunch.
 	*/
-	CellNode* const Grid2D::RefineCell(CellNode* old_cell)
+	CellNode* Grid2D::RefineCell(CellNode* old_cell) 
 	{
 		ALG_CORE_ASSERT(m_NumberOfCells > 0, "Grid has not been initialized!");
 		ALG_CORE_ASSERT(old_cell != nullptr, "RefineCell: 'old_cell' is nullptr.");
 
 		ALG_CORE_INFO("Refining cell {0}", old_cell->GetMHCIndexAsBinaryString());
 
-		if (old_cell->m_RefLevel == MAX_REFINEMENT_LEVEL) {
-			ALG_CORE_ERROR("Can't refine cell {0}. It has reached the maximum refinement level.", old_cell->m_MHCIndex);
+		if (old_cell->m_RefinementLevel == MAX_REFINEMENT_LEVEL) {
+			ALG_CORE_ERROR("Can't refine cell {0}. It has reached the maximum refinement level.", old_cell->m_GlobalIndex);
 			return nullptr;
 		}
 
 		// =====================================================================
 		// Connect Neighbors
 
-		uint8_t new_refinement_level = old_cell->m_RefLevel + 1;
+		uint8_t new_refinement_level = old_cell->m_RefinementLevel + 1;
 		CellBunch new_bunch(old_cell->m_Center, new_refinement_level);
 
 		//______________________________________________________________________
@@ -344,8 +344,8 @@ namespace alg {
 		ALG_CORE_ASSERT(old_cell != nullptr, "BuildMHC: 'old_cell' is nullptr.");
 
 		// Calculate MHC orientation
-		uint32_t n1 = old_cell->m_MHCIndex;
-		uint32_t level = old_cell->m_RefLevel + 1;
+		uint32_t n1 = old_cell->m_GlobalIndex;
+		uint32_t level = old_cell->m_RefinementLevel + 1;
 		uint32_t i = 0;
 		for (uint32_t k = 1; k < level; k++)
 		{
@@ -355,10 +355,10 @@ namespace alg {
 
 		uint32_t mhc_index_offset = 2 * (level - 1);
 
-		auto a = MHC::CalculateBunchProfile(old_cell->m_MHCIndex, old_cell->m_RefLevel + 1);
+		auto a = MHC::CalculateBunchProfile(old_cell->m_GlobalIndex, old_cell->m_RefinementLevel + 1);
 		auto b = MHC::Profile(i);
 
-		switch (MHC::CalculateBunchProfile(old_cell->m_MHCIndex, old_cell->m_RefLevel + 1))
+		switch (MHC::CalculateBunchProfile(old_cell->m_GlobalIndex, old_cell->m_RefinementLevel + 1))
 		{
 		case MHC::Profile::C:
 			//   .____.     .____.
@@ -371,39 +371,39 @@ namespace alg {
 			//   |____|	    |____|
 			// 
 			// First cell
-			new_bunch.NE->m_MHCIndex = old_cell->m_MHCIndex + (0b00 << mhc_index_offset);
+			new_bunch.NE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b00 << mhc_index_offset);
 			if (m_MHCFirstCell == old_cell)
 			{
-				new_bunch.NE->m_MHCPrevious = nullptr;
+				new_bunch.NE->m_Previous = nullptr;
 				m_MHCFirstCell = new_bunch.NE;
 			}
 			else {
-				new_bunch.NE->m_MHCPrevious = old_cell->m_MHCPrevious;
-				old_cell->m_MHCPrevious->m_MHCNext = new_bunch.NE;
+				new_bunch.NE->m_Previous = old_cell->m_Previous;
+				old_cell->m_Previous->m_Next = new_bunch.NE;
 			}
-			new_bunch.NE->m_MHCNext = new_bunch.NW;
+			new_bunch.NE->m_Next = new_bunch.NW;
 
 			// Second cell
-			new_bunch.NW->m_MHCIndex = old_cell->m_MHCIndex + (0b01 << mhc_index_offset);
-			new_bunch.NW->m_MHCPrevious = new_bunch.NE;
-			new_bunch.NW->m_MHCNext = new_bunch.SW;
+			new_bunch.NW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b01 << mhc_index_offset);
+			new_bunch.NW->m_Previous = new_bunch.NE;
+			new_bunch.NW->m_Next = new_bunch.SW;
 
 			// Third cell
-			new_bunch.SW->m_MHCIndex = old_cell->m_MHCIndex + (0b10 << mhc_index_offset);
-			new_bunch.SW->m_MHCPrevious = new_bunch.NW;
-			new_bunch.SW->m_MHCNext = new_bunch.SE;
+			new_bunch.SW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b10 << mhc_index_offset);
+			new_bunch.SW->m_Previous = new_bunch.NW;
+			new_bunch.SW->m_Next = new_bunch.SE;
 
 			// Last cell
-			new_bunch.SE->m_MHCIndex = old_cell->m_MHCIndex + (0b11 << mhc_index_offset);
-			new_bunch.SE->m_MHCPrevious = new_bunch.SW;
+			new_bunch.SE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b11 << mhc_index_offset);
+			new_bunch.SE->m_Previous = new_bunch.SW;
 			if (m_MHCLastCell == old_cell)
 			{
 				m_MHCLastCell = new_bunch.SE;
-				new_bunch.SE->m_MHCNext = nullptr;
+				new_bunch.SE->m_Next = nullptr;
 			}
 			else {
-				old_cell->m_MHCNext->m_MHCPrevious = new_bunch.SE;
-				new_bunch.SE->m_MHCNext = old_cell->m_MHCNext;
+				old_cell->m_Next->m_Previous = new_bunch.SE;
+				new_bunch.SE->m_Next = old_cell->m_Next;
 			}
 			break;
 		case MHC::Profile::U:
@@ -417,33 +417,33 @@ namespace alg {
 			//   |____|	    |____|
 			// 
 			// First cell
-			new_bunch.NE->m_MHCIndex = old_cell->m_MHCIndex + (0b00 << mhc_index_offset);
+			new_bunch.NE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b00 << mhc_index_offset);
 			if (m_MHCFirstCell == old_cell)
 			{
-				new_bunch.NE->m_MHCPrevious = nullptr;
+				new_bunch.NE->m_Previous = nullptr;
 				m_MHCFirstCell = new_bunch.NE;
 			}
 			else {
-				new_bunch.NE->m_MHCPrevious = old_cell->m_MHCPrevious;
-				old_cell->m_MHCPrevious->m_MHCNext = new_bunch.NE;
+				new_bunch.NE->m_Previous = old_cell->m_Previous;
+				old_cell->m_Previous->m_Next = new_bunch.NE;
 			}
-			new_bunch.NE->m_MHCNext = new_bunch.SE;
+			new_bunch.NE->m_Next = new_bunch.SE;
 
 			// Second cell
-			new_bunch.SE->m_MHCIndex = old_cell->m_MHCIndex + (0b01 << mhc_index_offset);
-			new_bunch.SE->m_MHCPrevious = new_bunch.NE;
-			new_bunch.SE->m_MHCNext = new_bunch.SW;
+			new_bunch.SE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b01 << mhc_index_offset);
+			new_bunch.SE->m_Previous = new_bunch.NE;
+			new_bunch.SE->m_Next = new_bunch.SW;
 
 			// Third cell
-			new_bunch.SW->m_MHCIndex = old_cell->m_MHCIndex + (0b10 << mhc_index_offset);
-			new_bunch.SW->m_MHCPrevious = new_bunch.SE;
-			new_bunch.SW->m_MHCNext = new_bunch.NW;
+			new_bunch.SW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b10 << mhc_index_offset);
+			new_bunch.SW->m_Previous = new_bunch.SE;
+			new_bunch.SW->m_Next = new_bunch.NW;
 
 			// Last cell
-			new_bunch.NW->m_MHCIndex = old_cell->m_MHCIndex + (0b11 << mhc_index_offset);
-			new_bunch.NW->m_MHCPrevious = new_bunch.SW;
-			new_bunch.NW->m_MHCNext = old_cell->m_MHCNext;
-			old_cell->m_MHCNext->m_MHCPrevious = new_bunch.NW;
+			new_bunch.NW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b11 << mhc_index_offset);
+			new_bunch.NW->m_Previous = new_bunch.SW;
+			new_bunch.NW->m_Next = old_cell->m_Next;
+			old_cell->m_Next->m_Previous = new_bunch.NW;
 			break;
 		case MHC::Profile::D:
 			//   .____.     .____.
@@ -456,26 +456,26 @@ namespace alg {
 			//   |____|	    |____|
 			// 
 			// First cell
-			new_bunch.SW->m_MHCIndex = old_cell->m_MHCIndex + (0b00 << mhc_index_offset);
-			new_bunch.SW->m_MHCPrevious = old_cell->m_MHCPrevious;
-			old_cell->m_MHCPrevious->m_MHCNext = new_bunch.SW;
-			new_bunch.SW->m_MHCNext = new_bunch.SE;
+			new_bunch.SW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b00 << mhc_index_offset);
+			new_bunch.SW->m_Previous = old_cell->m_Previous;
+			old_cell->m_Previous->m_Next = new_bunch.SW;
+			new_bunch.SW->m_Next = new_bunch.SE;
 
 			// Second cell
-			new_bunch.SE->m_MHCIndex = old_cell->m_MHCIndex + (0b01 << mhc_index_offset);
-			new_bunch.SE->m_MHCPrevious = new_bunch.SW;
-			new_bunch.SE->m_MHCNext = new_bunch.NE;
+			new_bunch.SE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b01 << mhc_index_offset);
+			new_bunch.SE->m_Previous = new_bunch.SW;
+			new_bunch.SE->m_Next = new_bunch.NE;
 
 			// Third cell
-			new_bunch.NE->m_MHCIndex = old_cell->m_MHCIndex + (0b10 << mhc_index_offset);
-			new_bunch.NE->m_MHCPrevious = new_bunch.SE;
-			new_bunch.NE->m_MHCNext = new_bunch.NW;
+			new_bunch.NE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b10 << mhc_index_offset);
+			new_bunch.NE->m_Previous = new_bunch.SE;
+			new_bunch.NE->m_Next = new_bunch.NW;
 
 			// Last cell
-			new_bunch.NW->m_MHCIndex = old_cell->m_MHCIndex + (0b11 << mhc_index_offset);
-			new_bunch.NW->m_MHCPrevious = new_bunch.NE;
-			new_bunch.NW->m_MHCNext = old_cell->m_MHCNext;
-			old_cell->m_MHCNext->m_MHCPrevious = new_bunch.NW;
+			new_bunch.NW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b11 << mhc_index_offset);
+			new_bunch.NW->m_Previous = new_bunch.NE;
+			new_bunch.NW->m_Next = old_cell->m_Next;
+			old_cell->m_Next->m_Previous = new_bunch.NW;
 			break;
 		case MHC::Profile::N:
 			//   .____.     .____.
@@ -488,32 +488,32 @@ namespace alg {
 			//   |____|	    |____|
 			// 
 			// First cell
-			new_bunch.SW->m_MHCIndex = old_cell->m_MHCIndex + (0b00 << mhc_index_offset);
-			new_bunch.SW->m_MHCPrevious = old_cell->m_MHCPrevious;
-			old_cell->m_MHCPrevious->m_MHCNext = new_bunch.SW;
-			new_bunch.SW->m_MHCNext = new_bunch.NW;
+			new_bunch.SW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b00 << mhc_index_offset);
+			new_bunch.SW->m_Previous = old_cell->m_Previous;
+			old_cell->m_Previous->m_Next = new_bunch.SW;
+			new_bunch.SW->m_Next = new_bunch.NW;
 
 			// Second cell
-			new_bunch.NW->m_MHCIndex = old_cell->m_MHCIndex + (0b01 << mhc_index_offset);
-			new_bunch.NW->m_MHCPrevious = new_bunch.SW;
-			new_bunch.NW->m_MHCNext = new_bunch.NE;
+			new_bunch.NW->m_GlobalIndex = old_cell->m_GlobalIndex + (0b01 << mhc_index_offset);
+			new_bunch.NW->m_Previous = new_bunch.SW;
+			new_bunch.NW->m_Next = new_bunch.NE;
 
 			// Third cell
-			new_bunch.NE->m_MHCIndex = old_cell->m_MHCIndex + (0b10 << mhc_index_offset);
-			new_bunch.NE->m_MHCPrevious = new_bunch.NW;
-			new_bunch.NE->m_MHCNext = new_bunch.SE;
+			new_bunch.NE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b10 << mhc_index_offset);
+			new_bunch.NE->m_Previous = new_bunch.NW;
+			new_bunch.NE->m_Next = new_bunch.SE;
 
 			// Last cell
-			new_bunch.SE->m_MHCIndex = old_cell->m_MHCIndex + (0b11 << mhc_index_offset);
-			new_bunch.SE->m_MHCPrevious = new_bunch.NE;
+			new_bunch.SE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b11 << mhc_index_offset);
+			new_bunch.SE->m_Previous = new_bunch.NE;
 			if (m_MHCLastCell == old_cell)
 			{
-				new_bunch.SE->m_MHCNext = nullptr;
+				new_bunch.SE->m_Next = nullptr;
 				m_MHCLastCell = new_bunch.SE;
 			}
 			else {
-				new_bunch.SE->m_MHCNext = old_cell->m_MHCNext;
-				old_cell->m_MHCNext->m_MHCPrevious = new_bunch.SE;
+				new_bunch.SE->m_Next = old_cell->m_Next;
+				old_cell->m_Next->m_Previous = new_bunch.SE;
 			}
 			break;
 		default:
