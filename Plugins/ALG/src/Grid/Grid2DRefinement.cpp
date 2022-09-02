@@ -343,20 +343,7 @@ namespace alg {
 	{
 		ALG_CORE_ASSERT(old_cell != nullptr, "BuildMHC: 'old_cell' is nullptr.");
 
-		// Calculate MHC orientation
-		uint32_t n1 = old_cell->m_GlobalIndex;
-		uint32_t level = old_cell->m_RefinementLevel + 1;
-		uint32_t i = 0;
-		for (uint32_t k = 1; k < level; k++)
-		{
-			i = MHC::s_Table[i][n1 % 4];
-			n1 = n1 / 4;
-		}
-
-		uint32_t mhc_index_offset = 2 * (level - 1);
-
-		auto a = MHC::CalculateBunchProfile(old_cell->m_GlobalIndex, old_cell->m_RefinementLevel + 1);
-		auto b = MHC::Profile(i);
+		uint32_t mhc_index_offset = 2 * (old_cell->m_RefinementLevel);
 
 		switch (MHC::CalculateBunchProfile(old_cell->m_GlobalIndex, old_cell->m_RefinementLevel + 1))
 		{
