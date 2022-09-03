@@ -13,15 +13,12 @@ namespace alg {
 		m_SouthBoundary(nullptr),
 		m_EastBoundary(nullptr),
 		m_WestBoundary(nullptr),
-		m_MHCFirstCell(nullptr),
-		m_MHCLastCell(nullptr)
+		m_FirstCell(nullptr),
+		m_LastCell(nullptr)
 	{
 		alg::Log::Init();
 	}
 
-	/**
-	* Instantiate the 4 initial cells of the grid.
-	*/
 	void Grid2D::Initialize()
 	{
 		ALG_CORE_INFO("Initializing Grid: {0}", m_Title);
@@ -43,6 +40,7 @@ namespace alg {
 
 		// 4 INITIAL CELL nodes
 		CellBunch initial_cells = CellBunch(Vector2D(0.5), 1);
+
 
 		// =====================================================================
 		// Connect BoundaryNodes
@@ -109,7 +107,7 @@ namespace alg {
 		//	 | SW | ==> | SE |
 		//   |____|	    |____|
 
-		m_MHCFirstCell = initial_cells.NE;
+		m_FirstCell = initial_cells.NE;
 		initial_cells.NE->m_GlobalIndex = 0b00;
 		initial_cells.NE->m_Previous = nullptr;
 		initial_cells.NE->m_Next = initial_cells.NW;
@@ -125,7 +123,7 @@ namespace alg {
 		initial_cells.SE->m_GlobalIndex = 0b11;
 		initial_cells.SE->m_Previous = initial_cells.SW;
 		initial_cells.SE->m_Next = nullptr;
-		m_MHCLastCell = initial_cells.SE;
+		m_LastCell = initial_cells.SE;
 
 		m_NumberOfCells = 4;
 
@@ -147,7 +145,7 @@ namespace alg {
 		delete m_EastBoundary;
 		delete m_WestBoundary;
 
-		CellNode* curr = m_MHCFirstCell;
+		CellNode* curr = m_FirstCell;
 		CellNode* next = curr->m_Next;
 		while (curr != nullptr) {
 			next = curr->m_Next;
@@ -162,7 +160,7 @@ namespace alg {
 	{
 		std::cout << "| '" << m_Title << "'" << std::endl;
 		std::cout << "| --------------------------------" << std::endl;
-		CellNode* curr = m_MHCFirstCell;
+		CellNode* curr = m_FirstCell;
 
 		while (curr != nullptr) {
 			curr->Print();

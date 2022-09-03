@@ -6,14 +6,15 @@ ShallowWatersLayer::ShallowWatersLayer()
 	: Layer("ShallowWatersLayer"),
 	m_CameraPosition(0.0f, 0.0f, 0.0f),
 	m_Camera(-2, 2, -2, 2),
-	m_ClearColor(0.0, 0.0, 0.0, 1),
-	m_Aux(1)
+	m_ClearColor(0.0, 0.0, 0.0, 1)
 {
 	m_Grid.Initialize();
 
 	InitFlatShader();
 	InitSquareWireframeMesh();
 	InitSquareFillMesh();
+	InitMHCMesh();
+
 } // ShallowWatersLayer::ShallowWatersLayer
 
 
@@ -32,12 +33,33 @@ void ShallowWatersLayer::DrawGrid()
 	m_Camera.SetPosition(m_CameraPosition);
 
 	// Prepare scene
+	Moxxi::RenderCommand::SetLineWdith(m_LineWidth);
+	Moxxi::RenderCommand::SetPointSize(m_PointSize);
 	Moxxi::RenderCommand::SetClearColor(m_ClearColor);
 	Moxxi::RenderCommand::Clear();
-	Moxxi::RenderCommand::SetLineWdith(m_Aux);
 
 	// Render Scene
 	Moxxi::Renderer::BeginScene(m_Camera);
+
+	// Render MHC
+	glm::vec3 mhc_position(-.5, -.5, 0);
+	glm::mat4 mhc_transform(1);
+
+	mhc_transform = glm::scale(mhc_transform, glm::vec3(2));
+	mhc_transform = glm::translate(mhc_transform, mhc_position);
+
+	if (m_MHCPoints) {
+		// MHC Points
+		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Point);
+		Moxxi::Renderer::SubmitIndexed(
+			m_FlatShader, m_MHCVA, mhc_transform, { 1,1,0,1 });
+	}
+	if (m_MHCLines) {
+		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
+		Moxxi::Renderer::SubmitIndexedLines(
+			m_FlatShader, m_MHCVA, mhc_transform);
+	}
+
 	auto cell = m_Grid.FirstCell();
 	while (cell != nullptr)
 	{
@@ -62,11 +84,12 @@ void ShallowWatersLayer::DrawGrid()
 			Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Fill);
 			// Render filled square
 			Moxxi::Renderer::SubmitIndexed(
-				m_FlatShader, m_SquareFillVA, cellTransform, {cellPosition, 1});
+				m_FlatShader, m_SquareFillVA, cellTransform, { cellPosition + glm::vec3(.5, .5, 0.5), 1 });
 		}
 
 		cell = cell->Next();
 	}
+
 	Moxxi::Renderer::EndScene();
 } // ShallowWatersLayer::DrawGrid
 
@@ -98,18 +121,27 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 
 	// Options menu ------------------------------------------------------------
 	ImGui::Begin("Options", NULL, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::PushItemWidth(120);
+	ImGui::PushItemWidth(90);
 
 	ImGui::Text("Cell count: %u", m_Grid.CellCount());
-	ImGui::SliderFloat("Line width", &m_Aux, 0, 10);
+	ImGui::SliderFloat("Line width", &m_LineWidth, 0, 3);
+	ImGui::SliderFloat("Point Size", &m_PointSize, 1, 8);
 	ImGui::Checkbox("Wireframe", &m_Wireframe);
 	ImGui::Checkbox("Fill", &m_Fill);
+	ImGui::Checkbox("MHC Lines", &m_MHCLines);
+	ImGui::Checkbox("MHC Points", &m_MHCPoints);
 
 	if (ImGui::Button("Refine"))
+	{
 		m_Grid.RefineGrid();
+		InitMHCMesh();
+	}
 	if (ImGui::Button("Coarsen"))
-		m_Grid.CoarsenBunch(m_Grid.FirstCell()->Next());
-	
+	{
+		m_Grid.CoarsenBunch(m_Grid.FirstCell()->Next()->Next()->Next());
+		InitMHCMesh();
+	}
+
 	ImGui::End();
 } // ShallowWatersLayer::OnImGuiRender
 
@@ -210,6 +242,49 @@ void ShallowWatersLayer::InitSquareFillMesh()
 	Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 6));
 	m_SquareFillVA->SetIndexBuffer(indexBuffer);
+} // ShallowWatersLayer::InitDomainMesh
+
+void ShallowWatersLayer::InitMHCMesh()
+{
+	// VAO
+	m_MHCVA.reset(Moxxi::VertexArray::Create());
+
+	// VBO
+	uint32_t cell_count = m_Grid.CellCount();
+	float* vertices = new float[3 * cell_count];
+
+	uint32_t cell_counter = 0;
+	auto cell = m_Grid.FirstCell();
+	while (cell != nullptr)
+	{
+		auto next = cell->Next();
+		vertices[3 * cell_counter] = cell->Center().x;
+		vertices[3 * cell_counter + 1] = cell->Center().y;
+		vertices[3 * cell_counter + 2] = 0;
+		cell_counter++;
+		cell = next;
+	}
+
+	Moxxi::Ref<Moxxi::VertexBuffer> vertexBuffer;
+	vertexBuffer.reset(Moxxi::VertexBuffer::Create(vertices, 3 * cell_count * sizeof(float)));
+	Moxxi::BufferLayout layout = {
+		{ Moxxi::ShaderDataType::Float3, "aPosition" }
+	};
+	vertexBuffer->SetLayout(layout);
+	m_MHCVA->AddVertexBuffer(vertexBuffer);
+
+	// EBO
+	uint32_t* indices = new uint32_t[2 * (cell_count - 1)];
+
+	for (int i = 0; i < cell_count; i++)
+	{
+		indices[2 * i] = i;
+		indices[2 * i + 1] = i+1;
+	}
+
+	Moxxi::Ref<Moxxi::IndexBuffer> indexBuffer;
+	indexBuffer.reset(Moxxi::IndexBuffer::Create(indices, 2 * (cell_count - 1)));
+	m_MHCVA->SetIndexBuffer(indexBuffer);
 } // ShallowWatersLayer::InitDomainMesh
 
 void ShallowWatersLayer::ProcessInputs(Moxxi::TimeStep ts)

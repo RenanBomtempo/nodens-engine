@@ -28,6 +28,11 @@ namespace Moxxi {
 		{
 			s_RendererAPI->SetLineWidth(width);
 		}
+		
+		static void SetPointSize(const float size)
+		{
+			s_RendererAPI->SetPointSize(size);
+		}
 
 		static void DrawIndexedLines(const Ref<VertexArray>& vertexArray)
 		{

@@ -16,11 +16,12 @@ namespace alg {
 			return;
 		}
 
-		auto cell = m_MHCFirstCell;
+		auto cell = m_FirstCell;
 		while (cell != nullptr)
 		{
 			auto next = cell->Next();
-			RefineCell(cell);
+			//if (cell->LocalIndex() %2== 1)
+				RefineCell(cell);
 			cell = next;
 		}
 	}
@@ -33,16 +34,16 @@ namespace alg {
 	*
 	* /returns A reference to the first cell in the new bunch.
 	*/
-	CellNode* Grid2D::RefineCell(CellNode* old_cell) 
+	CellBunch Grid2D::RefineCell(CellNode* old_cell) 
 	{
 		ALG_CORE_ASSERT(m_NumberOfCells > 0, "Grid has not been initialized!");
 		ALG_CORE_ASSERT(old_cell != nullptr, "RefineCell: 'old_cell' is nullptr.");
 
-		ALG_CORE_INFO("Refining cell {0}", old_cell->GetMHCIndexAsBinaryString());
+		ALG_CORE_INFO("Refining cell {0}", old_cell->GlobalIndexAsBinaryString());
 
 		if (old_cell->m_RefinementLevel == MAX_REFINEMENT_LEVEL) {
 			ALG_CORE_ERROR("Can't refine cell {0}. It has reached the maximum refinement level.", old_cell->m_GlobalIndex);
-			return nullptr;
+			throw std::exception("Cell has reached maximum refinement level.");
 		}
 
 		// =====================================================================
@@ -56,10 +57,10 @@ namespace alg {
 		switch (old_cell->m_North->GetType())
 		{
 		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_North), Direction::North);
+			_RefineCase1(new_bunch, (CellNode*)(old_cell->m_North), Direction::North);
 			break;
 		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_North), Direction::North);
+			_RefineCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_North), Direction::North);
 			break;
 		default:
 			ALG_ASSERT(false, "Invalid Cell Type");
@@ -71,10 +72,10 @@ namespace alg {
 		switch (old_cell->m_South->GetType())
 		{
 		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_South), Direction::South);
+			_RefineCase1(new_bunch, (CellNode*)(old_cell->m_South), Direction::South);
 			break;
 		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_South), Direction::South);
+			_RefineCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_South), Direction::South);
 			break;
 		default:
 			ALG_ASSERT(false, "Invalid Cell Type");
@@ -86,10 +87,10 @@ namespace alg {
 		switch (old_cell->m_West->GetType())
 		{
 		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_West), Direction::West);
+			_RefineCase1(new_bunch, (CellNode*)(old_cell->m_West), Direction::West);
 			break;
 		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_West), Direction::West);
+			_RefineCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_West), Direction::West);
 			break;
 		default:
 			ALG_ASSERT(false, "Invalid Cell Type");
@@ -101,10 +102,10 @@ namespace alg {
 		switch (old_cell->m_East->GetType())
 		{
 		case NodeType::Cell:
-			ConnectCase1(new_bunch, (CellNode*)(old_cell->m_East), Direction::East);
+			_RefineCase1(new_bunch, (CellNode*)(old_cell->m_East), Direction::East);
 			break;
 		case NodeType::Transition:
-			ConnectCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_East), Direction::East);
+			_RefineCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_East), Direction::East);
 			break;
 		default:
 			ALG_ASSERT(false, "Invalid Cell Type");
@@ -113,7 +114,7 @@ namespace alg {
 
 		// =====================================================================
 		// Update MHC Ordering
-		UpdateMHC(old_cell, new_bunch);
+		_UpdateMHCAfterRefinement(old_cell, new_bunch);
 		//CellNode* first_cell_in_new_bunch = old_cell->m_MHCPrevious->m_MHCNext;
 
 		// =====================================================================
@@ -131,13 +132,23 @@ namespace alg {
 		old_cell->m_West = nullptr;
 		delete old_cell;
 
-		return nullptr;
+		return new_bunch;
 	}
 
-	void Grid2D::ConnectCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction)
+	/* Case 1
+	*  Before refining, neighbouring cells HAD THE SAME LEVEL OF REFINEMENT
+	*         ___ .___          ___ .___
+	*        /       /          /       /
+	*       /_______/          /_______/ 
+	*          /		         /       
+	*         /		    =>      T        
+	*    ____/___           ___/_\__     
+	*   /       /          /___/___/     
+	*  /_______/          /___/___/      
+	*
+	*/
+	void Grid2D::_RefineCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction)
 	{
-		// Before refining neighbouring cells HAD THE SAME LEVEL of refinement.
-
 		TransitionNode* new_transition = new TransitionNode();
 		new_transition->m_Lower = external_cell;
 
@@ -177,7 +188,47 @@ namespace alg {
 	}
 
 
-	void Grid2D::ConnectCase21(CellBunch& new_bunch, TransitionNode* transition, Direction direction)
+	void Grid2D::_RefineCase2(CellNode* old_cell, CellBunch& new_bunch, TransitionNode* transition, Direction direction)
+	{
+		// Case 2
+		// Neighbouring cells had DIFFERENT levels of refinement before 
+		// this refinement.
+
+		// Find where the old cell was connected
+		if (NodeType::Cell == transition->m_Lower->GetType()
+			&& old_cell == transition->m_Lower)
+		{
+			// Case 2.1
+			// Old cell was connected to the LOWER port
+			_RefineCase2a(new_bunch, transition, direction);
+		}
+		else {
+			TransitionNode* new_transition = new TransitionNode;
+			new_transition->m_Lower = transition;
+
+			if (
+				NodeType::Cell == transition->m_HigherSorE->GetType()
+				&& old_cell == transition->m_HigherSorE)
+			{
+				// Case 2.2 SOUTH_OR_EAST
+				// Old cell was connected to the HIGHER SOUTH/EAST port
+				transition->m_HigherSorE = new_transition;
+				_RefineCase2b(new_bunch, new_transition, direction);
+			}
+			else if (
+				NodeType::Cell == transition->m_HigherNorW->GetType()
+				&& old_cell == transition->m_HigherNorW)
+			{
+				// Case 2.2 NORTH_OR_WEST
+				// Old cell was connected to the HIGHER NORTH/WEST port
+				transition->m_HigherNorW = new_transition;
+				_RefineCase2b(new_bunch, new_transition, direction);
+			}
+		}
+	}
+
+
+	void Grid2D::_RefineCase2a(CellBunch& new_bunch, TransitionNode* transition, Direction direction)
 	{
 		// Connect HIGHER SOUTH/EAST
 		if (NodeType::Cell == transition->m_HigherSorE->GetType())
@@ -305,7 +356,7 @@ namespace alg {
 		}
 	}
 
-	void Grid2D::ConnectCase22(CellBunch& new_bunch, TransitionNode* new_transition, Direction direction)
+	void Grid2D::_RefineCase2b(CellBunch& new_bunch, TransitionNode* new_transition, Direction direction)
 	{
 		switch (direction)
 		{
@@ -333,21 +384,21 @@ namespace alg {
 			new_transition->m_HigherNorW = new_bunch.NE;
 			new_transition->m_HigherSorE = new_bunch.SE;
 			break;
-		default:
+		default: 
 			throw std::runtime_error("Invalid direction.");
 			break;
 		}
 	}
 
-	void Grid2D::UpdateMHC(CellNode* old_cell, CellBunch& new_bunch)
+	void Grid2D::_UpdateMHCAfterRefinement(CellNode* old_cell, CellBunch& new_bunch)
 	{
-		ALG_CORE_ASSERT(old_cell != nullptr, "BuildMHC: 'old_cell' is nullptr.");
+		ALG_CORE_ASSERT(old_cell != nullptr, "UpdateMHC: 'old_cell' is nullptr.");
 
 		uint32_t mhc_index_offset = 2 * (old_cell->m_RefinementLevel);
 
 		switch (MHC::CalculateBunchProfile(old_cell->m_GlobalIndex, old_cell->m_RefinementLevel + 1))
 		{
-		case MHC::Profile::C:
+		case MHC::BunchProfile::C:
 			//   .____.     .____.
 			//	 | NW | <== | NE |
 			//   |____|	    |____|
@@ -359,10 +410,10 @@ namespace alg {
 			// 
 			// First cell
 			new_bunch.NE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b00 << mhc_index_offset);
-			if (m_MHCFirstCell == old_cell)
+			if (m_FirstCell == old_cell)
 			{
 				new_bunch.NE->m_Previous = nullptr;
-				m_MHCFirstCell = new_bunch.NE;
+				m_FirstCell = new_bunch.NE;
 			}
 			else {
 				new_bunch.NE->m_Previous = old_cell->m_Previous;
@@ -383,9 +434,9 @@ namespace alg {
 			// Last cell
 			new_bunch.SE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b11 << mhc_index_offset);
 			new_bunch.SE->m_Previous = new_bunch.SW;
-			if (m_MHCLastCell == old_cell)
+			if (m_LastCell == old_cell)
 			{
-				m_MHCLastCell = new_bunch.SE;
+				m_LastCell = new_bunch.SE;
 				new_bunch.SE->m_Next = nullptr;
 			}
 			else {
@@ -393,7 +444,7 @@ namespace alg {
 				new_bunch.SE->m_Next = old_cell->m_Next;
 			}
 			break;
-		case MHC::Profile::U:
+		case MHC::BunchProfile::U:
 			//   .____.     .____.
 			//	 | NW |     | NE |
 			//   |____|	    |____|
@@ -405,10 +456,10 @@ namespace alg {
 			// 
 			// First cell
 			new_bunch.NE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b00 << mhc_index_offset);
-			if (m_MHCFirstCell == old_cell)
+			if (m_FirstCell == old_cell)
 			{
 				new_bunch.NE->m_Previous = nullptr;
-				m_MHCFirstCell = new_bunch.NE;
+				m_FirstCell = new_bunch.NE;
 			}
 			else {
 				new_bunch.NE->m_Previous = old_cell->m_Previous;
@@ -432,7 +483,7 @@ namespace alg {
 			new_bunch.NW->m_Next = old_cell->m_Next;
 			old_cell->m_Next->m_Previous = new_bunch.NW;
 			break;
-		case MHC::Profile::D:
+		case MHC::BunchProfile::D:
 			//   .____.     .____.
 			//	 | NW | <== | NE |
 			//   |____|	    |____|
@@ -464,7 +515,7 @@ namespace alg {
 			new_bunch.NW->m_Next = old_cell->m_Next;
 			old_cell->m_Next->m_Previous = new_bunch.NW;
 			break;
-		case MHC::Profile::N:
+		case MHC::BunchProfile::N:
 			//   .____.     .____.
 			//	 | NW | ==> | NE |
 			//   |____|	    |____|
@@ -493,10 +544,10 @@ namespace alg {
 			// Last cell
 			new_bunch.SE->m_GlobalIndex = old_cell->m_GlobalIndex + (0b11 << mhc_index_offset);
 			new_bunch.SE->m_Previous = new_bunch.NE;
-			if (m_MHCLastCell == old_cell)
+			if (m_LastCell == old_cell)
 			{
 				new_bunch.SE->m_Next = nullptr;
-				m_MHCLastCell = new_bunch.SE;
+				m_LastCell = new_bunch.SE;
 			}
 			else {
 				new_bunch.SE->m_Next = old_cell->m_Next;
@@ -504,50 +555,8 @@ namespace alg {
 			}
 			break;
 		default:
-			ALG_CORE_WARN("BuildMHC switch reached default value. (Invalid MHC::Unit)");
+			ALG_CORE_ERROR("Invalid MHC Profile");
 			break;
 		}
 	}
-
-
-	void Grid2D::ConnectCase2(CellNode* old_cell, CellBunch& new_bunch, TransitionNode* transition, Direction direction)
-	{
-		// Case 2
-		// Neighbouring cells had DIFFERENT levels of refinement before 
-		// this refinement.
-
-		// Find where the old cell was connected
-		if (NodeType::Cell == transition->m_Lower->GetType()
-			&& old_cell == transition->m_Lower)
-		{
-			// Case 2.1
-			// Old cell was connected to the LOWER socket
-			ConnectCase21(new_bunch, transition, direction);
-		}
-		else {
-			TransitionNode* new_transition = new TransitionNode;
-			new_transition->m_Lower = transition;
-
-			if (
-				NodeType::Cell == transition->m_HigherSorE->GetType()
-				&& old_cell == transition->m_HigherSorE)
-			{
-				// Case 2.2 SOUTH_OR_EAST
-				// Old cell was connected to the HIGHER SOUTH/EAST socket
-				transition->m_HigherSorE = new_transition;
-				ConnectCase22(new_bunch, new_transition, direction);
-			}
-			else if (
-				NodeType::Cell == transition->m_HigherNorW->GetType()
-				&& old_cell == transition->m_HigherNorW)
-			{
-				// Case 2.2 NORTH_OR_WEST
-				// Old cell was connected to the HIGHER NORTH/WEST socket
-				transition->m_HigherNorW = new_transition;
-				ConnectCase22(new_bunch, new_transition, direction);
-			}
-		}
-	}
-
-
 }

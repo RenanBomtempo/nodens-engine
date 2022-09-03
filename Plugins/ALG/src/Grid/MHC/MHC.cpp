@@ -13,7 +13,7 @@ namespace alg {
 		{2, 3, 3, 0}
 	};
 	
-	MHC::Profile MHC::CalculateBunchProfile(uint32_t index, uint32_t ref_level)
+	MHC::BunchProfile MHC::CalculateBunchProfile(uint32_t index, uint32_t ref_level)
 	{
 		uint32_t n1 = index;
 		uint32_t level = ref_level;
@@ -24,6 +24,6 @@ namespace alg {
 			n1 = n1 / 4;
 		}
 
-		return Profile(i);
+		return BunchProfile(i);
 	}
 }

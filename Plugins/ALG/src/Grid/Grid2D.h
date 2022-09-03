@@ -25,28 +25,32 @@ namespace alg {
 
 		void RefineGrid();
 		void CoarsenGrid();
-		CellNode* RefineCell(CellNode* old_cell);
-		CellNode* CoarsenBunch(CellNode* cell);
+		CellBunch RefineCell(CellNode* old_cell) ;
+		CellNode* CoarsenBunch(CellBunch& old_bunch);
 
-		CellNode* FirstCell() const { return m_MHCFirstCell; }
-		CellNode* LastCell() const { return m_MHCLastCell; }
+		CellNode* FirstCell() const { return m_FirstCell; }
+		CellNode* LastCell() const { return m_LastCell; }
 		uint16_t CellCount() const { return m_NumberOfCells; }
 		
 		void Print();
 
 	private:
-		void UpdateMHC(CellNode* old_cell, CellBunch& new_bunch);
+		void _UpdateMHCAfterRefinement(CellNode* old_cell, CellBunch& new_bunch);
+		void _UpdateMHCAfterCoarsening(CellNode* new_cell, CellNode* old_first_cell, CellNode* old_last_cell);
 
-		// TODO: Move these functions to the implementation file only 
-		void ConnectCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction);
-		void ConnectCase2(CellNode* old_cell_ptr, CellBunch& new_bunch, TransitionNode* transition, Direction direction);
-		void ConnectCase21(CellBunch& new_bunch, TransitionNode* transition, Direction direction);
-		void ConnectCase22(CellBunch& new_bunch, TransitionNode* new_transition, Direction direction);
-
+		void _RefineCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction);
+		void _RefineCase2(CellNode* old_cell_ptr, CellBunch& new_bunch, TransitionNode* transition, Direction direction);
+		void _RefineCase2a(CellBunch& new_bunch, TransitionNode* transition, Direction direction);
+		void _RefineCase2b(CellBunch& new_bunch, TransitionNode* new_transition, Direction direction);
+		
+		void _CoarsenCase2(CellNode* outer_cell_SorE, CellNode* outer_cell_NorW, CellNode* new_cell, Grid2D::Direction direction);
+		void _CoarsenCase1(CellNode* outer_cell, CellNode* new_cell, Grid2D::Direction direction);
+		void _CoarsenCase2a(CellBunch& bunch, CellNode* new_cell, Grid2D::Direction direction);
+		void _CoarsenCase2b(CellBunch& bunch, CellNode* new_cell, Grid2D::Direction direction);
 
 		// Modified Hilbert's Curve Ordering
-		CellNode* m_MHCFirstCell;
-		CellNode* m_MHCLastCell;
+		CellNode* m_FirstCell;
+		CellNode* m_LastCell;
 		
 		BoundaryNode* m_NorthBoundary;
 		BoundaryNode* m_SouthBoundary;

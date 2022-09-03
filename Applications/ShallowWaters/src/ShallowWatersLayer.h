@@ -19,22 +19,28 @@ public:
 	void InitFlatShader();
 	void InitSquareWireframeMesh();
 	void InitSquareFillMesh();
+	void InitMHCMesh();
 
 	void ProcessInputs(Moxxi::TimeStep ts);
 	void DrawGrid();
 
 	bool OnWindowResizeEvent(Moxxi::WindowResizeEvent& event);
+
 private:
 	alg::Grid2D m_Grid;
 
-	bool m_Wireframe;
-	bool m_Fill;
+	bool m_Wireframe = true;
+	bool m_Fill = false;
+	bool m_MHCLines = true;
+	bool m_MHCPoints = true;
 
 	float m_ElapsedTime = 0;
-	float m_Aux = 1;
+	float m_LineWidth = 0.1;
+	float m_PointSize = 4;
 
 	Moxxi::Ref<Moxxi::Shader> m_FlatShader;
 	Moxxi::Ref<Moxxi::VertexArray> m_SquareFillVA;
+	Moxxi::Ref<Moxxi::VertexArray> m_MHCVA;
 	Moxxi::Ref<Moxxi::VertexArray> m_SquareWireframeVA;
 
 	Moxxi::OrthographicCamera m_Camera;

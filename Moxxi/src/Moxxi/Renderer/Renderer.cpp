@@ -62,7 +62,7 @@ namespace Moxxi {
 		vertexArray->Bind();
 		RenderCommand::DrawIndexedLines(vertexArray);
 	}
-
+	
 	void Renderer::SubmitArray(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4 transform, const glm::vec4 color)
 	{
 		shader->Use();

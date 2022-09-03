@@ -8,13 +8,13 @@ namespace alg {
 	{
 	}
 
-	Vector2D::Vector2D(double xy)
+	Vector2D::Vector2D(float xy)
 		: x(xy),
 		y(xy)
 	{
 	}
 
-	Vector2D::Vector2D(double _x, double _y)
+	Vector2D::Vector2D(float _x, float _y)
 		: x(_x),
 		y(_y)
 	{

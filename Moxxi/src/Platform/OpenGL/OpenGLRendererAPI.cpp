@@ -14,21 +14,34 @@ namespace Moxxi {
 
 	void OpenGLRendererAPI::SetPolygonMode(const RendererProps::PolygonMode mode)
 	{
-		if (mode == RendererProps::PolygonMode::Wireframe)
+		switch (mode)
 		{
+		case RendererProps::PolygonMode::Wireframe:
 			glDisable(GL_CULL_FACE);
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		}
-		else if (mode == RendererProps::PolygonMode::Fill)
-		{
+			break;
+		case RendererProps::PolygonMode::Fill:
 			glEnable(GL_CULL_FACE);
-			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); 
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			break;
+		case RendererProps::PolygonMode::Point:
+			glDisable(GL_CULL_FACE);
+			glEnable(GL_POINT_SMOOTH);
+			glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+			break;
+		default:
+			break;
 		}
 	}
 
 	void OpenGLRendererAPI::SetLineWidth(const float width)
 	{
 		glLineWidth(width);
+	}
+	
+	void OpenGLRendererAPI::SetPointSize(const float size)
+	{
+		glPointSize(size);
 	}
 
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
@@ -55,6 +68,5 @@ namespace Moxxi {
 	{	
 		glDrawArrays(GL_TRIANGLES, 0, vertexArray->GetVertexBuffers()[0]->GetVertexCount());
 	}
-
 }
 

@@ -7,7 +7,7 @@ namespace Moxxi {
 
 	struct RendererProps {
 		enum class PolygonMode {
-			Fill = 0, Wireframe
+			Fill = 0, Wireframe, Point
 		};
 
 		enum class FrontFaceOrientation {
@@ -26,8 +26,10 @@ namespace Moxxi {
 		virtual void SetFrontFaceOrientation(const RendererProps::FrontFaceOrientation orientation) = 0;
 		virtual void SetPolygonMode(const RendererProps::PolygonMode mode) = 0;
 		virtual void SetClearColor(const glm::vec4& color) = 0;
-		virtual void SetLineWidth(const float width) = 0;
 		virtual void Clear() = 0;
+
+		virtual void SetLineWidth(const float width) = 0;
+		virtual void SetPointSize(const float size) = 0;
 
 		virtual void DrawIndexedLines(const Ref<VertexArray>& vertexArray) = 0;
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;

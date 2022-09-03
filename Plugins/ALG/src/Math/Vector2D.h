@@ -7,14 +7,14 @@ namespace alg {
 	{
 	public:
 		Vector2D();
-		Vector2D(double xy);
-		Vector2D(double _x, double _y);
+		Vector2D(float xy);
+		Vector2D(float _x, float _y);
 		~Vector2D() = default;
 
-		double x;
-		double y;
-	
-		inline const double Length() const { return std::sqrt(x*x + y*y); }
+		float x;
+		float y;
+
+		inline const float Length() const { return std::sqrt(x*x + y*y); }
 	};
 }
 

@@ -13,11 +13,12 @@ namespace alg {
 
 		virtual const NodeType GetType() const override { return m_Type; }
 
-		// Printing
-		std::string GetMHCIndexAsBinaryString();
+		// Printing ------------------------------------------------------------
+		std::string BunchIndexAsBinaryString();
+		std::string GlobalIndexAsBinaryString();
 		void Print();
 
-		// Neighbors
+		// Neighbors -----------------------------------------------------------
 		Node* North() { return m_North; }
 		Node* South() { return m_South; }
 		Node* West() { return m_West; }
@@ -28,7 +29,7 @@ namespace alg {
 		const float SideLength() { return 1.0f / (1 << (m_RefinementLevel)); }
 		uint8_t RefinementLevel() { return m_RefinementLevel; }
 
-		// MHC Ordering
+		// MHC Ordering --------------------------------------------------------
 		
 		/*The Global Index identifies the cell within the complete MHC ordering.
 
@@ -50,10 +51,16 @@ namespace alg {
 		/* Returns the index of the cell within its bunch.
 		*/
 		uint32_t LocalIndex();
+
 		bool HasNext();
 		bool HasPrevious();
 		CellNode* Next();
 		CellNode* Previous();
+		
+		
+		/* Identify cells from the same bunch in the MHC order
+		*/
+		CellBunch GetBunch();
 
 		friend bool operator==(const CellNode& c1, const CellNode& c2);
 		friend bool operator!=(const CellNode& c1, const CellNode& c2);

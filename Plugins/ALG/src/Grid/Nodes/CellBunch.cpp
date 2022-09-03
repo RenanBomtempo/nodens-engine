@@ -16,7 +16,7 @@ namespace alg {
 
 		// Calculate the offset between the bunch center and the center of the 
 		// new cells.
-		double center_offset = 1.0 / (double)((uint8_t)1 << (refinement_level + 1));
+		float center_offset = 1.0 / (float)((uint8_t)1 << (refinement_level + 1));
 
 		// * NE
 		// * *
@@ -27,7 +27,7 @@ namespace alg {
 			center.y + center_offset);
 
 		// NW *
-		//  * *
+		//  * * 
 		NW->m_South = SW;
 		NW->m_East = NE;
 		NW->m_Center = Vector2D(
