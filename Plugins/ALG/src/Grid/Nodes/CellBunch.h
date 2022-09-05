@@ -1,5 +1,7 @@
 #pragma once
-#include "CellNode.h"
+#include "Grid/Nodes/CellNode.h"
+#include "Grid/Nodes/TransitionNode.h"
+#include "Math/Vector2D.h"
 
 namespace alg {
 	/*
@@ -9,10 +11,21 @@ namespace alg {
 
 	WARNING: This class DOES NOT FREE THE MEMORY ALLOCATED FOR EACH CELL
 	*/
-	struct CellBunch {
 
-		CellBunch() = default;
-		CellBunch(Vector2D center, uint32_t refinement_level);
+	struct CellBunch {
+		friend class Grid2D;
+		friend class CellNode;
+		friend class TransitionNode;
+	public:
+		CellBunch();
+		void Initialize(Vector2D center, uint8_t refinement_level);
+		void Destroy();
+
+		Vector2D CalculateCenter();
+
+	private:
+		void ConnectToAnotherBunch(Direction direction, CellBunch& bunch);
+		void ConnectToTransition(Direction direction, TransitionNode* transition_node);
 
 		CellNode* NE;
 		CellNode* NW;

@@ -46,6 +46,7 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="src\algpch.h" />
+    <ClInclude Include="src\Grid\Direction.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Grid\Grid2D.cpp">
@@ -83,5 +84,6 @@
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="src\algpch.cpp" />
+    <ClCompile Include="src\Grid\Direction.cpp" />
   </ItemGroup>
 </Project>

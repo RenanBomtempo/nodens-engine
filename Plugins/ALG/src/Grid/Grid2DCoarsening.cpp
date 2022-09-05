@@ -1,190 +1,223 @@
 #include "algpch.h"
-#include "MHC/MHC.h"
 #include "Grid/Grid2D.h"
+#include "Grid/Direction.h"
+#include "Grid/MHC/MHC.h"
 
 namespace alg {
 	void Grid2D::CoarsenGrid()
 	{
 		auto cell = m_FirstCell;
 		while (cell != nullptr)
-		{
-			auto next = cell->m_Next;
-			cell = CoarsenBunch(cell->GetBunch());
-		}
+			cell = CoarsenBunch(cell->GetBunch())->Next();
 
 	}
-	
+
 	CellNode* Grid2D::CoarsenBunch(CellBunch& old_bunch)
 	{
-		CellNode* new_cell = new CellNode();
-		
-		// Calculate new cell's center
-		new_cell->m_Center.x = (old_bunch.NW->m_Center.x + old_bunch.NE->m_Center.x) / 2;
-		new_cell->m_Center.y = (old_bunch.NW->m_Center.y + old_bunch.SW->m_Center.y) / 2;
-		
-		
+		CellNode* newCell = new CellNode();
+		newCell->m_Center = old_bunch.CalculateCenter();
+
+
 		//______________________________________________________________________
 		// Reconnect North
-		switch (old_bunch.NE->m_North->GetType())
-		{
-		case NodeType::Cell:
-			_CoarsenCase2(
-				(CellNode*)old_bunch.NE->m_North,
-				(CellNode*)old_bunch.NW->m_North, new_cell, Direction::North);
-			break;
-		case NodeType::Transition:
+		if (old_bunch.NE->m_North == old_bunch.NW->m_North)
 			_CoarsenCase1(
-				(CellNode*)old_bunch.NE->m_North, new_cell, Direction::North);
-			break;
-		default:
-			ALG_ASSERT(false, "Invalid Cell Type");
-			break;
-		}
+				(TransitionNode*)old_bunch.NE->m_North,
+				newCell, Direction::North);
+		else
+			_CoarsenCase2(
+				old_bunch.NE->m_North, old_bunch.NW->m_North,
+				newCell, Direction::North);
+
 
 		//______________________________________________________________________
 		// Connect South
-		switch (old_bunch.SE->m_South->GetType())
-		{
-		case NodeType::Cell:
+		if (old_bunch.SE->m_South == old_bunch.SW->m_South)
+			_CoarsenCase1(
+				(TransitionNode*)old_bunch.SE->m_South,
+				newCell, Direction::South);
+		else
 			_CoarsenCase2(
-				(CellNode*)old_bunch.SE->m_South,
-				(CellNode*)old_bunch.SW->m_South,
-				new_cell, Direction::South);
-			break;
-		case NodeType::Transition:
-			//CoarsenCase1(cell_in_bunch, new_bunch, (TransitionNode*)(cell_in_bunch->m_South), Direction::South);
-			break;
-		default:
-			ALG_ASSERT(false, "Invalid Cell Type");
-			break;
-		}
+				old_bunch.SE->m_South, old_bunch.SW->m_South,
+				newCell, Direction::South);
+
 
 		//______________________________________________________________________
 		// Connect West
-		switch (old_bunch.SW->m_West->GetType())
-		{
-		case NodeType::Cell:
+		if (old_bunch.NW->m_West == old_bunch.SW->m_West)
+			_CoarsenCase1(
+				(TransitionNode*)old_bunch.SW->m_West,
+				newCell, Direction::West);
+		else
 			_CoarsenCase2(
-				(CellNode*)old_bunch.SW->m_West,
-				(CellNode*)old_bunch.NW->m_West,
-				new_cell, Direction::West);
-			break;
-		case NodeType::Transition:
-			//CoarsenCase1(cell_in_bunch, new_bunch, (TransitionNode*)(cell_in_bunch->m_West), Direction::West);
-			break;
-		default:
-			ALG_ASSERT(false, "Invalid Cell Type");
-			break;
-		}
+				old_bunch.SW->m_West, old_bunch.NW->m_West,
+				newCell, Direction::West);
+
 
 		//______________________________________________________________________
 		// Connect East
-		switch (old_bunch.NE->m_East->GetType())
-		{
-		case NodeType::Cell:
+		if (old_bunch.NE->m_East == old_bunch.SE->m_East)
+			_CoarsenCase1(
+				(TransitionNode*)old_bunch.NE->m_East,
+				newCell, Direction::East);
+		else
 			_CoarsenCase2(
-				(CellNode*)old_bunch.SE->m_East,
-				(CellNode*)old_bunch.NE->m_East,
-				new_cell, Direction::East);
-			break;
-		case NodeType::Transition:
-			//CoarsenCase1(cell_in_bunch, new_bunch, (TransitionNode*)(cell_in_bunch->m_East), Direction::East);
-			break;
-		default:
-			ALG_ASSERT(false, "Invalid Cell Type");
-			break;
-		}
+				old_bunch.SE->m_East, old_bunch.NE->m_East,
+				newCell, Direction::East);
+
 
 		// MHC Ordering
-		_UpdateMHCAfterCoarsening(new_cell, old_bunch.first, old_bunch.last);
+		_UpdateMHCAfterCoarsening(newCell, old_bunch);
 
-		return new_cell;
+		m_NumberOfCells -= 3;
+
+		old_bunch.Destroy();
+
+		return newCell;
 	}
 
 
-	/* Old bunch neighbour is a cell.
-	*         ___ .___          ___ .___
-	*        /       /         /       /
-	*       /_______/         /_______/
-	*         /                  /
-	*        T        =>        /
-	*    ___/_\__          ____/___
-	*   /___/___/         /       /
-	*  /___/___/         /_______/
+	/* Old bunch is connected to a transition node.
+	*
+	*
+	*          ?                       ?
+	*         /                       /
+	*        T           =>          /
+	*    ___/_\__               ____/___
+	*   /___/___/              /       /
+	*  /___/___/              /_______/
 	*
 	*/
-	void Grid2D::_CoarsenCase1(CellNode* outer_cell, CellNode* new_cell, Grid2D::Direction direction)
+	void Grid2D::_CoarsenCase1(
+		TransitionNode* old_transition, CellNode* new_cell, Direction direction)
 	{
+		NodeType lowerNodeType = old_transition->m_Lower->GetType();
+		switch (lowerNodeType)
+		{
+		case NodeType::Transition:
+		{
+			TransitionNode* secondTransition = (TransitionNode*)old_transition->m_Lower;
+
+			new_cell->Connect(direction, secondTransition);
+
+			if (old_transition == secondTransition->m_HigherNorW)
+				/*
+				 *        ?				         ?
+				 *        |				         |
+				 *        T				         T
+				 *      /   \       =>	       /   \
+				 *     T     ? 			      /     ?
+				 *   _/_\_    			   __/__
+				 *  |__|__|   			  |     |
+				 *  |__|__|				  |_____|
+				 *
+				 */
+				secondTransition->m_HigherNorW = new_cell;
+
+			else if (old_transition == secondTransition->m_HigherSorE)
+				/*
+				 *        ?			          ?
+				 *        |			          |
+				 *        T			          T
+				 *      /   \       =>      /   \
+				 *     ?     T             /     \
+				 *         _/_\_    	   ?     __\__
+				 *        |__|__|   	        |     |
+				 *        |__|__|               |_____|
+				 *
+				 */
+				secondTransition->m_HigherSorE = new_cell;
+		}
+		break;
+		case NodeType::Cell:
+			/* Old bunch is connected to a transition node.
+			 *      _____		     _____
+			 *     |     |		    |     |
+			 *     |_____|		    |_____|
+			 *        |               |
+			 *        T       =>      |
+			 *      _/_\_    	     __|__
+			 *     |__|__|   	    |     |
+			 *     |__|__|		    |_____|
+			 *
+			 */
+		{
+			CellNode* externalCell = (CellNode*)old_transition->m_Lower;
+			externalCell->Connect(Opposite(direction), new_cell);
+			new_cell->Connect(direction, externalCell);
+		}
+		break;
+		case NodeType::Boundary:
+			break;
+		default:
+			break;
+		}
+
+		delete(old_transition);
 	}
-	
-	/* Old bunch's neighbour is also a bunch of the same refinement level.
-	*  This means that the cells were directly connected.
-	*         ____.___          ____.___
-	*        /___/___/         /___/___/
-	*       /___/___/         /___/___/
-	*        /   /              \ /
-	*       /   /    =>          T
-	*    __/___/_          ___ /___
-	*   /___/___/         /       /
-	*  /___/___/         /_______/
+
+
+	/* Group is connected to another bunch of the same refinement level.
+	*
+	*                    ?   ?                ?   ?
+	*                   /   /                  \ /
+	*                  /   /        =>          T
+	*               __/___/_               ___ /___
+	*              /___/___/              /       /
+	*             /___/___/              /_______/
 	*
 	*/
-	void Grid2D::_CoarsenCase2(CellNode* outer_cell_SorE, CellNode* outer_cell_NorW, CellNode* new_cell, Grid2D::Direction direction)
+	void Grid2D::_CoarsenCase2(
+		Node* neighbor_node_SorE, Node* neighbor_node_NorW,
+		CellNode* new_cell, Direction direction)
 	{
 		// Create Transition node
-		TransitionNode* new_transition = new TransitionNode();
-		new_transition->m_Lower = new_cell;
-		new_transition->m_HigherNorW = outer_cell_NorW;
-		new_transition->m_HigherSorE = outer_cell_SorE;
+		TransitionNode* newTransition = new TransitionNode();
+		newTransition->m_Lower = new_cell;
+		new_cell->Connect(direction, newTransition);
 
-		switch (direction)
+		newTransition->m_HigherNorW = neighbor_node_NorW;
+		_CoarsenCase2a(neighbor_node_NorW, new_cell, newTransition, direction);
+		
+		newTransition->m_HigherSorE = neighbor_node_SorE;
+		_CoarsenCase2a(neighbor_node_SorE, new_cell, newTransition, direction);
+	}
+
+
+	void Grid2D::_CoarsenCase2a(Node* outer_cell, CellNode* new_cell, TransitionNode* new_transition, Direction direction)
+	{
+		switch (outer_cell->GetType())
 		{
-		case Grid2D::Direction::North:
-			outer_cell_NorW->m_South = new_transition;
-			outer_cell_SorE->m_South = new_transition;
-			new_cell->m_North = new_transition;
+		case NodeType::Cell:
+			((CellNode*)outer_cell)->Connect(Opposite(direction), new_transition);
 			break;
-		case Grid2D::Direction::South:
-			outer_cell_NorW->m_North = new_transition;
-			outer_cell_SorE->m_North = new_transition;
-			new_cell->m_South = new_transition;
-			break;
-		case Grid2D::Direction::West:
-			outer_cell_NorW->m_East = new_transition;
-			outer_cell_SorE->m_East = new_transition;
-			new_cell->m_West = new_transition;
-			break;
-		case Grid2D::Direction::East:
-			outer_cell_NorW->m_West = new_transition;
-			outer_cell_SorE->m_West = new_transition;
-			new_cell->m_East = new_transition;
+		case NodeType::Transition:
+			((TransitionNode*)outer_cell)->m_Lower = new_transition;
 			break;
 		default:
 			break;
 		}
 	}
 
-	void Grid2D::_CoarsenCase2a(CellBunch& bunch, CellNode* new_cell, Grid2D::Direction direction)
+
+	void Grid2D::_UpdateMHCAfterCoarsening(
+		CellNode* new_cell, CellBunch& old_bunch)
 	{
-	}
+		new_cell->m_GlobalIndex = old_bunch.first->BunchIndex();
+		new_cell->m_RefinementLevel = old_bunch.first->m_RefinementLevel - 1;
 
-	void Grid2D::_CoarsenCase2b(CellBunch& bunch, CellNode* new_cell, Grid2D::Direction direction)
-	{
-	}
+		new_cell->m_Previous = old_bunch.first->m_Previous;
+		new_cell->m_Next = old_bunch.last->m_Next;
 
-	void Grid2D::_UpdateMHCAfterCoarsening(CellNode* new_cell, CellNode* old_first_cell, CellNode* old_last_cell)
-	{
+		if (old_bunch.last->HasNext())
+			old_bunch.last->m_Next->m_Previous = new_cell;
 
-		new_cell->m_GlobalIndex = old_first_cell->BunchIndex();
-		new_cell->m_RefinementLevel = old_first_cell->m_RefinementLevel - 1;
-		new_cell->m_Previous = old_first_cell->m_Previous;
-		new_cell->m_Next = old_last_cell->m_Next;
+		if (old_bunch.first->HasPrevious())
+			old_bunch.first->m_Previous->m_Next = new_cell;
 
-		if (old_first_cell == FirstCell())
+		if (old_bunch.first == FirstCell())
 			m_FirstCell = new_cell;
-		if (old_last_cell == LastCell())
+		else if (old_bunch.last == LastCell())
 			m_LastCell = new_cell;
-		
-		m_NumberOfCells -= 3;
 	}
 }

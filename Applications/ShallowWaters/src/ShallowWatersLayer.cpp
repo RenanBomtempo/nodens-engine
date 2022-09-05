@@ -24,6 +24,8 @@ void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 
 	ProcessInputs(ts);
 
+	// Simulate;
+
 	DrawGrid();
 } // ShallowWatersLayer::OnUpdate
 
@@ -138,7 +140,7 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	}
 	if (ImGui::Button("Coarsen"))
 	{
-		m_Grid.CoarsenBunch(m_Grid.FirstCell()->Next()->Next()->Next());
+		m_Grid.CoarsenGrid();
 		InitMHCMesh();
 	}
 
@@ -276,7 +278,7 @@ void ShallowWatersLayer::InitMHCMesh()
 	// EBO
 	uint32_t* indices = new uint32_t[2 * (cell_count - 1)];
 
-	for (int i = 0; i < cell_count; i++)
+	for (uint32_t i = 0; i < cell_count; i++)
 	{
 		indices[2 * i] = i;
 		indices[2 * i + 1] = i+1;
@@ -300,9 +302,5 @@ void ShallowWatersLayer::OnEvent(Moxxi::Event& event)
 
 bool ShallowWatersLayer::OnWindowResizeEvent(Moxxi::WindowResizeEvent& event)
 {
-	float newHeight = event.GetHeight();
-	float newWidth = event.GetWidth();
-
-	m_Camera.SetSides(-newWidth / 360, newWidth / 360, -newHeight / 360, newHeight / 360);
 	return true;
 } // ShallowWatersLayer::OnMouseMovedEvent

@@ -6,7 +6,6 @@ namespace alg {
 	class TransitionNode : public Node
 	{
 		friend class Grid2D;
-		friend class CellBunch;
 		friend class BoundaryNode;
 	public:
 		TransitionNode();

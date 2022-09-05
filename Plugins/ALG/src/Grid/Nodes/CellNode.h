@@ -1,12 +1,13 @@
 #pragma once
-#include "Node.h"
-#include "Math\Vector2D.h"
+#include "Grid/Nodes/Node.h"
+#include "Grid/Direction.h"
+#include "Math/Vector2D.h"
 
 namespace alg {
 	class CellNode : public Node
 	{
 		friend class Grid2D;
-		friend class CellBunch;
+		friend struct CellBunch;
 	public:
 		CellNode();
 		~CellNode();
@@ -57,6 +58,7 @@ namespace alg {
 		CellNode* Next();
 		CellNode* Previous();
 		
+		Node* GetNeighbor(Direction direction);
 		
 		/* Identify cells from the same bunch in the MHC order
 		*/
@@ -67,6 +69,7 @@ namespace alg {
 
 	private:
 		void Disconnect(Node* other);
+		void Connect(Direction direction, Node* neighbor);
 
 	private:
 		// Neighbors 

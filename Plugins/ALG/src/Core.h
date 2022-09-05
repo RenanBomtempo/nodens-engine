@@ -13,4 +13,12 @@
 	#define ALG_CORE_ASSERT(x, ...)
 #endif // ALG_ENABLE_ASSERTS
 
+
 #define MAX_REFINEMENT_LEVEL 7
+
+namespace alg {
+	enum class NodeType {
+		Transition = 0, Cell, Boundary
+	};
+
+}

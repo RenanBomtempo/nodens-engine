@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="src\ALG.h" />
     <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\Grid\Direction.h" />
     <ClInclude Include="src\Grid\Grid2D.h" />
     <ClInclude Include="src\Grid\MHC\MHC.h" />
     <ClInclude Include="src\Grid\Nodes\BoundaryNode.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="src\algpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Grid\Direction.cpp" />
     <ClCompile Include="src\Grid\Grid2D.cpp" />
     <ClCompile Include="src\Grid\Grid2DCoarsening.cpp" />
     <ClCompile Include="src\Grid\Grid2DRefinement.cpp" />

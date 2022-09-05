@@ -1,7 +1,7 @@
 #include "algpch.h"
 #include "Log.h"
-#include "Grid2D.h"
-#include "MHC/MHC.h"
+#include "Grid/Grid2D.h"
+#include "Grid/MHC/MHC.h"
 
 namespace alg {
 	/**
@@ -42,7 +42,7 @@ namespace alg {
 		ALG_CORE_INFO("Refining cell {0}", old_cell->GlobalIndexAsBinaryString());
 
 		if (old_cell->m_RefinementLevel == MAX_REFINEMENT_LEVEL) {
-			ALG_CORE_ERROR("Can't refine cell {0}. It has reached the maximum refinement level.", old_cell->m_GlobalIndex);
+			ALG_CORE_ERROR("Can't refine cell {0}. It has reached the maximum refinement level.", old_cell->GlobalIndexAsBinaryString());
 			throw std::exception("Cell has reached maximum refinement level.");
 		}
 
@@ -50,14 +50,15 @@ namespace alg {
 		// Connect Neighbors
 
 		uint8_t new_refinement_level = old_cell->m_RefinementLevel + 1;
-		CellBunch new_bunch(old_cell->m_Center, new_refinement_level);
+		CellBunch new_bunch;
+		new_bunch.Initialize(old_cell->m_Center, new_refinement_level);
 
 		//______________________________________________________________________
 		// Connect North
 		switch (old_cell->m_North->GetType())
 		{
 		case NodeType::Cell:
-			_RefineCase1(new_bunch, (CellNode*)(old_cell->m_North), Direction::North);
+			_RefineCase1(new_bunch, (CellNode*)old_cell->m_North, Direction::North);
 			break;
 		case NodeType::Transition:
 			_RefineCase2(old_cell, new_bunch, (TransitionNode*)(old_cell->m_North), Direction::North);
@@ -125,6 +126,8 @@ namespace alg {
 
 		this->m_NumberOfCells += 3;
 
+		ALG_CORE_INFO("Cell {0} succesfully refined to level {1}", old_cell->GlobalIndexAsBinaryString(), new_refinement_level);
+		
 		// Isolate cell before deleting it
 		old_cell->m_North = nullptr;
 		old_cell->m_East = nullptr;
@@ -132,131 +135,181 @@ namespace alg {
 		old_cell->m_West = nullptr;
 		delete old_cell;
 
+
 		return new_bunch;
 	}
 
 	/* Case 1
 	*  Before refining, neighbouring cells HAD THE SAME LEVEL OF REFINEMENT
-	*         ___ .___          ___ .___
-	*        /       /          /       /
-	*       /_______/          /_______/ 
-	*          /		         /       
-	*         /		    =>      T        
-	*    ____/___           ___/_\__     
-	*   /       /          /___/___/     
-	*  /_______/          /___/___/      
+	*         ________           ________ 
+	*        /       /          /       / 
+	*       /_______/          /_______/  
+	*          /		         /        
+	*         /		    =>      T         
+	*    ____/___           ___/_\__      
+	*   /       /          /___/___/      
+	*  /_______/          /___/___/       
 	*
 	*/
 	void Grid2D::_RefineCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction)
 	{
 		TransitionNode* new_transition = new TransitionNode();
-		new_transition->m_Lower = external_cell;
 
+		external_cell->Connect(Opposite(direction), new_transition);
+		new_bunch.ConnectToTransition(direction, new_transition);
+
+		// Connect Transition Node
+		new_transition->m_Lower = external_cell;
 		switch (direction)
 		{
 		case Direction::North:
-			external_cell->m_South = new_transition;
-			new_bunch.NW->m_North = new_transition;
-			new_bunch.NE->m_North = new_transition;
 			new_transition->m_HigherNorW = new_bunch.NW;
 			new_transition->m_HigherSorE = new_bunch.NE;
 			break;
+
 		case Direction::South:
-			external_cell->m_North = new_transition;
-			new_bunch.SW->m_South = new_transition;
-			new_bunch.SE->m_South = new_transition;
 			new_transition->m_HigherNorW = new_bunch.SW;
 			new_transition->m_HigherSorE = new_bunch.SE;
 			break;
+
 		case Direction::West:
-			external_cell->m_East = new_transition;
-			new_bunch.NW->m_West = new_transition;
-			new_bunch.SW->m_West = new_transition;
 			new_transition->m_HigherNorW = new_bunch.NW;
 			new_transition->m_HigherSorE = new_bunch.SW;
 			break;
+
 		case Direction::East:
-			external_cell->m_West = new_transition;
-			new_bunch.NE->m_East = new_transition;
-			new_bunch.SE->m_East = new_transition;
 			new_transition->m_HigherNorW = new_bunch.NE;
 			new_transition->m_HigherSorE = new_bunch.SE;
 			break;
+
 		default:
 			break;
 		}
 	}
-
-
+	
+	/* Case 2
+	*  Neighbouring cells had DIFFERENT levels of refinement before refinement.
+	* 
+	*                            ________ _______
+	*                           /       /       /
+	*                          /_______/_______/
+	*                               \   /
+	*                                T
+	*                       ________/_______
+	*                      /               /
+	*                     /. . . . . . . ./
+	* 
+	*/
 	void Grid2D::_RefineCase2(CellNode* old_cell, CellBunch& new_bunch, TransitionNode* transition, Direction direction)
 	{
-		// Case 2
-		// Neighbouring cells had DIFFERENT levels of refinement before 
-		// this refinement.
-
 		// Find where the old cell was connected
 		if (NodeType::Cell == transition->m_Lower->GetType()
 			&& old_cell == transition->m_Lower)
 		{
-			// Case 2.1
-			// Old cell was connected to the LOWER port
+			/* Case 2.1
+			 * Old cell was connected to the LOWER port
+			 *
+			 *             ?   ?                            ?      ?
+			 *              \ /   			               /      /
+			 *               T			       =>         /      /
+			 *      ________/________		         ____/______/_____
+			 *     /                /		        /       /        /
+			 *    /                /		       /_______/________/
+			 *   /. . . . . . . . /               /. . . ./. . . . /
+			 */
 			_RefineCase2a(new_bunch, transition, direction);
 		}
 		else {
 			TransitionNode* new_transition = new TransitionNode;
 			new_transition->m_Lower = transition;
 
-			if (
-				NodeType::Cell == transition->m_HigherSorE->GetType()
+			_RefineCase2b(new_bunch, new_transition, direction);
+
+			/* Case 2.2 SOUTH_OR_EAST
+			* Old cell was connected to the HIGHER SOUTH/EAST port
+			*             . . . . . . . . .                 . . . . . . . . .
+			*            /_______/_______/                 /_______/_______/
+			*           /       /       /                 /       /___/___/
+			*          /_______/_______/	             /_______/___/___/
+			*             \        /                       \       \ /
+			*              \     /			                \      T
+			*			    \  /				             \   /
+			*                T			     =>               T
+			*               /				                 /
+			*      ________/________		        ________/________
+			*     /                /		       /                /
+			*    /                /		          /                /
+			*   /. . . . . . . . /               /. . . . . . . . /
+			*/
+			if (NodeType::Cell == transition->m_HigherSorE->GetType()
 				&& old_cell == transition->m_HigherSorE)
-			{
-				// Case 2.2 SOUTH_OR_EAST
-				// Old cell was connected to the HIGHER SOUTH/EAST port
 				transition->m_HigherSorE = new_transition;
-				_RefineCase2b(new_bunch, new_transition, direction);
-			}
-			else if (
-				NodeType::Cell == transition->m_HigherNorW->GetType()
+			
+			/* Case 2.2 NORTH_OR_WEST
+			* Old cell was connected to the HIGHER NORTH_OR_WEST port
+			*             . . . . . . . . .             . . . . . . . . .
+			*            /_______/_______/             /_______/_______/
+			*           /       /       /             /___/___/       /
+			*          /_______/_______/             /___/___/_______/
+			*             \        /		            \  /     /
+			*              \     /			             T     /
+			*				 \  /                         \  /
+			*                T			    =>             T
+			*               /				              /
+			*      ________/________		     ________/________
+			*     /                /		    /                /
+			*    /                /		   /                /
+			*   /. . . . . . . . /           /. . . . . . . . /
+			*/
+			else if (NodeType::Cell == transition->m_HigherNorW->GetType()
 				&& old_cell == transition->m_HigherNorW)
-			{
-				// Case 2.2 NORTH_OR_WEST
-				// Old cell was connected to the HIGHER NORTH/WEST port
 				transition->m_HigherNorW = new_transition;
-				_RefineCase2b(new_bunch, new_transition, direction);
-			}
+			
 		}
 	}
 
-
 	void Grid2D::_RefineCase2a(CellBunch& new_bunch, TransitionNode* transition, Direction direction)
 	{
-		// Connect HIGHER SOUTH/EAST
+		// Connect HIGHER SOUTH OR EAST
 		if (NodeType::Cell == transition->m_HigherSorE->GetType())
 		{
-			// Case 2.1.1
-			// Transition connects directly to another cell
-			CellNode* external_cell = (CellNode*)transition->m_HigherSorE;
+			/* Case 2.1.1
+			 * Higher SorE connects directly to another cell
+			 *                      . . . . .                         . . . . .
+			 *                     /_______/                         /_______/
+			 *                    /       /                         /       /  
+			 *              ?    /_______/	                  ?    /_______/	
+			 *              \      /		                 /       /
+			 *               \   /			                /       /
+			 *                 T			  =>           /       /  
+			 *                /				              /       /  
+			 *      ________/________		         ____/_______/____
+			 *     /                /		        /       /        /
+			 *    /                /		       /_______/________/
+			 *   /. . . . . . . . /               /. . . ./. . . . /
+			 */
+			CellNode* externalCell = (CellNode*)transition->m_HigherSorE;
 
 			switch (direction)
 			{
 				// EAST
 			case Direction::North:
-				new_bunch.NE->m_North = external_cell;
-				external_cell->m_South = new_bunch.NE;
+				new_bunch.NE->m_North = externalCell;
+				externalCell->m_South = new_bunch.NE;
 				break;
 			case Direction::South:
-				new_bunch.SE->m_South = external_cell;
-				external_cell->m_North = new_bunch.SE;
+				new_bunch.SE->m_South = externalCell;
+				externalCell->m_North = new_bunch.SE;
 				break;
 
 				// SOUTH
 			case Direction::West:
-				new_bunch.SW->m_West = external_cell;
-				external_cell->m_East = new_bunch.SW;
+				new_bunch.SW->m_West = externalCell;
+				externalCell->m_East = new_bunch.SW;
 				break;
 			case Direction::East:
-				new_bunch.SE->m_East = external_cell;
-				external_cell->m_West = new_bunch.SE;
+				new_bunch.SE->m_East = externalCell;
+				externalCell->m_West = new_bunch.SE;
 				break;
 			default:
 				break;
@@ -264,8 +317,20 @@ namespace alg {
 		}
 		else if (NodeType::Transition == transition->m_HigherSorE->GetType())
 		{
-			// Case 2.1.2
-			// Transition connects to another transition
+			/* 
+			 * Case 2.1.2
+			 * Transition SorE connects to another transition
+			 *                  
+			 *                   ?   ?                              ?   ?
+			 *                    \ /                                \ / 
+			 *              ?      T	                     ?        T
+			 *              \     /		                     /       /
+			 *                T			    =>             /       /  
+			 *      ________/________		         ____/_______/____
+			 *     /                /		        /       /        /
+			 *    /                /		       /_______/________/
+			 *   /. . . . . . . . /               /. . . ./. . . . /
+			 */
 			TransitionNode* external_transition = (TransitionNode*)transition->m_HigherSorE;
 
 			switch (direction)
@@ -297,8 +362,22 @@ namespace alg {
 		// Connect HIGHER NORTH/WEST
 		if (NodeType::Cell == transition->m_HigherNorW->GetType())
 		{
+			/*
 			// Case 2.1.1
-			// Transition connects directly to another cell
+			// Transition NorW connects directly to another cell
+			 *             . . . . .                         . . . . .
+			 *            /_______/                         /_______/
+			 *           /       /                         /       /  
+			 *          /_______/	?                     /_______/	  ?
+			 *              \     /		                     /       /
+			 *               \  /			                /       /
+			 *                T			  =>               /       /  
+			 *               /				              /       /  
+			 *      ________/________		         ____/_______/____
+			 *     /                /		        /       /        /
+			 *    /                /		       /_______/________/
+			 *   /. . . . . . . . /               /. . . ./. . . . /
+			 */
 			CellNode* external_cell = (CellNode*)transition->m_HigherNorW;
 
 			switch (direction)
@@ -325,8 +404,21 @@ namespace alg {
 		}
 		else if (NodeType::Transition == transition->m_HigherNorW->GetType())
 		{
+			/*
 			// Case 2.1.2
-			// Transition connects to another transition
+			// Transition NorW connects to another transition
+			 *
+			 *           ?   ?                             ?   ?
+			 *            \ /                               \ /
+			 *             T	 ?                           T       ?
+			 *               \  /			                /       /
+			 *                T			    =>             /       /
+			 *               /				              /       /
+			 *      ________/________		         ____/_______/____
+			 *     /                /		        /       /        /
+			 *    /                /		       /_______/________/
+			 *   /. . . . . . . . /               /. . . ./. . . . /
+			 */
 			TransitionNode* external_transition = (TransitionNode*)transition->m_HigherNorW;
 
 			switch (direction)
@@ -358,29 +450,23 @@ namespace alg {
 
 	void Grid2D::_RefineCase2b(CellBunch& new_bunch, TransitionNode* new_transition, Direction direction)
 	{
+		new_bunch.ConnectToTransition(direction, new_transition);
+
 		switch (direction)
 		{
 		case Direction::North:
-			new_bunch.NE->m_North = new_transition;
-			new_bunch.NW->m_North = new_transition;
 			new_transition->m_HigherSorE = new_bunch.NE;
 			new_transition->m_HigherNorW = new_bunch.NW;
 			break;
 		case Direction::South:
-			new_bunch.SE->m_South = new_transition;
-			new_bunch.SW->m_South = new_transition;
 			new_transition->m_HigherSorE = new_bunch.SE;
 			new_transition->m_HigherNorW = new_bunch.SW;
 			break;
 		case Direction::West:
-			new_bunch.NW->m_West = new_transition;
-			new_bunch.SW->m_West = new_transition;
 			new_transition->m_HigherNorW = new_bunch.NW;
 			new_transition->m_HigherSorE = new_bunch.SW;
 			break;
 		case Direction::East:
-			new_bunch.NE->m_East = new_transition;
-			new_bunch.SE->m_East = new_transition;
 			new_transition->m_HigherNorW = new_bunch.NE;
 			new_transition->m_HigherSorE = new_bunch.SE;
 			break;

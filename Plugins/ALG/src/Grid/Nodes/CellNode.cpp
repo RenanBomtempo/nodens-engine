@@ -1,30 +1,29 @@
 #include "algpch.h"
+#include "Grid/Direction.h"
 #include "Grid/MHC/MHC.h"
-#include "CellBunch.h"
-#include "CellNode.h"
+#include "Grid/Nodes/CellBunch.h"
+#include "Grid/Nodes/CellNode.h"
 #include "Log.h"
 
 namespace alg {
 	NodeType CellNode::m_Type = NodeType::Cell;
 
 	CellNode::CellNode()
-		: m_North(nullptr),
-		m_East(nullptr),
-		m_South(nullptr),
-		m_West(nullptr),
-		m_Next(nullptr),
-		m_Previous(nullptr),
-		m_RefinementLevel(-1),
-		m_Center(Vector2D(0)),
-		m_GlobalIndex(-1)
+		:	m_North(nullptr),
+			m_East(nullptr),
+			m_South(nullptr),
+			m_West(nullptr),
+			m_Next(nullptr),
+			m_Previous(nullptr),
+			m_RefinementLevel(-1),
+			m_Center(Vector2D(0)),
+			m_GlobalIndex(-1)
 	{
 	}
 
 	CellNode::~CellNode()
 	{
 	}
-
-
 
 	std::string CellNode::BunchIndexAsBinaryString()
 	{
@@ -39,7 +38,7 @@ namespace alg {
 		std::string str = std::bitset<2 * MAX_REFINEMENT_LEVEL>(m_GlobalIndex).to_string();
 		for (int i = 0; i < MAX_REFINEMENT_LEVEL - 1; i++)
 			str.insert(3 * i + 2, 1, '.');
-		return str;
+		return std::to_string(m_RefinementLevel) + ":" + str;
 	}
 
 	uint32_t CellNode::GlobalIndex()
@@ -143,6 +142,13 @@ namespace alg {
 				break;
 		}
 
+		// Check if all cells are of the same level
+		if ((cell_1->m_RefinementLevel != cell_2->m_RefinementLevel)
+			|| (cell_2->m_RefinementLevel != cell_3->m_RefinementLevel)
+			|| (cell_3->m_RefinementLevel != cell_4->m_RefinementLevel))
+			ALG_ASSERT(false, "The bunch {0} contains refined cells.", BunchIndex());
+
+
 		// Store cells in a bunch struct to facilitate pointer manipulation
 		CellBunch bunch;
 		bunch.first = cell_1;
@@ -184,6 +190,47 @@ namespace alg {
 
 		return bunch;
 	}
+
+	Node* CellNode::GetNeighbor(Direction direction)
+	{
+		switch (direction)
+		{
+		case Direction::North:
+			return m_North;
+		case Direction::East:
+			return m_East;
+		case Direction::South:
+			return m_South;
+		case Direction::West:
+			return m_West;
+		default:
+			ALG_CORE_ERROR("Invalid direction.");
+			return nullptr;
+		}
+	}
+	
+	void CellNode::Connect(Direction direction, Node* neighbor)
+	{
+		switch (direction)
+		{
+		case Direction::North:
+			m_North = neighbor;
+			break;
+		case Direction::East:
+			m_East = neighbor;
+			break;
+		case Direction::South:
+			m_South = neighbor;
+			break;
+		case Direction::West:
+			m_West = neighbor;
+			break;
+		default:
+			ALG_CORE_ERROR("Invalid direction.");
+			break;
+		}
+	}
+
 
 	bool operator==(const CellNode& c1, const CellNode& c2)
 	{

@@ -1,8 +1,20 @@
 #include "algpch.h"
-#include "CellBunch.h"
+#include "Grid/Nodes/CellBunch.h"
 
 namespace alg {
-	CellBunch::CellBunch(Vector2D center, uint32_t refinement_level)
+	CellBunch::CellBunch()
+		:	NE(nullptr),
+			NW(nullptr),
+			SW(nullptr),
+			SE(nullptr),
+			first(nullptr),
+			last(nullptr)
+	{
+		// Empty constructor
+	}
+
+
+	void CellBunch::Initialize(Vector2D center, uint8_t refinement_level)
 	{
 		NE = new CellNode();
 		NW = new CellNode();
@@ -16,7 +28,7 @@ namespace alg {
 
 		// Calculate the offset between the bunch center and the center of the 
 		// new cells.
-		float center_offset = 1.0 / (float)((uint8_t)1 << (refinement_level + 1));
+		float center_offset = 1.0 / (float)(1 << (refinement_level + 1));
 
 		// * NE
 		// * *
@@ -49,5 +61,76 @@ namespace alg {
 		SE->m_Center = Vector2D(
 			center.x + center_offset,
 			center.y - center_offset);
+	}
+
+	void CellBunch::Destroy() {
+		delete(NE);
+		delete(NW);
+		delete(SE);
+		delete(SW);
+	}
+
+	Vector2D CellBunch::CalculateCenter() {
+		return Vector2D(
+			(NW->m_Center.x + NE->m_Center.x) / 2,
+			(NW->m_Center.y + SW->m_Center.y) / 2);
+	}
+
+	void CellBunch::ConnectToAnotherBunch(Direction direction, CellBunch& other_bunch)
+	{
+		switch (direction)
+		{
+		case alg::Direction::North:
+			NW->Connect(direction, other_bunch.SW);
+			NE->Connect(direction, other_bunch.SE);
+			break;
+
+		case alg::Direction::East:
+			NE->Connect(direction, other_bunch.NW);
+			SE->Connect(direction, other_bunch.SW);
+			break;
+
+		case alg::Direction::South:
+			SE->Connect(direction, other_bunch.NE);
+			SW->Connect(direction, other_bunch.NW);
+			break;
+
+		case alg::Direction::West:
+			NW->Connect(direction, other_bunch.NE);
+			SW->Connect(direction, other_bunch.SE);
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	void CellBunch::ConnectToTransition(Direction direction, TransitionNode* transition_node)
+	{
+		switch (direction)
+		{
+		case alg::Direction::North:
+			NW->Connect(direction, transition_node);
+			NE->Connect(direction, transition_node);
+			break;
+
+		case alg::Direction::East:
+			NE->Connect(direction, transition_node);
+			SE->Connect(direction, transition_node);
+			break;
+
+		case alg::Direction::South:
+			SE->Connect(direction, transition_node);
+			SW->Connect(direction, transition_node);
+			break;
+
+		case alg::Direction::West:
+			NW->Connect(direction, transition_node);
+			SW->Connect(direction, transition_node);
+			break;
+
+		default:
+			break;
+		}
 	}
 }

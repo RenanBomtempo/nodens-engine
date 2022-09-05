@@ -1,20 +1,18 @@
 #pragma once
 #include "Core.h"
-#include "Nodes/CellNode.h"
-#include "Nodes/TransitionNode.h"
-#include "Nodes/BoundaryNode.h"
-#include "Nodes/CellBunch.h"
+#include "Grid/Direction.h"
+#include "Grid/Nodes/CellNode.h"
+#include "Grid/Nodes/TransitionNode.h"
+#include "Grid/Nodes/BoundaryNode.h"
+#include "Grid/Nodes/CellBunch.h"
 
 namespace alg {
 	/**
 		Unit square grid with origin located at the lower left corner.
 	*/
+
 	class Grid2D {
 	public:
-		enum class Direction {
-			North, South, West, East
-		};
-
 		Grid2D(std::string title = "ALG 2D Grid");
 		~Grid2D();
 
@@ -36,17 +34,16 @@ namespace alg {
 
 	private:
 		void _UpdateMHCAfterRefinement(CellNode* old_cell, CellBunch& new_bunch);
-		void _UpdateMHCAfterCoarsening(CellNode* new_cell, CellNode* old_first_cell, CellNode* old_last_cell);
+		void _UpdateMHCAfterCoarsening(CellNode* new_cell, CellBunch& old_bunch);
 
 		void _RefineCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction);
 		void _RefineCase2(CellNode* old_cell_ptr, CellBunch& new_bunch, TransitionNode* transition, Direction direction);
 		void _RefineCase2a(CellBunch& new_bunch, TransitionNode* transition, Direction direction);
 		void _RefineCase2b(CellBunch& new_bunch, TransitionNode* new_transition, Direction direction);
 		
-		void _CoarsenCase2(CellNode* outer_cell_SorE, CellNode* outer_cell_NorW, CellNode* new_cell, Grid2D::Direction direction);
-		void _CoarsenCase1(CellNode* outer_cell, CellNode* new_cell, Grid2D::Direction direction);
-		void _CoarsenCase2a(CellBunch& bunch, CellNode* new_cell, Grid2D::Direction direction);
-		void _CoarsenCase2b(CellBunch& bunch, CellNode* new_cell, Grid2D::Direction direction);
+		void _CoarsenCase1(TransitionNode* old_transition, CellNode* new_cell, Direction direction);
+		void _CoarsenCase2(Node* outer_cell_SorE, Node* outer_cell_NorW, CellNode* new_cell, Direction direction);
+		void _CoarsenCase2a(Node* outer_cell, CellNode* new_cell, TransitionNode* new_transition, Direction direction);
 
 		// Modified Hilbert's Curve Ordering
 		CellNode* m_FirstCell;

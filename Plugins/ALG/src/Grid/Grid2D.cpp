@@ -39,11 +39,12 @@ namespace alg {
 		m_WestBoundary = new BoundaryNode();
 
 		// 4 INITIAL CELL nodes
-		CellBunch initial_cells = CellBunch(Vector2D(0.5), 1);
+		CellBunch initial_cells;
+		initial_cells.Initialize(Vector2D(0.5), 1);
 
 
 		// =====================================================================
-		// Connect BoundaryNodes
+		// ConnectTo BoundaryNodes
 
 		m_NorthBoundary->m_TransitionNode = north_transition;
 		north_transition->m_Lower = m_NorthBoundary;
@@ -59,7 +60,7 @@ namespace alg {
 
 
 		// =====================================================================
-		// Connect TransitionNodes
+		// ConnectTo TransitionNodes
 
 		//   /\
 		// NW  NE 
