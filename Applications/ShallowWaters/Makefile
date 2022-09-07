@@ -32,36 +32,36 @@ define POSTBUILDCMDS
 endef
 
 ifeq ($(config),debug)
-TARGETDIR = ../../../bin/Debug-windows-x86_64/ShallowWaters
+TARGETDIR = ../../bin/Debug-windows-x86_64/ShallowWaters
 TARGET = $(TARGETDIR)/ShallowWaters.exe
-OBJDIR = ../../../bin-int/Debug-windows-x86_64/ShallowWaters
+OBJDIR = ../../bin-int/Debug-windows-x86_64/ShallowWaters
 DEFINES += -DMX_PLATFORM_WINDOWS -DALG_PLATFORM_WINDOWS -DALG_DEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17
-LIBS += ../../bin/Debug-windows-x86_64/Moxxi/Moxxi.lib ../../../bin/Debug-windows-x86_64/ALG/ALG.lib
-LDDEPS += ../../bin/Debug-windows-x86_64/Moxxi/Moxxi.lib ../../../bin/Debug-windows-x86_64/ALG/ALG.lib
+LIBS += ../../bin/Debug-windows-x86_64/Moxxi/Moxxi.lib ../../bin/Debug-windows-x86_64/ALG/ALG.lib
+LDDEPS += ../../bin/Debug-windows-x86_64/Moxxi/Moxxi.lib ../../bin/Debug-windows-x86_64/ALG/ALG.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
-TARGETDIR = ../../../bin/Release-windows-x86_64/ShallowWaters
+TARGETDIR = ../../bin/Release-windows-x86_64/ShallowWaters
 TARGET = $(TARGETDIR)/ShallowWaters.exe
-OBJDIR = ../../../bin-int/Release-windows-x86_64/ShallowWaters
+OBJDIR = ../../bin-int/Release-windows-x86_64/ShallowWaters
 DEFINES += -DMX_PLATFORM_WINDOWS -DALG_PLATFORM_WINDOWS -DALG_RELEASE
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
-LIBS += ../../bin/Release-windows-x86_64/Moxxi/Moxxi.lib ../../../bin/Release-windows-x86_64/ALG/ALG.lib
-LDDEPS += ../../bin/Release-windows-x86_64/Moxxi/Moxxi.lib ../../../bin/Release-windows-x86_64/ALG/ALG.lib
+LIBS += ../../bin/Release-windows-x86_64/Moxxi/Moxxi.lib ../../bin/Release-windows-x86_64/ALG/ALG.lib
+LDDEPS += ../../bin/Release-windows-x86_64/Moxxi/Moxxi.lib ../../bin/Release-windows-x86_64/ALG/ALG.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 else ifeq ($(config),dist)
-TARGETDIR = ../../../bin/Dist-windows-x86_64/ShallowWaters
+TARGETDIR = ../../bin/Dist-windows-x86_64/ShallowWaters
 TARGET = $(TARGETDIR)/ShallowWaters.exe
-OBJDIR = ../../../bin-int/Dist-windows-x86_64/ShallowWaters
+OBJDIR = ../../bin-int/Dist-windows-x86_64/ShallowWaters
 DEFINES += -DMX_PLATFORM_WINDOWS -DALG_PLATFORM_WINDOWS -DALG_DIST
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
-LIBS += ../../bin/Dist-windows-x86_64/Moxxi/Moxxi.lib ../../../bin/Dist-windows-x86_64/ALG/ALG.lib
-LDDEPS += ../../bin/Dist-windows-x86_64/Moxxi/Moxxi.lib ../../../bin/Dist-windows-x86_64/ALG/ALG.lib
+LIBS += ../../bin/Dist-windows-x86_64/Moxxi/Moxxi.lib ../../bin/Dist-windows-x86_64/ALG/ALG.lib
+LDDEPS += ../../bin/Dist-windows-x86_64/Moxxi/Moxxi.lib ../../bin/Dist-windows-x86_64/ALG/ALG.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif
@@ -76,10 +76,8 @@ endif
 GENERATED :=
 OBJECTS :=
 
-GENERATED += $(OBJDIR)/ShallowWaters.o
 GENERATED += $(OBJDIR)/ShallowWatersApp.o
 GENERATED += $(OBJDIR)/ShallowWatersLayer.o
-OBJECTS += $(OBJDIR)/ShallowWaters.o
 OBJECTS += $(OBJDIR)/ShallowWatersApp.o
 OBJECTS += $(OBJDIR)/ShallowWatersLayer.o
 
@@ -145,9 +143,6 @@ endif
 # File Rules
 # #############################################
 
-$(OBJDIR)/ShallowWaters.o: src/ShallowWaters.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/ShallowWatersApp.o: src/ShallowWatersApp.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"

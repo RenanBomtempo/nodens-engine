@@ -8,15 +8,21 @@ namespace alg {
 	{
 		auto cell = m_FirstCell;
 		while (cell != nullptr)
-			cell = CoarsenBunch(cell->GetBunch())->Next();
-
+		{
+			try { cell = CoarsenBunch(cell->GetBunch()); }
+			catch (std::runtime_error& e) {}
+			cell = cell->Next();
+		}
 	}
 
 	CellNode* Grid2D::CoarsenBunch(CellBunch& old_bunch)
 	{
+		if (old_bunch.first->m_RefinementLevel == 1)
+			throw std::runtime_error("Cant coarsen initial bunch");
+
+
 		CellNode* newCell = new CellNode();
 		newCell->m_Center = old_bunch.CalculateCenter();
-
 
 		//______________________________________________________________________
 		// Reconnect North
@@ -29,7 +35,6 @@ namespace alg {
 				old_bunch.NE->m_North, old_bunch.NW->m_North,
 				newCell, Direction::North);
 
-
 		//______________________________________________________________________
 		// Connect South
 		if (old_bunch.SE->m_South == old_bunch.SW->m_South)
@@ -41,7 +46,6 @@ namespace alg {
 				old_bunch.SE->m_South, old_bunch.SW->m_South,
 				newCell, Direction::South);
 
-
 		//______________________________________________________________________
 		// Connect West
 		if (old_bunch.NW->m_West == old_bunch.SW->m_West)
@@ -52,7 +56,6 @@ namespace alg {
 			_CoarsenCase2(
 				old_bunch.SW->m_West, old_bunch.NW->m_West,
 				newCell, Direction::West);
-
 
 		//______________________________________________________________________
 		// Connect East
@@ -75,7 +78,6 @@ namespace alg {
 
 		return newCell;
 	}
-
 
 	/* Old bunch is connected to a transition node.
 	*
@@ -134,8 +136,8 @@ namespace alg {
 			 *      _____		     _____
 			 *     |     |		    |     |
 			 *     |_____|		    |_____|
-			 *        |               |
-			 *        T       =>      |
+			 *        |                |
+			 *        T       =>       |
 			 *      _/_\_    	     __|__
 			 *     |__|__|   	    |     |
 			 *     |__|__|		    |_____|
@@ -155,7 +157,6 @@ namespace alg {
 
 		delete(old_transition);
 	}
-
 
 	/* Group is connected to another bunch of the same refinement level.
 	*
@@ -178,32 +179,23 @@ namespace alg {
 
 		newTransition->m_HigherNorW = neighbor_node_NorW;
 		_CoarsenCase2a(neighbor_node_NorW, new_cell, newTransition, direction);
-		
+
 		newTransition->m_HigherSorE = neighbor_node_SorE;
 		_CoarsenCase2a(neighbor_node_SorE, new_cell, newTransition, direction);
 	}
 
-
 	void Grid2D::_CoarsenCase2a(Node* outer_cell, CellNode* new_cell, TransitionNode* new_transition, Direction direction)
 	{
-		switch (outer_cell->GetType())
-		{
-		case NodeType::Cell:
+		if (NodeType::Cell == outer_cell->GetType())
 			((CellNode*)outer_cell)->Connect(Opposite(direction), new_transition);
-			break;
-		case NodeType::Transition:
+		else if (NodeType::Transition == outer_cell->GetType())
 			((TransitionNode*)outer_cell)->m_Lower = new_transition;
-			break;
-		default:
-			break;
-		}
 	}
-
 
 	void Grid2D::_UpdateMHCAfterCoarsening(
 		CellNode* new_cell, CellBunch& old_bunch)
 	{
-		new_cell->m_GlobalIndex = old_bunch.first->BunchIndex();
+		new_cell->m_GlobalIndex = old_bunch.first->GlobalBunchIndex();
 		new_cell->m_RefinementLevel = old_bunch.first->m_RefinementLevel - 1;
 
 		new_cell->m_Previous = old_bunch.first->m_Previous;

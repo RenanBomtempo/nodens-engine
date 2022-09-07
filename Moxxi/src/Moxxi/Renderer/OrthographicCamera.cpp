@@ -11,14 +11,15 @@ namespace Moxxi {
 		m_Bottom(bottom),
 		m_Top(top),
 		m_ProjectionMatrix(glm::ortho(left, right, bottom, top, -1.0f, 1.0f)),
-		m_ViewMatrix(1.0f)
+		m_ViewMatrix(1.0f),
+		m_Zoom(1.0f)
 	{
 		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
 
 	void OrthographicCamera::RecalculateProjectionMatrix()
 	{
-		m_ProjectionMatrix = glm::ortho(m_Left, m_Right, m_Bottom, m_Top, -1.0f, 1.0f);
+		m_ProjectionMatrix = glm::ortho(m_Left * m_Zoom, m_Right * m_Zoom, m_Bottom * m_Zoom, m_Top * m_Zoom, -1.0f, 1.0f);
 		RecalculateViewMatrix();
 	}
 

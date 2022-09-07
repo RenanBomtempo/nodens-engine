@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="src\ALG.h" />
     <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\Exceptions.h" />
     <ClInclude Include="src\Grid\Direction.h" />
     <ClInclude Include="src\Grid\Grid2D.h" />
     <ClInclude Include="src\Grid\MHC\MHC.h" />

@@ -6,28 +6,39 @@ ShallowWatersLayer::ShallowWatersLayer()
 	: Layer("ShallowWatersLayer"),
 	m_CameraPosition(0.0f, 0.0f, 0.0f),
 	m_Camera(-2, 2, -2, 2),
-	m_ClearColor(0.0, 0.0, 0.0, 1)
+	m_ClearColor(1.0, 1.0, 1.0, 1)
 {
 	m_Grid.Initialize();
 
 	InitFlatShader();
 	InitSquareWireframeMesh();
 	InitSquareFillMesh();
-	InitMHCMesh();
+	UpdateMHCMesh();
 
+	InitSimulation();
 } // ShallowWatersLayer::ShallowWatersLayer
 
 
 void ShallowWatersLayer::OnUpdate(Moxxi::TimeStep ts)
 {
 	m_ElapsedTime += ts;
-
+	m_Camera.SetZoom(m_Zoom);
 	ProcessInputs(ts);
 
-	// Simulate;
+	UpdateSimulation();
 
 	DrawGrid();
 } // ShallowWatersLayer::OnUpdate
+
+void ShallowWatersLayer::InitSimulation()
+{
+
+}
+
+void ShallowWatersLayer::UpdateSimulation()
+{
+
+}
 
 void ShallowWatersLayer::DrawGrid()
 {
@@ -51,15 +62,14 @@ void ShallowWatersLayer::DrawGrid()
 	mhc_transform = glm::translate(mhc_transform, mhc_position);
 
 	if (m_MHCPoints) {
-		// MHC Points
 		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Point);
 		Moxxi::Renderer::SubmitIndexed(
-			m_FlatShader, m_MHCVA, mhc_transform, { 1,1,0,1 });
+			m_FlatShader, m_MHCVA, mhc_transform, { 1,0,0,1 });
 	}
 	if (m_MHCLines) {
 		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
 		Moxxi::Renderer::SubmitIndexedLines(
-			m_FlatShader, m_MHCVA, mhc_transform);
+			m_FlatShader, m_MHCVA, mhc_transform, { 0,0,0,1 });
 	}
 
 	auto cell = m_Grid.FirstCell();
@@ -79,7 +89,7 @@ void ShallowWatersLayer::DrawGrid()
 			Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
 			// Render wireframe square
 			Moxxi::Renderer::SubmitIndexedLines(
-				m_FlatShader, m_SquareWireframeVA, cellTransform);
+				m_FlatShader, m_SquareWireframeVA, cellTransform, {0,0,0,1});
 		}
 
 		if (m_Fill) {
@@ -123,9 +133,10 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 
 	// Options menu ------------------------------------------------------------
 	ImGui::Begin("Options", NULL, ImGuiWindowFlags_AlwaysAutoResize);
-	ImGui::PushItemWidth(90);
+	ImGui::PushItemWidth(50);
 
 	ImGui::Text("Cell count: %u", m_Grid.CellCount());
+	ImGui::SliderFloat("Zoom", &m_Zoom, 0.5, 3);
 	ImGui::SliderFloat("Line width", &m_LineWidth, 0, 3);
 	ImGui::SliderFloat("Point Size", &m_PointSize, 1, 8);
 	ImGui::Checkbox("Wireframe", &m_Wireframe);
@@ -133,15 +144,43 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 	ImGui::Checkbox("MHC Lines", &m_MHCLines);
 	ImGui::Checkbox("MHC Points", &m_MHCPoints);
 
-	if (ImGui::Button("Refine"))
+	if (ImGui::Button("Refine Grid"))
 	{
 		m_Grid.RefineGrid();
-		InitMHCMesh();
+		UpdateMHCMesh();
 	}
-	if (ImGui::Button("Coarsen"))
+	if (ImGui::Button("Coarsen Grid"))
 	{
 		m_Grid.CoarsenGrid();
-		InitMHCMesh();
+		UpdateMHCMesh();
+	}
+	if (ImGui::Button("Refine Odd Cells"))
+	{
+		auto cell = m_Grid.FirstCell();
+		while (cell != nullptr)
+		{
+			auto next = cell->Next();
+			if (cell->LocalIndex() % 2 == 1)
+				try { m_Grid.RefineCell(cell); }
+				catch (std::runtime_error) {}
+			cell = next;
+		}
+		UpdateMHCMesh();
+	}
+	if (ImGui::Button("Coarsen Odd Cells"))
+	{
+
+		auto cell = m_Grid.FirstCell();
+		while (cell != nullptr)
+		{
+			if (cell->LocalBunchIndex() % 2==1)
+			{
+				try { cell = m_Grid.CoarsenBunch(cell->GetBunch()); }
+				catch (std::runtime_error& e) {}
+			}
+			cell = cell->Next();
+		}
+		UpdateMHCMesh();
 	}
 
 	ImGui::End();
@@ -246,7 +285,7 @@ void ShallowWatersLayer::InitSquareFillMesh()
 	m_SquareFillVA->SetIndexBuffer(indexBuffer);
 } // ShallowWatersLayer::InitDomainMesh
 
-void ShallowWatersLayer::InitMHCMesh()
+void ShallowWatersLayer::UpdateMHCMesh()
 {
 	// VAO
 	m_MHCVA.reset(Moxxi::VertexArray::Create());

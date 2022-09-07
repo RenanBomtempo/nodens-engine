@@ -15,6 +15,8 @@ namespace Moxxi {
 		const float GetRotation() const { return m_Rotation; }
 		void SetRotation(const float rotation) { m_Rotation = rotation; RecalculateViewMatrix(); }
 
+		void SetZoom(float zoom) { m_Zoom = zoom; RecalculateProjectionMatrix(); }
+
 		void SetSides(float left, float right, float bottom, float top) { 
 			m_Left = left; 
 			m_Right = right;
@@ -38,6 +40,7 @@ namespace Moxxi {
 		float m_Right;
 		float m_Bottom;
 		float m_Top;
+		float m_Zoom;
 
 		glm::vec3 m_Position = glm::vec3(0);
 		float m_Rotation = 0;

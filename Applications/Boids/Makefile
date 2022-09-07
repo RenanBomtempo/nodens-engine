@@ -32,9 +32,9 @@ define POSTBUILDCMDS
 endef
 
 ifeq ($(config),debug)
-TARGETDIR = ../../../bin/Debug-windows-x86_64/Boids
+TARGETDIR = ../../bin/Debug-windows-x86_64/Boids
 TARGET = $(TARGETDIR)/Boids.exe
-OBJDIR = ../../../bin-int/Debug-windows-x86_64/Boids
+OBJDIR = ../../bin-int/Debug-windows-x86_64/Boids
 DEFINES += -DMX_PLATFORM_WINDOWS -DMX_DEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17
@@ -43,9 +43,9 @@ LDDEPS += ../../bin/Debug-windows-x86_64/Moxxi/Moxxi.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
-TARGETDIR = ../../../bin/Release-windows-x86_64/Boids
+TARGETDIR = ../../bin/Release-windows-x86_64/Boids
 TARGET = $(TARGETDIR)/Boids.exe
-OBJDIR = ../../../bin-int/Release-windows-x86_64/Boids
+OBJDIR = ../../bin-int/Release-windows-x86_64/Boids
 DEFINES += -DMX_PLATFORM_WINDOWS -DMX_RELEASE
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
@@ -54,9 +54,9 @@ LDDEPS += ../../bin/Release-windows-x86_64/Moxxi/Moxxi.lib
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 else ifeq ($(config),dist)
-TARGETDIR = ../../../bin/Dist-windows-x86_64/Boids
+TARGETDIR = ../../bin/Dist-windows-x86_64/Boids
 TARGET = $(TARGETDIR)/Boids.exe
-OBJDIR = ../../../bin-int/Dist-windows-x86_64/Boids
+OBJDIR = ../../bin-int/Dist-windows-x86_64/Boids
 DEFINES += -DMX_PLATFORM_WINDOWS -DMX_DIST
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17

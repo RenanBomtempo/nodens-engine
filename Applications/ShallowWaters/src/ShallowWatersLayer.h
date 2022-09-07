@@ -19,7 +19,10 @@ public:
 	void InitFlatShader();
 	void InitSquareWireframeMesh();
 	void InitSquareFillMesh();
-	void InitMHCMesh();
+	void UpdateMHCMesh();
+	
+	void InitSimulation();
+	void UpdateSimulation();
 
 	void ProcessInputs(Moxxi::TimeStep ts);
 	void DrawGrid();
@@ -34,8 +37,9 @@ private:
 	bool m_MHCLines = true;
 	bool m_MHCPoints = true;
 
+	float m_Zoom = 1;
 	float m_ElapsedTime = 0;
-	float m_LineWidth = 0.1;
+	float m_LineWidth = 2;
 	float m_PointSize = 4;
 
 	Moxxi::Ref<Moxxi::Shader> m_FlatShader;

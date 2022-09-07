@@ -27,7 +27,7 @@ namespace alg {
 
 	std::string CellNode::BunchIndexAsBinaryString()
 	{
-		std::string str = std::bitset<2 * MAX_REFINEMENT_LEVEL>(BunchIndex()).to_string();
+		std::string str = std::bitset<2 * MAX_REFINEMENT_LEVEL>(GlobalBunchIndex()).to_string();
 		for (int i = 0; i < MAX_REFINEMENT_LEVEL - 1; i++)
 			str.insert(3 * i + 2, 1, '.');
 		return str;
@@ -51,13 +51,18 @@ namespace alg {
 		return m_GlobalIndex >> (2 * (m_RefinementLevel - 1));
 	}
 
-	uint32_t CellNode::BunchIndex()
+	uint32_t CellNode::GlobalBunchIndex()
 	{
 		uint32_t mask = 0;
 		for (int i = 0; i < m_RefinementLevel - 1; i++)
 			mask += 0b11 << (2 * i);
 
 		return (m_GlobalIndex & mask);
+	}	
+	
+	uint32_t CellNode::LocalBunchIndex()
+	{
+		return (GlobalBunchIndex() >> (2*(m_RefinementLevel -2)));
 	}
 	bool CellNode::HasNext()
 	{
@@ -146,7 +151,7 @@ namespace alg {
 		if ((cell_1->m_RefinementLevel != cell_2->m_RefinementLevel)
 			|| (cell_2->m_RefinementLevel != cell_3->m_RefinementLevel)
 			|| (cell_3->m_RefinementLevel != cell_4->m_RefinementLevel))
-			ALG_ASSERT(false, "The bunch {0} contains refined cells.", BunchIndex());
+			throw std::runtime_error("Invalid bunch.");
 
 
 		// Store cells in a bunch struct to facilitate pointer manipulation
@@ -154,7 +159,7 @@ namespace alg {
 		bunch.first = cell_1;
 		bunch.last = cell_4;
 
-		switch (MHC::CalculateBunchProfile(BunchIndex(), m_RefinementLevel))
+		switch (MHC::CalculateBunchProfile(GlobalBunchIndex(), m_RefinementLevel))
 		{
 		case MHC::BunchProfile::C:
 			bunch.NE = cell_1;

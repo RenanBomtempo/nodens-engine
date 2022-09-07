@@ -47,7 +47,9 @@ namespace alg {
 
 		/* Returns the index of the bunch which the cell is a part of.
 		*/
-		uint32_t BunchIndex();
+		uint32_t GlobalBunchIndex();
+
+		uint32_t LocalBunchIndex();
 
 		/* Returns the index of the cell within its bunch.
 		*/

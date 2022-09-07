@@ -37,27 +37,27 @@ define POSTBUILDCMDS
 endef
 
 ifeq ($(config),debug)
-TARGETDIR = ../../../bin/Debug-windows-x86_64/ALG
+TARGETDIR = ../../bin/Debug-windows-x86_64/ALG
 TARGET = $(TARGETDIR)/ALG.lib
-OBJDIR = ../../../bin-int/Debug-windows-x86_64/ALG
+OBJDIR = ../../bin-int/Debug-windows-x86_64/ALG
 DEFINES += -DALG_PLATFORM_WINDOWS -DALG_DEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
-TARGETDIR = ../../../bin/Release-windows-x86_64/ALG
+TARGETDIR = ../../bin/Release-windows-x86_64/ALG
 TARGET = $(TARGETDIR)/ALG.lib
-OBJDIR = ../../../bin-int/Release-windows-x86_64/ALG
+OBJDIR = ../../bin-int/Release-windows-x86_64/ALG
 DEFINES += -DALG_PLATFORM_WINDOWS -DALG_RELEASE
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 else ifeq ($(config),dist)
-TARGETDIR = ../../../bin/Dist-windows-x86_64/ALG
+TARGETDIR = ../../bin/Dist-windows-x86_64/ALG
 TARGET = $(TARGETDIR)/ALG.lib
-OBJDIR = ../../../bin-int/Dist-windows-x86_64/ALG
+OBJDIR = ../../bin-int/Dist-windows-x86_64/ALG
 DEFINES += -DALG_PLATFORM_WINDOWS -DALG_DIST
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
@@ -78,6 +78,7 @@ OBJECTS :=
 GENERATED += $(OBJDIR)/BoundaryNode.o
 GENERATED += $(OBJDIR)/CellBunch.o
 GENERATED += $(OBJDIR)/CellNode.o
+GENERATED += $(OBJDIR)/Direction.o
 GENERATED += $(OBJDIR)/Grid2D.o
 GENERATED += $(OBJDIR)/Grid2DCoarsening.o
 GENERATED += $(OBJDIR)/Grid2DRefinement.o
@@ -91,6 +92,7 @@ GENERATED += $(OBJDIR)/algpch.o
 OBJECTS += $(OBJDIR)/BoundaryNode.o
 OBJECTS += $(OBJDIR)/CellBunch.o
 OBJECTS += $(OBJDIR)/CellNode.o
+OBJECTS += $(OBJDIR)/Direction.o
 OBJECTS += $(OBJDIR)/Grid2D.o
 OBJECTS += $(OBJDIR)/Grid2DCoarsening.o
 OBJECTS += $(OBJDIR)/Grid2DRefinement.o
@@ -164,6 +166,9 @@ endif
 # File Rules
 # #############################################
 
+$(OBJDIR)/Direction.o: src/Grid/Direction.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/Grid2D.o: src/Grid/Grid2D.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) -include $(PCH_PLACEHOLDER) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"

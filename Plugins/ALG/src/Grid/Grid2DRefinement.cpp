@@ -20,8 +20,8 @@ namespace alg {
 		while (cell != nullptr)
 		{
 			auto next = cell->Next();
-			//if (cell->LocalIndex() %2== 1)
-				RefineCell(cell);
+			try { RefineCell(cell); }
+			catch (std::runtime_error& e) {}
 			cell = next;
 		}
 	}
@@ -34,17 +34,16 @@ namespace alg {
 	*
 	* /returns A reference to the first cell in the new bunch.
 	*/
-	CellBunch Grid2D::RefineCell(CellNode* old_cell) 
+	CellBunch Grid2D::RefineCell(CellNode* old_cell)
 	{
 		ALG_CORE_ASSERT(m_NumberOfCells > 0, "Grid has not been initialized!");
 		ALG_CORE_ASSERT(old_cell != nullptr, "RefineCell: 'old_cell' is nullptr.");
 
 		ALG_CORE_INFO("Refining cell {0}", old_cell->GlobalIndexAsBinaryString());
 
-		if (old_cell->m_RefinementLevel == MAX_REFINEMENT_LEVEL) {
-			ALG_CORE_ERROR("Can't refine cell {0}. It has reached the maximum refinement level.", old_cell->GlobalIndexAsBinaryString());
-			throw std::exception("Cell has reached maximum refinement level.");
-		}
+		if (old_cell->m_RefinementLevel == MAX_REFINEMENT_LEVEL) 
+			throw std::runtime_error("Cell has reached maximum refinement level.");
+		
 
 		// =====================================================================
 		// Connect Neighbors
@@ -127,7 +126,7 @@ namespace alg {
 		this->m_NumberOfCells += 3;
 
 		ALG_CORE_INFO("Cell {0} succesfully refined to level {1}", old_cell->GlobalIndexAsBinaryString(), new_refinement_level);
-		
+
 		// Isolate cell before deleting it
 		old_cell->m_North = nullptr;
 		old_cell->m_East = nullptr;
@@ -141,16 +140,16 @@ namespace alg {
 
 	/* Case 1
 	*  Before refining, neighbouring cells HAD THE SAME LEVEL OF REFINEMENT
-	*         ________           ________ 
-	*        /       /          /       / 
-	*       /_______/          /_______/  
-	*          /		         /        
-	*         /		    =>      T         
-	*    ____/___           ___/_\__      
-	*   /       /          /___/___/      
-	*  /_______/          /___/___/       
-	*
-	*/
+	 *    _____            _____
+	 *   |     |          |     |
+	 *   |_____|          |_____|
+	 *      |                |
+	 *      |       =>       T
+	 *    __|__            _/_\_
+	 *   |     |          |__|__|
+	 *   |_____|          |__|__|
+	 *
+	 */
 	void Grid2D::_RefineCase1(CellBunch& new_bunch, CellNode* external_cell, Direction direction)
 	{
 		TransitionNode* new_transition = new TransitionNode();
@@ -186,36 +185,33 @@ namespace alg {
 			break;
 		}
 	}
-	
+
 	/* Case 2
-	*  Neighbouring cells had DIFFERENT levels of refinement before refinement.
-	* 
-	*                            ________ _______
-	*                           /       /       /
-	*                          /_______/_______/
-	*                               \   /
-	*                                T
-	*                       ________/_______
-	*                      /               /
-	*                     /. . . . . . . ./
-	* 
-	*/
+	 *  Neighbouring cells had DIFFERENT levels of refinement before refinement.
+	 *
+	 *                            ?     ?
+	 *	                           \   /
+	 *	                             T
+	 *	                       ._____|_____.
+	 *	                       |...........|
+	 *
+	 */
 	void Grid2D::_RefineCase2(CellNode* old_cell, CellBunch& new_bunch, TransitionNode* transition, Direction direction)
 	{
 		// Find where the old cell was connected
-		if (NodeType::Cell == transition->m_Lower->GetType()
-			&& old_cell == transition->m_Lower)
+		if (old_cell == transition->m_Lower)
 		{
 			/* Case 2.1
 			 * Old cell was connected to the LOWER port
 			 *
-			 *             ?   ?                            ?      ?
-			 *              \ /   			               /      /
-			 *               T			       =>         /      /
-			 *      ________/________		         ____/______/_____
-			 *     /                /		        /       /        /
-			 *    /                /		       /_______/________/
-			 *   /. . . . . . . . /               /. . . ./. . . . /
+			 *
+			 *	          ?   ?                       ?      ?
+			 *	           \ /   		             /      /
+			 *	            T			  =>        /      /
+			 *	   ________/________	       ____/______/_____
+			 *	  /                /	      /       /        /
+			 *	 /                /		     /_______/________/
+			 *	/. . . . . . . . /          /. . . ./. . . . /
 			 */
 			_RefineCase2a(new_bunch, transition, direction);
 		}
@@ -227,44 +223,35 @@ namespace alg {
 
 			/* Case 2.2 SOUTH_OR_EAST
 			* Old cell was connected to the HIGHER SOUTH/EAST port
-			*             . . . . . . . . .                 . . . . . . . . .
-			*            /_______/_______/                 /_______/_______/
-			*           /       /       /                 /       /___/___/
-			*          /_______/_______/	             /_______/___/___/
-			*             \        /                       \       \ /
-			*              \     /			                \      T
-			*			    \  /				             \   /
-			*                T			     =>               T
-			*               /				                 /
-			*      ________/________		        ________/________
-			*     /                /		       /                /
-			*    /                /		          /                /
-			*   /. . . . . . . . /               /. . . . . . . . /
+			*      ...........         ...........
+			*     |_____|_____|       |_____|_____|
+			*     |     |     |       |     |__|__|
+			*     |_____|_____|       |_____|__|__|
+			*        \     /             \    \ /
+			*         \   /	              \    T
+			*           T	      =>       \ /
+			*           |	                T
+			*     ._____|_____.       ._____|_____.
+			*     |...........|       |...........|
 			*/
-			if (NodeType::Cell == transition->m_HigherSorE->GetType()
-				&& old_cell == transition->m_HigherSorE)
+			if (old_cell == transition->m_HigherSorE)
 				transition->m_HigherSorE = new_transition;
-			
+
 			/* Case 2.2 NORTH_OR_WEST
 			* Old cell was connected to the HIGHER NORTH_OR_WEST port
-			*             . . . . . . . . .             . . . . . . . . .
-			*            /_______/_______/             /_______/_______/
-			*           /       /       /             /___/___/       /
-			*          /_______/_______/             /___/___/_______/
-			*             \        /		            \  /     /
-			*              \     /			             T     /
-			*				 \  /                         \  /
-			*                T			    =>             T
-			*               /				              /
-			*      ________/________		     ________/________
-			*     /                /		    /                /
-			*    /                /		   /                /
-			*   /. . . . . . . . /           /. . . . . . . . /
+			*      ...........         ...........
+			*     |_____|_____|       |_____|_____|
+			*     |     |     |       |__|__|     |
+			*     |_____|_____|       |__|__|_____|
+			*        \     /            \ /    /
+			*         \   /	             T    /
+			*           T	      =>       \ /
+			*           |	                T
+			*     ._____|_____.       ._____|_____.
+			*     |...........|       |...........|
 			*/
-			else if (NodeType::Cell == transition->m_HigherNorW->GetType()
-				&& old_cell == transition->m_HigherNorW)
+			else if (old_cell == transition->m_HigherNorW)
 				transition->m_HigherNorW = new_transition;
-			
 		}
 	}
 
@@ -277,12 +264,12 @@ namespace alg {
 			 * Higher SorE connects directly to another cell
 			 *                      . . . . .                         . . . . .
 			 *                     /_______/                         /_______/
-			 *                    /       /                         /       /  
-			 *              ?    /_______/	                  ?    /_______/	
+			 *                    /       /                         /       /
+			 *              ?    /_______/	                  ?    /_______/
 			 *              \      /		                 /       /
 			 *               \   /			                /       /
-			 *                 T			  =>           /       /  
-			 *                /				              /       /  
+			 *                 T			  =>           /       /
+			 *                /				              /       /
 			 *      ________/________		         ____/_______/____
 			 *     /                /		        /       /        /
 			 *    /                /		       /_______/________/
@@ -317,15 +304,15 @@ namespace alg {
 		}
 		else if (NodeType::Transition == transition->m_HigherSorE->GetType())
 		{
-			/* 
+			/*
 			 * Case 2.1.2
 			 * Transition SorE connects to another transition
-			 *                  
+			 *
 			 *                   ?   ?                              ?   ?
-			 *                    \ /                                \ / 
+			 *                    \ /                                \ /
 			 *              ?      T	                     ?        T
 			 *              \     /		                     /       /
-			 *                T			    =>             /       /  
+			 *                T			    =>             /       /
 			 *      ________/________		         ____/_______/____
 			 *     /                /		        /       /        /
 			 *    /                /		       /_______/________/
@@ -367,12 +354,12 @@ namespace alg {
 			// Transition NorW connects directly to another cell
 			 *             . . . . .                         . . . . .
 			 *            /_______/                         /_______/
-			 *           /       /                         /       /  
+			 *           /       /                         /       /
 			 *          /_______/	?                     /_______/	  ?
 			 *              \     /		                     /       /
 			 *               \  /			                /       /
-			 *                T			  =>               /       /  
-			 *               /				              /       /  
+			 *                T			  =>               /       /
+			 *               /				              /       /
 			 *      ________/________		         ____/_______/____
 			 *     /                /		        /       /        /
 			 *    /                /		       /_______/________/
@@ -470,7 +457,7 @@ namespace alg {
 			new_transition->m_HigherNorW = new_bunch.NE;
 			new_transition->m_HigherSorE = new_bunch.SE;
 			break;
-		default: 
+		default:
 			throw std::runtime_error("Invalid direction.");
 			break;
 		}

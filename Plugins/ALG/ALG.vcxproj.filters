@@ -47,6 +47,7 @@
     </ClInclude>
     <ClInclude Include="src\algpch.h" />
     <ClInclude Include="src\Grid\Direction.h" />
+    <ClInclude Include="src\Exceptions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Grid\Grid2D.cpp">
