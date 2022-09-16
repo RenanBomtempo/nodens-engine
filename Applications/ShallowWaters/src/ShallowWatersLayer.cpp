@@ -64,12 +64,12 @@ void ShallowWatersLayer::DrawGrid()
 	if (m_MHCPoints) {
 		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Point);
 		Moxxi::Renderer::SubmitIndexed(
-			m_FlatShader, m_MHCVA, mhc_transform, { 1,0,0,1 });
+			m_FlatShader, m_MHCVA, mhc_transform, {0,0,1,1 });
 	}
 	if (m_MHCLines) {
 		Moxxi::RenderCommand::SetPolygonMode(Moxxi::RendererProps::PolygonMode::Wireframe);
 		Moxxi::Renderer::SubmitIndexedLines(
-			m_FlatShader, m_MHCVA, mhc_transform, { 0,0,0,1 });
+			m_FlatShader, m_MHCVA, mhc_transform, { 1,0,0,1 });
 	}
 
 	auto cell = m_Grid.FirstCell();
@@ -149,11 +149,6 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 		m_Grid.RefineGrid();
 		UpdateMHCMesh();
 	}
-	if (ImGui::Button("Coarsen Grid"))
-	{
-		m_Grid.CoarsenGrid();
-		UpdateMHCMesh();
-	}
 	if (ImGui::Button("Refine Odd Cells"))
 	{
 		auto cell = m_Grid.FirstCell();
@@ -167,9 +162,28 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 		}
 		UpdateMHCMesh();
 	}
-	if (ImGui::Button("Coarsen Odd Cells"))
+	if (ImGui::Button("Refine Even Cells"))
 	{
+		auto cell = m_Grid.FirstCell();
+		while (cell != nullptr)
+		{
+			auto next = cell->Next();
+			if (cell->LocalIndex() % 2 == 0)
+				try { m_Grid.RefineCell(cell); }
+				catch (std::runtime_error) {}
+			cell = next;
+		}
+		UpdateMHCMesh();
+	}
 
+	if (ImGui::Button("Coarsen Grid"))
+	{
+		m_Grid.CoarsenGrid();
+		UpdateMHCMesh();
+	}
+
+	if (ImGui::Button("Coarsen Odd Bunches"))
+	{
 		auto cell = m_Grid.FirstCell();
 		while (cell != nullptr)
 		{
@@ -179,6 +193,21 @@ void ShallowWatersLayer::OnImGuiRender(Moxxi::TimeStep ts)
 				catch (std::runtime_error& e) {}
 			}
 			cell = cell->Next();
+		}
+		UpdateMHCMesh();
+	}
+	if (ImGui::Button("Coarsen Even Bunches"))
+	{
+
+		auto cell = m_Grid.LastCell();
+		while (cell != nullptr)
+		{
+			if (cell->LocalBunchIndex() % 2==0)
+			{
+				try { cell = m_Grid.CoarsenBunch(cell->GetBunch()); }
+				catch (std::runtime_error& e) {}
+			}
+			cell = cell->Previous();
 		}
 		UpdateMHCMesh();
 	}
