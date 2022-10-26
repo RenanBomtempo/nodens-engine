@@ -1,3 +1,4 @@
 #pragma once
 
-#include "Grid/Grid2D.h"
+#include "Grid2D/Grid2D.h"
+#include "Grid1D/Grid1D.h"
